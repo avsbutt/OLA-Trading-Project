@@ -6,7 +6,7 @@ module.exports = defineConfig({
 
     specPattern: "cypress/e2e/TestCases/**/*.cy.js",     //The specPattern tells Cypress where to find your test files.
 
-   baseUrl: "",
+    // baseUrl: "",
 
     setupNodeEvents(on, config) {
       // implement node event listeners here
