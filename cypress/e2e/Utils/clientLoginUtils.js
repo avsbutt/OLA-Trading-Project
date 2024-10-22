@@ -12,6 +12,6 @@ export function clientLoginUtils() {
         cy.xpath(loginLocators.username).type(data.username);  
         cy.xpath(loginLocators.password).type(data.password); 
     });
-
       cy.xpath(loginLocators.loginBtn).click()
+      cy.url().should('include', '/dashboard')
 }
