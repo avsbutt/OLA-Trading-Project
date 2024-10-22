@@ -1,10 +1,7 @@
-import { clientLoginUtils } from "../Utils/clientLoginUtils"
+import { clientLoginUtils } from "../../../../Utils/clientLoginUtils";
 
-describe('Client Side - Create New Account', ()=>{
-    it('Verify that user can ', ()=>{
+describe('Client Side - Account - Personal', () => {
+    it('Verify that user can Create Personal Account With Type individual', () => {
         clientLoginUtils();
-
-
-    })
-
-})
+    });
+});
