@@ -3,10 +3,9 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   e2e: {
 
-
     specPattern: "cypress/e2e/TestCases/**/*.cy.js",     //The specPattern tells Cypress where to find your test files.
-
-    // baseUrl: "",
+    
+    baseUrl: "https://ola-staging.atlascleartrading.com/",
 
     setupNodeEvents(on, config) {
       // implement node event listeners here
@@ -16,7 +15,6 @@ module.exports = defineConfig({
     tsc: 'cypress/support/commands.ts',
     defaultCommandTimeout: 10000,
 
-   
     video: false,
     videosFolder: 'cypress/e2e/videos',
     screenshotsFolder: 'cypress/e2e/screenshots',
@@ -25,8 +23,6 @@ module.exports = defineConfig({
     
     viewportWidth: 1280,
     viewportHeight: 800,
-  
-    
 
     screenshotOnRunFailure: true,
     reporter: 'mocha-allure-reporter',

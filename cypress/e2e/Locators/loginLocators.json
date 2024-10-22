@@ -1,0 +1,8 @@
+{
+    "loginLocators":
+    {
+        "username":"//input[@id='username']",
+        "password":"//input[@id='password']",
+        "loginBtn":"//button[normalize-space()='Login']"
+    }
+}
