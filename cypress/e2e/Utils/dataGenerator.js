@@ -64,8 +64,7 @@ export const generatePersonalInfoData = () => {
 
     return {
 
-        //--------PERSONAL INFORMATION--------\\
-
+        //########--------PERSONAL INFORMATION--------########\\
 
         fName: faker.name.firstName(),
         mName: faker.name.middleName(),
@@ -81,7 +80,10 @@ export const generatePersonalInfoData = () => {
         idExpirationDate: idDates.expirationDate,
 
 
-        //--------PHYSICAL ADDRESS--------\\
+
+
+        //########--------PHYSICAL ADDRESS--------########\\
+
         city: faker.location.city(), // Generate random city name
         postalCode: faker.string.numeric(5), // Generates a random 5-digit postal code
         address: faker.location.streetAddress()

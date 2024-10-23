@@ -24,5 +24,11 @@ describe('Client Side - Create Account - Personal', () => {
             randomData.idIssueDate,
             randomData.idExpirationDate,
             randomData.socialSecurityNo);
+
+
+        TC_PersonalInformationPage.fillPhysicalAddress(
+                randomData.address,
+                randomData.city,
+                randomData.postalCode);
     });
 });

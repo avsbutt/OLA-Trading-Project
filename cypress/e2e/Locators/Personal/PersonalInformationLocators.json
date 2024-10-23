@@ -29,7 +29,7 @@
         "CountryID":"//select[@name='countryId']",
         "StateID":"//select[@name='stateId']",
         "City":"//input[@placeholder='City']",
-        "PostalCode":"//input[@placeholder='Enter Postal Code']"
+        "PostalCode":"//input[@name='postalCode']"
     },
     "MailingAddressLocators":{
         "MailingAddressCheckBox":"//input[@id='cbMailingAddress']",
