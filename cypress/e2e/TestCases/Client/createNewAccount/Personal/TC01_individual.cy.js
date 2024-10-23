@@ -22,6 +22,7 @@ describe('Client Side - Create Account - Personal', () => {
             randomData.idNumber,
             randomData.dobYYYYMMDD,
             randomData.idIssueDate,
-            randomData.idExpirationDate);
+            randomData.idExpirationDate,
+            randomData.socialSecurityNo);
     });
 });

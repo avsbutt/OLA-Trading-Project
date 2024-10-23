@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker';
+
 // Function to format the date as MMDDYYYY
 const formatDateMMDDYYYY = (date) => {
     const day = String(date.getDate()).padStart(2, '0');
@@ -58,7 +59,14 @@ export const generatePersonalInfoData = () => {
     const dob = getRandomDateOfBirth();
     const idDates = getRandomIssueAndExpirationDates();
 
+
+
+
     return {
+
+        //--------PERSONAL INFORMATION--------\\
+
+
         fName: faker.name.firstName(),
         mName: faker.name.middleName(),
         lName: faker.name.lastName(),
@@ -66,9 +74,16 @@ export const generatePersonalInfoData = () => {
         nOfDependents: faker.number.int({ min: 0, max: 99 }),
         primaryTelephone: faker.string.numeric(14),
         idNumber: faker.string.numeric(15),
+        socialSecurityNo: faker.string.numeric(9),
         dobMMDDYYYY: dob.mmddyyyy,  // MMDDYYYY format for display
         dobYYYYMMDD: dob.yyyymmdd,  // YYYY-MM-DD format for input field
         idIssueDate: idDates.issueDate,
-        idExpirationDate: idDates.expirationDate
+        idExpirationDate: idDates.expirationDate,
+
+
+        //--------PHYSICAL ADDRESS--------\\
+        city: faker.location.city(), // Generate random city name
+        postalCode: faker.string.numeric(5), // Generates a random 5-digit postal code
+        address: faker.location.streetAddress()
     };
 };
