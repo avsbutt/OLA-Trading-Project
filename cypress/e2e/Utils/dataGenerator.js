@@ -8,13 +8,15 @@ const formatDateMMDDYYYY = (date) => {
     return `${month}${day}${year}`; // Return MMDDYYYY format
 };
 
-// Function to format the date as YYYY-MM-DD for date inputs
+// Function to format the date as YYYY-MM-DD for date inputs fields
 const formatDateYYYYMMDD = (date) => {
     const day = String(date.getDate()).padStart(2, '0');
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const year = date.getFullYear();
-    return `${year}-${month}-${day}`; // YYYY-MM-DD format for date input fields
+    return `${year}-${month}-${day}`; // YYYY-MM-DD format 
 };
+
+
 
 // Get random DOB in both formats
 const getRandomDateOfBirth = () => {
@@ -42,7 +44,7 @@ const getRandomDateOfBirth = () => {
     };
 };
 
-// Function to generate random issue and expiration dates
+// Function to generate random ID expiration and issue dates
 const getRandomIssueAndExpirationDates = () => {
     const now = new Date();
     const issueDate = new Date(now.getFullYear() - Math.floor(Math.random() * 10), now.getMonth(), now.getDate());
@@ -54,13 +56,14 @@ const getRandomIssueAndExpirationDates = () => {
     };
 };
 
-// Generate data with both MMDDYYYY and YYYY-MM-DD formats
+
+
+
+// ## Generate data with both MMDDYYYY and YYYY-MM-DD formats
 export const generatePersonalInfoData = () => {
     const dob = getRandomDateOfBirth();
     const idDates = getRandomIssueAndExpirationDates();
-
-
-
+    let cityName = faker.address.city().replace(/[^a-zA-Z ]/g, '');  // ## Generate city name with only alphabets
 
     return {
 
@@ -82,7 +85,7 @@ export const generatePersonalInfoData = () => {
 
         //########--------PHYSICAL ADDRESS--------########\\
 
-        city: faker.location.city(), // Generate random city name
+        city: cityName, // Generate random city name
         postalCode: faker.string.numeric(5), // Generates a random 5-digit postal code
         address: faker.location.streetAddress(),
 
@@ -95,8 +98,10 @@ export const generatePersonalInfoData = () => {
         trustedTelephone: faker.string.numeric(14),
         trustedEmail: faker.internet.email(),
         trustedMailingAddress1: faker.location.streetAddress(),
-        trustedCity: faker.location.city(),
+        trustedCity: cityName,
         trustedPostalCode: faker.string.numeric(5),
 
     };
+
+    
 };
