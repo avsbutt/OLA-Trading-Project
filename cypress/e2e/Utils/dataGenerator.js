@@ -80,12 +80,23 @@ export const generatePersonalInfoData = () => {
         idExpirationDate: idDates.expirationDate,
 
 
-
-
         //########--------PHYSICAL ADDRESS--------########\\
 
         city: faker.location.city(), // Generate random city name
         postalCode: faker.string.numeric(5), // Generates a random 5-digit postal code
-        address: faker.location.streetAddress()
+        address: faker.location.streetAddress(),
+
+
+
+        //########--------TRUSTED CONTACT--------########\\
+
+        trustedFirstName: faker.name.firstName(),
+        trustedLastName: faker.name.lastName(),
+        trustedTelephone: faker.string.numeric(14),
+        trustedEmail: faker.internet.email(),
+        trustedMailingAddress1: faker.location.streetAddress(),
+        trustedCity: faker.location.city(),
+        trustedPostalCode: faker.string.numeric(5),
+
     };
 };

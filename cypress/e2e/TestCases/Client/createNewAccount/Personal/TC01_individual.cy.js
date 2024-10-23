@@ -30,5 +30,15 @@ describe('Client Side - Create Account - Personal', () => {
                 randomData.address,
                 randomData.city,
                 randomData.postalCode);
+
+        TC_PersonalInformationPage.fillTrustedContact(
+            randomData.trustedFirstName,
+            randomData.trustedLastName,
+            randomData.trustedTelephone,
+            randomData.trustedEmail,
+            randomData.trustedMailingAddress1,
+            randomData.trustedCity,
+            randomData.trustedPostalCode);
+            
     });
 });

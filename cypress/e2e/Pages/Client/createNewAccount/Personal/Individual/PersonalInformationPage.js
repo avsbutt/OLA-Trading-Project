@@ -1,6 +1,8 @@
+import { CreatePersonalAccountLocators } from "../../../../../Locators/createNewAccount/createNewAccountLocators.json"
 import { PersonalInformationLocators } from "../../../../../Locators/Personal/PersonalInformationLocators.json";
 import { PhysicalAddressLocators } from "../../../../../Locators/Personal/PersonalInformationLocators.json";
-import { CreatePersonalAccountLocators } from "../../../../../Locators/createNewAccount/createNewAccountLocators.json"
+import { TrustedContactLocators } from "../../../../../Locators/Personal/PersonalInformationLocators.json"
+
 
 export class PersonalInformationPage{
 
@@ -37,7 +39,20 @@ export class PersonalInformationPage{
         cy.xpath(PhysicalAddressLocators.Address1).type(address)
         cy.xpath(PhysicalAddressLocators.City).type(city)
         cy.xpath(PhysicalAddressLocators.PostalCode).type(postalCode)
-        cy.xpath(PhysicalAddressLocators.StateID).select('Alabama')
+        cy.xpath(PhysicalAddressLocators.Country).select('United States')
+        cy.xpath(PhysicalAddressLocators.State).select('Alabama')
+    }
 
+    fillTrustedContact(trustedFirstName, trustedLastName, trustedTelephone, trustedEmail, trustedMailingAddress1, trustedCity, trustedPostalCode){
+        cy.xpath(TrustedContactLocators.FirstName).type(trustedFirstName)
+        cy.xpath(TrustedContactLocators.LastName).type(trustedLastName)
+        cy.xpath(TrustedContactLocators.TelephoneNumber).type(trustedTelephone)
+        cy.xpath(TrustedContactLocators.EmailAddress).type(trustedEmail)
+        cy.xpath(TrustedContactLocators.MailingAddress1).type(trustedMailingAddress1)
+
+        cy.xpath(TrustedContactLocators.Country).select('United States')
+        cy.xpath(TrustedContactLocators.State).select('Alaska')
+        cy.xpath(TrustedContactLocators.City).type(trustedCity)
+        cy.xpath(TrustedContactLocators.PostalCode).type(trustedPostalCode)
     }
 }
