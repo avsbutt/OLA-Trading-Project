@@ -19,9 +19,8 @@
         "IdType":"//select[@name='idTypeId']",
         "CountryOfCitizenship":"select[name='citizenshipCountryId']",
         "IdNumber":"//input[@placeholder='Enter Id Number']",
-        "IDissueDate":"//input[@name='idIssueDate']",
-        "IDexpirationDate":"//input[@name='idExpireDate']",
-        "IDissuanceState":"//input[@name='idIssueDate']"
+        "IdIssueDate":"//input[@name='idIssueDate']",
+        "IdExpirationDate":"//input[@name='idExpireDate']"
 
     },
     "PhysicalAddress":{

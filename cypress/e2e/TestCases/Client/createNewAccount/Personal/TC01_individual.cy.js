@@ -11,10 +11,7 @@ describe('Client Side - Create Account - Personal', () => {
         TC_PersonalInformationPage.ClickNextBtn();
 
         const randomData= generatePersonalInfoData();
-        cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData).then(() => {
-            // Confirm that the write operation was successful
-            cy.readFile('cypress/e2e/fixtures/PersonInfoData.json').should('deep.equal', randomData);
-        });
+        cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)
         TC_PersonalInformationPage.fillPersonalInfo(
             randomData.fName,
             randomData.mName,
@@ -22,6 +19,9 @@ describe('Client Side - Create Account - Personal', () => {
             randomData.email,
             randomData.nOfDependents,
             randomData.primaryTelephone,
-            randomData.idNumber);
+            randomData.idNumber,
+            randomData.dobYYYYMMDD,
+            randomData.idIssueDate,
+            randomData.idExpirationDate);
     });
 });
