@@ -1,8 +1,12 @@
 import { clientLoginUtils } from "../../../../Utils/clientLoginUtils";
 import { PersonalInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/PersonalInformationPage"
+import { EmploymentInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/EmploymentInfomationPage";
 import { generatePersonalInfoData } from "../../../../utils/dataGenerator";
+import { InvestmentProfilePage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/InvestorProfilePage";
 
 const TC_PersonalInformationPage = new PersonalInformationPage
+const TC_EmploymentInformationPage = new EmploymentInformationPage
+const TC_InvestmentProfilePage = new InvestmentProfilePage
 describe('Client Side - Create Account - Personal', () => {
     it('Verify that user can Create Personal Account With Type individual', () => {
         clientLoginUtils();
@@ -38,8 +42,12 @@ describe('Client Side - Create Account - Personal', () => {
             randomData.trustedMailingAddress1,
             randomData.trustedCity,
             randomData.trustedPostalCode);
-
         TC_PersonalInformationPage.SaveAndContinue();
+
+
+        TC_EmploymentInformationPage.ClickOnUnemployed();
+        TC_EmploymentInformationPage.SaveAndContinue();
+
             
     });
 });

@@ -6,7 +6,10 @@ import { FormUsageButtons } from "../../../../../Locators/FormUsageButtons.json"
 export class EmploymentInformationPage{
 
 ClickOnUnemployed(){
-    cy.xpath(UnEmployedLocators)
+    cy.xpath(UnEmployedLocators.Unemployed).click()
+}
+SaveAndContinue(){
+    cy.xpath(FormUsageButtons.SaveAndContinue).click();
 }
     
 }

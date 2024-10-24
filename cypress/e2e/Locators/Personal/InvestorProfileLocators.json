@@ -1,0 +1,34 @@
+{
+    "InvestmentProfileLocators":{
+        "InvestmentObjective":"//select[@name='investmentObjective']",
+        "InvestmentExperience":"//select[@name='investmentExperience']",
+        "RiskTolerance":"//select[@name='riskTolerance']",
+        "TimeHorizon":"//select[@name='timeHorizon']",
+        "TaxBracket":"//select[@name='taxBracket']"
+    },
+    "FinancialSuitabilityLocators":{
+        "AnnualIncome":"//select[@name='annualIncome']",
+        "TotalNetWorth":"//select[@name='netWorth']",
+        "LiquidNetWorth":"//select[@name='liquidNetWorth']",
+        "LiquidityNeeds":"//select[@name='liquidityNeed']"
+    },
+    "PriorInvestmentExperienceLocators":{
+        "Stock":"//select[@name='stockExp']",
+        "OPtions":"//select[@name='optionsExp']",
+        "MutualFunds":"//select[@name='fundsExp']",
+        "MarginAccount":"//select[@name='marginAccountExp']",
+        "MunicipalBonds":"//select[@name='municipalBondsExp']",
+        "CommoditiesFeatures":"//select[@name='commoditiesExp']",
+        "GovernmentBond":"//select[@name='govtBondsExp']",
+        "CorporateBonds":"//select[@name='corporateBondsExp']",
+        "TaxShelters":"//select[@name='taxShelterExp']"
+    },
+    "ACHRelationshipLocators":{
+        "ACHRelationshipCheckBox":"//input[@id='cbIsACHEnable']",
+        "AccountOwnerNAme":"//select[@name='accountOwnerName']",
+        "BankName":"//input[@placeholder='Bank Name']",
+        "BankAccountNumber":"//input[@placeholder='Bank Account Number']",
+        "BankRoutingNumber":"//input[@placeholder='Bank Routing Number']",
+        "BankAccountType":"//select[@name='bankAccountType']"
+    }
+}
