@@ -38,6 +38,8 @@ describe('Client Side - Create Account - Personal', () => {
             randomData.trustedMailingAddress1,
             randomData.trustedCity,
             randomData.trustedPostalCode);
+
+        TC_PersonalInformationPage.SaveAndContinue();
             
     });
 });

@@ -2,7 +2,8 @@
 import { CreatePersonalAccountLocators } from "../../../../../Locators/createNewAccount/createNewAccountLocators.json"
 import { PersonalInformationLocators } from "../../../../../Locators/Personal/PersonalInformationLocators.json";
 import { PhysicalAddressLocators } from "../../../../../Locators/Personal/PersonalInformationLocators.json";
-import { TrustedContactLocators } from "../../../../../Locators/Personal/PersonalInformationLocators.json"
+import { TrustedContactLocators } from "../../../../../Locators/Personal/PersonalInformationLocators.json";
+import { FormUsageButtons } from "../../../../../Locators/FormUsageButtons.json";
 
 
 export class PersonalInformationPage{
@@ -57,5 +58,8 @@ export class PersonalInformationPage{
         cy.xpath(TrustedContactLocators.PostalCode).type(trustedPostalCode)
     }
 
-    
+    SaveAndContinue(){
+        cy.xpath(FormUsageButtons.SaveAndContinue).click();
+    }
+
 }
