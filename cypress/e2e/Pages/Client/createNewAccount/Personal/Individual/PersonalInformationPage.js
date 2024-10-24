@@ -1,3 +1,4 @@
+
 import { CreatePersonalAccountLocators } from "../../../../../Locators/createNewAccount/createNewAccountLocators.json"
 import { PersonalInformationLocators } from "../../../../../Locators/Personal/PersonalInformationLocators.json";
 import { PhysicalAddressLocators } from "../../../../../Locators/Personal/PersonalInformationLocators.json";
@@ -55,4 +56,6 @@ export class PersonalInformationPage{
         cy.xpath(TrustedContactLocators.City).type(trustedCity)
         cy.xpath(TrustedContactLocators.PostalCode).type(trustedPostalCode)
     }
+
+    
 }

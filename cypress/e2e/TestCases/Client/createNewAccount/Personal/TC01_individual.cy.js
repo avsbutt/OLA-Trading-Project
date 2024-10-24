@@ -25,7 +25,6 @@ describe('Client Side - Create Account - Personal', () => {
             randomData.idExpirationDate,
             randomData.socialSecurityNo);
 
-
         TC_PersonalInformationPage.fillPhysicalAddress(
                 randomData.address,
                 randomData.city,

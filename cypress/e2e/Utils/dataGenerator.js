@@ -48,13 +48,14 @@ const getRandomDateOfBirth = () => {
 const getRandomIssueAndExpirationDates = () => {
     const now = new Date();
     const issueDate = new Date(now.getFullYear() - Math.floor(Math.random() * 10), now.getMonth(), now.getDate());
-    const expirationDate = new Date(issueDate.getFullYear() + (5 + Math.floor(Math.random() * 5)), issueDate.getMonth(), issueDate.getDate());
+    const expirationDate = faker.date.future(5, issueDate); // Ensure expiration is at least today or later
 
     return {
         issueDate: formatDateYYYYMMDD(issueDate),
-        expirationDate: formatDateYYYYMMDD(expirationDate)
+        idExpirationDate: formatDateYYYYMMDD(expirationDate), // Update to use faker.date.future
     };
 };
+
 
 
 
@@ -80,7 +81,9 @@ export const generatePersonalInfoData = () => {
         dobMMDDYYYY: dob.mmddyyyy,  // MMDDYYYY format for display
         dobYYYYMMDD: dob.yyyymmdd,  // YYYY-MM-DD format for input field
         idIssueDate: idDates.issueDate,
-        idExpirationDate: idDates.expirationDate,
+        idExpirationDate: idDates.idExpirationDate,
+        //idExpirationDate: faker.date.future,
+
 
 
         //########--------PHYSICAL ADDRESS--------########\\
@@ -102,6 +105,4 @@ export const generatePersonalInfoData = () => {
         trustedPostalCode: faker.string.numeric(5),
 
     };
-
-    
 };
