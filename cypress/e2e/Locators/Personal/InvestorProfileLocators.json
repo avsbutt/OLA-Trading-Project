@@ -13,13 +13,13 @@
         "LiquidityNeeds":"//select[@name='liquidityNeed']"
     },
     "PriorInvestmentExperienceLocators":{
-        "Stock":"//select[@name='stockExp']",
-        "OPtions":"//select[@name='optionsExp']",
+        "StockYears":"//select[@name='stockExp']",
+        "Options":"//select[@name='optionsExp']",
         "MutualFunds":"//select[@name='fundsExp']",
         "MarginAccount":"//select[@name='marginAccountExp']",
         "MunicipalBonds":"//select[@name='municipalBondsExp']",
         "CommoditiesFeatures":"//select[@name='commoditiesExp']",
-        "GovernmentBond":"//select[@name='govtBondsExp']",
+        "GovernmentBonds":"//select[@name='govtBondsExp']",
         "CorporateBonds":"//select[@name='corporateBondsExp']",
         "TaxShelters":"//select[@name='taxShelterExp']"
     },

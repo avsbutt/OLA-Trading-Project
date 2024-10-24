@@ -21,11 +21,15 @@ export class EmploymentInformationPage{
     }
 
 ClickOnUnemployed(){
-    cy.xpath(UnEmployedLocators.Unemployed).should('be.visible').click({ force: true })
+    cy.xpath(UnEmployedLocators.Unemployed).should('be.visible').realHover()
+    cy.xpath(UnEmployedLocators.Unemployed).click({ force: true });
+    cy.xpath(UnEmployedLocators.Unemployed).dblclick()
+
+
 
 }
 SaveAndContinue(){
-    cy.xpath(FormUsageButtons.SaveAndContinue).click();
+    cy.xpath(FormUsageButtons.SaveAndContinue).click({ force: true });
 }  
 
 }

@@ -45,16 +45,13 @@ describe('Client Side - Create Account - Personal', () => {
         TC_PersonalInformationPage.SaveAndContinue();
         cy.url().should('include', '/employment-info');
 
-
-       //TC_EmploymentInformationPage.fillEmployedInfo();
+       // ######  TC_EmploymentInformationPage.fillEmployedInfo(); // ########
        TC_EmploymentInformationPage.ClickOnUnemployed();   // Duplicate the test calling because one time its not working 
        TC_EmploymentInformationPage.SaveAndContinue();
-       TC_EmploymentInformationPage.ClickOnUnemployed();
-       TC_EmploymentInformationPage.SaveAndContinue();
+ 
+       TC_InvestmentProfilePage.fillInvestmentProfileInfo();
+       TC_InvestmentProfilePage.fillFinancialSuitability();
+       TC_InvestmentProfilePage.fillPriorInvestmentExperience(); 
 
-       
-       TC_InvestmentProfilePage.fillInvestmentProfileInfo()
-
-            
     });
 });
