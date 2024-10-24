@@ -1,8 +1,10 @@
 import { UnEmployedLocators } from "../Locators/Personal/EmploymentInformationLocators.json"
 import { InvestmentProfilePage } from "../Pages/Client/createNewAccount/Personal/Individual/InvestorProfilePage";
+import { EmploymentInformationPage } from "../Pages/Client/createNewAccount/Personal/Individual/EmploymentInfomationPage"
 import { FormUsageButtons } from "../Locators/FormUsageButtons.json";
 describe ('Test', ()=>{
 const testInvestor = new InvestmentProfilePage
+const testemploy = new EmploymentInformationPage
     it('User can type signature', ()=>{
         cy.visit("", {
             failOnStatusCode: false,
@@ -16,10 +18,14 @@ const testInvestor = new InvestmentProfilePage
           cy.get('#password').type('Pac@123456')
           cy.get('.btn').click()
           cy.wait(5000)
-          cy.visit("#/investor-profile")
-          testInvestor.fillInvestmentProfileInfo()
-          testInvestor.fillFinancialSuitability()
-          testInvestor.fillPriorInvestmentExperience()
+          cy.visit("#/employment-info")
+          testemploy.ClickOnUnemployed()
+
+
+
+          // testInvestor.fillInvestmentProfileInfo()
+          // testInvestor.fillFinancialSuitability()
+          // testInvestor.fillPriorInvestmentExperience()
         
     })
 })

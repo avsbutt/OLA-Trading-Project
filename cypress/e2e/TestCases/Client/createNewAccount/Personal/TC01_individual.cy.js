@@ -52,6 +52,7 @@ describe('Client Side - Create Account - Personal', () => {
        TC_InvestmentProfilePage.fillInvestmentProfileInfo();
        TC_InvestmentProfilePage.fillFinancialSuitability();
        TC_InvestmentProfilePage.fillPriorInvestmentExperience(); 
+       TC_InvestmentProfilePage.SaveAndContinue();
 
     });
 });

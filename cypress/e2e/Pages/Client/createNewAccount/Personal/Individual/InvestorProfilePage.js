@@ -1,19 +1,9 @@
-import { InvestmentProfileLocators } from "../../../../../Locators/Personal/InvestorProfileLocators.json"
-import { FinancialSuitabilityLocators} from "../../../../../Locators/Personal/InvestorProfileLocators.json";
-import { PriorInvestmentExperienceLocators } from "../../../../../Locators/Personal/InvestorProfileLocators.json";
-import { ACHRelationshipLocators } from "../../../../../Locators/Personal/InvestorProfileLocators.json";
-import { FormUsageButtons } from "../../../../../Locators/FormUsageButtons.json";
+import { InvestmentProfileLocators, FinancialSuitabilityLocators, PriorInvestmentExperienceLocators, ACHRelationshipLocators  } from "../../../../../Locators/Personal/InvestorProfileLocators.json"
 
-export function selectRandomOption(locator) {
-    cy.xpath(locator).should('be.visible').then($select => {
-        cy.wrap($select).children('option').should('have.length.greaterThan', 1).then(options => {
-            // Start random selection from index 1, skipping the first "Select" option
-            const randomIndex = Math.floor(Math.random() * (options.length - 1)) + 1;
-            const value = options[randomIndex].value;
-            cy.wrap($select).select(value); // Select the value of the randomly selected option
-        });
-    });
-}
+import { FormUsageButtons } from "../../../../../Locators/FormUsageButtons.json";
+import { selectRandomOption } from "../../../../../utils/selectRandomOptionsUtils";
+
+
 export class InvestmentProfilePage{
  
     // fillInvestmentProfileInfo(){
