@@ -1,6 +1,6 @@
 import { clientLoginUtils } from "../../../../Utils/clientLoginUtils";
 import { PersonalInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/PersonalInformationPage"
-import { EmploymentInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/EmploymentInfomationPage";
+import { EmploymentInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/EmploymentInfomationPage"
 import { generatePersonalInfoData } from "../../../../utils/dataGenerator";
 import { InvestmentProfilePage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/InvestorProfilePage";
 
@@ -47,6 +47,9 @@ describe('Client Side - Create Account - Personal', () => {
 
         TC_EmploymentInformationPage.ClickOnUnemployed();
         TC_EmploymentInformationPage.SaveAndContinue();
+
+
+        TC_InvestmentProfilePage.fillInvestmentProfileInfo()
 
             
     });
