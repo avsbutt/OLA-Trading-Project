@@ -74,6 +74,7 @@ export const generatePersonalInfoData = () => {
         mName: faker.name.middleName(),
         lName: faker.name.lastName(),
         email: faker.internet.email(),
+        randomWords: faker.lorem.words(3),
         nOfDependents: faker.number.int({ min: 0, max: 99 }),
         primaryTelephone: faker.string.numeric(14),
         idNumber: faker.string.numeric(15),
