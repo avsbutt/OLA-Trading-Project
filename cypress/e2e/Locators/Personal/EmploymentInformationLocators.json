@@ -19,6 +19,5 @@
     },
     "UnEmployedLocators":{
         "Unemployed":"//span[normalize-space()='Unemployed*']"
-
     }
 }
