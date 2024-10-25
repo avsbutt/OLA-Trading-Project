@@ -3,12 +3,16 @@ import { FormUsageButtons } from "../../../../../Locators/FormUsageButtons.json"
 
 export class RegulatoryItemsPage{
 
-fillOption1(randomWords){
-    cy.get(RegulatoryItemsLocators.Option1Yes).click({force: true})
-    cy.xpath(RegulatoryItemsLocators.TickerSymbol).type(randomWords)
+fillOption1(){
+   // cy.reload(true);
+    cy.xpath(RegulatoryItemsLocators.Option1No).click({force: true})
+    //cy.xpath(RegulatoryItemsLocators.TickerSymbol).type(randomWords)
 }
 fillOption2(){
-    cy.xpath(RegulatoryItemsLocators.Option2Yes).click({force: true})
+    cy.xpath(RegulatoryItemsLocators.Option2No).click({force: true})
+    // cy.xpath(RegulatoryItemsLocators.PoliticalTitle).type(randomWords)
+    // cy.xpath(RegulatoryItemsLocators.OfficialMembers).type(randomWords)
+    // cy.xpath(RegulatoryItemsLocators.PoliticalOrganization).type(randomWords)
 }
 fillOption3(randomWords){
     cy.xpath(RegulatoryItemsLocators.Option3Yes).click({force: true})
@@ -17,24 +21,32 @@ fillOption3(randomWords){
     cy.xpath(RegulatoryItemsLocators.PoliticalOrganization).type(randomWords)
 }
 fillOption4(){
-    cy.xpath(RegulatoryItemsLocators.Option4Yes).click()
+    cy.xpath(RegulatoryItemsLocators.Option4No).click({force: true})
 }
-fillOption5(){
-    cy.xpath(RegulatoryItemsLocators.Option5Yes).click()
+fillOption5(randomWords){
+    cy.xpath(RegulatoryItemsLocators.Option5Yes).click({force: true})
+    cy.xpath(RegulatoryItemsLocators.ProvideAgentName5).type(randomWords)
 }
 fillOption6(){
-    cy.xpath(RegulatoryItemsLocators.Option6Yes).click()
+    cy.xpath(RegulatoryItemsLocators.Option6Yes).click({force: true})
 }
-fillOption7(){
-    cy.xpath(RegulatoryItemsLocators.Option7Yes).click()
+fillOption7(randomWords){
+    cy.xpath(RegulatoryItemsLocators.Option7Yes).click({force: true})
+    cy.xpath(RegulatoryItemsLocators.ProvideAgentName7).type(randomWords)
 }
 fillOption8(){
-    cy.xpath(RegulatoryItemsLocators.Option8Yes).click()
+    cy.xpath(RegulatoryItemsLocators.Option8No).click({force: true})
 }
 fillOption9(){
-    cy.xpath(RegulatoryItemsLocators.Option9Yes).click()
+    cy.xpath(RegulatoryItemsLocators.Option9No).click({force: true})
 }
 fillOption10(){
-    cy.xpath(RegulatoryItemsLocators.Option10Yes).click()
+    cy.xpath(RegulatoryItemsLocators.Option10No).click({force: true})
+}
+fillDirectCommunication(){
+    cy.xpath(DirectCommunicationLocators.IObject).click({force: true})
+}
+SaveAndContinue(){
+    cy.xpath(FormUsageButtons.SaveAndContinue).click();
 }
 }

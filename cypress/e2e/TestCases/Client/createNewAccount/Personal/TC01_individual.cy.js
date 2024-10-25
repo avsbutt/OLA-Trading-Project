@@ -3,10 +3,12 @@ import { PersonalInformationPage } from "../../../../Pages/Client/createNewAccou
 import { EmploymentInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/EmploymentInfomationPage"
 import { generatePersonalInfoData } from "../../../../utils/dataGenerator";
 import { InvestmentProfilePage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/InvestorProfilePage";
+import { RegulatoryItemsPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/RegulatoryItemsPage"
 
 const TC_PersonalInformationPage = new PersonalInformationPage
 const TC_EmploymentInformationPage = new EmploymentInformationPage
 const TC_InvestmentProfilePage = new InvestmentProfilePage
+const TC_RegulatoryItemsPage = new RegulatoryItemsPage
 describe('Client Side - Create Account - Personal', () => {
     it('Verify that user can Create Personal Account With Type individual', () => {
         clientLoginUtils();
@@ -53,6 +55,22 @@ describe('Client Side - Create Account - Personal', () => {
        TC_InvestmentProfilePage.fillFinancialSuitability();
        TC_InvestmentProfilePage.fillPriorInvestmentExperience(); 
        TC_InvestmentProfilePage.SaveAndContinue();
+
+
+
+       cy.url().should('include', '/regulatory-items')
+       TC_RegulatoryItemsPage.fillOption1()
+       TC_RegulatoryItemsPage.fillOption2()
+       TC_RegulatoryItemsPage.fillOption3(randomData.randomWords)
+       TC_RegulatoryItemsPage.fillOption4()
+       TC_RegulatoryItemsPage.fillOption5(randomData.randomWords)
+       TC_RegulatoryItemsPage.fillOption6()
+       TC_RegulatoryItemsPage.fillOption7(randomData.randomWords)
+       TC_RegulatoryItemsPage.fillOption8()
+       TC_RegulatoryItemsPage.fillOption9()
+       TC_RegulatoryItemsPage.fillOption10()
+       TC_RegulatoryItemsPage.fillDirectCommunication()
+       TC_RegulatoryItemsPage.SaveAndContinue()
 
     });
 });

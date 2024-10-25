@@ -7,8 +7,7 @@ export function clientLoginUtils() {
           password: 'Atlasclear@123/'
         }
       })
-
-      cy.fixture('clientCredentials.json').then((data) => {
+        cy.fixture('clientCredentials.json').then((data) => {
         cy.xpath(loginLocators.username).type(data.username);  
         cy.xpath(loginLocators.password).type(data.password); 
     });

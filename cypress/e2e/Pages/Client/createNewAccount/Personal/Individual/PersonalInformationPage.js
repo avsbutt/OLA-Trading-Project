@@ -57,7 +57,7 @@ export class PersonalInformationPage{
     }
 
     SaveAndContinue(){
-        cy.xpath(FormUsageButtons.SaveAndContinue).click();
+        cy.xpath(FormUsageButtons.SaveAndContinue).click({force: true});
     }
 
 }
