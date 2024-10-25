@@ -1,5 +1,5 @@
 
-import { CreatePersonalAccountLocators } from "../../../../../Locators/createNewAccount/createNewAccountLocators.json"
+import { CreatePersonalAccountLocators } from "../../../../../Locators/createNewAccountLocators.json"
 import { PersonalInformationLocators, PhysicalAddressLocators, TrustedContactLocators } from "../../../../../Locators/Personal/PersonalInformationLocators.json";
 import { FormUsageButtons } from "../../../../../Locators/FormUsageButtons.json";
 
