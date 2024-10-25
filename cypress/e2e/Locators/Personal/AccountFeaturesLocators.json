@@ -2,19 +2,24 @@
     "AccountFeaturesLocators":{
         "EDocumentsYes":"input[value='true'][name='eDocuments']",
         "EDocumentsNo":"input[value='false'][name='eDocuments']",
-        "AcceptCharge":"//button[normalize-space()='Accept Charge']",
-        "KeepDocuments":"//button[normalize-space()='Keep Documents']",
+        "EDocumentsTitle":"(//label[@class='form-label'])[1]",
+       
+      
         "MoneyMarketYes":"input[value='true'][name='sweepProgram']",
         "MoneyMarketNo":"input[value='false'][name='sweepProgram']",
+        "MoneyMarketTitle":"(//label[@class='form-label'])[2]",
         "AddMarginToAccountYes":"input[value='true'][name='isMarginEnable']",
         "AddMarginToAccountNo":"input[value='false'][name='isMarginEnable']",
-        "ParticipateYes":"input[value='true'][name='participateSecuritiesLending']",
-        "FullyPaidSecurities":"//span[@class='lending-text']",
+        "AddMarginToAccountTitle":"(//label[@class='form-label'])[3]",
+        
+       
         "WhatFullyPaidSecurities":"//a[normalize-space()='What is Fully Paid Securities Lending?']",
         "Close":"//button[normalize-space()='Close']",
+        "ParticipateYes":"input[value='true'][name='participateSecuritiesLending']",
         "ParticipateNo":"input[value='false'][name='participateSecuritiesLending']",
+        "ParticipateTitle":"//span[@class='lending-text']",
         "DividendReinvestmentYes":"input[value='true'][name='dividendReinvestment']",
-        "DividendReinvestmentNo":"input[value='false'][name='dividendReinvestment']"
-
+        "DividendReinvestmentNo":"input[value='false'][name='dividendReinvestment']",
+        "DividendReinvestmentTitle":"(//label[@class='form-label'])[5]"
     }
 }

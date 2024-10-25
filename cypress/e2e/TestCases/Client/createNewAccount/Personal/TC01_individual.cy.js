@@ -38,6 +38,7 @@ describe('Client Side - Create Account - Personal', () => {
                 randomData.city,
                 randomData.postalCode);
 
+
         TC_PersonalInformationPage.fillTrustedContact(
             randomData.trustedFirstName,
             randomData.trustedLastName,
@@ -54,21 +55,23 @@ describe('Client Side - Create Account - Personal', () => {
        TC_EmploymentInformationPage.ClickOnUnemployed();   // Duplicate the test calling because one time its not working 
        TC_EmploymentInformationPage.SaveAndContinue();
  
+
        TC_InvestmentProfilePage.fillInvestmentProfileInfo();
        TC_InvestmentProfilePage.fillFinancialSuitability();
        TC_InvestmentProfilePage.fillPriorInvestmentExperience(); 
        TC_InvestmentProfilePage.SaveAndContinue();
 
+
        cy.url().should('include', '/regulatory-items')
-       cy.wait(3000)
+       cy.wait(2000)
        TC_RegulatoryItemsPage.fillOption1()
-       cy.wait(3000)
+       cy.wait(2000)
        TC_RegulatoryItemsPage.fillOption2()
-       cy.wait(3000)
+ 
        TC_RegulatoryItemsPage.fillOption3(randomData.randomWords)
-       cy.wait(3000)
+ 
        TC_RegulatoryItemsPage.fillOption4()
-       cy.wait(3000)
+ 
        TC_RegulatoryItemsPage.fillOption5(randomData.randomWords)
        TC_RegulatoryItemsPage.fillOption6()
        TC_RegulatoryItemsPage.fillOption7(randomData.randomWords)
@@ -79,6 +82,7 @@ describe('Client Side - Create Account - Personal', () => {
        TC_RegulatoryItemsPage.SaveAndContinue()
 
 
+       cy.url().should('include', '#/account-features')
        TC_AccountFeaturesPage.SaveAndContinue()
 
     });

@@ -1,0 +1,7 @@
+{
+    "DocumentUploadLocators":{
+        "UploadDrivingLicenses":"//input[@name='filePrimaryDL']",
+        "UploadAuthorizationDocument":"//input[@name='fileDividentAuth']",
+        "UploadUtilityBill":"//input[@name='filePrimaryBankStatement']"
+    }
+}
