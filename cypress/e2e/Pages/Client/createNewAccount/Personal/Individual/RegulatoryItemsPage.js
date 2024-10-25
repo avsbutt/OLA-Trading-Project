@@ -1,17 +1,17 @@
-import { RegulatoryItemsLocators, DirectCommunicationLocators} from "../../../../../Locators/Personal/RegulatoryItems.json"
+import { RegulatoryItemsLocators, DirectCommunicationLocators} from "../../../../../Locators/Personal/RegulatoryItemsLocators.json"
 import { FormUsageButtons } from "../../../../../Locators/FormUsageButtons.json";
 
 export class RegulatoryItemsPage{
 
 fillOption1(randomWords){
-    cy.xpath(RegulatoryItemsLocators.Option1Yes).click()
+    cy.get(RegulatoryItemsLocators.Option1Yes).click({force: true})
     cy.xpath(RegulatoryItemsLocators.TickerSymbol).type(randomWords)
 }
 fillOption2(){
-    cy.xpath(RegulatoryItemsLocators.Option2Yes).click()
+    cy.xpath(RegulatoryItemsLocators.Option2Yes).click({force: true})
 }
 fillOption3(randomWords){
-    cy.xpath(RegulatoryItemsLocators.Option3Yes).click()
+    cy.xpath(RegulatoryItemsLocators.Option3Yes).click({force: true})
     cy.xpath(RegulatoryItemsLocators.PoliticalTitle).type(randomWords)
     cy.xpath(RegulatoryItemsLocators.OfficialMembers).type(randomWords)
     cy.xpath(RegulatoryItemsLocators.PoliticalOrganization).type(randomWords)
