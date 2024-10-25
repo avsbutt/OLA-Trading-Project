@@ -21,8 +21,8 @@ module.exports = defineConfig({
     pageLoadTimeout:60000 ,
     screenshots: false,
     
-    viewportWidth: 1280,
-    viewportHeight: 800,
+    viewportWidth: 1920,
+    viewportHeight: 1080,
 
     screenshotOnRunFailure: true,
     reporter: 'mocha-allure-reporter',

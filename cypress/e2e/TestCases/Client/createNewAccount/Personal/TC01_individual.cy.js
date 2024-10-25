@@ -4,11 +4,13 @@ import { EmploymentInformationPage } from "../../../../Pages/Client/createNewAcc
 import { generatePersonalInfoData } from "../../../../utils/dataGenerator";
 import { InvestmentProfilePage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/InvestorProfilePage";
 import { RegulatoryItemsPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/RegulatoryItemsPage"
+import { AccountFeaturesPage} from "../../../../Pages/Client/createNewAccount/Personal/Individual/AccountFeaturesPage"
 
 const TC_PersonalInformationPage = new PersonalInformationPage
 const TC_EmploymentInformationPage = new EmploymentInformationPage
 const TC_InvestmentProfilePage = new InvestmentProfilePage
 const TC_RegulatoryItemsPage = new RegulatoryItemsPage
+const TC_AccountFeaturesPage = new AccountFeaturesPage
 describe('Client Side - Create Account - Personal', () => {
     it('Verify that user can Create Personal Account With Type individual', () => {
         clientLoginUtils();
@@ -45,9 +47,10 @@ describe('Client Side - Create Account - Personal', () => {
             randomData.trustedCity,
             randomData.trustedPostalCode);
         TC_PersonalInformationPage.SaveAndContinue();
-        cy.url().should('include', '/employment-info');
+        
 
        // ######  TC_EmploymentInformationPage.fillEmployedInfo(); // ########
+       cy.url().should('include', '/employment-info');
        TC_EmploymentInformationPage.ClickOnUnemployed();   // Duplicate the test calling because one time its not working 
        TC_EmploymentInformationPage.SaveAndContinue();
  
@@ -56,13 +59,16 @@ describe('Client Side - Create Account - Personal', () => {
        TC_InvestmentProfilePage.fillPriorInvestmentExperience(); 
        TC_InvestmentProfilePage.SaveAndContinue();
 
-
-
        cy.url().should('include', '/regulatory-items')
+       cy.wait(3000)
        TC_RegulatoryItemsPage.fillOption1()
+       cy.wait(3000)
        TC_RegulatoryItemsPage.fillOption2()
+       cy.wait(3000)
        TC_RegulatoryItemsPage.fillOption3(randomData.randomWords)
+       cy.wait(3000)
        TC_RegulatoryItemsPage.fillOption4()
+       cy.wait(3000)
        TC_RegulatoryItemsPage.fillOption5(randomData.randomWords)
        TC_RegulatoryItemsPage.fillOption6()
        TC_RegulatoryItemsPage.fillOption7(randomData.randomWords)
@@ -71,6 +77,9 @@ describe('Client Side - Create Account - Personal', () => {
        TC_RegulatoryItemsPage.fillOption10()
        TC_RegulatoryItemsPage.fillDirectCommunication()
        TC_RegulatoryItemsPage.SaveAndContinue()
+
+
+       TC_AccountFeaturesPage.SaveAndContinue()
 
     });
 });
