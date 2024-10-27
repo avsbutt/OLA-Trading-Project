@@ -5,14 +5,16 @@ import { generatePersonalInfoData } from "../../../../utils/dataGenerator";
 import { InvestmentProfilePage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/InvestorProfilePage";
 import { RegulatoryItemsPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/RegulatoryItemsPage"
 import { AccountFeaturesPage} from "../../../../Pages/Client/createNewAccount/Personal/Individual/AccountFeaturesPage"
+import { DocumentUploadPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/DocumentUploadPage"
 
 const TC_PersonalInformationPage = new PersonalInformationPage
 const TC_EmploymentInformationPage = new EmploymentInformationPage
 const TC_InvestmentProfilePage = new InvestmentProfilePage
 const TC_RegulatoryItemsPage = new RegulatoryItemsPage
 const TC_AccountFeaturesPage = new AccountFeaturesPage
+const TC_DocumentUploadPage = new DocumentUploadPage
 describe('Client Side - Create Account - Personal', () => {
-    it('Verify that user can Create Personal Account With Type individual', () => {
+    it('Verify that User can Create Personal Account With SubType Individual', () => {
         clientLoginUtils();
         TC_PersonalInformationPage.CreateNewAccountClick();
         TC_PersonalInformationPage.ClickPersonalAndSelectIndividual();
@@ -67,11 +69,8 @@ describe('Client Side - Create Account - Personal', () => {
        TC_RegulatoryItemsPage.fillOption1()
        cy.wait(2000)
        TC_RegulatoryItemsPage.fillOption2()
- 
        TC_RegulatoryItemsPage.fillOption3(randomData.randomWords)
- 
        TC_RegulatoryItemsPage.fillOption4()
- 
        TC_RegulatoryItemsPage.fillOption5(randomData.randomWords)
        TC_RegulatoryItemsPage.fillOption6()
        TC_RegulatoryItemsPage.fillOption7(randomData.randomWords)
@@ -81,9 +80,19 @@ describe('Client Side - Create Account - Personal', () => {
        TC_RegulatoryItemsPage.fillDirectCommunication()
        TC_RegulatoryItemsPage.SaveAndContinue()
 
-
+       
        cy.url().should('include', '#/account-features')
        TC_AccountFeaturesPage.SaveAndContinue()
 
+
+       cy.url().should('include', '#/upload-documents')
+       TC_DocumentUploadPage.UploadGovernmentIdIfVisible()
+       TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
+       TC_DocumentUploadPage.UploadDrivingLiscenceIfVisible()
+       TC_DocumentUploadPage.UploadUtilityBillIfVisible()
+       TC_DocumentUploadPage.SaveAndContinue()
+
+
+
     });
-});
+}); 

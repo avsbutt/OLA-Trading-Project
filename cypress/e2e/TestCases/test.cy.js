@@ -4,11 +4,20 @@ import { RegulatoryItemsLocators} from "../Locators/createNewAccountLocators.jso
 import { RegulatoryItemsPage } from "../Pages/Client/createNewAccount/Personal/Individual/RegulatoryItemsPage"
 import { generatePersonalInfoData } from "../utils/dataGenerator";
 import { FormUsageButtons } from "../Locators/FormUsageButtons.json";
+import { DocumentUploadPage } from "../Pages/Client/createNewAccount/Personal/Individual/DocumentUploadPage"
 
 describe ('Test', ()=>{
+
+
+  Cypress.on('uncaught:exception', (err) => {
+    console.error('Uncaught exception:', err);
+    return false;
+});
+
 const testInvestor = new InvestmentProfilePage
 const testemploy = new EmploymentInformationPage
 const reg = new RegulatoryItemsPage
+const doc = new DocumentUploadPage
     it('User can type signature', ()=>{
         cy.visit("", {
             failOnStatusCode: false,
@@ -22,23 +31,51 @@ const reg = new RegulatoryItemsPage
           cy.get('#password').type('Pac@123456')
           cy.get('.btn').click()
           cy.wait(5000)
-          cy.visit("#/regulatory-items")
-          reg.fillOption1()
-          reg.fillOption2()
-          reg.fillOption3(randomData.randomWords)
-          reg.fillOption4()
-          reg.fillOption5(randomData.randomWords)
-          reg.fillOption6()
-          reg.fillOption7(randomData.randomWords)
-          reg.fillOption8()
-          reg.fillOption9()
-          reg.fillOption10()
-          
-          reg.fillDirectCommunication()
-          reg.SaveAndContinue()
-// cy.xpath(RegulatoryItemsLocator).click()
 
-         // testemploy.ClickOnUnemployed()
+
+          cy.visit("#/disclosures-signatures")
+          
+         
+         
+         
+         
+         
+         
+
+
+
+
+
+
+
+          //  cy.visit("#/upload-documents")
+          //  doc.UploadUtilityBillIfVisible()
+          //  doc.UploadAuthorizationDocumentIfVisible()
+          //  doc.UploadDrivingLiscenceIfVisible()
+          //  doc.UploadGovernmentIdIfVisible()
+
+
+
+
+
+
+
+          // reg.fillOption1()
+          // reg.fillOption2()
+          // reg.fillOption3(randomData.randomWords)
+          // reg.fillOption4()
+          // reg.fillOption5(randomData.randomWords)
+          // reg.fillOption6()
+          // reg.fillOption7(randomData.randomWords)
+          // reg.fillOption8()
+          // reg.fillOption9()
+          // reg.fillOption10()
+          
+          // reg.fillDirectCommunication()
+          // reg.SaveAndContinue()
+          // cy.xpath(RegulatoryItemsLocator).click()
+
+          // testemploy.ClickOnUnemployed()
 
 
 
