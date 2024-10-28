@@ -5,6 +5,7 @@ import { RegulatoryItemsPage } from "../Pages/Client/createNewAccount/Personal/I
 import { generatePersonalInfoData } from "../utils/dataGenerator";
 import { FormUsageButtons } from "../Locators/FormUsageButtons.json";
 import { DocumentUploadPage } from "../Pages/Client/createNewAccount/Personal/Individual/DocumentUploadPage"
+import { DisclosureSignaturesPage } from "../Pages/Client/createNewAccount/Personal/Individual/DisclosureSignaturesPage"
 
 describe ('Test', ()=>{
 
@@ -18,6 +19,8 @@ const testInvestor = new InvestmentProfilePage
 const testemploy = new EmploymentInformationPage
 const reg = new RegulatoryItemsPage
 const doc = new DocumentUploadPage
+const sig = new DisclosureSignaturesPage
+
     it('User can type signature', ()=>{
         cy.visit("", {
             failOnStatusCode: false,
@@ -34,7 +37,14 @@ const doc = new DocumentUploadPage
 
 
           cy.visit("#/disclosures-signatures")
+          sig.FillSignature()
+          sig.AccountAgreement()
+          sig.AccountAgreementCashAndMargin()
+          sig.AccountLoanAgreement()
+            sig.ClickSaveAndReview()
           
+
+
          
          
          

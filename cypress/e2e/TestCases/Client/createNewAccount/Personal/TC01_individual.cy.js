@@ -6,6 +6,7 @@ import { InvestmentProfilePage } from "../../../../Pages/Client/createNewAccount
 import { RegulatoryItemsPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/RegulatoryItemsPage"
 import { AccountFeaturesPage} from "../../../../Pages/Client/createNewAccount/Personal/Individual/AccountFeaturesPage"
 import { DocumentUploadPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/DocumentUploadPage"
+import { DisclosureSignaturesPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/DisclosureSignaturesPage"
 
 const TC_PersonalInformationPage = new PersonalInformationPage
 const TC_EmploymentInformationPage = new EmploymentInformationPage
@@ -13,6 +14,7 @@ const TC_InvestmentProfilePage = new InvestmentProfilePage
 const TC_RegulatoryItemsPage = new RegulatoryItemsPage
 const TC_AccountFeaturesPage = new AccountFeaturesPage
 const TC_DocumentUploadPage = new DocumentUploadPage
+const TC_DisclosureSignaturesPage = new DisclosureSignaturesPage
 describe('Client Side - Create Account - Personal', () => {
     it('Verify that User can Create Personal Account With SubType Individual', () => {
         clientLoginUtils();
@@ -93,6 +95,12 @@ describe('Client Side - Create Account - Personal', () => {
        TC_DocumentUploadPage.SaveAndContinue()
 
 
+       cy.url().should('include', '#/disclosures-signatures')
+       TC_DisclosureSignaturesPage.AccountAgreement()
+       TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
+       TC_DisclosureSignaturesPage.AccountLoanAgreement()
+       TC_DisclosureSignaturesPage.FillSignature()
+       TC_DisclosureSignaturesPage.ClickSaveAndReview()
 
     });
 }); 
