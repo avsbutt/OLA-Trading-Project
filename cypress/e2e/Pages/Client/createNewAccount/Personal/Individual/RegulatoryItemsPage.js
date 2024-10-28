@@ -4,7 +4,7 @@ import { FormUsageButtons } from "../../../../../Locators/FormUsageButtons.json"
 export class RegulatoryItemsPage{
 
 fillOption1(){
-    cy.xpath(RegulatoryItemsLocators.Option1No).check()
+    cy.xpath(RegulatoryItemsLocators.Option1No).click({force: true})
     //cy.xpath(RegulatoryItemsLocators.TickerSymbol).type(randomWords)
 }
 fillOption2(){

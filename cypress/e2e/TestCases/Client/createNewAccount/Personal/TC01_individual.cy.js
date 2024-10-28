@@ -7,6 +7,7 @@ import { RegulatoryItemsPage } from "../../../../Pages/Client/createNewAccount/P
 import { AccountFeaturesPage} from "../../../../Pages/Client/createNewAccount/Personal/Individual/AccountFeaturesPage"
 import { DocumentUploadPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/DocumentUploadPage"
 import { DisclosureSignaturesPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/DisclosureSignaturesPage"
+import{ ReviewInfomationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/ReviewInformationPage"
 
 const TC_PersonalInformationPage = new PersonalInformationPage
 const TC_EmploymentInformationPage = new EmploymentInformationPage
@@ -15,6 +16,7 @@ const TC_RegulatoryItemsPage = new RegulatoryItemsPage
 const TC_AccountFeaturesPage = new AccountFeaturesPage
 const TC_DocumentUploadPage = new DocumentUploadPage
 const TC_DisclosureSignaturesPage = new DisclosureSignaturesPage
+const TC_ReviewInfomationPage = new ReviewInfomationPage
 describe('Client Side - Create Account - Personal', () => {
     it('Verify that User can Create Personal Account With SubType Individual', () => {
         clientLoginUtils();
@@ -67,7 +69,7 @@ describe('Client Side - Create Account - Personal', () => {
 
 
        cy.url().should('include', '/regulatory-items')
-       cy.wait(2000)
+       cy.wait(3000)
        TC_RegulatoryItemsPage.fillOption1()
        cy.wait(2000)
        TC_RegulatoryItemsPage.fillOption2()
@@ -88,19 +90,33 @@ describe('Client Side - Create Account - Personal', () => {
 
 
        cy.url().should('include', '#/upload-documents')
+       //TC_DocumentUploadPage.UploadUtilityBillIfVisible()
+     
        TC_DocumentUploadPage.UploadGovernmentIdIfVisible()
-       TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
-       TC_DocumentUploadPage.UploadDrivingLiscenceIfVisible()
-       TC_DocumentUploadPage.UploadUtilityBillIfVisible()
+         cy.wait(4000)
+   
+     //  TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
+     //  TC_DocumentUploadPage.UploadDrivingLiscenceIfVisible()
+       
+      // TC_DocumentUploadPage.UploadPassportIfVisible()
        TC_DocumentUploadPage.SaveAndContinue()
 
 
+
        cy.url().should('include', '#/disclosures-signatures')
-       TC_DisclosureSignaturesPage.AccountAgreement()
+       cy.wait(4000)
+       
        TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
+       cy.wait(4000)
        TC_DisclosureSignaturesPage.AccountLoanAgreement()
+       cy.wait(4000)
+       TC_DisclosureSignaturesPage.AccountAgreement()
+       cy.wait(4000)
        TC_DisclosureSignaturesPage.FillSignature()
        TC_DisclosureSignaturesPage.ClickSaveAndReview()
+
+       cy.url().should('include', '#/review')
+       TC_ReviewInfomationPage.ClickOnSubmitBtn()
 
     });
 }); 

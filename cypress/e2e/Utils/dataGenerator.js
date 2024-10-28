@@ -99,7 +99,7 @@ export const generatePersonalInfoData = () => {
 
         trustedFirstName: faker.name.firstName(),
         trustedLastName: faker.name.lastName(),
-        trustedTelephone: faker.string.numeric(14),
+        trustedTelephone: faker.string.numeric(16),
         trustedEmail: faker.internet.email(),
         trustedMailingAddress1: faker.location.streetAddress(),
         trustedCity: cityName,

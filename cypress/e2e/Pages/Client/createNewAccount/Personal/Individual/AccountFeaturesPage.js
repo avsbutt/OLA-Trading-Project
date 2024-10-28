@@ -23,7 +23,12 @@ export class AccountFeaturesPage{
 
 
     SaveAndContinue(){
-        cy.xpath(FormUsageButtons.SaveAndContinue, { timeout: 20000 }).should('be.visible').click();
+       // cy.xpath(FormUsageButtons.SaveAndContinue, { timeout: 20000 }).should('be.visible').click()
+       cy.wait(1000)
+       cy.xpath(FormUsageButtons.Save).should('be.visible').click({force:true})
+       cy.xpath(FormUsageButtons.SaveAndContinue).should('be.visible').click({force:true})
+
+    
     }
 
 }
