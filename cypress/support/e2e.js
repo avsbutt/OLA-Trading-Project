@@ -17,10 +17,10 @@
 import './commands'
 require('cypress-xpath');
 import 'cypress-real-events';
-import 'cypress-slow-down/commands';
-Cypress.SlowDown.defaults({
-    delay: 600  // Delay in milliseconds between each command
-  });
+// import 'cypress-slow-down/commands';
+// Cypress.SlowDown.defaults({
+//     delay: 600  // Delay in milliseconds between each command
+//   });
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
