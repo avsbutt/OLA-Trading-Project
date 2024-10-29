@@ -69,7 +69,7 @@ describe('Client Side - Create Account - Personal', () => {
 
 
        cy.url().should('include', '/regulatory-items')
-       cy.wait(3000)
+       cy.wait(2000)
        TC_RegulatoryItemsPage.fillOption1()
        cy.wait(2000)
        TC_RegulatoryItemsPage.fillOption2()
@@ -90,33 +90,29 @@ describe('Client Side - Create Account - Personal', () => {
 
 
        cy.url().should('include', '#/upload-documents')
-       //TC_DocumentUploadPage.UploadUtilityBillIfVisible()
-     
        TC_DocumentUploadPage.UploadGovernmentIdIfVisible()
-         cy.wait(4000)
-   
-     //  TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
-     //  TC_DocumentUploadPage.UploadDrivingLiscenceIfVisible()
-       
-      // TC_DocumentUploadPage.UploadPassportIfVisible()
+     // TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
+     // TC_DocumentUploadPage.UploadUtilityBillIfVisible()
+     // TC_DocumentUploadPage.UploadDrivingLiscenceIfVisible()
+     // TC_DocumentUploadPage.UploadPassportIfVisible()
        TC_DocumentUploadPage.SaveAndContinue()
 
 
 
        cy.url().should('include', '#/disclosures-signatures')
-       cy.wait(4000)
-       
+       cy.wait(1000)
        TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
-       cy.wait(4000)
+       cy.wait(1000)
        TC_DisclosureSignaturesPage.AccountLoanAgreement()
-       cy.wait(4000)
+       cy.wait(1000)
        TC_DisclosureSignaturesPage.AccountAgreement()
-       cy.wait(4000)
+       cy.wait(1000)
        TC_DisclosureSignaturesPage.FillSignature()
        TC_DisclosureSignaturesPage.ClickSaveAndReview()
 
        cy.url().should('include', '#/review')
        TC_ReviewInfomationPage.ClickOnSubmitBtn()
+       cy.url().should('include', '#/dashboard')
 
     });
 }); 

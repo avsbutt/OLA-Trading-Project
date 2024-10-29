@@ -39,19 +39,17 @@ export class DocumentUploadPage{
     UploadGovernmentIdIfVisible(){
    // cy.get('input[name="fileGovIssuedIdLicense"]').attachFile('image.jpeg')
 
-    cy.xpath("//input[@name='fileGovIssuedIdLicense']").then(input => {
+    cy.xpath(DocumentUploadLocators.UploadGovernmentId).then(input => {
       cy.wrap(input)
-          .focus() // Ensure the input is focused
-        .selectFile('C:/Users/awais.m/Desktop/Automation Projects/Cypress/OLA/cypress/e2e/fixtures/Doc.pdf', { action: 'select' })
-
-          .trigger('change'); // Trigger the change event
+          .focus() 
+          .selectFile('C:/Users/awais.m/Desktop/Automation Projects/Cypress/OLA/cypress/e2e/fixtures/Doc.pdf', { action: 'select' })
+          .trigger('change');
     })
    
 
       //   const element = doc.querySelector('input[name="fileGovIssuedIdLicense"]');
       //   if (element) {
-      //     cy.wrap(element).attachFile('Doc.pdf', { subjectType: 'input' });
-          
+      //     cy.wrap(element).attachFile('Doc.pdf', { subjectType: 'input' });     
       //   } 
       // });
     }
@@ -65,10 +63,10 @@ export class DocumentUploadPage{
         if (element) {
           cy.wrap(element).attachFile('Doc.pdf', { subjectType: 'input' });
         }
-        // else {
+         // else {
           // Element is not present, log message and pass test
-         // cy.log('Element input[name="filePrimaryBankStatement"] not found, test passed');
-        //}
+          // cy.log('Element input[name="filePrimaryBankStatement"] not found, test passed');
+          //}
       });
     }
 
