@@ -7,7 +7,7 @@ import { FormUsageButtons } from "../../../../../Locators/FormUsageButtons.json"
 export class PersonalInformationPage{
 
     CreateNewAccountClick(){
-        cy.xpath(CreatePersonalAccountLocators.CreateNewAccount).click()
+        cy.xpath(CreatePersonalAccountLocators.CreateNewAccount).click({force: true})
     }
     ClickPersonalAndSelectIndividual(){
         cy.xpath(CreatePersonalAccountLocators.PersonalAccountType).select('Individual');
@@ -44,8 +44,8 @@ export class PersonalInformationPage{
         cy.xpath(PhysicalAddressLocators.Address1).type(address)
         cy.xpath(PhysicalAddressLocators.City).type(city)
         cy.xpath(PhysicalAddressLocators.PostalCode).type(postalCode)
-        cy.xpath(PhysicalAddressLocators.Country).select('United States')
-        cy.xpath(PhysicalAddressLocators.State).select('Alabama')
+       // cy.xpath(PhysicalAddressLocators.Country).select('United States')
+        //cy.xpath(PhysicalAddressLocators.State).select('Alabama')
     }
 
     fillTrustedContact(trustedFirstName, trustedLastName, trustedTelephone, trustedEmail, trustedMailingAddress1, trustedCity, trustedPostalCode){

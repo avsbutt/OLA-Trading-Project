@@ -8,14 +8,14 @@
         "NextBtn":"//button[normalize-space()='Next']"
 
     },
-    "Entity":{
+    "EntityLocators":{
         "CreateNewAccount":"//button[normalize-space()='Create New Account']",
         "Entity":"//span[normalize-space()='Entity']",
         "EntityAccountType":"//select[@class='form-select']",
         "NextBtn":"//button[normalize-space()='Next']"
 
     },
-    "Retirement":{
+    "RetirementLocators":{
         "CreateNewAccount":"//button[normalize-space()='Create New Account']",
         "Retirement":"//span[normalize-space()='Retirement']",
         "RetirementAccountType":"//select[@class='form-select']",

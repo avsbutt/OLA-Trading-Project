@@ -6,67 +6,81 @@ import { generatePersonalInfoData } from "../utils/dataGenerator";
 import { FormUsageButtons } from "../Locators/FormUsageButtons.json";
 import { DocumentUploadPage } from "../Pages/Client/createNewAccount/Personal/Individual/DocumentUploadPage"
 import { DisclosureSignaturesPage } from "../Pages/Client/createNewAccount/Personal/Individual/DisclosureSignaturesPage"
+import { PersonalInformationPage} from "../Pages/Client/createNewAccount/Personal/Individual/PersonalInformationPage"
+import { clientLoginUtils } from "../utils/clientLoginUtils"
 
-describe ('Test', ()=>{
 
 
-  Cypress.on('uncaught:exception', (err) => {
-    console.error('Uncaught exception:', err);
-    return false;
-});
+
+//   Cypress.on('uncaught:exception', (err) => {
+//     console.error('Uncaught exception:', err);
+//     return false;
+// });
 
 const testInvestor = new InvestmentProfilePage
 const testemploy = new EmploymentInformationPage
 const reg = new RegulatoryItemsPage
 const doc = new DocumentUploadPage
 const sig = new DisclosureSignaturesPage
-
-    it('User can type signature', ()=>{
-        cy.visit("", {
-            failOnStatusCode: false,
-            auth: {
-              username: 'ola-staging',
-              password: 'Atlasclear@123/'
-            }
-          })
-          const randomData= generatePersonalInfoData();
-          cy.get('#username').type('democlient')
-          cy.get('#password').type('Pac@123456')
-          cy.get('.btn').click()
-          cy.wait(5000)
+const perspnal = new PersonalInformationPage
+const randomData= generatePersonalInfoData();
+const countries = require("../fixtures/CountryAndStates.json")
 
 
-          cy.visit("#/disclosures-signatures")
-          sig.FillSignature()
-          sig.AccountAgreement()
-          sig.AccountAgreementCashAndMargin()
-          sig.AccountLoanAgreement()
-            sig.ClickSaveAndReview()
+
+describe('Country and State Dropdown Testing', () => {
+    beforeEach(() => {
+        clientLoginUtils()
+      cy.visit('#/personal-info'); // Replace with your page URL
+    });
+  
+    it('should complete the flow for each country and state combination', () => {
+        
+      cy.fixture('CountryAndStates.json').then((countryStates) => {
+        countryStates.forEach((location) => {
+
+            cy.xpath("//select[@name='countryId']") // Replace with the actual selector
+            .select(location.country);
+  
+     
+          cy.xpath("//select[@name='stateId']") // Replace with the actual selector
+            .select(location.state);
+  
+          // Perform actions for the rest of your flow here
+          cy.reload()
           
-
-
-         
-         
-         
-         
-         
-         
+        });
+      });
+    });
+  });
+  
 
 
 
+        // data.foreach((userdata)={
+        //   cy.get('select[name="countryId"]').select(userdata.country)
 
 
 
+     
+ 
+
+
+
+       //select[@name='countryId']
+
+          // cy.visit("#/disclosures-signatures")
+          // sig.FillSignature()
+          // sig.AccountAgreement()
+          // sig.AccountAgreementCashAndMargin()
+          // sig.AccountLoanAgreement()
+          // sig.ClickSaveAndReview()
 
           //  cy.visit("#/upload-documents")
           //  doc.UploadUtilityBillIfVisible()
           //  doc.UploadAuthorizationDocumentIfVisible()
           //  doc.UploadDrivingLiscenceIfVisible()
           //  doc.UploadGovernmentIdIfVisible()
-
-
-
-
 
 
 
@@ -79,19 +93,13 @@ const sig = new DisclosureSignaturesPage
           // reg.fillOption7(randomData.randomWords)
           // reg.fillOption8()
           // reg.fillOption9()
-          // reg.fillOption10()
-          
+          // reg.fillOption10() 
           // reg.fillDirectCommunication()
           // reg.SaveAndContinue()
           // cy.xpath(RegulatoryItemsLocator).click()
 
           // testemploy.ClickOnUnemployed()
 
-
-
           // testInvestor.fillInvestmentProfileInfo()
           // testInvestor.fillFinancialSuitability()
           // testInvestor.fillPriorInvestmentExperience()
-        
-    })
-})
