@@ -20,7 +20,8 @@ export class DisclosureSignaturesPage{
   cy.window().then((win) => {
     if (!win.open.stubbed) {
       cy.stub(win, 'open').as('windowOpen');
-      win.open.stubbed = true;
+                cy.stub(win, 'location').as('windowLocation');
+                win.open.stubbed = true; // Mark as stubbed
     }
   });
 
@@ -59,7 +60,8 @@ export class DisclosureSignaturesPage{
      cy.window().then((win) => {
      if (!win.open.stubbed) {
       cy.stub(win, 'open').as('windowOpen');
-      win.open.stubbed = true;
+      cy.stub(win, 'location').as('windowLocation');
+      win.open.stubbed = true; // Mark as stubbed
      }
      });
   
@@ -103,7 +105,8 @@ export class DisclosureSignaturesPage{
   cy.window().then((win) => {
     if (!win.open.stubbed) {
       cy.stub(win, 'open').as('windowOpen');
-      win.open.stubbed = true;
+      cy.stub(win, 'location').as('windowLocation');
+      win.open.stubbed = true; // Mark as stubbed
     }
   });
 
