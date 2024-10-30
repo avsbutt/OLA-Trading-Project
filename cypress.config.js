@@ -1,3 +1,4 @@
+const { fa } = require("@faker-js/faker");
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
@@ -6,7 +7,7 @@ module.exports = defineConfig({
 
     specPattern: "cypress/e2e/TestCases/**/*.cy.js",     //The specPattern tells Cypress where to find your test files.
     
-    baseUrl: "https://ola-staging.atlascleartrading.com/",
+    baseUrl: "https://ola-staging.wilsondavisclearing.com/",
 
     setupNodeEvents(on, config) {
       // implement node event listeners here
@@ -29,6 +30,8 @@ module.exports = defineConfig({
     viewportHeight: 1080,
 
     screenshotOnRunFailure: true,
+    videoUploadOnPasses: false, // Only save videos on failure
+    
     reporter: 'mocha-allure-reporter',
     reporterOptions: {
       targetDir: 'allure-results',

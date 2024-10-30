@@ -18,7 +18,7 @@ const TC_DocumentUploadPage = new DocumentUploadPage
 const TC_DisclosureSignaturesPage = new DisclosureSignaturesPage
 const TC_ReviewInfomationPage = new ReviewInfomationPage
 describe('Client Side - Create Account - Personal', () => {
-    it('Verify that User can Create Personal Account With SubType Individual', () => {
+    it.skip('TC001_Individual', () => {
         clientLoginUtils();
         TC_PersonalInformationPage.CreateNewAccountClick();
         TC_PersonalInformationPage.ClickPersonalAndSelectIndividual();

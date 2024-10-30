@@ -1,0 +1,6 @@
+# Cypress videos and screenshots folders
+cypress/e2e/videos/
+cypress/e2e/screenshots/
+
+# Allure results folder
+allure-results/

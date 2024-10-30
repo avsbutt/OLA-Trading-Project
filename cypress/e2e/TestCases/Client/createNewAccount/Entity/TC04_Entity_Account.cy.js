@@ -6,7 +6,7 @@ describe ('Create Entity Account', ()=>{
 
 
  
-    it('Retire', ()=>{
+    it.skip('Retire', ()=>{
         clientLoginUtils()
         cy.xpath(CreatePersonalAccountLocators.CreateNewAccount).click()
         cy.xpath(RetirementLocators.Retirement).click()

@@ -19,6 +19,7 @@ export class InvestmentProfilePage{
         selectRandomOption(InvestmentProfileLocators.InvestmentExperience);
         selectRandomOption(InvestmentProfileLocators.RiskTolerance);
         selectRandomOption(InvestmentProfileLocators.TimeHorizon);
+        selectRandomOption(InvestmentProfileLocators.InvestmentObjective);
         selectRandomOption(InvestmentProfileLocators.TaxBracket);
     }
 

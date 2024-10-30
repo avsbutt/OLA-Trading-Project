@@ -20,9 +20,13 @@ export class DisclosureSignaturesPage{
     // cy.xpath(DisclosureSignaturesLocators.AccountAgreementCashAndMarginYes).check()
       cy.document().then((doc) => {
         const element = doc.querySelector('input[value="true"][name="wdaccountAgreementCashMarginCheck"]');
+        const element2 = doc.querySelector('input[value="false"][name="wdaccountAgreementCashMarginCheck"]');
     
         if (element) {
-          cy.wrap(element).click({force: true})
+          cy.wrap(element).check({ force: true });
+          cy.wrap(element2).check({ force: true });
+          cy.wrap(element).check({ force: true });
+          
         } 
       });
 
@@ -54,7 +58,7 @@ export class DisclosureSignaturesPage{
        const element = doc.querySelector('input[value="true"][name="wdaccountAgreementCashCheck"]');
           
         if (element) {
-           cy.wrap(element).click({force: true})
+           cy.wrap(element).check({ force: true });
            cy.wait(2000)
             }
       });
@@ -85,7 +89,7 @@ export class DisclosureSignaturesPage{
         const element = doc.querySelector('input[value="true"][name="wdfullyPaidSecLoadAgreementCheck"]');
       
         if (element) {
-            cy.wrap(element).click({force: true})
+            cy.wrap(element).check({ force: true });
           } 
           // else {
           //   // Element is not present, log a message and continue

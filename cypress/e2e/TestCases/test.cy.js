@@ -8,6 +8,7 @@ import { DocumentUploadPage } from "../Pages/Client/createNewAccount/Personal/In
 import { DisclosureSignaturesPage } from "../Pages/Client/createNewAccount/Personal/Individual/DisclosureSignaturesPage"
 import { PersonalInformationPage} from "../Pages/Client/createNewAccount/Personal/Individual/PersonalInformationPage"
 import { clientLoginUtils } from "../utils/clientLoginUtils"
+import { CloseToasterIfAppear } from "../utils/CloseToasterIfAppear";
 
 
 
@@ -28,10 +29,10 @@ const countries = require("../fixtures/CountryAndStates.json")
 
 
 
-describe('Country and State Dropdown Testing', () => {
+describe('Test File', () => {
    
   
-    it('should complete the flow for each country and state combination', () => {
+    it('Test Cases ', () => {
       clientLoginUtils()
 
 
@@ -39,15 +40,15 @@ describe('Country and State Dropdown Testing', () => {
 
       cy.visit("#/disclosures-signatures")
           sig.FillSignature()
+          CloseToasterIfAppear()
           sig.AccountAgreement()
           sig.AccountAgreementCashAndMargin()
           sig.AccountLoanAgreement()
           sig.ClickSaveAndReview()
+          CloseToasterIfAppear()
+
       
         
-
-
-
 
 
       // cy.fixture('CountryAndStates.json').then((countryStates) => {

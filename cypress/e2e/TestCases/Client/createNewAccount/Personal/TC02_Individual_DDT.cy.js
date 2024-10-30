@@ -1,4 +1,4 @@
-import { clientLoginUtils } from"../../../../utils/clientLoginUtils"
+import { clientLoginUtils } from "../../../../utils/clientLoginUtils"
 import { PersonalInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/PersonalInformationPage"
 import { EmploymentInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/EmploymentInfomationPage"
 import { generatePersonalInfoData } from "../../../../utils/dataGenerator";
@@ -8,6 +8,7 @@ import { AccountFeaturesPage} from "../../../../Pages/Client/createNewAccount/Pe
 import { DocumentUploadPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/DocumentUploadPage"
 import { DisclosureSignaturesPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/DisclosureSignaturesPage"
 import{ ReviewInfomationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/ReviewInformationPage"
+import { CloseToasterIfAppear } from "../../../../utils/CloseToasterIfAppear";
 
 const TC_PersonalInformationPage = new PersonalInformationPage
 const TC_EmploymentInformationPage = new EmploymentInformationPage
@@ -24,8 +25,8 @@ beforeEach(() => {
 });
 
 
-describe('Client Side - Create Account - Personal', () => {
-    it('Verify that User can Create Personal Account With SubType Individual', () => {
+describe('DDT - Client Side - Create Account - Personal', () => {
+    it('TC002_Verify that User can Create Personal Account With SubType Individual', () => {
         cy.fixture('CountryAndStates.json').then((countryStates) => {
             countryStates.forEach((location) => {
 
@@ -101,6 +102,7 @@ cy.xpath("//select[@name='stateId']") .select(location.state);
        
        cy.url().should('include', '#/account-features')
        TC_AccountFeaturesPage.SaveAndContinue()
+       CloseToasterIfAppear();
 
 
        cy.url().should('include', '#/upload-documents')
@@ -123,6 +125,7 @@ cy.xpath("//select[@name='stateId']") .select(location.state);
        cy.wait(1000)
        TC_DisclosureSignaturesPage.FillSignature()
        TC_DisclosureSignaturesPage.ClickSaveAndReview()
+       CloseToasterIfAppear();
 
        cy.url().should('include', '#/review')
        TC_ReviewInfomationPage.ClickOnSubmitBtn()
