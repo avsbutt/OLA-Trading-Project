@@ -1,3 +1,4 @@
+//THIS FUNCTION LOGIN THE APPLICATION AMD ALSO LOGIN THE AUTHENTICATION APPLIED IN OUR SITE
 import { loginLocators} from "../Locators/loginLocators.json";
 
 export function clientLoginUtils() {

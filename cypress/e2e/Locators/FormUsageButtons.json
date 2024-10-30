@@ -5,5 +5,15 @@
         "SaveAndContinue":"//button[normalize-space()='Save and Continue']",
         "Review":"//button[normalize-space()='Review']",
         "Submit":"//button[normalize-space()='Submit']"
+    },
+    "CancelApplicationLocators":{
+        "Settings":"//div[@id='row-0']//button[@id='dropdown-basic']",
+        "ApplicationStatusNotCompleted":"//div[@title='Not Completed']",
+        "ViewApplication":"//a[normalize-space()='View Application']",
+        "CancelApplication":"//a[normalize-space()='Cancel Application']",
+        "CancelApplicationYes":"//button[normalize-space()='Yes']",
+        "CancelApplicationClose":"//button[normalize-space()='Close']"
+
     }
+
 }

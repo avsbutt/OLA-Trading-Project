@@ -29,28 +29,42 @@ const countries = require("../fixtures/CountryAndStates.json")
 
 
 describe('Country and State Dropdown Testing', () => {
-    beforeEach(() => {
-        clientLoginUtils()
-      cy.visit('#/personal-info'); // Replace with your page URL
-    });
+   
   
     it('should complete the flow for each country and state combination', () => {
-        
-      cy.fixture('CountryAndStates.json').then((countryStates) => {
-        countryStates.forEach((location) => {
+      clientLoginUtils()
 
-            cy.xpath("//select[@name='countryId']") // Replace with the actual selector
-            .select(location.country);
+
+
+
+      cy.visit("#/disclosures-signatures")
+          sig.FillSignature()
+          sig.AccountAgreement()
+          sig.AccountAgreementCashAndMargin()
+          sig.AccountLoanAgreement()
+          sig.ClickSaveAndReview()
+      
+        
+
+
+
+
+
+      // cy.fixture('CountryAndStates.json').then((countryStates) => {
+      //   countryStates.forEach((location) => {
+
+      //       cy.xpath("//select[@name='countryId']") // Replace with the actual selector
+      //       .select(location.country);
   
      
-          cy.xpath("//select[@name='stateId']") // Replace with the actual selector
-            .select(location.state);
+      //     cy.xpath("//select[@name='stateId']") // Replace with the actual selector
+      //       .select(location.state);
   
-          // Perform actions for the rest of your flow here
-          cy.reload()
+      //     // Perform actions for the rest of your flow here
+      //     cy.reload()
           
-        });
-      });
+      //   });
+      // });
     });
   });
   
@@ -69,12 +83,7 @@ describe('Country and State Dropdown Testing', () => {
 
        //select[@name='countryId']
 
-          // cy.visit("#/disclosures-signatures")
-          // sig.FillSignature()
-          // sig.AccountAgreement()
-          // sig.AccountAgreementCashAndMargin()
-          // sig.AccountLoanAgreement()
-          // sig.ClickSaveAndReview()
+          
 
           //  cy.visit("#/upload-documents")
           //  doc.UploadUtilityBillIfVisible()

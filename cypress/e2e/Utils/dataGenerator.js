@@ -1,3 +1,4 @@
+//THIS FUNCTION GENERATE RANDOM DATA THAT WE USED IN OUR APPLICATION
 import { faker } from '@faker-js/faker';
 
 // Function to format the date as MMDDYYYY

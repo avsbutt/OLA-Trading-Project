@@ -4,6 +4,17 @@ import { FormUsageButtons } from "../../../../../Locators/FormUsageButtons.json"
 export class DisclosureSignaturesPage{
 
 
+  stubWindowOpen() {
+    cy.window().then((win) => {
+      if (!win.open.stubbed) {
+        cy.stub(win, 'open').as('windowOpen');
+        cy.stub(win, 'location').as('windowLocation');
+        win.open.stubbed = true; // Mark as stubbed to prevent re-stubbing
+      }
+    });
+  }
+
+
 
     AccountAgreementCashAndMargin(){
     // cy.xpath(DisclosureSignaturesLocators.AccountAgreementCashAndMarginYes).check()
@@ -16,21 +27,14 @@ export class DisclosureSignaturesPage{
       });
 
 
-  // Stub window.open to prevent new tab navigation for the PDF link
-  cy.window().then((win) => {
-    if (!win.open.stubbed) {
-      cy.stub(win, 'open').as('windowOpen');
-                cy.stub(win, 'location').as('windowLocation');
-                win.open.stubbed = true; // Mark as stubbed
-    }
-  });
+      this.stubWindowOpen();  // Call the helper function
 
-  // Handle intermittent "Account Agreement" PDF link
-  cy.document().then((doc) => {
+   // Handle intermittent "Account Agreement" PDF link
+    cy.document().then((doc) => {
     const pdfLink = doc.querySelector('div:nth-child(5) a:nth-child(1)');
     
     if (pdfLink) {
-      cy.wrap(pdfLink).click();
+      cy.wrap(Cypress.$(pdfLink)).should('be.visible').click({ force: true });
       
       // Verify if `window.open` was called, confirming the link click would open a new tab
       cy.get('@windowOpen').should('have.been.called');
@@ -38,8 +42,8 @@ export class DisclosureSignaturesPage{
     } else {
       cy.log('PDF link not present in DOM');
     }
-  });    
-    }
+    });    
+  }
 
 
 
@@ -56,20 +60,13 @@ export class DisclosureSignaturesPage{
       });
   
   
-     // Stub window.open to prevent new tab navigation for the PDF link
-     cy.window().then((win) => {
-     if (!win.open.stubbed) {
-      cy.stub(win, 'open').as('windowOpen');
-      cy.stub(win, 'location').as('windowLocation');
-      win.open.stubbed = true; // Mark as stubbed
-     }
-     });
+      this.stubWindowOpen();  // Call the helper function
   
      // Handle intermittent "Account Agreement" PDF link
      cy.document().then((doc) => {
      const pdfLink = doc.querySelector('div:nth-child(3) a:nth-child(1)');
      if (pdfLink) {
-      cy.wrap(pdfLink).click();
+      cy.wrap(Cypress.$(pdfLink)).should('be.visible').click({ force: true });
       
       // Verify if `window.open` was called, confirming the link click would open a new tab
       cy.get('@windowOpen').should('have.been.called');
@@ -80,11 +77,6 @@ export class DisclosureSignaturesPage{
      });
   
     }
-
-
-
-
-
 
 
 
@@ -101,21 +93,14 @@ export class DisclosureSignaturesPage{
           // }
         });
          
-          // Stub window.open to prevent new tab navigation for the PDF link
-  cy.window().then((win) => {
-    if (!win.open.stubbed) {
-      cy.stub(win, 'open').as('windowOpen');
-      cy.stub(win, 'location').as('windowLocation');
-      win.open.stubbed = true; // Mark as stubbed
-    }
-  });
+ this.stubWindowOpen();  // Call the helper function
 
   // Handle intermittent "Account Agreement" PDF link
   cy.document().then((doc) => {
     const pdfLink = doc.querySelector('div:nth-child(7) a:nth-child(1)');
     
     if (pdfLink) {
-      cy.wrap(pdfLink).click();
+      cy.wrap(Cypress.$(pdfLink)).should('be.visible').click({ force: true });
       
       // Verify if `window.open` was called, confirming the link click would open a new tab
       cy.get('@windowOpen').should('have.been.called');

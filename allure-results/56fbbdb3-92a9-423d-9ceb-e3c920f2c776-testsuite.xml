@@ -1,0 +1,41 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1730237471334' stop='1730237506989'>
+    <name>Country and State Dropdown Testing</name>
+    <title>Country and State Dropdown Testing</title>
+    <test-cases>
+        <test-case start='1730237471334' status='broken' stop='1730237506981'>
+            <name>should complete the flow for each country and state combination</name>
+            <title>should complete the flow for each country and state combination</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+            <failure>
+                <message>Timed out retrying after 10000ms: `cy.select()` failed because it could not find a single `&lt;option>` with value, index, or text matching: `Alaska`
+                
+                https://on.cypress.io/select</message>
+                <stack-trace>CypressError: Timed out retrying after 10000ms: `cy.select()` failed because it could not find a single `&lt;option>` with value, index, or text matching: `Alaska`
+                
+                https://on.cypress.io/select
+                    at getOptions (https://ola-staging.atlascleartrading.com/__cypress/runner/cypress_runner.js:114027:72)
+                    at tryCatcher (https://ola-staging.atlascleartrading.com/__cypress/runner/cypress_runner.js:1807:23)
+                    at Promise.attempt.Promise.try (https://ola-staging.atlascleartrading.com/__cypress/runner/cypress_runner.js:4315:29)
+                    at retryOptions (https://ola-staging.atlascleartrading.com/__cypress/runner/cypress_runner.js:114059:70)
+                    at tryCatcher (https://ola-staging.atlascleartrading.com/__cypress/runner/cypress_runner.js:1807:23)
+                    at Promise.attempt.Promise.try (https://ola-staging.atlascleartrading.com/__cypress/runner/cypress_runner.js:4315:29)
+                    at whenStable (https://ola-staging.atlascleartrading.com/__cypress/runner/cypress_runner.js:143587:68)
+                    at &lt;unknown> (https://ola-staging.atlascleartrading.com/__cypress/runner/cypress_runner.js:143528:14)
+                    at tryCatcher (https://ola-staging.atlascleartrading.com/__cypress/runner/cypress_runner.js:1807:23)
+                    at Promise._settlePromiseFromHandler (https://ola-staging.atlascleartrading.com/__cypress/runner/cypress_runner.js:1519:31)
+                    at Promise._settlePromise (https://ola-staging.atlascleartrading.com/__cypress/runner/cypress_runner.js:1576:18)
+                    at Promise._settlePromise0 (https://ola-staging.atlascleartrading.com/__cypress/runner/cypress_runner.js:1621:10)
+                    at Promise._settlePromises (https://ola-staging.atlascleartrading.com/__cypress/runner/cypress_runner.js:1701:18)
+                    at Promise._fulfill (https://ola-staging.atlascleartrading.com/__cypress/runner/cypress_runner.js:1645:18)
+                    at &lt;unknown> (https://ola-staging.atlascleartrading.com/__cypress/runner/cypress_runner.js:5450:46)
+                From Your Spec Code:
+                    at eval (webpack://ola/./cypress/e2e/TestCases/test.cy.js:47:13)
+                    at Context.eval (webpack://ola/./cypress/e2e/TestCases/test.cy.js:40:22)</stack-trace>
+            </failure>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>
