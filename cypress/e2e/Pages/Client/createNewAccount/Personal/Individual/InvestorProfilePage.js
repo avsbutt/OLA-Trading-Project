@@ -1,7 +1,7 @@
 import { InvestmentProfileLocators, FinancialSuitabilityLocators, PriorInvestmentExperienceLocators, ACHRelationshipLocators  } from "../../../../../Locators/Personal/InvestorProfileLocators.json"
 
 import { FormUsageButtons } from "../../../../../Locators/FormUsageButtons.json";
-import { selectRandomOption } from "../../../../../utils/selectRandomOptionsUtils";
+import { selectRandomValueFromDropdownUtils } from "../../../../../utils/selectRandomValueFromDropdownUtils";
 
 
 export class InvestmentProfilePage{
@@ -15,30 +15,30 @@ export class InvestmentProfilePage{
     // }
 
     fillInvestmentProfileInfo() {
-        selectRandomOption(InvestmentProfileLocators.InvestmentObjective);
-        selectRandomOption(InvestmentProfileLocators.InvestmentExperience);
-        selectRandomOption(InvestmentProfileLocators.RiskTolerance);
-        selectRandomOption(InvestmentProfileLocators.TimeHorizon);
-        selectRandomOption(InvestmentProfileLocators.InvestmentObjective);
-        selectRandomOption(InvestmentProfileLocators.TaxBracket);
+        selectRandomValueFromDropdownUtils(InvestmentProfileLocators.InvestmentObjective);
+        selectRandomValueFromDropdownUtils(InvestmentProfileLocators.InvestmentExperience);
+        selectRandomValueFromDropdownUtils(InvestmentProfileLocators.RiskTolerance);
+        selectRandomValueFromDropdownUtils(InvestmentProfileLocators.TimeHorizon);
+        selectRandomValueFromDropdownUtils(InvestmentProfileLocators.InvestmentObjective);
+        selectRandomValueFromDropdownUtils(InvestmentProfileLocators.TaxBracket);
     }
 
 fillFinancialSuitability(){
-    selectRandomOption(FinancialSuitabilityLocators.AnnualIncome);
-    selectRandomOption(FinancialSuitabilityLocators.TotalNetWorth);
-    selectRandomOption(FinancialSuitabilityLocators.LiquidityNeeds);
-    selectRandomOption(FinancialSuitabilityLocators.LiquidNetWorth);
+    selectRandomValueFromDropdownUtils(FinancialSuitabilityLocators.AnnualIncome);
+    selectRandomValueFromDropdownUtils(FinancialSuitabilityLocators.TotalNetWorth);
+    selectRandomValueFromDropdownUtils(FinancialSuitabilityLocators.LiquidityNeeds);
+    selectRandomValueFromDropdownUtils(FinancialSuitabilityLocators.LiquidNetWorth);
 }
 fillPriorInvestmentExperience (){
-    selectRandomOption(PriorInvestmentExperienceLocators.StockYears);
-    selectRandomOption(PriorInvestmentExperienceLocators.Options);
-    selectRandomOption(PriorInvestmentExperienceLocators.MutualFunds);
-    selectRandomOption(PriorInvestmentExperienceLocators.MarginAccount);
-    selectRandomOption(PriorInvestmentExperienceLocators.MunicipalBonds);
-    selectRandomOption(PriorInvestmentExperienceLocators.CommoditiesFeatures);
-    selectRandomOption(PriorInvestmentExperienceLocators.GovernmentBonds);
-    selectRandomOption(PriorInvestmentExperienceLocators.CorporateBonds);
-    selectRandomOption(PriorInvestmentExperienceLocators.TaxShelters);
+    selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.StockYears);
+    selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.Options);
+    selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.MutualFunds);
+    selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.MarginAccount);
+    selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.MunicipalBonds);
+    selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.CommoditiesFeatures);
+    selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.GovernmentBonds);
+    selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.CorporateBonds);
+    selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.TaxShelters);
 }
 
 fillACHRelationship(){

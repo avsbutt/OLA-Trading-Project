@@ -1,14 +1,14 @@
 import { clientLoginUtils } from "../../../../utils/clientLoginUtils"
 import { PersonalInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/PersonalInformationPage"
 import { EmploymentInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/EmploymentInfomationPage"
-import { generatePersonalInfoData } from "../../../../utils/dataGenerator";
+import { dataGeneratorUtils } from "../../../../utils/dataGeneratorUtils";
 import { InvestmentProfilePage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/InvestorProfilePage";
 import { RegulatoryItemsPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/RegulatoryItemsPage"
 import { AccountFeaturesPage} from "../../../../Pages/Client/createNewAccount/Personal/Individual/AccountFeaturesPage"
 import { DocumentUploadPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/DocumentUploadPage"
 import { DisclosureSignaturesPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/DisclosureSignaturesPage"
 import{ ReviewInfomationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/ReviewInformationPage"
-import { CloseToasterIfAppear } from "../../../../utils/CloseToasterIfAppear";
+import { CloseToasterIfAppearUtils } from "../../../../utils/CloseToasterIfAppearUtils";
 
 const TC_PersonalInformationPage = new PersonalInformationPage
 const TC_EmploymentInformationPage = new EmploymentInformationPage
@@ -35,8 +35,9 @@ describe('DDT - Client Side - Create Account - Personal', () => {
         TC_PersonalInformationPage.CreateNewAccountClick();
         TC_PersonalInformationPage.ClickPersonalAndSelectIndividual();
         TC_PersonalInformationPage.ClickNextBtn();
+        CloseToasterIfAppearUtils();
 
-        const randomData= generatePersonalInfoData();
+        const randomData= dataGeneratorUtils();
         cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)
         TC_PersonalInformationPage.fillPersonalInfo(
             randomData.fName,
@@ -73,7 +74,7 @@ cy.xpath("//select[@name='stateId']") .select(location.state);
 
      
        cy.url().should('include', '/employment-info');
-       TC_EmploymentInformationPage.ClickOnUnemployed();   // Duplicate the test calling because one time its not working 
+       TC_EmploymentInformationPage.ClickOnUnemployed();   
        TC_EmploymentInformationPage.SaveAndContinue();
  
 
@@ -102,32 +103,41 @@ cy.xpath("//select[@name='stateId']") .select(location.state);
        
        cy.url().should('include', '#/account-features')
        TC_AccountFeaturesPage.SaveAndContinue()
-       CloseToasterIfAppear();
+      
 
 
        cy.url().should('include', '#/upload-documents')
+       CloseToasterIfAppearUtils();
        TC_DocumentUploadPage.UploadGovernmentIdIfVisible()
      // TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
      // TC_DocumentUploadPage.UploadUtilityBillIfVisible()
      // TC_DocumentUploadPage.UploadDrivingLiscenceIfVisible()
      // TC_DocumentUploadPage.UploadPassportIfVisible()
        TC_DocumentUploadPage.SaveAndContinue()
+       CloseToasterIfAppearUtils();
 
 
 
        cy.url().should('include', '#/disclosures-signatures')
-       cy.wait(1000)
+       cy.wait(2000)
        TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
-       cy.wait(1000)
+       cy.wait(2000)
        TC_DisclosureSignaturesPage.AccountLoanAgreement()
        cy.wait(1000)
        TC_DisclosureSignaturesPage.AccountAgreement()
        cy.wait(1000)
        TC_DisclosureSignaturesPage.FillSignature()
+       CloseToasterIfAppearUtils();
        TC_DisclosureSignaturesPage.ClickSaveAndReview()
-       CloseToasterIfAppear();
+       CloseToasterIfAppearUtils();
 
        cy.url().should('include', '#/review')
+      // cy.xpath("(//div[@class='col-lg-12'])[3]").contains('Country').siblings('td').invoke('text').should('have.text', location.country);    //Verify the Country from the (Loop) fixture file on Review Page
+      // cy.xpath("(//div[@class='col-lg-12'])[3]").contains('State').siblings('td').invoke('text').should('have.text', location.state);        //Verify the State from the (Loop) fixture file on Review Page
+
+
+
+
        TC_ReviewInfomationPage.ClickOnSubmitBtn()
        cy.url().should('include', '#/dashboard')
        

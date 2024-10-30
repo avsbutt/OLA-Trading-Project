@@ -1,6 +1,6 @@
 //THIS FUNCTION SELECT RANDOM VALUE FROM DROPDOWN AND DOEST NOT ACCEPT THE FIRST ONE 
 
-export function selectRandomOption(locator) {
+export function selectRandomValueFromDropdownUtils(locator) {
     cy.xpath(locator).should('be.visible').then($select => {
         cy.wrap($select).children('option').should('have.length.greaterThan', 1).then(options => {
             // Start random selection from index 1, skipping the first "Select" option

@@ -62,7 +62,7 @@ const getRandomIssueAndExpirationDates = () => {
 
 
 // ## Generate data with both MMDDYYYY and YYYY-MM-DD formats
-export const generatePersonalInfoData = () => {
+export const dataGeneratorUtils = () => {
     const dob = getRandomDateOfBirth();
     const idDates = getRandomIssueAndExpirationDates();
     let cityName = faker.address.city().replace(/[^a-zA-Z ]/g, '');  // ## Generate city name with only alphabets

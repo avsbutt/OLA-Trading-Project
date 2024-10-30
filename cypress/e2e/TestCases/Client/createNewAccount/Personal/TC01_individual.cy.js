@@ -1,7 +1,7 @@
 import { clientLoginUtils } from "../../../../Utils/clientLoginUtils";
 import { PersonalInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/PersonalInformationPage"
 import { EmploymentInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/EmploymentInfomationPage"
-import { generatePersonalInfoData } from "../../../../utils/dataGenerator";
+import { dataGeneratorUtils } from "../../../../utils/dataGenerator";
 import { InvestmentProfilePage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/InvestorProfilePage";
 import { RegulatoryItemsPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/RegulatoryItemsPage"
 import { AccountFeaturesPage} from "../../../../Pages/Client/createNewAccount/Personal/Individual/AccountFeaturesPage"
@@ -24,7 +24,7 @@ describe('Client Side - Create Account - Personal', () => {
         TC_PersonalInformationPage.ClickPersonalAndSelectIndividual();
         TC_PersonalInformationPage.ClickNextBtn();
 
-        const randomData= generatePersonalInfoData();
+        const randomData= dataGeneratorUtils();
         cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)
         TC_PersonalInformationPage.fillPersonalInfo(
             randomData.fName,

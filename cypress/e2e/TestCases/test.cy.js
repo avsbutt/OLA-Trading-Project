@@ -2,13 +2,13 @@ import { InvestmentProfilePage } from "../Pages/Client/createNewAccount/Personal
 import { EmploymentInformationPage } from "../Pages/Client/createNewAccount/Personal/Individual/EmploymentInfomationPage"
 import { RegulatoryItemsLocators} from "../Locators/createNewAccountLocators.json"
 import { RegulatoryItemsPage } from "../Pages/Client/createNewAccount/Personal/Individual/RegulatoryItemsPage"
-import { generatePersonalInfoData } from "../utils/dataGenerator";
+import { dataGeneratorUtils } from "../utils/dataGenerator";
 import { FormUsageButtons } from "../Locators/FormUsageButtons.json";
 import { DocumentUploadPage } from "../Pages/Client/createNewAccount/Personal/Individual/DocumentUploadPage"
 import { DisclosureSignaturesPage } from "../Pages/Client/createNewAccount/Personal/Individual/DisclosureSignaturesPage"
 import { PersonalInformationPage} from "../Pages/Client/createNewAccount/Personal/Individual/PersonalInformationPage"
 import { clientLoginUtils } from "../utils/clientLoginUtils"
-import { CloseToasterIfAppear } from "../utils/CloseToasterIfAppear";
+import { CloseToasterIfAppearUtils } from "../utils/CloseToasterIfAppearUtils";
 
 
 
@@ -24,7 +24,7 @@ const reg = new RegulatoryItemsPage
 const doc = new DocumentUploadPage
 const sig = new DisclosureSignaturesPage
 const perspnal = new PersonalInformationPage
-const randomData= generatePersonalInfoData();
+const randomData= dataGeneratorUtils();
 const countries = require("../fixtures/CountryAndStates.json")
 
 
@@ -40,12 +40,12 @@ describe('Test File', () => {
 
       cy.visit("#/disclosures-signatures")
           sig.FillSignature()
-          CloseToasterIfAppear()
+          CloseToasterIfAppearUtils()
           sig.AccountAgreement()
           sig.AccountAgreementCashAndMargin()
           sig.AccountLoanAgreement()
           sig.ClickSaveAndReview()
-          CloseToasterIfAppear()
+          CloseToasterIfAppearUtils()
 
       
         
