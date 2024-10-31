@@ -3,7 +3,10 @@ After setting the TESTOMATIO variable, you can verify it
 In PowerShell >     echo $env:TESTOMATIOtstmt_FXXYPXwKJrtkNayoO_pHTnoUhQoPmYjo3g1730274277
 In CMD >    echo %TESTOMATIO%
 
+Run this Command To check the API and Test>    set TESTOMATIO=tstmt_FXXYPXwKJrtkNayoO_pHTnoUhQoPmYjo3g1730274277&& npx check-tests@latest cypress.io "**/*{.,_}{test,spec,cy}.js" --dir cypress/* 
+
 
 Use this command in Terminal to run the Test>    set TESTOMATIO=tstmt_FXXYPXwKJrtkNayoO_pHTnoUhQoPmYjo3g1730274277&& npx cypress run
 
+Run this Command In Herder Moder with the Chrome Browser>   set TESTOMATIO=tstmt_FXXYPXwKJrtkNayoO_pHTnoUhQoPmYjo3g1730274277 && npx cypress run --headed --browser chrome
 

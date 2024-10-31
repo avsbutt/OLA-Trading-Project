@@ -1,4 +1,4 @@
-import { clientLoginUtils } from "../../../../Utils/clientLoginUtils";
+import { clientLoginUtils } from "../../../../utils/clientLoginUtils"
 import { PersonalInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/PersonalInformationPage"
 import { EmploymentInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/EmploymentInfomationPage"
 import { dataGeneratorUtils } from "../../../../utils/dataGenerator";

@@ -36,7 +36,6 @@ describe('Test File', () => {
     it('Test Cases ', () => {
       clientLoginUtils()
 
-     // cy.wait(3000)
       IfApplicationStatusNotCompletedThenCancelUtils()
 
 
