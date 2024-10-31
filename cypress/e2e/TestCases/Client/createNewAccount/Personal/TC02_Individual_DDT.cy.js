@@ -9,6 +9,7 @@ import { DocumentUploadPage } from "../../../../Pages/Client/createNewAccount/Pe
 import { DisclosureSignaturesPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/DisclosureSignaturesPage"
 import{ ReviewInfomationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/ReviewInformationPage"
 import { CloseToasterIfAppearUtils } from "../../../../utils/CloseToasterIfAppearUtils";
+import { IfApplicationStatusNotCompletedThenCancelUtils } from "../../../../utils/IfApplicationStatusNotCompletedThenCancelUtils";
 
 const TC_PersonalInformationPage = new PersonalInformationPage
 const TC_EmploymentInformationPage = new EmploymentInformationPage
@@ -31,7 +32,8 @@ describe('DDT - Client Side - Create Account - Personal', () => {
             countryStates.forEach((location) => {
 
 
-      //  clientLoginUtils();
+      
+        IfApplicationStatusNotCompletedThenCancelUtils()
         TC_PersonalInformationPage.CreateNewAccountClick();
         TC_PersonalInformationPage.ClickPersonalAndSelectIndividual();
         TC_PersonalInformationPage.ClickNextBtn();

@@ -2,13 +2,14 @@ import { InvestmentProfilePage } from "../Pages/Client/createNewAccount/Personal
 import { EmploymentInformationPage } from "../Pages/Client/createNewAccount/Personal/Individual/EmploymentInfomationPage"
 import { RegulatoryItemsLocators} from "../Locators/createNewAccountLocators.json"
 import { RegulatoryItemsPage } from "../Pages/Client/createNewAccount/Personal/Individual/RegulatoryItemsPage"
-import { dataGeneratorUtils } from "../utils/dataGenerator";
+import { dataGeneratorUtils } from "../utils/dataGeneratorUtils"
 import { FormUsageButtons } from "../Locators/FormUsageButtons.json";
 import { DocumentUploadPage } from "../Pages/Client/createNewAccount/Personal/Individual/DocumentUploadPage"
 import { DisclosureSignaturesPage } from "../Pages/Client/createNewAccount/Personal/Individual/DisclosureSignaturesPage"
 import { PersonalInformationPage} from "../Pages/Client/createNewAccount/Personal/Individual/PersonalInformationPage"
 import { clientLoginUtils } from "../utils/clientLoginUtils"
 import { CloseToasterIfAppearUtils } from "../utils/CloseToasterIfAppearUtils";
+import { IfApplicationStatusNotCompletedThenCancelUtils } from "../utils/IfApplicationStatusNotCompletedThenCancelUtils";
 
 
 
@@ -35,17 +36,20 @@ describe('Test File', () => {
     it('Test Cases ', () => {
       clientLoginUtils()
 
+     // cy.wait(3000)
+      IfApplicationStatusNotCompletedThenCancelUtils()
 
 
 
-      cy.visit("#/disclosures-signatures")
-          sig.FillSignature()
-          CloseToasterIfAppearUtils()
-          sig.AccountAgreement()
-          sig.AccountAgreementCashAndMargin()
-          sig.AccountLoanAgreement()
-          sig.ClickSaveAndReview()
-          CloseToasterIfAppearUtils()
+
+      // cy.visit("#/disclosures-signatures")
+      //     sig.FillSignature()
+      //     CloseToasterIfAppearUtils()
+      //     sig.AccountAgreement()
+      //     sig.AccountAgreementCashAndMargin()
+      //     sig.AccountLoanAgreement()
+      //     sig.ClickSaveAndReview()
+      //     CloseToasterIfAppearUtils()
 
       
         
