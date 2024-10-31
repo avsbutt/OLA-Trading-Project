@@ -1,4 +1,4 @@
-import { EmployedLocators, UnEmployedLocators, RetiredLocators } from "../../../../../Locators/Personal/EmploymentInformationLocators.json"
+import { EmployedLocators, CoApplicantEmployedLocators, UnEmployedLocators, CoApplicantUnEmployedLocators, RetiredLocators, CoApplicantRetiredLocators } from "../../../../../Locators/Personal/EmploymentInformationLocators.json"
 import { FormUsageButtons } from "../../../../../Locators/FormUsageButtons.json";
 
 export class EmploymentInformationPage{
@@ -18,16 +18,24 @@ export class EmploymentInformationPage{
         cy.wait(100)
     }
 
-ClickOnUnemployed(){
-    cy.reload(true); // Forces a hard reload, ignoring cache
-   // cy.xpath(EmployedLocators.Employed).click()
-    cy.xpath(UnEmployedLocators.Unemployed).should('be.visible').realHover()
-    cy.xpath(UnEmployedLocators.Unemployed).click({ force: true });
-    cy.xpath(UnEmployedLocators.Unemployed).dblclick()
+    ClickOnUnemployed(){
+        cy.reload(true); // Forces a hard reload, ignoring cache
+        // cy.xpath(EmployedLocators.Employed).click()
+        cy.xpath(UnEmployedLocators.Unemployed).should('be.visible').realHover()
+        cy.xpath(UnEmployedLocators.Unemployed).click({ force: true });
+        cy.xpath(UnEmployedLocators.Unemployed).dblclick()
+    }
 
-}
-SaveAndContinue(){
-    cy.xpath(FormUsageButtons.SaveAndContinue).click({ force: true });
-}  
+    ClickOnCoApplicantUnemployed(){
+        cy.reload(true); // Forces a hard reload, ignoring cache
+        // cy.xpath(EmployedLocators.Employed).click()
+        cy.xpath(CoApplicantUnEmployedLocators.Unemployed).should('be.visible').realHover()
+        cy.xpath(CoApplicantUnEmployedLocators.Unemployed).click({ force: true });
+        cy.xpath(CoApplicantUnEmployedLocators.Unemployed).dblclick()
+    }
+
+    SaveAndContinue(){
+        cy.xpath(FormUsageButtons.SaveAndContinue).click({ force: true });
+    }  
 
 }

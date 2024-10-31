@@ -26,18 +26,18 @@ beforeEach(() => {
 });
 
 
-describe('DDT - Client Side - Create Account - Personal', () => {
+describe('DDT - Client - Create Personal Account', () => {
     it('TC002_Verify that User can Create Personal Account With SubType Individual', () => {
         cy.fixture('CountryAndStates.json').then((countryStates) => {
-            countryStates.forEach((location) => {
+             countryStates.forEach((location) => {
 
 
       
-        IfApplicationStatusNotCompletedThenCancelUtils()
-        TC_PersonalInformationPage.CreateNewAccountClick();
-        TC_PersonalInformationPage.ClickPersonalAndSelectIndividual();
-        TC_PersonalInformationPage.ClickNextBtn();
-        CloseToasterIfAppearUtils();
+                IfApplicationStatusNotCompletedThenCancelUtils()
+                  TC_PersonalInformationPage.CreateNewAccountClick();
+                TC_PersonalInformationPage.ClickPersonalAndSelectIndividual();
+                 TC_PersonalInformationPage.ClickNextBtn();
+                 CloseToasterIfAppearUtils();
 
         const randomData= dataGeneratorUtils();
         cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)
@@ -79,7 +79,7 @@ cy.xpath("//select[@name='stateId']") .select(location.state);
        TC_EmploymentInformationPage.ClickOnUnemployed();   
        TC_EmploymentInformationPage.SaveAndContinue();
  
-
+       cy.url().should('include','/investor-profile')
        TC_InvestmentProfilePage.fillInvestmentProfileInfo();
        TC_InvestmentProfilePage.fillFinancialSuitability();
        TC_InvestmentProfilePage.fillPriorInvestmentExperience(); 
@@ -117,8 +117,7 @@ cy.xpath("//select[@name='stateId']") .select(location.state);
      // TC_DocumentUploadPage.UploadPassportIfVisible()
        TC_DocumentUploadPage.SaveAndContinue()
        CloseToasterIfAppearUtils();
-
-
+       
 
        cy.url().should('include', '#/disclosures-signatures')
        cy.wait(2000)
@@ -136,8 +135,6 @@ cy.xpath("//select[@name='stateId']") .select(location.state);
        cy.url().should('include', '#/review')
       // cy.xpath("(//div[@class='col-lg-12'])[3]").contains('Country').siblings('td').invoke('text').should('have.text', location.country);    //Verify the Country from the (Loop) fixture file on Review Page
       // cy.xpath("(//div[@class='col-lg-12'])[3]").contains('State').siblings('td').invoke('text').should('have.text', location.state);        //Verify the State from the (Loop) fixture file on Review Page
-
-
 
 
        TC_ReviewInfomationPage.ClickOnSubmitBtn()

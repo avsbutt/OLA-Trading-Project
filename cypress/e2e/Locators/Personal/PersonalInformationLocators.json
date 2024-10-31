@@ -23,6 +23,30 @@
         "IdExpirationDate":"//input[@name='idExpireDate']",
         "IdIssuanceState":"//select[@name='idIssuanceState']"
     },
+    "CoApplicantPersonalInformationLocators":{
+        "FirstName":"//input[@name='coAppfirstName']",
+        "MiddleName":"//input[@name='coAppmiddleName']",
+        "LastName":"//input[@name='coApplastName']",
+        "DateofBirth":"//input[@name='coAppdateofBirth']",
+        "NoOfDependents":"//input[@name='coAppnoOfDependents']",
+        "MaterialStatus":"//select[@name='coAppmaritalStatusId']",
+        "Email":"//input[@name='coAppemailAddress']",
+        "PrimaryTelephone":"//input[@name='coApphomePhoneNumber']",
+        "WorkTelephone":"//input[@name='coAppworkPhoneNumber']",
+        "isUSCitizenYes":"(//input[@name='coAppIsUSCitizen'])[1]",
+        "isUsCitizenNO":"(//input[@name='coAppIsUSCitizen'])[2]",
+        "isUsPermanentYes":"(//input[@name='coAppIsUSPermanentResident'])[1]",
+        "isUsPermanentNo":"(//input[@name='coAppIsUSPermanentResident'])[2]",
+        "isForeignAccountYes":"//input[@class='form-check-input errorFieldborder']",
+        "isForeignAccountNo":"(//input[@name='coAppIsForeignAccount'])[2]",
+        "SocialSecurityNo":"//input[@name='coAppsocialSecurityNo']",
+        "IdType":"//select[@name='coAppIdTypeId']",
+        "CountryOfCitizenship":"//select[@name='coAppcitizenshipCountryId']",
+        "IdNumber":"//input[@name='coAppIdNumber']",
+        "IdIssueDate":"//input[@name='coAppIdIssueDate']",
+        "IdExpirationDate":"//input[@name='coAppIdExpireDate']",
+        "IdIssuanceState":"//select[@name='coAppIdIssuanceState']"
+    },
     "PhysicalAddressLocators":{
         "Address1":"//input[@placeholder='Enter Address 1']",
         "Address2":"//input[@placeholder='Enter Address 2']",
@@ -30,6 +54,14 @@
         "State":"//select[@name='stateId']",
         "City":"//input[@placeholder='City']",
         "PostalCode":"//input[@name='postalCode']"
+    },
+    "CoApplicantPhysicalAddressLocators":{
+        "Address1":"//input[@name='coAppPhysicalAddress']",
+        "Address2":"//input[@name='coAppPhysicalAddress2']",
+        "Country":"//select[@name='coAppCountryId']",
+        "State":"//select[@name='coAppStateId']",
+        "City":"//input[@name='coAppCity']",
+        "PostalCode":"//input[@name='coAppPostalCode']"
     },
     "MailingAddressLocators":{
         "MailingAddressCheckBox":"//input[@id='cbMailingAddress']",
@@ -39,8 +71,6 @@
         "MailingState":"//select[@name='mailingState']",
         "MAilingCity":"//input[@placeholder='Enter City']",
         "MailingPostalCode":"//input[@name='mailingZipCode']"
-
-
     },
     "TrustedContactLocators":{
         "TrustedContactCheckbox":"//input[@id='cbtrustedContact']",

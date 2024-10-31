@@ -1,18 +1,15 @@
-import { DocumentUploadLocators } from "../../../../../Locators/Personal/DocumentUploadLocators.json"
+import { DocumentUploadLocators, CoApplicantDocumentUploadLocators } from "../../../../../Locators/Personal/DocumentUploadLocators.json"
 import { FormUsageButtons } from "../../../../../Locators/FormUsageButtons.json";
 
 export class DocumentUploadPage{
-    UploadDrivingLiscenceIfVisible(){
+  UploadDrivingLiscenceIfVisible(){
       // cy.xpath(DocumentUploadLocators.UploadDrivingLicenses).attachFile('Doc.pdf')
-       cy.document().then((doc) => {
+     cy.document().then((doc) => {
         const element = doc.querySelector('input[name="filePrimaryDL"]');
-     
         if (element) {
-          // Element is present, upload the file
-          cy.wrap(element).attachFile('Doc.pdf', { subjectType: 'input' });
+          cy.wrap(element).attachFile('Doc.pdf', { subjectType: 'input' });    // Element is present, upload the file
         } 
       });
-
     }
 
     UploadPassportIfVisible(){
@@ -23,7 +20,6 @@ export class DocumentUploadPage{
       //     cy.wrap(element).attachFile('image.jpeg')
       //   } 
       // });
-
     }
     UploadAuthorizationDocumentIfVisible(){
         //cy.xpath(DocumentUploadLocators.UploadAuthorizationDocument).attachFile('Doc.pdf')
@@ -45,13 +41,6 @@ export class DocumentUploadPage{
           .selectFile('C:/Users/awais.m/Desktop/Automation Projects/Cypress/OLA/cypress/e2e/fixtures/Doc.pdf', { action: 'select' })
           .trigger('change');
     })
-   
-
-      //   const element = doc.querySelector('input[name="fileGovIssuedIdLicense"]');
-      //   if (element) {
-      //     cy.wrap(element).attachFile('Doc.pdf', { subjectType: 'input' });     
-      //   } 
-      // });
     }
 
 
@@ -63,10 +52,7 @@ export class DocumentUploadPage{
         if (element) {
           cy.wrap(element).attachFile('Doc.pdf', { subjectType: 'input' });
         }
-         // else {
-          // Element is not present, log message and pass test
-          // cy.log('Element input[name="filePrimaryBankStatement"] not found, test passed');
-          //}
+        
       });
     }
 

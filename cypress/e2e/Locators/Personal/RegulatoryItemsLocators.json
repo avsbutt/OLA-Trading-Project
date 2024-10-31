@@ -40,8 +40,16 @@
         "ZipCode":"//input[@placeholder='Enter Zip Code']"
 
     },
+    
     "DirectCommunicationLocators":{
         "IObject":"(//input[@name='rule14B1CAccepted'])[2]",
         "IDontObject":".col-xxl-3 > :nth-child(1) > .form-check-input"
+    },
+
+    "W8BenLocators":{
+        "Field1":"//input[@name='ownerResidenceW8']",
+        "Field2":"//input[@name='ownerClaimW8']",
+        "Field3":"//input[@name='witholdingPercentageW8']",
+        "Field4":"//input[@name='eligibleForRateWithholding']"
     }
 }

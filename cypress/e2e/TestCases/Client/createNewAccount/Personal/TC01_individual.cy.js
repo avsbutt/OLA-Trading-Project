@@ -1,13 +1,15 @@
 import { clientLoginUtils } from "../../../../utils/clientLoginUtils"
 import { PersonalInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/PersonalInformationPage"
 import { EmploymentInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/EmploymentInfomationPage"
-import { dataGeneratorUtils } from "../../../../utils/dataGenerator";
+import { dataGeneratorUtils } from "../../../../utils/dataGeneratorUtils"
 import { InvestmentProfilePage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/InvestorProfilePage";
 import { RegulatoryItemsPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/RegulatoryItemsPage"
 import { AccountFeaturesPage} from "../../../../Pages/Client/createNewAccount/Personal/Individual/AccountFeaturesPage"
 import { DocumentUploadPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/DocumentUploadPage"
 import { DisclosureSignaturesPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/DisclosureSignaturesPage"
 import{ ReviewInfomationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/ReviewInformationPage"
+import { IfApplicationStatusNotCompletedThenCancelUtils } from "../../../../utils/IfApplicationStatusNotCompletedThenCancelUtils";
+import { CloseToasterIfAppearUtils } from "../../../../utils/CloseToasterIfAppearUtils";
 
 const TC_PersonalInformationPage = new PersonalInformationPage
 const TC_EmploymentInformationPage = new EmploymentInformationPage
@@ -17,51 +19,58 @@ const TC_AccountFeaturesPage = new AccountFeaturesPage
 const TC_DocumentUploadPage = new DocumentUploadPage
 const TC_DisclosureSignaturesPage = new DisclosureSignaturesPage
 const TC_ReviewInfomationPage = new ReviewInfomationPage
+
+
+
 describe('Client Side - Create Account - Personal', () => {
-    it.skip('TC001_Individual', () => {
+    it.skip('TC001_Verify that User can Create Personal Account With SubType Individual', () => {
         clientLoginUtils();
+        IfApplicationStatusNotCompletedThenCancelUtils();
         TC_PersonalInformationPage.CreateNewAccountClick();
         TC_PersonalInformationPage.ClickPersonalAndSelectIndividual();
         TC_PersonalInformationPage.ClickNextBtn();
+        CloseToasterIfAppearUtils();
 
         const randomData= dataGeneratorUtils();
         cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)
-        TC_PersonalInformationPage.fillPersonalInfo(
-            randomData.fName,
-            randomData.mName,
-            randomData.lName,
-            randomData.email,
-            randomData.nOfDependents,
-            randomData.primaryTelephone,
-            randomData.idNumber,
-            randomData.dobYYYYMMDD,
-            randomData.idIssueDate,
-            randomData.idExpirationDate,
-            randomData.socialSecurityNo);
+             TC_PersonalInformationPage.fillPersonalInfo(
+               randomData.fName,
+               randomData.mName,
+               randomData.lName,
+               randomData.email,
+               randomData.nOfDependents,
+               randomData.primaryTelephone,
+               randomData.idNumber,
+               randomData.dobYYYYMMDD,
+               randomData.idIssueDate,
+               randomData.idExpirationDate,
+               randomData.socialSecurityNo);
 
-        TC_PersonalInformationPage.fillPhysicalAddress(
+             TC_PersonalInformationPage.fillPhysicalAddress(
                 randomData.address,
                 randomData.city,
                 randomData.postalCode);
 
 
-        TC_PersonalInformationPage.fillTrustedContact(
-            randomData.trustedFirstName,
-            randomData.trustedLastName,
-            randomData.trustedTelephone,
-            randomData.trustedEmail,
-            randomData.trustedMailingAddress1,
-            randomData.trustedCity,
-            randomData.trustedPostalCode);
-        TC_PersonalInformationPage.SaveAndContinue();
+             TC_PersonalInformationPage.fillTrustedContact(
+                randomData.trustedFirstName,
+                randomData.trustedLastName,
+                randomData.trustedTelephone,
+                randomData.trustedEmail,
+                randomData.trustedMailingAddress1,
+                randomData.trustedCity,
+                randomData.trustedPostalCode);
+                TC_PersonalInformationPage.SaveAndContinue();
         
 
-       // ######  TC_EmploymentInformationPage.fillEmployedInfo(); // ########
+       
        cy.url().should('include', '/employment-info');
+       //  TC_EmploymentInformationPage.fillEmployedInfo()
        TC_EmploymentInformationPage.ClickOnUnemployed();   // Duplicate the test calling because one time its not working 
        TC_EmploymentInformationPage.SaveAndContinue();
  
 
+       cy.url().should('include','/investor-profile')
        TC_InvestmentProfilePage.fillInvestmentProfileInfo();
        TC_InvestmentProfilePage.fillFinancialSuitability();
        TC_InvestmentProfilePage.fillPriorInvestmentExperience(); 
@@ -84,7 +93,7 @@ describe('Client Side - Create Account - Personal', () => {
        TC_RegulatoryItemsPage.fillDirectCommunication()
        TC_RegulatoryItemsPage.SaveAndContinue()
 
-       
+      
        cy.url().should('include', '#/account-features')
        TC_AccountFeaturesPage.SaveAndContinue()
 
@@ -96,7 +105,6 @@ describe('Client Side - Create Account - Personal', () => {
      // TC_DocumentUploadPage.UploadDrivingLiscenceIfVisible()
      // TC_DocumentUploadPage.UploadPassportIfVisible()
        TC_DocumentUploadPage.SaveAndContinue()
-
 
 
        cy.url().should('include', '#/disclosures-signatures')

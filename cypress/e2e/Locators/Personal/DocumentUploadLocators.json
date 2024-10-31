@@ -4,6 +4,16 @@
         "UploadPassport":"//input[@name='filePrimaryPassport']",
         "UploadGovernmentId":"//input[@name='fileGovIssuedIdLicense']",
         "UploadAuthorizationDocument":"//input[@name='fileDividentAuth']",
-        "UploadUtilityBill":"//input[@name='filePrimaryBankStatement']"
+        "UploadUtilityBill":"//input[@name='filePrimaryBankStatement']",
+        "UploadW8Ben":"//input[@name='filePrimaryW8BENIndividuals']",
+        "UploadSelfie":"//input[@name='filePrimarySelfie']"
+    },
+
+    "CoApplicantDocumentUploadLocators":{
+        "UploadDrivingLicenses":"//input[@name='fileCoAppDL']",
+        "UploadW8Ben":"//input[@name='fileCoAppW8BENIndividuals']",
+        "UploadForeignQuestions":"//input[@name='fileCoAppForeignQuestions']",
+        "UploadUtilityBill":"//input[@name='coAppfileBankStatement']",
+        "UploadSelfie":"//input[@name='fileCoAppSelfie']"
     }
 }

@@ -1,4 +1,4 @@
-import { RegulatoryItemsLocators, DirectCommunicationLocators} from "../../../../../Locators/Personal/RegulatoryItemsLocators.json"
+import { RegulatoryItemsLocators, DirectCommunicationLocators, W8BenLocators} from "../../../../../Locators/Personal/RegulatoryItemsLocators.json"
 import { FormUsageButtons } from "../../../../../Locators/FormUsageButtons.json";
 
 export class RegulatoryItemsPage{
@@ -29,7 +29,7 @@ fillOption5(randomWords){
 fillOption6(){
     cy.xpath(RegulatoryItemsLocators.Option6Yes).check()
 }
-fillOption7(randomWords){
+fillOption7(randomWords, ){
     cy.xpath(RegulatoryItemsLocators.Option7Yes).check()
     cy.xpath(RegulatoryItemsLocators.ProvideAgentName7).type(randomWords)
 }
@@ -44,6 +44,12 @@ fillOption10(){
 }
 fillDirectCommunication(){
     cy.xpath(DirectCommunicationLocators.IObject).check()
+}
+fillW8Ben(randomWords, city){
+    cy.xpath(W8BenLocators.Field1).clear().type(city)
+    cy.xpath(W8BenLocators.Field2).clear().type(randomWords)
+    cy.xpath(W8BenLocators.Field3).clear().type(randomWords)
+    cy.xpath(W8BenLocators.Field4).clear().type(randomWords) 
 }
 SaveAndContinue(){
     cy.xpath(FormUsageButtons.SaveAndContinue).click();

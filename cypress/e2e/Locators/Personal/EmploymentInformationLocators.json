@@ -12,12 +12,42 @@
         "ZipCode":"//input[@placeholder='Enter Employer Zip Code']"
         
     },
+
+    "CoApplicantEmployedLocators":{
+        "Employed":"(//span[@class='chooseBtnLable'])[4]",
+        "Employer":"//input[@name='coAppemployer']",
+        "YearsEmployed":"//input[@name='coAppyearswithEmployer']",
+        "Position":"//input[@name='jobTitle']",
+        "EmployerAddress1":"//input[@name='coAppemployerAddress']",
+        "EmployerAddress2":"//input[@name='coAppemployerAddress2']",
+        "Country":"//select[@name='coAppemployerCountryId']",
+        "State":"//select[@name='coAppemployerStateId']",
+        "City":"//input[@name='coAppemployerCity']",
+        "ZipCode":"//input[@name='coAppemployerZipCode']",
+        "TypeOfBusiness":"//input[@name='coAppEmployerBusinessType']"
+
+    },
+
     "RetiredLocators":{
         "Retired":"//span[normalize-space()='Retired*']",
         "NameOfLastEmployer":"//input[@placeholder='Enter Employer']",
         "Positions":"//input[@placeholder='Enter Position']"
     },
+
+    "CoApplicantRetiredLocators":{
+        "Retired":"(//span[@class='chooseBtnLable'])[5]",
+        "NameOfLastEmployer":"//input[@name='coAppemployer']",
+        "Positions":"//input[@name='coAppjobTitle']"
+
+
+    },
+    
     "UnEmployedLocators":{
         "Unemployed":"//span[normalize-space()='Unemployed*']"
+    },
+
+    "CoApplicantUnEmployedLocators":{
+        "Unemployed":"(//span[contains(text(),'Unemployed*')])[1]"
+
     }
 }

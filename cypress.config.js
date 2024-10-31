@@ -20,7 +20,7 @@ module.exports = defineConfig({
     tsc: 'cypress/support/commands.ts',
     defaultCommandTimeout: 10000,
 
-    video: false,
+    video: true,
     videosFolder: 'cypress/e2e/videos',
     screenshotsFolder: 'cypress/e2e/screenshots',
     pageLoadTimeout:60000 ,
