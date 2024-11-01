@@ -76,6 +76,7 @@ export const dataGeneratorUtils = () => {
         lName: faker.name.lastName(),
         email: faker.internet.email(),
         randomWords: faker.lorem.words(3),
+        randomNumbers: faker.string.numeric(10),
         nOfDependents: faker.number.int({ min: 0, max: 99 }),
         primaryTelephone: faker.string.numeric(14),
         idNumber: faker.string.numeric(15),

@@ -1,16 +1,16 @@
 {
     "PersonalInformationLocators":{
-        "FirstName":"//input[@placeholder='Enter a First Name']",
-        "MiddleName":"//input[@placeholder='Enter a Middle Name']",
-        "LastName":"//input[@placeholder='Enter a Last Name']",
+        "FirstName":"//input[@name='firstName']",
+        "MiddleName":"//input[@name='middleName']",
+        "LastName":"//input[@name='lastName']",
         "DateofBirth":"//input[@name='dateofBirth']",
-        "NoOfDependents":"//input[@placeholder='Enter Number of Dependents']",
+        "NoOfDependents":"//input[@name='noOfDependents']",
         "MaterialStatus":"//select[@name='maritalStatusId']",
         "Email":"//input[@name='emailAddress']",
-        "PrimaryTelephone":"//input[@placeholder='Enter Primary Telephone']",
-        "WorkTelephone":"//input[@placeholder='Enter Work Telephone']",
-        "isUSCitizenYes":"//input[@value='true']",
-        "isUsCitizenNO":"input[value='false'][name='isUSCitizen']",
+        "PrimaryTelephone":"//input[@name='homePhoneNumber']",
+        "WorkTelephone":"//input[@name='workPhoneNumber']",
+        "isUSCitizenYes":"(//input[@name='isUSCitizen'])[1]",
+        "isUsCitizenNO":"(//input[@name='isUSCitizen'])[2]",
         "isUsPermanentYes":"input[value='true'][name='isUSPermanentResident']",                                                                                                                           
         "isUsPermanentNo":"input[value='false'][name='isUSPermanentResident']",
         "isForeignAccountYes":"input[value='true'][name='isForeignAccount']",
@@ -18,7 +18,7 @@
         "SocialSecurityNo":"//input[@placeholder='Enter Social Security Number']",
         "IdType":"//select[@name='idTypeId']",
         "CountryOfCitizenship":"select[name='citizenshipCountryId']",
-        "IdNumber":"//input[@placeholder='Enter Id Number']",
+        "IdNumber":"//input[@name='idNumber']",
         "IdIssueDate":"//input[@name='idIssueDate']",
         "IdExpirationDate":"//input[@name='idExpireDate']",
         "IdIssuanceState":"//select[@name='idIssuanceState']"
@@ -48,11 +48,11 @@
         "IdIssuanceState":"//select[@name='coAppIdIssuanceState']"
     },
     "PhysicalAddressLocators":{
-        "Address1":"//input[@placeholder='Enter Address 1']",
-        "Address2":"//input[@placeholder='Enter Address 2']",
+        "Address1":"//input[@name='physicalAddress']",
+        "Address2":"//input[@name='physicalAddress2']",
         "Country":"//select[@name='countryId']",
         "State":"//select[@name='stateId']",
-        "City":"//input[@placeholder='City']",
+        "City":"//input[@name='city']",
         "PostalCode":"//input[@name='postalCode']"
     },
     "CoApplicantPhysicalAddressLocators":{

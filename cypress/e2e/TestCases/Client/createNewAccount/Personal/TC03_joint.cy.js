@@ -11,6 +11,7 @@ import{ ReviewInfomationPage } from "../../../../Pages/Client/createNewAccount/P
 import { CloseToasterIfAppearUtils } from "../../../../utils/CloseToasterIfAppearUtils";
 import { IfApplicationStatusNotCompletedThenCancelUtils } from "../../../../utils/IfApplicationStatusNotCompletedThenCancelUtils";
 import { CreateNewAccountPage } from "../../../../Pages/Client/createNewAccount/CreateNewAccountPage"
+import { waitForLoaderToDisappearUtils } from "../../../../utils/waitForLoaderToDisappearUtils";
 
 
 const TC_CreateNewAccountPage = new CreateNewAccountPage
@@ -27,15 +28,16 @@ const TC_ReviewInfomationPage = new ReviewInfomationPage
 
 
 describe('Client Side - Create Account - Personal', () => {
-    it.skip('TC003_Verify that User can Create Personal Account With SubType Joint', () => {
+    it('TC003_Verify that User can Create Personal Account With SubType Joint', () => {
         clientLoginUtils();
+        waitForLoaderToDisappearUtils()
         IfApplicationStatusNotCompletedThenCancelUtils();
         CloseToasterIfAppearUtils();
-        TC_CreateNewAccountPage.CreatePersonalAccountTypeIndividual()
+        TC_CreateNewAccountPage.CreatePersonalAccountTypeJointAndSubtype_RightsOfSurvivorship()
 
         const randomData= dataGeneratorUtils();
         cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)
-         TC_PersonalInformationPage.fillCoApplicantPersonalInformation(
+        TC_PersonalInformationPage.fillPersonalInfo(
             randomData.fName,
             randomData.mName,
             randomData.lName,
@@ -47,6 +49,23 @@ describe('Client Side - Create Account - Personal', () => {
             randomData.idIssueDate,
             randomData.idExpirationDate,
             randomData.socialSecurityNo);
+         TC_PersonalInformationPage.fillCoApplicantPersonalInformation(
+            randomData.fName,
+            randomData.mName,
+            randomData.lName,
+            randomData.email,
+            randomData.nOfDependents,
+            randomData.primaryTelephone,
+            randomData.idNumber,
+            randomData.dobYYYYMMDD,
+            randomData.idIssueDate,
+            randomData.idExpirationDate,
+            randomData.randomNumbers);
+
+        TC_PersonalInformationPage.fillPhysicalAddress(
+                randomData.address,
+                randomData.city,
+                randomData.postalCode);
 
          TC_PersonalInformationPage.fillCoApplicantPhysicalAddress(
                 randomData.address,
@@ -68,6 +87,7 @@ describe('Client Side - Create Account - Personal', () => {
        
        cy.url().should('include', '/employment-info');
        // TC_EmploymentInformationPage.fillEmployedInfo()
+       waitForLoaderToDisappearUtils()
        TC_EmploymentInformationPage.ClickOnUnemployed(); 
        TC_EmploymentInformationPage.ClickOnCoApplicantUnemployed()  // Duplicate the test calling because one time its not working 
        TC_EmploymentInformationPage.SaveAndContinue();
@@ -94,7 +114,7 @@ describe('Client Side - Create Account - Personal', () => {
        TC_RegulatoryItemsPage.fillOption9()
        TC_RegulatoryItemsPage.fillOption10()
        TC_RegulatoryItemsPage.fillDirectCommunication()
-       TC_RegulatoryItemsPage.fillW8Ben(randomData.randomWords, randomData.city)
+       //TC_RegulatoryItemsPage.fillW8Ben(randomData.randomWords, randomData.city)
        TC_RegulatoryItemsPage.SaveAndContinue()
 
        

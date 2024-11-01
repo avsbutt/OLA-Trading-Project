@@ -47,7 +47,7 @@
     },
 
     "CoApplicantUnEmployedLocators":{
-        "Unemployed":"(//span[contains(text(),'Unemployed*')])[1]"
+        "Unemployed":"(//span[@class='chooseBtnLable'][normalize-space()='Unemployed*'])[2]"
 
     }
 }

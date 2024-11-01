@@ -36,7 +36,7 @@ export class PersonalInformationPage{
     }
 
 
-    fillCoApplicantPersonalInformation(fName, mName, lName, email, nOfDependents, primaryTelephone, idNumber, dobYYYYMMDD, idIssueDate, idExpirationDate, socialSecurityNo) {
+    fillCoApplicantPersonalInformation(fName, mName, lName, email, nOfDependents, primaryTelephone, idNumber, dobYYYYMMDD, idIssueDate, idExpirationDate, randomNumbers) {
         cy.xpath(CoApplicantPersonalInformationLocators.FirstName).clear().type(fName);
         cy.xpath(CoApplicantPersonalInformationLocators.LastName).clear().type(lName);
         cy.xpath(CoApplicantPersonalInformationLocators.MiddleName).clear().type(mName);
@@ -49,7 +49,7 @@ export class PersonalInformationPage{
         cy.xpath(CoApplicantPersonalInformationLocators.DateofBirth).clear().type(dobYYYYMMDD)
         cy.xpath(CoApplicantPersonalInformationLocators.IdIssueDate).clear().type(idIssueDate); // Use the YYYY-MM-DD format for Issue Date
         cy.xpath(CoApplicantPersonalInformationLocators.IdExpirationDate).clear().type(idExpirationDate); // Use the YYYY-MM-DD format for Expiration Date
-        cy.xpath(CoApplicantPersonalInformationLocators.SocialSecurityNo).type(socialSecurityNo) 
+        cy.xpath(CoApplicantPersonalInformationLocators.SocialSecurityNo).type(randomNumbers) 
         cy.wait(2000)
         cy.xpath(CoApplicantPersonalInformationLocators.IdType).should('be.visible').select('4515')
     }
@@ -59,8 +59,8 @@ export class PersonalInformationPage{
         cy.xpath(PhysicalAddressLocators.Address1).clear().type(address)
         cy.xpath(PhysicalAddressLocators.City).clear().type(city)
         cy.xpath(PhysicalAddressLocators.PostalCode).clear().type(postalCode)
-        //cy.xpath(PhysicalAddressLocators.Country).select('United States')
-        //cy.xpath(PhysicalAddressLocators.State).select('Alabama')
+        cy.xpath(PhysicalAddressLocators.Country).select('United States')
+        cy.xpath(PhysicalAddressLocators.State).select('Alabama')
     }
 
 
@@ -68,8 +68,8 @@ export class PersonalInformationPage{
         cy.xpath(CoApplicantPhysicalAddressLocators.Address1).clear().type(address)
         cy.xpath(CoApplicantPhysicalAddressLocators.City).clear().type(city)
         cy.xpath(CoApplicantPhysicalAddressLocators.PostalCode).clear().type(postalCode)
-        //cy.xpath(CoApplicantPhysicalAddressLocators.Country).select('United States')
-        //cy.xpath(CoApplicantPhysicalAddressLocators.State).select('Alabama')
+        cy.xpath(CoApplicantPhysicalAddressLocators.Country).select('United States')
+        cy.xpath(CoApplicantPhysicalAddressLocators.State).select('Alabama')
     }
 
 

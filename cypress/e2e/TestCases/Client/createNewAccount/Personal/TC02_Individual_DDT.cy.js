@@ -35,9 +35,9 @@ describe('DDT - Client - Create Personal Account', () => {
       
                 IfApplicationStatusNotCompletedThenCancelUtils()
                   TC_PersonalInformationPage.CreateNewAccountClick();
-                TC_PersonalInformationPage.ClickPersonalAndSelectIndividual();
-                 TC_PersonalInformationPage.ClickNextBtn();
-                 CloseToasterIfAppearUtils();
+                  TC_PersonalInformationPage.ClickPersonalAndSelectIndividual();
+                  TC_PersonalInformationPage.ClickNextBtn();
+                CloseToasterIfAppearUtils();
 
         const randomData= dataGeneratorUtils();
         cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)

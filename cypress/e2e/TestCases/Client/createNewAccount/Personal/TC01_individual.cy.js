@@ -23,7 +23,7 @@ const TC_ReviewInfomationPage = new ReviewInfomationPage
 
 
 describe('Client Side - Create Account - Personal', () => {
-    it.skip('TC001_Verify that User can Create Personal Account With SubType Individual', () => {
+    it('TC001_Verify that User can Create Personal Account With SubType Individual', () => {
         clientLoginUtils();
         IfApplicationStatusNotCompletedThenCancelUtils();
         TC_PersonalInformationPage.CreateNewAccountClick();

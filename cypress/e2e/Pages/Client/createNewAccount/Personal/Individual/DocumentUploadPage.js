@@ -2,7 +2,7 @@ import { DocumentUploadLocators, CoApplicantDocumentUploadLocators } from "../..
 import { FormUsageButtons } from "../../../../../Locators/FormUsageButtons.json";
 
 export class DocumentUploadPage{
-  UploadDrivingLiscenceIfVisible(){
+    UploadDrivingLiscenceIfVisible(){
       // cy.xpath(DocumentUploadLocators.UploadDrivingLicenses).attachFile('Doc.pdf')
      cy.document().then((doc) => {
         const element = doc.querySelector('input[name="filePrimaryDL"]');
@@ -34,7 +34,6 @@ export class DocumentUploadPage{
 
     UploadGovernmentIdIfVisible(){
    // cy.get('input[name="fileGovIssuedIdLicense"]').attachFile('image.jpeg')
-
     cy.xpath(DocumentUploadLocators.UploadGovernmentId).then(input => {
       cy.wrap(input)
           .focus() 
