@@ -27,130 +27,143 @@ const TC_ReviewInfomationPage = new ReviewInfomationPage
 
 
 
-describe('Client Side - Create Account - Personal', () => {
-    it('TC003_Verify that User can Create Personal Account With SubType Joint', () => {
-        clientLoginUtils();
-        waitForLoaderToDisappearUtils()
-        IfApplicationStatusNotCompletedThenCancelUtils();
-        CloseToasterIfAppearUtils();
-        TC_CreateNewAccountPage.CreatePersonalAccountTypeJointAndSubtype_RightsOfSurvivorship()
+describe('Client Side - Personal - Joint', () => {
+  it('TC003_Verify that User can Create Personal Account With Type Joint & Subtype Rights Of Survivorship', () => {
+    clientLoginUtils();
+    waitForLoaderToDisappearUtils()
+    IfApplicationStatusNotCompletedThenCancelUtils();
+    CloseToasterIfAppearUtils();
 
-        const randomData= dataGeneratorUtils();
-        cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)
-        TC_PersonalInformationPage.fillPersonalInfo(
-            randomData.fName,
-            randomData.mName,
-            randomData.lName,
-            randomData.email,
-            randomData.nOfDependents,
-            randomData.primaryTelephone,
-            randomData.idNumber,
-            randomData.dobYYYYMMDD,
-            randomData.idIssueDate,
-            randomData.idExpirationDate,
-            randomData.socialSecurityNo);
-         TC_PersonalInformationPage.fillCoApplicantPersonalInformation(
-            randomData.fName,
-            randomData.mName,
-            randomData.lName,
-            randomData.email,
-            randomData.nOfDependents,
-            randomData.primaryTelephone,
-            randomData.idNumber,
-            randomData.dobYYYYMMDD,
-            randomData.idIssueDate,
-            randomData.idExpirationDate,
-            randomData.randomNumbers);
+    TC_CreateNewAccountPage.CreatePersonalAccountTypeJointAndSubtype_RightsOfSurvivorship()
 
-        TC_PersonalInformationPage.fillPhysicalAddress(
-                randomData.address,
-                randomData.city,
-                randomData.postalCode);
+    const randomData= dataGeneratorUtils(); 
+    cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)
+    TC_PersonalInformationPage.fillPersonalInfo(
+      randomData.fName,
+      randomData.mName,
+      randomData.lName,
+      randomData.email,
+      randomData.nOfDependents,
+      randomData.primaryTelephone,
+      randomData.idNumber,
+      randomData.dobYYYYMMDD,
+      randomData.idIssueDate,
+      randomData.idExpirationDate,
+      randomData.socialSecurityNo);
+    TC_PersonalInformationPage.fillCoApplicantPersonalInformation(
+      randomData.fName,
+      randomData.mName,
+      randomData.lName,
+      randomData.email,
+      randomData.nOfDependents,
+      randomData.primaryTelephone,
+      randomData.idNumber,
+      randomData.dobYYYYMMDD,
+      randomData.idIssueDate,
+      randomData.idExpirationDate,
+      randomData.randomNumbers);
 
-         TC_PersonalInformationPage.fillCoApplicantPhysicalAddress(
-                randomData.address,
-                randomData.city,
-                randomData.postalCode);
+    TC_PersonalInformationPage.fillPhysicalAddress(
+      randomData.address,
+      randomData.city,
+      randomData.postalCode);
 
-
-         TC_PersonalInformationPage.fillTrustedContact(
-            randomData.trustedFirstName,
-            randomData.trustedLastName,
-            randomData.trustedTelephone,
-            randomData.trustedEmail,
-            randomData.trustedMailingAddress1,
-            randomData.trustedCity,
-            randomData.trustedPostalCode);
-         TC_PersonalInformationPage.SaveAndContinue();
+    TC_PersonalInformationPage.fillCoApplicantPhysicalAddress(
+      randomData.address,
+      randomData.city,
+      randomData.postalCode);
+    TC_PersonalInformationPage.fillTrustedContact(
+      randomData.trustedFirstName,
+      randomData.trustedLastName,
+      randomData.trustedTelephone,
+      randomData.trustedEmail,
+      randomData.trustedMailingAddress1,
+      randomData.trustedCity,
+      randomData.trustedPostalCode);
+    TC_PersonalInformationPage.SaveAndContinue();
+    waitForLoaderToDisappearUtils()
         
-
-       
-       cy.url().should('include', '/employment-info');
-       // TC_EmploymentInformationPage.fillEmployedInfo()
-       waitForLoaderToDisappearUtils()
-       TC_EmploymentInformationPage.ClickOnUnemployed(); 
-       TC_EmploymentInformationPage.ClickOnCoApplicantUnemployed()  // Duplicate the test calling because one time its not working 
-       TC_EmploymentInformationPage.SaveAndContinue();
+  
+    cy.url().should('include', '/employment-info')
+    // TC_EmploymentInformationPage.fillEmployedInfo()
+    TC_EmploymentInformationPage.ClickOnUnemployed()
+    TC_EmploymentInformationPage.ClickOnCoApplicantUnemployed()  
+    TC_EmploymentInformationPage.SaveAndContinue()
+    waitForLoaderToDisappearUtils()
  
 
-       cy.url().should('include','/investor-profile')
-       TC_InvestmentProfilePage.fillInvestmentProfileInfo();
-       TC_InvestmentProfilePage.fillFinancialSuitability();
-       TC_InvestmentProfilePage.fillPriorInvestmentExperience(); 
-       TC_InvestmentProfilePage.SaveAndContinue();
+    cy.url().should('include','/investor-profile')
+    TC_InvestmentProfilePage.fillInvestmentProfileInfo()
+    TC_InvestmentProfilePage.fillFinancialSuitability()
+    TC_InvestmentProfilePage.fillPriorInvestmentExperience()
+    TC_InvestmentProfilePage.SaveAndContinue()
 
 
-       cy.url().should('include', '/regulatory-items')
-       cy.wait(2000)
-       TC_RegulatoryItemsPage.fillOption1()
-       cy.wait(2000)
-       TC_RegulatoryItemsPage.fillOption2()
-       TC_RegulatoryItemsPage.fillOption3(randomData.randomWords)
-       TC_RegulatoryItemsPage.fillOption4()
-       TC_RegulatoryItemsPage.fillOption5(randomData.randomWords)
-       TC_RegulatoryItemsPage.fillOption6()
-       TC_RegulatoryItemsPage.fillOption7(randomData.randomWords)
-       TC_RegulatoryItemsPage.fillOption8()
-       TC_RegulatoryItemsPage.fillOption9()
-       TC_RegulatoryItemsPage.fillOption10()
-       TC_RegulatoryItemsPage.fillDirectCommunication()
-       //TC_RegulatoryItemsPage.fillW8Ben(randomData.randomWords, randomData.city)
-       TC_RegulatoryItemsPage.SaveAndContinue()
+    cy.url().should('include', '/regulatory-items')
+    cy.wait(1000)
+    TC_RegulatoryItemsPage.fillOption1()
+    cy.wait(1000)
+    TC_RegulatoryItemsPage.fillOption2()
+    TC_RegulatoryItemsPage.fillOption3(randomData.randomWords)
+    TC_RegulatoryItemsPage.fillOption4()
+    TC_RegulatoryItemsPage.fillOption5(randomData.randomWords)
+    TC_RegulatoryItemsPage.fillOption6()
+    TC_RegulatoryItemsPage.fillOption7(randomData.randomWords)
+    TC_RegulatoryItemsPage.fillOption8()
+    TC_RegulatoryItemsPage.fillOption9()
+    TC_RegulatoryItemsPage.fillOption10()
+    TC_RegulatoryItemsPage.fillDirectCommunication()
+    //TC_RegulatoryItemsPage.fillW8Ben(randomData.randomWords, randomData.city)
+    TC_RegulatoryItemsPage.SaveAndContinue()
 
        
-       cy.url().should('include', '#/account-features')
-       TC_AccountFeaturesPage.SaveAndContinue()
+    cy.url().should('include', '#/account-features')
+    TC_AccountFeaturesPage.SaveAndContinue()
+    CloseToasterIfAppearUtils()
+    waitForLoaderToDisappearUtils()
 
 
-       cy.url().should('include', '#/upload-documents')
-       cy.wait(2000)
-       TC_DocumentUploadPage.UploadGovernmentIdIfVisible()
-       TC_DocumentUploadPage.UploadGovernmentIdIfVisibleCoApplicant()
-        TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
-        TC_DocumentUploadPage.UploadUtilityBillIfVisible()
-        TC_DocumentUploadPage.UploadDrivingLiscenceIfVisible()
-        TC_DocumentUploadPage.UploadPassportIfVisible()
-        
-       TC_DocumentUploadPage.SaveAndContinue()
+    cy.url().should('include', '#/upload-documents')
+    cy.wait(1000)
+    TC_DocumentUploadPage.UploadGovernmentIdIfVisible()
+    TC_DocumentUploadPage.UploadGovernmentIdIfVisibleCoApplicant()
+    TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
+    TC_DocumentUploadPage.UploadUtilityBillIfVisible()
+    TC_DocumentUploadPage.UploadDrivingLiscenceIfVisible()
+    TC_DocumentUploadPage.UploadPassportIfVisible()
+    TC_DocumentUploadPage.SaveAndContinue()
+    CloseToasterIfAppearUtils()
+    waitForLoaderToDisappearUtils()
 
 
-
-       cy.url().should('include', '#/disclosures-signatures')
-       cy.wait(1000)
-       TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
-       cy.wait(1000)
-       TC_DisclosureSignaturesPage.AccountLoanAgreement()
-       cy.wait(1000)
-       TC_DisclosureSignaturesPage.AccountAgreement()
-       cy.wait(1000)
-       TC_DisclosureSignaturesPage.FillSignature()
-       TC_DisclosureSignaturesPage.FillCoApplicantSignature()
-       TC_DisclosureSignaturesPage.ClickSaveAndReview()
+    cy.url().should('include', '#/disclosures-signatures')
+    TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
+    cy.wait(1000)
+    TC_DisclosureSignaturesPage.AccountLoanAgreement()
+    cy.wait(1000)
+    TC_DisclosureSignaturesPage.AccountAgreement()
+    cy.wait(1000)
+    TC_DisclosureSignaturesPage.FillSignature()
+    TC_DisclosureSignaturesPage.FillCoApplicantSignature()
+    TC_DisclosureSignaturesPage.ClickSaveAndReview()
+    CloseToasterIfAppearUtils()
+    waitForLoaderToDisappearUtils()
        
 
-       cy.url().should('include', '#/review')
-       TC_ReviewInfomationPage.ClickOnSubmitBtn()
-       cy.url().should('include', '#/dashboard')
+    cy.url().should('include', '#/review')
+    TC_ReviewInfomationPage.ClickOnSubmitBtn()
+    cy.url().should('include', '#/dashboard')
 
-    });
+  });
+
+
+  it('TC004_Verify that User can Create Personal Account With Type Joint & Subtye Joint Tenants in Common ', ()=>{
+
+  })
+
+  it('TC003_Verify that User can Create Personal Account With Type Joint & Subtype Joint Community Property', ()=>{
+      
+  })
+
+   
 }); 
