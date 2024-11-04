@@ -35,7 +35,7 @@ export class PersonalInformationPage{
         cy.xpath(PersonalInformationLocators.IdType).should('be.visible').select('4515')
     }
 
-    fillPersonalInformation(){
+    fillPersonalInformationisUSCitizenYes(){
 
     }
 
