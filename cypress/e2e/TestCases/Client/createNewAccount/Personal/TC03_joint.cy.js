@@ -147,7 +147,7 @@ describe('Client Side - Personal - Joint', () => {
     TC_DisclosureSignaturesPage.FillCoApplicantSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
     CloseToasterIfAppearUtils()
-    waitForLoaderToDisappearUtils()
+    
        
 
     cy.url().should('include', '#/review')

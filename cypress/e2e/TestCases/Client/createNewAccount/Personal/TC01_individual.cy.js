@@ -127,7 +127,6 @@ describe('Client Side - Personal - Individual', () => {
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
     CloseToasterIfAppearUtils();
-    waitForLoaderToDisappearUtils()
 
 
     cy.url().should('include', '#/review')
