@@ -36,8 +36,21 @@ describe('Test File', () => {
     it('Test Cases ', () => {
       clientLoginUtils()
 
-      IfApplicationStatusNotCompletedThenCancelUtils()
+     // IfApplicationStatusNotCompletedThenCancelUtils()
 
+
+  
+
+
+
+
+
+
+         cy.visit("#/upload-documents")
+           doc.UploadUtilityBillIfVisible()
+           doc.UploadAuthorizationDocumentIfVisible()
+           doc.UploadDrivingLiscenceIfVisible()
+           doc.UploadGovernmentIdIfVisible()
 
 
 
@@ -89,12 +102,7 @@ describe('Test File', () => {
 
           
 
-          //  cy.visit("#/upload-documents")
-          //  doc.UploadUtilityBillIfVisible()
-          //  doc.UploadAuthorizationDocumentIfVisible()
-          //  doc.UploadDrivingLiscenceIfVisible()
-          //  doc.UploadGovernmentIdIfVisible()
-
+       
 
 
           // reg.fillOption1()

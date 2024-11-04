@@ -123,11 +123,14 @@ describe('Client Side - Create Account - Personal', () => {
 
 
        cy.url().should('include', '#/upload-documents')
+       cy.wait(2000)
        TC_DocumentUploadPage.UploadGovernmentIdIfVisible()
-     // TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
-     // TC_DocumentUploadPage.UploadUtilityBillIfVisible()
-     // TC_DocumentUploadPage.UploadDrivingLiscenceIfVisible()
-     // TC_DocumentUploadPage.UploadPassportIfVisible()
+       TC_DocumentUploadPage.UploadGovernmentIdIfVisibleCoApplicant()
+        TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
+        TC_DocumentUploadPage.UploadUtilityBillIfVisible()
+        TC_DocumentUploadPage.UploadDrivingLiscenceIfVisible()
+        TC_DocumentUploadPage.UploadPassportIfVisible()
+        
        TC_DocumentUploadPage.SaveAndContinue()
 
 
@@ -141,7 +144,9 @@ describe('Client Side - Create Account - Personal', () => {
        TC_DisclosureSignaturesPage.AccountAgreement()
        cy.wait(1000)
        TC_DisclosureSignaturesPage.FillSignature()
+       TC_DisclosureSignaturesPage.FillCoApplicantSignature()
        TC_DisclosureSignaturesPage.ClickSaveAndReview()
+       
 
        cy.url().should('include', '#/review')
        TC_ReviewInfomationPage.ClickOnSubmitBtn()

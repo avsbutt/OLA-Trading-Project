@@ -9,9 +9,15 @@
         "LoanAgreement":"//a[normalize-space()='Fully Paid Securities Loan Agreement']",
         "LoanAgreementYes":"(//input[@name='wdfullyPaidSecLoadAgreementCheck'])[2]",
         "LoanAgreementNO":"input[value='false'][name='wdfullyPaidSecLoadAgreementCheck']",
-        "DigitalSignature":"//*[name()='rect' and @id='react-sketch-canvas__canvas-background']",
-        "CaptureSignature":"//button[normalize-space()='Capture Signature']",
-        "ClearSignature":"//button[normalize-space()='Clear Signature']"
+        "DigitalSignature":"(//*[name()='rect'][@id='react-sketch-canvas__canvas-background'])[1]",
+        "CaptureSignature":"(//button[@type='button'][normalize-space()='Capture Signature'])[1]",
+        "ClearSignature":"(//button[@name='signature'])[1]"
+    },
+
+    "DisclosureSignaturesCoApplicantLocators":{
+        "DigitalSignature":"(//*[name()='rect'][@id='react-sketch-canvas__canvas-background'])[2]",
+        "CaptureSignature":"(//button[@type='button'][normalize-space()='Capture Signature'])[2]",
+        "ClearSignature":"//button[@name='coAppsignature']"
 
     }
 }

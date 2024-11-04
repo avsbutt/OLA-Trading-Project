@@ -10,6 +10,7 @@
     },
 
     "CoApplicantDocumentUploadLocators":{
+        "UploadGovernmentId":"//input[@name='coAppfileGovIssuedIdLicense']",
         "UploadDrivingLicenses":"//input[@name='fileCoAppDL']",
         "UploadW8Ben":"//input[@name='fileCoAppW8BENIndividuals']",
         "UploadForeignQuestions":"//input[@name='fileCoAppForeignQuestions']",

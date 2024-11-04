@@ -43,7 +43,7 @@
     },
     
     "UnEmployedLocators":{
-        "Unemployed":"//span[normalize-space()='Unemployed*']"
+        "Unemployed":"(//span[@class='chooseBtnLable'][normalize-space()='Unemployed*'])[1]"
     },
 
     "CoApplicantUnEmployedLocators":{
