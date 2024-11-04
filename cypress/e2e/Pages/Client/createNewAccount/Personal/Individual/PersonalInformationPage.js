@@ -17,7 +17,7 @@ export class PersonalInformationPage{
         cy.url().should('include','/personal-info')
     }
 
-    fillPersonalInfo(fName, mName, lName, email, nOfDependents, primaryTelephone, idNumber, dobYYYYMMDD, idIssueDate, idExpirationDate, socialSecurityNo) {
+    fillPersonalInformation(fName, mName, lName, email, nOfDependents, primaryTelephone, idNumber, dobYYYYMMDD, idIssueDate, idExpirationDate, socialSecurityNo) {
         cy.xpath(PersonalInformationLocators.FirstName).clear().type(fName);
         cy.xpath(PersonalInformationLocators.LastName).clear().type(lName);
         cy.xpath(PersonalInformationLocators.MiddleName).clear().type(mName);
@@ -33,6 +33,10 @@ export class PersonalInformationPage{
         cy.xpath(PersonalInformationLocators.SocialSecurityNo).type(socialSecurityNo) 
         cy.wait(2000)
         cy.xpath(PersonalInformationLocators.IdType).should('be.visible').select('4515')
+    }
+
+    fillPersonalInformation(){
+
     }
 
 

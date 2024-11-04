@@ -42,7 +42,7 @@ describe('DDT - Client - Individual', () => {
 
         const randomData= dataGeneratorUtils();
         cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)
-        TC_PersonalInformationPage.fillPersonalInfo(
+        TC_PersonalInformationPage.fillPersonalInformation(
           randomData.fName,
           randomData.mName,
           randomData.lName,
