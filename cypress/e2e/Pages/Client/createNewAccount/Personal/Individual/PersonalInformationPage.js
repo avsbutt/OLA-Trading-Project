@@ -26,18 +26,39 @@ export class PersonalInformationPage{
         cy.xpath(PersonalInformationLocators.MaterialStatus).select('Single')
         cy.xpath(PersonalInformationLocators.PrimaryTelephone).clear().type(primaryTelephone); 
         cy.xpath(PersonalInformationLocators.IdNumber).clear().type(idNumber); 
-        cy.xpath(PersonalInformationLocators.isUSCitizenYes).click()
         cy.xpath(PersonalInformationLocators.DateofBirth).clear().type(dobYYYYMMDD)
         cy.xpath(PersonalInformationLocators.IdIssueDate).clear().type(idIssueDate); // Use the YYYY-MM-DD format for Issue Date
         cy.xpath(PersonalInformationLocators.IdExpirationDate).clear().type(idExpirationDate); // Use the YYYY-MM-DD format for Expiration Date
-        cy.xpath(PersonalInformationLocators.SocialSecurityNo).type(socialSecurityNo) 
-        cy.wait(2000)
+
+        // cy.xpath(PersonalInformationLocators.isUSCitizenYes).click() //#####
+        // cy.xpath(PersonalInformationLocators.SocialSecurityNo).type(socialSecurityNo)  //#####
+        //cy.wait(1000)
+        // cy.xpath(PersonalInformationLocators.IdType).should('be.visible').select('4515')
+    }
+
+    fillPersonalInformation_isUSCitizenYes(socialSecurityNo){
+        cy.xpath(PersonalInformationLocators.isUSCitizenYes).click()
+        cy.xpath(PersonalInformationLocators.SocialSecurityNo).type(socialSecurityNo)
+        cy.wait(1000)
+        cy.xpath(PersonalInformationLocators.IdType).should('be.visible').select('4515') 
+    }
+    fillPersonalInformation_isUScitizenNoAndUSpermanentYes(){
+        cy.xpath(PersonalInformationLocators.isUsCitizenNO).click()
+        cy.xpath(PersonalInformationLocators.isUsPermanentYes).click()
+        cy.xpath(PersonalInformationLocators.CountryOfCitizenship).select('Afghanistan') 
+        cy.wait(1000)
         cy.xpath(PersonalInformationLocators.IdType).should('be.visible').select('4515')
     }
-
-    fillPersonalInformationisUSCitizenYes(){
+    fillPersonalInformation_isUScitizenNoAndisForeignYes(){
+        cy.xpath(PersonalInformationLocators.isUsCitizenNO).click()
+        cy.xpath(PersonalInformationLocators.isUsPermanentNo).click()
+        cy.xpath(PersonalInformationLocators.isForeignAccountYes).click() 
+        cy.xpath(PersonalInformationLocators.CountryOfCitizenship).select('Afghanistan') 
+        cy.wait(1000)
+        cy.xpath(PersonalInformationLocators.IdType).should('be.visible').select('4515')
 
     }
+
 
 
     fillCoApplicantPersonalInformation(fName, mName, lName, email, nOfDependents, primaryTelephone, idNumber, dobYYYYMMDD, idIssueDate, idExpirationDate, randomNumbers) {

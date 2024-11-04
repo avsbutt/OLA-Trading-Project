@@ -52,8 +52,8 @@ describe('DDT - Client - Individual', () => {
           randomData.idNumber,
           randomData.dobYYYYMMDD,
           randomData.idIssueDate,
-          randomData.idExpirationDate,
-          randomData.socialSecurityNo);
+          randomData.idExpirationDate);
+        TC_PersonalInformationPage.fillPersonalInformation_isUSCitizenYes(randomData.socialSecurityNo)
         TC_PersonalInformationPage.fillPhysicalAddress(
           randomData.address,
           randomData.city,

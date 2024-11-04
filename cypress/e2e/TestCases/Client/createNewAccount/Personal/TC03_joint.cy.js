@@ -48,8 +48,8 @@ describe('Client Side - Personal - Joint', () => {
       randomData.idNumber,
       randomData.dobYYYYMMDD,
       randomData.idIssueDate,
-      randomData.idExpirationDate,
-      randomData.socialSecurityNo);
+      randomData.idExpirationDate);
+      TC_PersonalInformationPage.fillPersonalInformation_isUSCitizenYes(randomData.socialSecurityNo)
     TC_PersonalInformationPage.fillCoApplicantPersonalInformation(
       randomData.fName,
       randomData.mName,
@@ -97,6 +97,7 @@ describe('Client Side - Personal - Joint', () => {
     TC_InvestmentProfilePage.fillFinancialSuitability()
     TC_InvestmentProfilePage.fillPriorInvestmentExperience()
     TC_InvestmentProfilePage.SaveAndContinue()
+    waitForLoaderToDisappearUtils()
 
 
     cy.url().should('include', '/regulatory-items')
@@ -157,11 +158,11 @@ describe('Client Side - Personal - Joint', () => {
   });
 
 
-  it('TC004_Verify that User can Create Personal Account With Type Joint & Subtye Joint Tenants in Common ', ()=>{
+  it.skip('TC004_Verify that User can Create Personal Account With Type Joint & Subtye Joint Tenants in Common ', ()=>{
 
   })
 
-  it('TC003_Verify that User can Create Personal Account With Type Joint & Subtype Joint Community Property', ()=>{
+  it.skip('TC003_Verify that User can Create Personal Account With Type Joint & Subtype Joint Community Property', ()=>{
       
   })
 

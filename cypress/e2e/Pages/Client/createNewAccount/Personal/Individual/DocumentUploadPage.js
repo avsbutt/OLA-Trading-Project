@@ -61,11 +61,6 @@ export class DocumentUploadPage{
 
   UploadGovernmentIdIfVisibleCoApplicant(){
     // cy.xpath(DocumentUploadLocators.UploadGovernmentId).attachFile('image.jpeg')
-    // cy.xpath(DocumentUploadLocators.UploadGovernmentId).then(input => {
-    //   cy.wrap(input)
-    //       .focus() 
-    //       .selectFile('cypress/fixtures/Doc.pdf', { action: 'select' })
-    //       .trigger('change');
 
    cy.document().then((doc) => {
      const element = doc.querySelector('input[name="coAppfileGovIssuedIdLicense"]');
@@ -77,7 +72,7 @@ export class DocumentUploadPage{
 
 
   UploadUtilityBillIfVisible(){
-    //   cy.xpath(DocumentUploadLocators.UploadUtilityBill).attachFile('Doc.pdf')
+    // cy.xpath(DocumentUploadLocators.UploadUtilityBill).attachFile('Doc.pdf')
     cy.document().then((doc) => {
       const element = doc.querySelector('input[name="filePrimaryBankStatement"]');
       if (element) {

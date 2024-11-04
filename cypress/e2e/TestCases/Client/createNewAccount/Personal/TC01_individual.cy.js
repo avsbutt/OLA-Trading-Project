@@ -47,8 +47,8 @@ describe('Client Side - Personal - Individual', () => {
       randomData.idNumber,
       randomData.dobYYYYMMDD,
       randomData.idIssueDate,
-      randomData.idExpirationDate,
-      randomData.socialSecurityNo);
+      randomData.idExpirationDate);
+    TC_PersonalInformationPage.fillPersonalInformation_isUSCitizenYes(randomData.socialSecurityNo)
     TC_PersonalInformationPage.fillPhysicalAddress(
       randomData.address,
       randomData.city,
@@ -160,6 +160,7 @@ describe('Client Side - Personal - Individual', () => {
       randomData.idIssueDate,
       randomData.idExpirationDate,
       randomData.socialSecurityNo);
+    TC_PersonalInformationPage.fillPersonalInformation_isUScitizenNoAndisForeignYes()
     TC_PersonalInformationPage.fillPhysicalAddress(
       randomData.address,
       randomData.city,
@@ -206,7 +207,7 @@ describe('Client Side - Personal - Individual', () => {
     TC_RegulatoryItemsPage.fillOption9()
     TC_RegulatoryItemsPage.fillOption10()
     TC_RegulatoryItemsPage.fillDirectCommunication()
-    // TC_RegulatoryItemsPage.fillW8Ben(randomData.randomWords, randomData.city)
+    TC_RegulatoryItemsPage.fillW8Ben(randomData.randomWords, randomData.city)
     TC_RegulatoryItemsPage.SaveAndContinue()
     waitForLoaderToDisappearUtils()
 
