@@ -23,28 +23,30 @@ export class InvestmentProfilePage{
         selectRandomValueFromDropdownUtils(InvestmentProfileLocators.TaxBracket);
     }
 
-fillFinancialSuitability(){
-    selectRandomValueFromDropdownUtils(FinancialSuitabilityLocators.AnnualIncome);
-    selectRandomValueFromDropdownUtils(FinancialSuitabilityLocators.TotalNetWorth);
-    selectRandomValueFromDropdownUtils(FinancialSuitabilityLocators.LiquidityNeeds);
-    selectRandomValueFromDropdownUtils(FinancialSuitabilityLocators.LiquidNetWorth);
-}
-fillPriorInvestmentExperience (){
-    selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.StockYears);
-    selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.Options);
-    selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.MutualFunds);
-    selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.MarginAccount);
-    selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.MunicipalBonds);
-    selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.CommoditiesFeatures);
-    selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.GovernmentBonds);
-    selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.CorporateBonds);
-    selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.TaxShelters);
-}
+    fillFinancialSuitability(){
+        selectRandomValueFromDropdownUtils(FinancialSuitabilityLocators.AnnualIncome);
+        selectRandomValueFromDropdownUtils(FinancialSuitabilityLocators.TotalNetWorth);
+        selectRandomValueFromDropdownUtils(FinancialSuitabilityLocators.LiquidityNeeds);
+        selectRandomValueFromDropdownUtils(FinancialSuitabilityLocators.LiquidNetWorth);
+    }
+    
+    fillPriorInvestmentExperience (){
+        selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.StockYears);
+        selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.Options);
+        selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.MutualFunds);
+        selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.MarginAccount);
+        selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.MunicipalBonds);
+        selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.CommoditiesFeatures);
+        selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.GovernmentBonds);
+        selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.CorporateBonds);
+        selectRandomValueFromDropdownUtils(PriorInvestmentExperienceLocators.TaxShelters);
+    }
 
-fillACHRelationship(){
+    fillACHRelationship(){
 
-}
-SaveAndContinue(){
+    }
+
+    SaveAndContinue(){
     cy.xpath(FormUsageButtons.SaveAndContinue).click({force: true});
-}
+    }
 }

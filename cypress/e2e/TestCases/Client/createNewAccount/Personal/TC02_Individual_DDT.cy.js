@@ -75,7 +75,6 @@ describe('DDT - Client - Individual', () => {
         TC_PersonalInformationPage.SaveAndContinue();
         waitForLoaderToDisappearUtils()
         
-
      
         cy.url().should('include', '/employment-info');
         TC_EmploymentInformationPage.ClickOnUnemployed();   

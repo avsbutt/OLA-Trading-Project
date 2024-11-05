@@ -85,7 +85,7 @@ export class PersonalInformationPage{
         cy.xpath(PhysicalAddressLocators.City).clear().type(city)
         cy.xpath(PhysicalAddressLocators.PostalCode).clear().type(postalCode)
         cy.xpath(PhysicalAddressLocators.Country).select('United States')
-        cy.xpath(PhysicalAddressLocators.State).select('Alabama')
+        cy.xpath(PhysicalAddressLocators.State).select('Arizona')
     }
 
 
@@ -94,7 +94,7 @@ export class PersonalInformationPage{
         cy.xpath(CoApplicantPhysicalAddressLocators.City).clear().type(city)
         cy.xpath(CoApplicantPhysicalAddressLocators.PostalCode).clear().type(postalCode)
         cy.xpath(CoApplicantPhysicalAddressLocators.Country).select('United States')
-        cy.xpath(CoApplicantPhysicalAddressLocators.State).select('Alabama')
+        cy.xpath(CoApplicantPhysicalAddressLocators.State).select('Arizona')
     }
 
 
@@ -106,7 +106,7 @@ export class PersonalInformationPage{
         cy.xpath(TrustedContactLocators.EmailAddress).clear().type(trustedEmail)
         cy.xpath(TrustedContactLocators.MailingAddress1).clear().type(trustedMailingAddress1)
         cy.xpath(TrustedContactLocators.Country).select('United States')
-        cy.xpath(TrustedContactLocators.State).select('Alaska')
+        cy.xpath(TrustedContactLocators.State).select('Arizona')
         cy.xpath(TrustedContactLocators.City).clear().type(trustedCity)
         cy.xpath(TrustedContactLocators.PostalCode).clear().type(trustedPostalCode)
     }

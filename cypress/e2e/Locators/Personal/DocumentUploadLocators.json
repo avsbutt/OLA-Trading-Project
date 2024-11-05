@@ -6,11 +6,14 @@
         "UploadAuthorizationDocument":"//input[@name='fileDividentAuth']",
         "UploadUtilityBill":"//input[@name='filePrimaryBankStatement']",
         "UploadW8Ben":"//input[@name='filePrimaryW8BENIndividuals']",
-        "UploadSelfie":"//input[@name='filePrimarySelfie']"
+        "UploadSelfie":"//input[@name='filePrimarySelfie']",
+        "UploadForeignQuestions":"//input[@name='filePrimaryForeignQuestions']"
     },
 
     "CoApplicantDocumentUploadLocators":{
         "UploadGovernmentId":"//input[@name='coAppfileGovIssuedIdLicense']",
+        "UploadPassport":"",
+        "UploadAuthorizationDocument":"",
         "UploadDrivingLicenses":"//input[@name='fileCoAppDL']",
         "UploadW8Ben":"//input[@name='fileCoAppW8BENIndividuals']",
         "UploadForeignQuestions":"//input[@name='fileCoAppForeignQuestions']",

@@ -45,7 +45,7 @@ fillOption10(){
 fillDirectCommunication(){
     cy.xpath(DirectCommunicationLocators.IObject).check()
 }
-fillW8Ben(randomWords, city){
+fillW8Ben_ForForeignAccounts(randomWords, city){
     cy.xpath(W8BenLocators.Field1).clear().type(city)
     cy.xpath(W8BenLocators.Field2).clear().type(randomWords)
     cy.xpath(W8BenLocators.Field3).clear().type(randomWords)
