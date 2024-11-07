@@ -26,11 +26,19 @@ const TC_CreateNewAccountPage = new CreateNewAccountPage
 
 
 describe('Client Side - Personal - Individual', () => {
-  it('TC001_Verify that US citizen User can Create New Account', () => {
+
+
+  beforeEach(() => {
+
     clientLoginUtils();
     waitForLoaderToDisappearUtils()
-    IfApplicationStatusNotCompletedThenCancelUtils();
-    CloseToasterIfAppearUtils();
+    IfApplicationStatusNotCompletedThenCancelUtils()
+    CloseToasterIfAppearUtils()
+
+  });
+
+
+  it('TC001_Verify that US citizen User can Create New Account', () => {
 
     TC_CreateNewAccountPage.CreatePersonalAccountTypeIndividual();
     CloseToasterIfAppearUtils();
@@ -136,11 +144,6 @@ describe('Client Side - Personal - Individual', () => {
   })
 
   it.skip('TC002_Verify that Foreign User can Create New Account' , ()=>{
-
-    clientLoginUtils();
-    waitForLoaderToDisappearUtils()
-    IfApplicationStatusNotCompletedThenCancelUtils();
-    CloseToasterIfAppearUtils();
 
     TC_CreateNewAccountPage.CreatePersonalAccountTypeIndividual();
     CloseToasterIfAppearUtils();
@@ -248,11 +251,6 @@ describe('Client Side - Personal - Individual', () => {
   })
 
   it.skip('TC003_Verify that ID Issuance Date is not visible For ID Type *Govt ID* and *Passport*' , ()=>{
-
-    clientLoginUtils();
-    waitForLoaderToDisappearUtils()
-    IfApplicationStatusNotCompletedThenCancelUtils();
-    CloseToasterIfAppearUtils();
 
     TC_CreateNewAccountPage.CreatePersonalAccountTypeIndividual();
     CloseToasterIfAppearUtils();

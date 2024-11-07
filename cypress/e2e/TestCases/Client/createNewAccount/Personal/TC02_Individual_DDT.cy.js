@@ -25,7 +25,12 @@ const TC_CreateNewAccountPage = new CreateNewAccountPage
 
 
 beforeEach(() => {
-    clientLoginUtils()
+
+  clientLoginUtils();
+  waitForLoaderToDisappearUtils()
+  IfApplicationStatusNotCompletedThenCancelUtils()
+  CloseToasterIfAppearUtils()
+
 });
 
 
@@ -34,12 +39,9 @@ describe('DDT - Client - Individual', () => {
     cy.fixture('CountryAndStates.json').then((countryStates) => {
       countryStates.forEach((location) => {
       
-        waitForLoaderToDisappearUtils()
-        IfApplicationStatusNotCompletedThenCancelUtils();
-        CloseToasterIfAppearUtils();
-        TC_CreateNewAccountPage.CreatePersonalAccountTypeIndividual()
-        CloseToasterIfAppearUtils();
 
+        TC_CreateNewAccountPage.CreatePersonalAccountTypeIndividual()
+  
         const randomData= dataGeneratorUtils();
         cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)
         TC_PersonalInformationPage.fillPersonalInformation(

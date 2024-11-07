@@ -31,7 +31,7 @@ module.exports = defineConfig({
     viewportHeight: 1080,
 
     screenshotOnRunFailure: true,
-    videoUploadOnPasses: true, // Only save videos on failure
+    videoUploadOnPasses: false, // Only save videos on failure
     
     reporter: 'mocha-allure-reporter',
     reporterOptions: {

@@ -30,11 +30,4 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     // failing the test
     return false
   })
-
-  Cypress.on('uncaught:exception', (err, runnable) => {
-    if (err.message.includes('Cannot redefine property: location') || err.message.includes('location')) {
-        return false;
-    }
-    return true;
-});
   
