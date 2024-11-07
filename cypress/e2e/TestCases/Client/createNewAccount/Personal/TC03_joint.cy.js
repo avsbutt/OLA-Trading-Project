@@ -1,13 +1,13 @@
 import { clientLoginUtils } from "../../../../utils/clientLoginUtils"
-import { PersonalInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/PersonalInformationPage"
-import { EmploymentInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/EmploymentInfomationPage"
+import { PersonalInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/PersonalInformationPage"
+import { EmploymentInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/EmploymentInfomationPage"
 import { dataGeneratorUtils } from "../../../../utils/dataGeneratorUtils";
-import { InvestmentProfilePage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/InvestorProfilePage";
-import { RegulatoryItemsPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/RegulatoryItemsPage"
-import { AccountFeaturesPage} from "../../../../Pages/Client/createNewAccount/Personal/Individual/AccountFeaturesPage"
-import { DocumentUploadPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/DocumentUploadPage"
-import { DisclosureSignaturesPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/DisclosureSignaturesPage"
-import{ ReviewInfomationPage } from "../../../../Pages/Client/createNewAccount/Personal/Individual/ReviewInformationPage"
+import { InvestmentProfilePage } from "../../../../Pages/Client/createNewAccount/Personal/InvestorProfilePage";
+import { RegulatoryItemsPage } from "../../../../Pages/Client/createNewAccount/Personal/RegulatoryItemsPage"
+import { AccountFeaturesPage} from "../../../../Pages/Client/createNewAccount/Personal/AccountFeaturesPage"
+import { DocumentUploadPage } from "../../../../Pages/Client/createNewAccount/Personal/DocumentUploadPage"
+import { DisclosureSignaturesPage } from "../../../../Pages/Client/createNewAccount/Personal/DisclosureSignaturesPage"
+import{ ReviewInfomationPage } from "../../../../Pages/Client/createNewAccount/Personal/ReviewInformationPage"
 import { CloseToasterIfAppearUtils } from "../../../../utils/CloseToasterIfAppearUtils";
 import { IfApplicationStatusNotCompletedThenCancelUtils } from "../../../../utils/IfApplicationStatusNotCompletedThenCancelUtils";
 import { CreateNewAccountPage } from "../../../../Pages/Client/createNewAccount/CreateNewAccountPage"
@@ -29,11 +29,18 @@ const TC_ReviewInfomationPage = new ReviewInfomationPage
 
 describe('Client Side - Personal - Joint', () => {
 
-  it('TC003_Verify that User can Create Personal Account With Type Joint & Subtype Rights Of Survivorship', () => {
+
+  beforeEach(() => {
+
     clientLoginUtils();
     waitForLoaderToDisappearUtils()
-    IfApplicationStatusNotCompletedThenCancelUtils();
-    CloseToasterIfAppearUtils();
+    IfApplicationStatusNotCompletedThenCancelUtils()
+    CloseToasterIfAppearUtils()
+
+  });
+  
+  it('TC003_Verify that User can Create Personal Account With Type Joint & Subtype Rights Of Survivorship', () => {
+
 
     TC_CreateNewAccountPage.CreatePersonalAccountTypeJointAndSubtype_RightsOfSurvivorship()
 
@@ -158,10 +165,7 @@ describe('Client Side - Personal - Joint', () => {
   });
 
   it('TC004_Verify that User can Create Personal Account With Type Joint & Subtye Joint Tenants in Common', () => {
-    clientLoginUtils();
-    waitForLoaderToDisappearUtils()
-    IfApplicationStatusNotCompletedThenCancelUtils();
-    CloseToasterIfAppearUtils();
+
 
     TC_CreateNewAccountPage.CreatePersonalAccountTypeJointAndSubtype_JointTenantsInCommon()
 
@@ -303,6 +307,8 @@ describe('Client Side - Personal - Joint', () => {
       "Washington"
     ];
 
+
+    // THIS FUNCTION VERIFY THAT ALL expectedStates FOR US SHOULD EXIST IN PERSONAL INFORMATION PAGE __ ONLY FOR > Type Joint & Subtype Joint Community Property
     function verify8USstatesExistInDropdown(dropdownSelector, expectedOptions) {
       cy.get(`${dropdownSelector} option`)
        .should('have.length', expectedOptions.length)
@@ -312,10 +318,7 @@ describe('Client Side - Personal - Joint', () => {
     }
    
   
-    clientLoginUtils();
-    waitForLoaderToDisappearUtils()
-    IfApplicationStatusNotCompletedThenCancelUtils();
-    CloseToasterIfAppearUtils();
+
 
     TC_CreateNewAccountPage.CreatePersonalAccountTypeJointAndSubtype_JointCommunityProperty()
 
@@ -324,10 +327,9 @@ describe('Client Side - Personal - Joint', () => {
 
 
 
-   // Verify options for each dropdown
+   // Verify US Expected States for each dropdown
    verify8USstatesExistInDropdown('select[name="coAppStateId"]', expectedStates)
    verify8USstatesExistInDropdown('select[name="stateId"]', expectedStates)
-   verify8USstatesExistInDropdown('select[@name="trustedState"]' , expectedStates)
 
     cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)
     TC_PersonalInformationPage.fillPersonalInformation(
@@ -372,6 +374,8 @@ describe('Client Side - Personal - Joint', () => {
       randomData.trustedMailingAddress1,
       randomData.trustedCity,
       randomData.trustedPostalCode);
+    
+    verify8USstatesExistInDropdown('select[name="trustedState"]' , expectedStates)
     TC_PersonalInformationPage.SaveAndContinue();
     waitForLoaderToDisappearUtils()
         
@@ -440,8 +444,7 @@ describe('Client Side - Personal - Joint', () => {
     TC_DisclosureSignaturesPage.FillCoApplicantSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
     CloseToasterIfAppearUtils()
-    
-       
+
 
     cy.url().should('include', '#/review')
     TC_ReviewInfomationPage.ClickOnSubmitBtn()

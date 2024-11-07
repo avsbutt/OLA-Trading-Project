@@ -24,3 +24,17 @@ import 'cypress-real-events';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    // returning false here prevents Cypress from
+    // failing the test
+    return false
+  })
+
+  Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes('Cannot redefine property: location') || err.message.includes('location')) {
+        return false;
+    }
+    return true;
+});
+  

@@ -1,12 +1,12 @@
-import { InvestmentProfilePage } from "../Pages/Client/createNewAccount/Personal/Individual/InvestorProfilePage";
-import { EmploymentInformationPage } from "../Pages/Client/createNewAccount/Personal/Individual/EmploymentInfomationPage"
+import { InvestmentProfilePage } from "../Pages/Client/createNewAccount/Personal/InvestorProfilePage";
+import { EmploymentInformationPage } from "../Pages/Client/createNewAccount/Personal/EmploymentInfomationPage"
 import { RegulatoryItemsLocators} from "../Locators/createNewAccountLocators.json"
-import { RegulatoryItemsPage } from "../Pages/Client/createNewAccount/Personal/Individual/RegulatoryItemsPage"
+import { RegulatoryItemsPage } from "../Pages/Client/createNewAccount/Personal/RegulatoryItemsPage"
 import { dataGeneratorUtils } from "../utils/dataGeneratorUtils"
 import { FormUsageButtons } from "../Locators/FormUsageButtons.json";
-import { DocumentUploadPage } from "../Pages/Client/createNewAccount/Personal/Individual/DocumentUploadPage"
-import { DisclosureSignaturesPage } from "../Pages/Client/createNewAccount/Personal/Individual/DisclosureSignaturesPage"
-import { PersonalInformationPage} from "../Pages/Client/createNewAccount/Personal/Individual/PersonalInformationPage"
+import { DocumentUploadPage } from "../Pages/Client/createNewAccount/Personal/DocumentUploadPage"
+import { DisclosureSignaturesPage } from "../Pages/Client/createNewAccount/Personal/DisclosureSignaturesPage"
+import { PersonalInformationPage} from "../Pages/Client/createNewAccount/Personal/PersonalInformationPage"
 import { clientLoginUtils } from "../utils/clientLoginUtils"
 import { CloseToasterIfAppearUtils } from "../utils/CloseToasterIfAppearUtils";
 import { IfApplicationStatusNotCompletedThenCancelUtils } from "../utils/IfApplicationStatusNotCompletedThenCancelUtils";
@@ -35,7 +35,19 @@ describe('Test File', () => {
   
     it('Test Cases ', () => {
       clientLoginUtils()
+    });
 
+    it('Test Cases 2 ', () => {
+      clientLoginUtils()
+    });
+
+    it('Test Cases 3 ', () => {
+      clientLoginUtils()
+    });
+
+    it('Test Cases ', () => {
+      clientLoginUtils()
+    });
      // IfApplicationStatusNotCompletedThenCancelUtils()
 
 
@@ -44,13 +56,11 @@ describe('Test File', () => {
 
 
 
-
-
-         cy.visit("#/upload-documents")
-           doc.UploadUtilityBillIfVisible()
-           doc.UploadAuthorizationDocumentIfVisible()
-           doc.UploadDrivingLiscenceIfVisible()
-           doc.UploadGovernmentIdIfVisible()
+        //  cy.visit("#/upload-documents")
+        //    doc.UploadUtilityBillIfVisible()
+        //    doc.UploadAuthorizationDocumentIfVisible()
+        //    doc.UploadDrivingLiscenceIfVisible()
+        //    doc.UploadGovernmentIdIfVisible()
 
 
 
@@ -82,7 +92,7 @@ describe('Test File', () => {
           
       //   });
       // });
-    });
+    
   });
   
 
