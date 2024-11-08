@@ -64,7 +64,7 @@ export class EntityInformationPage{
     }
 
     SaveAndContinue(){
-        cy.xpath(FormUsageButtons.SaveAndContinue).click({force:true})
+        cy.xpath(FormUsageButtons.SaveAndContinue).click().click()
     }
 
 }
