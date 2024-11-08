@@ -59,7 +59,7 @@
 
     "IndustrialClassificationLocators":
     {
-        "RetailTrade":"//label[normalize-space()='Retail Trade']"
+        "RetailTrade":"(//input[@id='rbIndustrialClassfication'])[6]"
     }
 
 }

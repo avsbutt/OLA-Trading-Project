@@ -1,4 +1,5 @@
 import { EntityInformationLocators, MailingPreferenceLocators, AuthorizedSignerLocators, IndustrialClassificationLocators} from "../../../../Locators/Entity/EntityinformationLocators.json"
+import { FormUsageButtons } from "../../../../Locators/FormUsageButtons.json"
 
 export class EntityInformationPage{
 
@@ -32,32 +33,38 @@ export class EntityInformationPage{
     }
 
 
-    fillAuthorizedSigner(fName1, mName1, lName1 , email1, randomNumbers3, randomNumbers4, idNumber){
+    fillAuthorizedSigner(fName1, mName1, lName1, dobMMDDYYYY1, email1, randomNumbers3, randomNumbers4, idNumber, idIssueDate, IdExpirationDate){
         cy.xpath(AuthorizedSignerLocators.Firstname).clear().type(fName1)
         cy.xpath(AuthorizedSignerLocators.MiddleName).clear().type(mName1)
         cy.xpath(AuthorizedSignerLocators.LastName).clear().type(lName1)
-        cy.xpath(AuthorizedSignerLocators.DateOfBirth).type('1999-12-11')
+        cy.xpath(AuthorizedSignerLocators.DateOfBirth).type(dobMMDDYYYY1)
         cy.xpath(AuthorizedSignerLocators.Email).clear().type(email1)
         cy.xpath(AuthorizedSignerLocators.PhoneNumber).clear().type(randomNumbers3)
         cy.xpath(AuthorizedSignerLocators.ITINForeignTaxID).clear().type(randomNumbers4)   
         cy.xpath(AuthorizedSignerLocators.IdType).select('Other Govt ID')
         cy.xpath(AuthorizedSignerLocators.IdNumber).type(idNumber)
-        cy.xpath(AuthorizedSignerLocators.IdIssueDate)
-        cy.xpath(AuthorizedSignerLocators.IdExpirationDate)
+        cy.xpath(AuthorizedSignerLocators.IdIssueDate).type(idIssueDate)
+        cy.xpath(AuthorizedSignerLocators.IdExpirationDate).type(IdExpirationDate)
     }
 
     fillAuthorizedSigner_isUSCitizenYes(randomNumbers1){
         cy.xpath(AuthorizedSignerLocators.isUSCitizenYes).click()
-        cy.xpath(AuthorizedSignerLocators.SocialSecurityNo).type(randomNumbers1)
+        cy.xpath(AuthorizedSignerLocators.SocialSecurityNo).clear().type(randomNumbers1)
     }
 
     fillAuthorizedSigner_isUScitizenNoAndisForeignYes(){
-
+        cy.xpath(AuthorizedSignerLocators.isUSCitizenNo).click()
+        cy.xpath(AuthorizedSignerLocators.isUsPermanentNo).click()
+        cy.xpath(AuthorizedSignerLocators.isForeignAccountYes).click()
+        cy.xpath(AuthorizedSignerLocators.Citizenship).select('Austria')
     }
 
+    fillIndustrialClassification(){
+        cy.xpath(IndustrialClassificationLocators.RetailTrade).check()   
+    }
 
-
-
-
+    SaveAndContinue(){
+        cy.xpath(FormUsageButtons.SaveAndContinue).click({force:true})
+    }
 
 }
