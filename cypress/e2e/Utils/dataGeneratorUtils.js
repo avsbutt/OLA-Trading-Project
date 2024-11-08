@@ -72,29 +72,50 @@ export const dataGeneratorUtils = () => {
         //########--------PERSONAL INFORMATION--------########\\
 
         fName: faker.name.firstName(),
+        fName1: faker.name.firstName(),
+
         mName: faker.name.middleName(),
+        mName1: faker.name.middleName(),
+
         lName: faker.name.lastName(),
+        lName1: faker.name.lastName(),
+
         email: faker.internet.email(),
+        email1: faker.internet.email(),
+
         randomWords: faker.lorem.words(3),
-        randomNumbers: faker.string.numeric(10),
+        randomWords1: faker.lorem.words(3),
+        randomWords2: faker.lorem.words(3),
+        randomWords3: faker.lorem.words(3),
+
+
+        randomNumbers: faker.string.numeric(13),
+        randomNumbers1: faker.string.numeric(13),
+        randomNumbers2: faker.string.numeric(14),
+        randomNumbers3: faker.string.numeric(15),
+        randomNumbers4: faker.string.numeric(15),
+        
+
         nOfDependents: faker.number.int({ min: 0, max: 99 }),
         primaryTelephone: faker.string.numeric(14),
         idNumber: faker.string.numeric(15),
-        socialSecurityNo: faker.string.numeric(9),
+        socialSecurityNo: faker.string.numeric(13),
         dobMMDDYYYY: dob.mmddyyyy,  // MMDDYYYY format for display
         dobYYYYMMDD: dob.yyyymmdd,  // YYYY-MM-DD format for input field
+        dobMMDDYYYY1: dob.yyyymmdd,
         idIssueDate: idDates.issueDate,
         idExpirationDate: idDates.idExpirationDate,
         //idExpirationDate: faker.date.future,
-
 
 
         //########--------PHYSICAL ADDRESS--------########\\
 
         city: cityName, // Generate random city name
         postalCode: faker.string.numeric(5), // Generates a random 5-digit postal code
-        address: faker.location.streetAddress(),
-
+        address:  faker.location.streetAddress(),
+        address1: faker.location.streetAddress(),
+        address2: faker.location.streetAddress(),
+        address3: faker.location.streetAddress(),
 
 
         //########--------TRUSTED CONTACT--------########\\

@@ -42,7 +42,7 @@ describe('Client Side - Personal - Joint', () => {
   it('TC003_Verify that User can Create Personal Account With Type Joint & Subtype Rights Of Survivorship', () => {
 
 
-    TC_CreateNewAccountPage.CreatePersonalAccountTypeJointAndSubtype_RightsOfSurvivorship()
+    TC_CreateNewAccountPage.CreatePersonalAccount_TypeJointAndSubtype_RightsOfSurvivorship()
 
     const randomData= dataGeneratorUtils(); 
     cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)
@@ -167,7 +167,7 @@ describe('Client Side - Personal - Joint', () => {
   it('TC004_Verify that User can Create Personal Account With Type Joint & Subtye Joint Tenants in Common', () => {
 
 
-    TC_CreateNewAccountPage.CreatePersonalAccountTypeJointAndSubtype_JointTenantsInCommon()
+    TC_CreateNewAccountPage.CreatePersonalAccount_TypeJointAndSubtype_JointTenantsInCommon()
 
     const randomData= dataGeneratorUtils(); 
     cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)
@@ -320,7 +320,7 @@ describe('Client Side - Personal - Joint', () => {
   
 
 
-    TC_CreateNewAccountPage.CreatePersonalAccountTypeJointAndSubtype_JointCommunityProperty()
+    TC_CreateNewAccountPage.CreatePersonalAccount_TypeJointAndSubtype_JointCommunityProperty()
 
     const randomData= dataGeneratorUtils(); 
 

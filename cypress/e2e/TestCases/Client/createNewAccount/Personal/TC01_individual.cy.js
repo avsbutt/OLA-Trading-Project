@@ -40,7 +40,7 @@ describe('Client Side - Personal - Individual', () => {
 
   it('TC001_Verify that US citizen User can Create New Account', () => {
 
-    TC_CreateNewAccountPage.CreatePersonalAccountTypeIndividual();
+    TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
     CloseToasterIfAppearUtils();
 
     const randomData= dataGeneratorUtils();
@@ -145,7 +145,7 @@ describe('Client Side - Personal - Individual', () => {
 
   it.skip('TC002_Verify that Foreign User can Create New Account' , ()=>{
 
-    TC_CreateNewAccountPage.CreatePersonalAccountTypeIndividual();
+    TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
     CloseToasterIfAppearUtils();
 
     const randomData= dataGeneratorUtils();
@@ -252,7 +252,7 @@ describe('Client Side - Personal - Individual', () => {
 
   it.skip('TC003_Verify that ID Issuance Date is not visible For ID Type *Govt ID* and *Passport*' , ()=>{
 
-    TC_CreateNewAccountPage.CreatePersonalAccountTypeIndividual();
+    TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
     CloseToasterIfAppearUtils();
 
     const randomData= dataGeneratorUtils();
@@ -364,7 +364,7 @@ describe('Client Side - Personal - Individual', () => {
     IfApplicationStatusNotCompletedThenCancelUtils();
     CloseToasterIfAppearUtils();
 
-    TC_CreateNewAccountPage.CreatePersonalAccountTypeIndividual();
+    TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
     CloseToasterIfAppearUtils();
 
     const randomData= dataGeneratorUtils();

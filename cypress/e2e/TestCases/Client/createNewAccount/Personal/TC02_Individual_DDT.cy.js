@@ -40,7 +40,7 @@ describe('DDT - Client - Individual', () => {
       countryStates.forEach((location) => {
       
 
-        TC_CreateNewAccountPage.CreatePersonalAccountTypeIndividual()
+        TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual()
   
         const randomData= dataGeneratorUtils();
         cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)

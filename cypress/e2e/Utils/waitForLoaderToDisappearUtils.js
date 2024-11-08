@@ -3,5 +3,5 @@
 export function waitForLoaderToDisappearUtils() {
     cy.get('div.loader_loaderContainer', { timeout: 70000 }) 
         .should('not.exist');
-        cy.wait(2000)
+        cy.wait(1000)
 }

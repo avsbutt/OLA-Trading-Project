@@ -6,16 +6,6 @@ import { FormUsageButtons } from "../../../../Locators/FormUsageButtons.json";
 
 export class PersonalInformationPage{
 
-    CreateNewAccountClick(){
-        cy.xpath(CreatePersonalAccountLocators.CreateNewAccount).click({force: true})
-    }
-    ClickPersonalAndSelectIndividual(){
-        cy.xpath(CreatePersonalAccountLocators.PersonalAccountType).select('Individual');
-    }
-    ClickNextBtn(){
-        cy.xpath(CreatePersonalAccountLocators.NextBtn).click()
-        cy.url().should('include','/personal-info')
-    }
 
     fillPersonalInformation(fName, mName, lName, email, nOfDependents, primaryTelephone, idNumber, dobYYYYMMDD, idIssueDate, idExpirationDate, socialSecurityNo) {
         cy.xpath(PersonalInformationLocators.FirstName).clear().type(fName);

@@ -1,0 +1,65 @@
+{ "EntityInformationLocators":
+    {
+
+        "EntityName":"//input[@placeholder='Enter Entity Name']",
+        "EINSSN":"//input[@placeholder='Enter EIN/SSN']",
+        "TypeOfEntity":"//select[@name='taxedAs']",
+        "BusinessPhone":"//input[@placeholder='Enter Phone']",
+        "OriginCountry":"//select[@name='originCountryId']",
+        "OriginState":"//select[@name='originStateId']",
+        "EntityResolutionDate":"//input[@name='resolutionAdoptionDate']",
+        "BusinessAddress1":"//input[@placeholder='Enter Business Address 1']",
+        "BusinessAddress2":"//input[@placeholder='Enter Business Address 2']",
+        "Country":"//select[@name='businessCountryId']",
+        "State":"//select[@name='businessStateId']",
+        "City":"//input[@name='businessCity']",
+        "PostalCode":"//input[@name='businessPostalCode']"
+        
+
+    },
+
+    "MailingPreferenceLocators":
+    {
+        "MailingAddress1":"//input[@placeholder='Enter Mailing Address 1']",
+        "MailingAddress2":"//input[@placeholder='Enter Mailing Address 2']",
+        "Country":"//select[@name='mailingCountryId']",
+        "State":"//select[@name='mailingStateId']",
+        "City":"//input[@name='mailingCity']",
+        "PostalCode":"//input[@name='mailingZipCode']",
+        "LargeTraderID":"//input[@placeholder='Enter Large Trader ID']",
+        "EffectiveDate":"//input[@name='effectiveDate']",
+        "LEINumber":"//input[@placeholder='Enter LEI Number']"
+    },
+
+    "AuthorizedSignerLocators":
+    {
+        "AddBtn":"//button[normalize-space()='Add']",
+        "RemoveBtn":"(//button[@type='button'][normalize-space()='Remove'])[1]",
+        "Firstname":"//input[@name='authSign.0.signerFirstName']",
+        "MiddleName":"//input[@name='authSign.0.signerMiddleName']",
+        "LastName":"//input[@name='authSign.0.signerLastName']",
+        "DateOfBirth":"//input[@name='authSign.0.signerDateofBirth']",
+        "Email":"//input[@name='authSign.0.signerEmail']",
+        "PhoneNumber":"//input[@name='authSign.0.signerPhoneNumber']",
+        "ITINForeignTaxID":"//input[@name='authSign.0.signerForeignTaxId']",
+        "SocialSecurityNo":"//input[@placeholder='Enter Social Security Number']",
+        "isUSCitizenYes":"(//input[@name='authSign.0.isUSCitizen'])[1]",
+        "isUSCitizenNo":"(//input[@name='authSign.0.isUSCitizen'])[2]",
+        "isUsPermanentYes":"(//input[@name='authSign.0.isUSPermanentResident'])[1]",                                                                                                                           
+        "isUsPermanentNo":"(//input[@name='authSign.0.isUSPermanentResident'])[2]",
+        "isForeignAccountYes":"(//input[@name='authSign.0.isForeignAccount'])[1]",
+        "isForeignAccountNo":"(//input[@name='authSign.0.isForeignAccount'])[2]",
+        "IdType":"//select[@name='authSign.0.idTypeId']",
+        "Citizenship":"//select[@name='authSign.0.signerCitizenship']",
+        "IdNumber":"(//input[@name='authSign.0.idNumber'])[1]",
+        "IdIssueDate":"//input[@name='authSign.0.idIssueDate']",
+        "IdExpirationDate":"//input[@name='authSign.0.idExpireDate']",
+        "IdIssuanceState":"//select[@name='authSign.0.idIssuanceState']"
+    },
+
+    "IndustrialClassificationLocators":
+    {
+        "RetailTrade":"//label[normalize-space()='Retail Trade']"
+    }
+
+}
