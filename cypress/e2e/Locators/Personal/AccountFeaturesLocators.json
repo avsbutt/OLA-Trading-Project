@@ -21,5 +21,11 @@
         "DividendReinvestmentYes":"input[value='true'][name='dividendReinvestment']",
         "DividendReinvestmentNo":"input[value='false'][name='dividendReinvestment']",
         "DividendReinvestmentTitle":"(//label[@class='form-label'])[5]"
-    }
+    },
+    "Entity_QuestionnaireLocators":{
+        "QuestionnaireYes":"(//input[@name='exemptLegalCustomer'])[2]",
+        "QuestionnaireNo":"(//input[@name='exemptLegalCustomer'])[1]",
+        "Section102":"//input[@id='7729']",
+        "InsuranceCompany":"//input[@id='7730']"
+    }  
 }

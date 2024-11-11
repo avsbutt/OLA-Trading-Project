@@ -6,8 +6,15 @@
         "Option1No":"(//input[@name='shareholder'])[1]",
         "Option2Yes":"input[value='true'][name='tradeAuthtoAnotherParty']",
         "Option2No":"(//input[@name='tradeAuthtoAnotherParty'])[1]",
+
+        "Option2No_Entity":"(//input[@name='affiliatewithFinra'])[1]",
+
         "Option3Yes":"(//input[@name='politicallyExposeAccount'])[2]",
         "Option3No":"input[value='false'][name='politicallyExposeAccount']",
+
+        "PoliticallyExposedPersonName3_Entity":"//input[@name='politicallyExposePersonLegalName']",
+        "PoliticallyExposedPersonRole3_Entity":"//input[@name='politicallyExposePersonRole']",
+
         "PoliticalTitle":"//input[@name='politicallyExposePersonTitle']",
         "OfficialMembers":"(//input[@name='politicallyExposePersonMembers'])[1]",
         "PoliticalOrganization":"(//input[@name='politicallyExposePersonOrganization'])[1]",
@@ -28,6 +35,12 @@
         "Option9No":"(//input[@name='isControlledByPublicCorp'])[1]",
         "Option10Yes":"input[value='true'][name='isUnderBrokerControl']",
         "Option10No":"(//input[@name='isUnderBrokerControl'])[1]",
+
+        "Option11No_Entity":"(//input[@name='foreignShellBank'])[1]",
+        "Option11Yes_Entity":"(//input[@name='foreignShellBank'])[2]",
+        "Option12No_Entity":"(//input[@name='offerForeignShellBank'])[1]",
+        "Option12Yes_Entity":"(//input[@name='offerForeignShellBank'])[2]",
+        
         "Relationship":"//input[@placeholder='Enter Relationship']",
         "PersonName":"//input[@placeholder='Enter Person Name']",
         "FirmEmployer":"//input[@placeholder='Enter Firm/Employer']",

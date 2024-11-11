@@ -13,12 +13,14 @@ fillOption2(){
     // cy.xpath(RegulatoryItemsLocators.OfficialMembers).type(randomWords)
     // cy.xpath(RegulatoryItemsLocators.PoliticalOrganization).type(randomWords)
 }
+
 fillOption3(randomWords){
     cy.xpath(RegulatoryItemsLocators.Option3Yes).check()
     cy.xpath(RegulatoryItemsLocators.PoliticalTitle).type(randomWords)
     cy.xpath(RegulatoryItemsLocators.OfficialMembers).type(randomWords)
     cy.xpath(RegulatoryItemsLocators.PoliticalOrganization).type(randomWords)
 }
+
 fillOption4(){
     cy.xpath(RegulatoryItemsLocators.Option4No).check()
 }
@@ -51,6 +53,30 @@ fillW8Ben_ForForeignAccounts(randomWords, city){
     cy.xpath(W8BenLocators.Field3).clear().type(randomWords)
     cy.xpath(W8BenLocators.Field4).clear().type(randomWords) 
 }
+
+
+//###-------FOR ENTITY OPTIONS ONLY-------###
+
+fillOption2_Entity(){
+    cy.xpath(RegulatoryItemsLocators.Option2No_Entity).check()
+}
+
+fillOption3_Entity(randomWords){
+    cy.xpath(RegulatoryItemsLocators.Option3Yes).check()
+    cy.xpath(RegulatoryItemsLocators.PoliticallyExposedPersonName3_Entity).type(randomWords)
+    cy.xpath(RegulatoryItemsLocators.PoliticallyExposedPersonRole3_Entity).type(randomWords)
+    cy.xpath(RegulatoryItemsLocators.PoliticalTitle).type(randomWords)
+    cy.xpath(RegulatoryItemsLocators.OfficialMembers).type(randomWords)
+    cy.xpath(RegulatoryItemsLocators.PoliticalOrganization).type(randomWords)
+}
+fillOption11_Entity(){
+    cy.xpath(RegulatoryItemsLocators.Option11Yes_Entity).check()
+
+}
+fillOption12_Entity(){
+    cy.xpath(RegulatoryItemsLocators.Option12No_Entity).check()
+}
+
 SaveAndContinue(){
     cy.xpath(FormUsageButtons.SaveAndContinue).click();
 }

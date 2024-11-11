@@ -1,4 +1,4 @@
-import { AccountFeaturesLocators } from "../../../../Locators/Personal/AccountFeaturesLocators.json"
+import { AccountFeaturesLocators, Entity_QuestionnaireLocators } from "../../../../Locators/Personal/AccountFeaturesLocators.json"
 import { FormUsageButtons } from "../../../../Locators/FormUsageButtons.json";
 
 export class AccountFeaturesPage{
@@ -17,6 +17,15 @@ export class AccountFeaturesPage{
     }
     VerifyTheDividendReinvestmentTitle(){
         cy.xpath(AccountFeaturesLocators.DividendReinvestmentTitle)
+    }
+
+
+    EntityAccountDueDiligenceQuestionnaire(){
+        cy.xpath(Entity_QuestionnaireLocators.QuestionnaireYes).check()
+        cy.wait(500)
+        cy.xpath(Entity_QuestionnaireLocators.Section102).check({force:true})
+        cy.xpath(Entity_QuestionnaireLocators.InsuranceCompany).check({force:true})
+        
     }
 
 
