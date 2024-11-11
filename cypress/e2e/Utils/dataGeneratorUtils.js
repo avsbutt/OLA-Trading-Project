@@ -85,7 +85,7 @@ export const dataGeneratorUtils = () => {
 
         randomWords: faker.lorem.words(3),
         randomWords1: faker.lorem.words(3),
-        randomWords2: faker.lorem.words(3),
+        randomWords2: faker.lorem.words(2),
         randomWords3: faker.lorem.words(3),
 
 
@@ -94,6 +94,8 @@ export const dataGeneratorUtils = () => {
         randomNumbers2: faker.string.numeric(14),
         randomNumbers3: faker.string.numeric(15),
         randomNumbers4: faker.string.numeric(15),
+        randomNumbers5: faker.string.numeric(9),
+
         
 
         nOfDependents: faker.number.int({ min: 0, max: 99 }),

@@ -20,13 +20,16 @@ export class AccountFeaturesPage{
     }
 
 
-    EntityAccountDueDiligenceQuestionnaire(){
+    ForEntityAccount_isQuestionnaireYes(){
         cy.xpath(Entity_QuestionnaireLocators.QuestionnaireYes).check()
         cy.wait(500)
         cy.xpath(Entity_QuestionnaireLocators.Section102).check({force:true})
         cy.xpath(Entity_QuestionnaireLocators.InsuranceCompany).check({force:true})
-        
     }
+    ForEntityAccount_isQuestionnaireNo(){
+        cy.xpath(Entity_QuestionnaireLocators.QuestionnaireNo).check()
+    }
+
 
 
 

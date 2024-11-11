@@ -8,13 +8,14 @@ import { EntityInformationPage } from "../../../../Pages/Client/createNewAccount
 import { InvestmentProfilePage } from "../../../../Pages/Client/createNewAccount/Personal/InvestorProfilePage"
 import { RegulatoryItemsPage } from "../../../../Pages/Client/createNewAccount/Personal/RegulatoryItemsPage"
 import { AccountFeaturesPage} from "../../../../Pages/Client/createNewAccount/Personal/AccountFeaturesPage"
-
+import { DueDiligenceFormPage } from "../../../../Pages/Client/createNewAccount/Entity/DueDiligenceFormPage"
 
 const TC_CreateNewAccountPage = new CreateNewAccountPage
 const TC_EntityInformationPage = new EntityInformationPage
 const TC_InvestmentProfilePage = new InvestmentProfilePage
 const TC_RegulatoryItemsPage = new RegulatoryItemsPage
 const TC_AccountFeaturesPage = new AccountFeaturesPage
+const TC_DueDiligenceFormPage = new DueDiligenceFormPage
 
 describe ('Client Side - Entity - Corporation', ()=>{
  
@@ -30,9 +31,9 @@ describe ('Client Side - Entity - Corporation', ()=>{
 
 
 
-      //  cy.visit("#/account-entity-features")
+     //   cy.visit("#/due-diligence-info")
        
-         const randomData= dataGeneratorUtils();
+          const randomData= dataGeneratorUtils();
         TC_CreateNewAccountPage.CreateEntityAccount_TypeCorporation()
         CloseToasterIfAppearUtils();
  
@@ -76,14 +77,15 @@ describe ('Client Side - Entity - Corporation', ()=>{
           
         cy.url().should('include', '#/account-entity-features')
         TC_AccountFeaturesPage.SaveAndContinue()
-        TC_AccountFeaturesPage.EntityAccountDueDiligenceQuestionnaire()
+        TC_AccountFeaturesPage.ForEntityAccount_isQuestionnaireNo()
         TC_AccountFeaturesPage.SaveAndContinue()
         CloseToasterIfAppearUtils();
         waitForLoaderToDisappearUtils()
 
+        cy.url().should('include', '#/due-diligence-info')
+        TC_DueDiligenceFormPage.fillEntityDueDiligenceForm(randomData.fName1, randomData.address2, randomData.randomNumbers5, randomData.randomWords1, randomData.randomWords2, randomData.randomWords3)
+        TC_DueDiligenceFormPage.SaveAndContinue()
 
-        
-       
-
+        //cy.url().should('include', '')
     })
 })

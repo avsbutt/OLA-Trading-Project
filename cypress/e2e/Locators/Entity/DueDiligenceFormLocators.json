@@ -1,0 +1,24 @@
+{
+    "DueDiligenceFormLocators":{
+        "AccountName":"//input[@placeholder='Enter Account Name']",
+        "CountryOfIncorporation":"//select[@name='countryOfIncorporation']",
+        "BusinessLocation":"//input[@placeholder='Enter Business Location']",
+        "PrimaryEntityAccountActivity":"//select[@name='entityAccountActivity']",
+        "ExpectedWithdrawalFrequency":"//select[@name='withdrawalFrequency']",
+        "InitialDepositAmount":"//input[@placeholder='Enter Initial Deposit Amount']",
+        "InitialDepositSource":"//input[@placeholder='Enter Initial Deposit Source']",
+        "InstitutionName":"//input[@placeholder='Enter Institution Name']",
+        "ScopeOfBusiness":"//select[@name='scopeOfBusiness']",
+        "PrimaryOngoing":"//select[@name='ongoingFundingSource']",
+        "EntityRisk":"//select[@name='entityRisk']",
+        "ForeignBondsYes":"(//input[@name='tranactionForeignBonds'])[2]",
+        "ForeignBondsNo":"(//input[@name='tranactionForeignBonds'])[1]",
+        "LowPricedSecuritiesYes":"(//input[@name='lowPriceSecurities'])[2]",
+        "LowPricedSecuritiesNo":"(//input[@name='lowPriceSecurities'])[1]",
+        "BearerShareYes":"(//input[@name='entityBearerShare'])[2]",
+        "BearerShareNo":"(//input[@name='entityBearerShare'])[1]",
+        "RelatedEntitiesYes":"(//input[@name='negativeInformationEntity'])[2]",
+        "RelatedEntitiesNo":"(//input[@name='negativeInformationEntity'])[1]",
+        "NegativeNewsInfo":"(//input[@name='negativeInformationEntityNewsInfo'])[1]"
+    }
+}
