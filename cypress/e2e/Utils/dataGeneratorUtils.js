@@ -90,7 +90,7 @@ export const dataGeneratorUtils = () => {
 
 
         randomNumbers: faker.string.numeric(13),
-        randomNumbers1: faker.string.numeric(13),
+        randomNumbers1: faker.string.numeric(15),
         randomNumbers2: faker.string.numeric(14),
         randomNumbers3: faker.string.numeric(15),
         randomNumbers4: faker.string.numeric(15),
@@ -104,7 +104,8 @@ export const dataGeneratorUtils = () => {
         socialSecurityNo: faker.string.numeric(13),
         dobMMDDYYYY: dob.mmddyyyy,  // MMDDYYYY format for display
         dobYYYYMMDD: dob.yyyymmdd,  // YYYY-MM-DD format for input field
-        dobMMDDYYYY1: dob.yyyymmdd,
+        dobMMDDYYYY1: dob.yyyymmdd,  // YYYY-MM-DD format for input field
+        dobYYYYMMDD1: dob.yyyymmdd,
         idIssueDate: idDates.issueDate,
         idExpirationDate: idDates.idExpirationDate,
         //idExpirationDate: faker.date.future,
@@ -113,6 +114,7 @@ export const dataGeneratorUtils = () => {
         //########--------PHYSICAL ADDRESS--------########\\
 
         city: cityName, // Generate random city name
+        city1: cityName,
         postalCode: faker.string.numeric(5), // Generates a random 5-digit postal code
         address:  faker.location.streetAddress(),
         address1: faker.location.streetAddress(),

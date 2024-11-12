@@ -1,0 +1,34 @@
+{
+    "EntityOfficersLocators":{
+        "AddEntityOfficer":"(//button[normalize-space()='Add Entity Officer'])[1]",
+        "FirstName":"(//input[@name='firstName'])[1]",
+        "LastName":"(//input[@name='lastName'])[1]",
+        "DateOfBirth":"(//input[@name='dateOfBirth'])[1]",
+        "SSN":"(//input[@name='ssnppt'])[1]",
+        "Address":"(//input[@name='address'])[1]",
+        "State":"(//select[@name='state'])[1]",
+        "City":"(//input[@name='city'])[1]",
+        "PhoneNumber":"(//input[@name='phoneNumber'])[1]",
+        "PostalCode":"(//input[@name='postalCode'])[1]",
+        "Country":"(//select[@name='country'])[1]",
+        "Position":"(//input[@name='position'])[1]",
+        "Manager":"(//input[@name='isManager'])[1]",
+        "SameForBeneficial":"(//input[@name='isSameInfo'])[1]"
+    },
+    
+    "BeneficialOwnersLocators":{
+        "AddbeneficialOwner":"(//button[normalize-space()='Add Beneficial Owner'])[1]",
+        "FirstName":"(//input[@name='firstName'])[2]",
+        "LastName":"(//input[@name='lastName'])[2]",
+        "DateOfBirth":"(//input[@name='dateOfBirth'])[2]",
+        "SSN":"(//input[@name='ssnppt'])[2]",
+        "Address":"(//input[@name='address'])[2]",
+        "State":"(//select[@name='state'])[2]",
+        "City":"(//input[@name='city'])[2]",
+        "PhoneNumber":"(//input[@name='phoneNumber'])[2]",
+        "PostalCode":"(//input[@name='postalCode'])[2]",
+        "Country":"(//select[@name='country'])[2]",
+        "OwnershipPercentage":"(//input[@name='ownerPercentage'])[1]"
+        
+    }
+}
