@@ -135,6 +135,7 @@ describe('Client Side - Personal - Individual', () => {
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
     CloseToasterIfAppearUtils();
+    waitForLoaderToDisappearUtils()
 
 
     cy.url().should('include', '#/review')
@@ -221,7 +222,7 @@ describe('Client Side - Personal - Individual', () => {
 
 
     cy.url().should('include', '#/upload-documents')
-    TC_DocumentUploadPage.DocumentsForForeignAccountShouldBeVisible()
+    TC_DocumentUploadPage.DocumentsShouldBeVisibleFor_ForeignAccount()
     TC_DocumentUploadPage.UploadGovernmentIdIfVisible()
     TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
     TC_DocumentUploadPage.UploadUtilityBillIfVisible()
@@ -328,7 +329,7 @@ describe('Client Side - Personal - Individual', () => {
 
 
     cy.url().should('include', '#/upload-documents')
-    TC_DocumentUploadPage.DocumentsForForeignAccountShouldBeVisible()
+    TC_DocumentUploadPage.DocumentsShouldBeVisibleFor_ForeignAccount()
     TC_DocumentUploadPage.UploadGovernmentIdIfVisible()
     TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
     TC_DocumentUploadPage.UploadUtilityBillIfVisible()
@@ -440,7 +441,7 @@ describe('Client Side - Personal - Individual', () => {
 
 
     cy.url().should('include', '#/upload-documents')
-    TC_DocumentUploadPage.DocumentsForForeignAccountShouldBeVisible()
+    TC_DocumentUploadPage.DocumentsShouldBeVisibleFor_ForeignAccount()
     TC_DocumentUploadPage.UploadGovernmentIdIfVisible()
     TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
     TC_DocumentUploadPage.UploadUtilityBillIfVisible()

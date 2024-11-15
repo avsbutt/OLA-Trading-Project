@@ -6,7 +6,7 @@ export function selectRandomValueFromDropdownUtils(locator) {
             // Start random selection from index 1, skipping the first "Select" option
             const randomIndex = Math.floor(Math.random() * (options.length - 1)) + 1;
             const value = options[randomIndex].value;
-            cy.wrap($select).select(value, {force: true}); // Select the value of the randomly selected option
+            cy.wrap($select).focus().select(value, {force: true}); // Select the value of the randomly selected option
         });
     });
 }

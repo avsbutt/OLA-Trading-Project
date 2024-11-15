@@ -34,8 +34,9 @@ export class CreateNewAccountPage{
     }
     CreateEntityAccount_TypeCorporation(){
         cy.xpath(CreateEntityAccountLocators.CreateNewAccount).click({force: true})
-        cy.wait(500)
+        cy.wait(1000)
         cy.xpath(CreateEntityAccountLocators.Entity).click()
+        cy.wait(500)
         cy.xpath(CreateEntityAccountLocators.EntityAccountType).select('Corporation').should('have.value', '2430')
         cy.xpath(CreateEntityAccountLocators.NextBtn).click()
     }

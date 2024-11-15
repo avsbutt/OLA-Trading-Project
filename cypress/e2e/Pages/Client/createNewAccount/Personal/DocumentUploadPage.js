@@ -109,7 +109,7 @@ export class DocumentUploadPage{
 
 
 
-  UploadForeignQuestion_ForForeignAccount(){
+  UploadForeignQuestionFor_ForeignAccount(){
     // cy.xpath(DocumentUploadLocators.UploadForeignQuestions).attachFile('Doc.pdf')
     cy.document().then((doc) => {
       const element = doc.querySelector('input[name="filePrimaryForeignQuestions"]');
@@ -119,12 +119,30 @@ export class DocumentUploadPage{
     });
   }
 
-  DocumentsForForeignAccountShouldBeVisible(){
+  DocumentsShouldBeVisibleFor_ForeignAccount(){
     cy.xpath("//span[normalize-space()='Foreign Questionnaire']").should('be.visible')
     cy.xpath("//span[normalize-space()='W-8BEN (Individuals)']").should('be.visible')
 
   }
 
+  //----####----FOR ENTITY APPLICATION ONLY----####----\\
+  DocumentsShouldBeVisibleFor_Entity_TypeCorporate(){
+    cy.xpath("//span[normalize-space()='Corporate Resolution']").should('be.visible')
+  } 
+
+  CorporateDocumentUploadFor_Entity_TypeCorporate(){
+    cy.xpath("//input[@name='fileIncorporateArticles']").focus().attachFile('Doc.pdf')
+  }
+
+  GovernmentIDUploadFor_Entity_TypeCorporate(){
+    cy.xpath("//input[@name='fileGovtIssueIdSigner1']").focus().attachFile('Doc.pdf')
+  }
+  PassportIDUploadFor_Entity_TypeCorporate(){
+    cy.xpath("//input[@name='fileGovtIssueIdMember1']").focus().attachFile('Doc.pdf')
+  }
+  Save(){
+    cy.xpath(FormUsageButtons.Save).click()
+  }
   SaveAndContinue(){
     cy.xpath(FormUsageButtons.SaveAndContinue).click({force: true})    
   }  

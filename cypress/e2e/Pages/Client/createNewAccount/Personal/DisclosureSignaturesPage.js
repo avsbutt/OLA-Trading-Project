@@ -111,7 +111,7 @@ export class DisclosureSignaturesPage{
   }
 
 
-  //---------------------------------------------------\\
+  //----####----FOR FILL SIGNATURE----####----\\
 
   FillSignature(){
     cy.xpath(DisclosureSignaturesLocators.DigitalSignature).click()

@@ -65,20 +65,20 @@ const getRandomIssueAndExpirationDates = () => {
 export const dataGeneratorUtils = () => {
     const dob = getRandomDateOfBirth();
     const idDates = getRandomIssueAndExpirationDates();
-    let cityName = faker.address.city().replace(/[^a-zA-Z ]/g, '');  // ## Generate city name with only alphabets
+    let cityName = faker.location.city().replace(/[^a-zA-Z ]/g, '');  // ## Generate city name with only alphabets
 
     return {
 
         //########--------PERSONAL INFORMATION--------########\\
 
-        fName: faker.name.firstName(),
-        fName1: faker.name.firstName(),
+        fName: faker.person.firstName(),
+        fName1: faker.person.firstName(),
 
-        mName: faker.name.middleName(),
-        mName1: faker.name.middleName(),
+        mName: faker.person.middleName(),
+        mName1: faker.person.middleName(),
 
-        lName: faker.name.lastName(),
-        lName1: faker.name.lastName(),
+        lName: faker.person.lastName(),
+        lName1: faker.person.lastName(),
 
         email: faker.internet.email(),
         email1: faker.internet.email(),
@@ -124,8 +124,8 @@ export const dataGeneratorUtils = () => {
 
         //########--------TRUSTED CONTACT--------########\\
 
-        trustedFirstName: faker.name.firstName(),
-        trustedLastName: faker.name.lastName(),
+        trustedFirstName: faker.person.firstName(),
+        trustedLastName: faker.person.lastName(),
         trustedTelephone: faker.string.numeric(16),
         trustedEmail: faker.internet.email(),
         trustedMailingAddress1: faker.location.streetAddress(),

@@ -34,7 +34,7 @@ beforeEach(() => {
 });
 
 
-describe('DDT - Client - Individual', () => {
+describe('DDT - Client - Individual - Data Driven Testing', () => {
   it('TC002_Verify that User can Create Personal Account With SubType Individual', () => {
     cy.fixture('CountryAndStates.json').then((countryStates) => {
       countryStates.forEach((location) => {
