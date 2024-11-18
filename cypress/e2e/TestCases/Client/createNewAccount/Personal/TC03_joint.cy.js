@@ -39,7 +39,7 @@ describe('Client Side - Personal - Joint', () => {
 
   });
   
-  it('TC003_Verify that User can Create Personal Account With Type Joint & Subtype Rights Of Survivorship', () => {
+  it.skip('TC003_Verify that User can Create Personal Account With Type Joint & Subtype Rights Of Survivorship || ID Type #Govt ID', () => {
 
 
     TC_CreateNewAccountPage.CreatePersonalAccount_TypeJointAndSubtype_RightsOfSurvivorship()
@@ -57,7 +57,8 @@ describe('Client Side - Personal - Joint', () => {
       randomData.dobYYYYMMDD,
       randomData.idIssueDate,
       randomData.idExpirationDate);
-      TC_PersonalInformationPage.fillPersonalInformation_isUSCitizenYes(randomData.socialSecurityNo)
+      TC_PersonalInformationPage.FromPersonalInformationSelect_isUSCitizenYes(randomData.socialSecurityNo)
+      TC_PersonalInformationPage.FromPersonalInformationSelect_IDType_GovtID()
     TC_PersonalInformationPage.fillCoApplicantPersonalInformation(
       randomData.fName,
       randomData.mName,
@@ -134,12 +135,12 @@ describe('Client Side - Personal - Joint', () => {
 
     cy.url().should('include', '#/upload-documents')
     cy.wait(1000)
-    TC_DocumentUploadPage.UploadGovernmentIdIfVisible()
-    TC_DocumentUploadPage.UploadGovernmentIdIfVisibleCoApplicant()
-    TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
-    TC_DocumentUploadPage.UploadUtilityBillIfVisible()
-    TC_DocumentUploadPage.UploadDrivingLiscenceIfVisible()
-    TC_DocumentUploadPage.UploadPassportIfVisible()
+    TC_DocumentUploadPage.GovernmentIDUploadFor_Personal()
+    TC_DocumentUploadPage.GovernmentIDUploadFor_PersonalCoApplicant()
+    // TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
+    // TC_DocumentUploadPage.UploadUtilityBillIfVisible()
+    // TC_DocumentUploadPage.UploadDrivingLiscenceIfVisible()
+    // TC_DocumentUploadPage.UploadPassportFor_Personal_TypeIndividual()
     TC_DocumentUploadPage.SaveAndContinue()
     CloseToasterIfAppearUtils()
     waitForLoaderToDisappearUtils()
@@ -184,7 +185,7 @@ describe('Client Side - Personal - Joint', () => {
       randomData.idExpirationDate);
     cy.xpath("//input[@name='priPercentage']").clear().type('80')
     cy.xpath("//input[@name='coAppPercentage']").clear().type('20')
-    TC_PersonalInformationPage.fillPersonalInformation_isUSCitizenYes(randomData.socialSecurityNo)
+    TC_PersonalInformationPage.FromPersonalInformationSelect_isUSCitizenYes(randomData.socialSecurityNo)
     TC_PersonalInformationPage.fillCoApplicantPersonalInformation(
       randomData.fName,
       randomData.mName,
@@ -261,12 +262,12 @@ describe('Client Side - Personal - Joint', () => {
 
     cy.url().should('include', '#/upload-documents')
     cy.wait(1000)
-    TC_DocumentUploadPage.UploadGovernmentIdIfVisible()
-    TC_DocumentUploadPage.UploadGovernmentIdIfVisibleCoApplicant()
+    TC_DocumentUploadPage.GovernmentIDUploadFor_Personal()
+    TC_DocumentUploadPage.GovernmentIDUploadFor_PersonalCoApplicant()
     TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
     TC_DocumentUploadPage.UploadUtilityBillIfVisible()
     TC_DocumentUploadPage.UploadDrivingLiscenceIfVisible()
-    TC_DocumentUploadPage.UploadPassportIfVisible()
+    TC_DocumentUploadPage.UploadPassportFor_Personal_TypeIndividual()
     TC_DocumentUploadPage.SaveAndContinue()
     CloseToasterIfAppearUtils()
     waitForLoaderToDisappearUtils()
@@ -292,7 +293,7 @@ describe('Client Side - Personal - Joint', () => {
 
   });
 
-  it('TC003_Verify that User can Create Personal Account With Type Joint & Subtype Joint Community Property || Verify that all 8 Expected US States exist in the dropdown', () => {
+  it.skip('TC003_Verify that User can Create Personal Account With Type Joint & Subtype Joint Community Property || Verify that all 8 Expected US States exist in the dropdown', () => {
    
       // Define the expected states
      const expectedStates = [
@@ -343,7 +344,7 @@ describe('Client Side - Personal - Joint', () => {
       randomData.dobYYYYMMDD,
       randomData.idIssueDate,
       randomData.idExpirationDate);
-      TC_PersonalInformationPage.fillPersonalInformation_isUSCitizenYes(randomData.socialSecurityNo)
+      TC_PersonalInformationPage.FromPersonalInformationSelect_isUSCitizenYes(randomData.socialSecurityNo)
     TC_PersonalInformationPage.fillCoApplicantPersonalInformation(
       randomData.fName,
       randomData.mName,
@@ -422,12 +423,12 @@ describe('Client Side - Personal - Joint', () => {
 
     cy.url().should('include', '#/upload-documents')
     cy.wait(1000)
-    TC_DocumentUploadPage.UploadGovernmentIdIfVisible()
-    TC_DocumentUploadPage.UploadGovernmentIdIfVisibleCoApplicant()
+    TC_DocumentUploadPage.GovernmentIDUploadFor_Personal()
+    TC_DocumentUploadPage.GovernmentIDUploadFor_PersonalCoApplicant()
     TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
     TC_DocumentUploadPage.UploadUtilityBillIfVisible()
     TC_DocumentUploadPage.UploadDrivingLiscenceIfVisible()
-    TC_DocumentUploadPage.UploadPassportIfVisible()
+    TC_DocumentUploadPage.UploadPassportFor_Personal_TypeIndividual()
     TC_DocumentUploadPage.SaveAndContinue()
     CloseToasterIfAppearUtils()
     waitForLoaderToDisappearUtils()

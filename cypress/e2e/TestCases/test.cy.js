@@ -60,7 +60,7 @@ describe('Test File', () => {
         //    doc.UploadUtilityBillIfVisible()
         //    doc.UploadAuthorizationDocumentIfVisible()
         //    doc.UploadDrivingLiscenceIfVisible()
-        //    doc.UploadGovernmentIdIfVisible()
+        //    doc.GovernmentIDUploadFor_Personal_TypeIndividual()
 
 
 

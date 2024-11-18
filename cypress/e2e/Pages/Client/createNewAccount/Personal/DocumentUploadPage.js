@@ -7,25 +7,26 @@ export class DocumentUploadPage{
 
 
   UploadDrivingLiscenceIfVisible(){
-    // cy.xpath(DocumentUploadLocators.UploadDrivingLicenses).attachFile('Doc.pdf')
-    cy.document().then((doc) => {
-      const element = doc.querySelector('input[name="filePrimaryDL"]');
-      if (element) {
-       cy.wrap(element).focus().attachFile('Doc.pdf', { subjectType: 'input' });    // Element is present, upload the file
-      } 
-    });
+    cy.xpath(DocumentUploadLocators.UploadDrivingLicenses).focus().attachFile('Doc.pdf')
+    // cy.document().then((doc) => {
+    //   const element = doc.querySelector('input[name="filePrimaryDL"]');
+    //   if (element) {
+    //    cy.wrap(element).focus().attachFile('Doc.pdf', { subjectType: 'input' });    // Element is present, upload the file
+    //   } 
+    // });
   }
 
 
 
-  UploadPassportIfVisible(){
-    // cy.xpath(DocumentUploadLocators.UploadPassport).attachFile('image.jpeg' , { subjectType: 'input' });
-    cy.document().then((doc) => {
-     const element = doc.querySelector('input[name="filePrimaryPassport"]');       
-     if (element) {
-        cy.wrap(element).focus().attachFile('image.jpeg')
-      } 
-    });
+  UploadPassportFor_Personal_TypeIndividual(){
+     cy.xpath(DocumentUploadLocators.UploadPassport).focus().attachFile('Doc.pdf' , { subjectType: 'input' });
+    // cy.document().then((doc) => {
+    //  const element = doc.querySelector('input[name="filePrimaryPassport"]');       
+    //  if (element) {
+    //     cy.wrap(element).focus().attachFile('Doc.pdf')
+    //   } 
+
+    // });
   }
 
 
@@ -42,25 +43,23 @@ export class DocumentUploadPage{
 
 
   
-  UploadGovernmentIdIfVisible(){
-    // cy.xpath(DocumentUploadLocators.UploadGovernmentId).attachFile('image.jpeg')
+  GovernmentIDUploadFor_Personal(){
+     cy.xpath(DocumentUploadLocators.UploadGovernmentId).focus().attachFile('Doc.pdf')
     // cy.xpath(DocumentUploadLocators.UploadGovernmentId).then(input => {
     //   cy.wrap(input)
     //       .focus() 
     //       .selectFile('cypress/fixtures/Doc.pdf', { action: 'select' })
     //       .trigger('change');
 
-   cy.document().then((doc) => {
-     const element = doc.querySelector('input[name="fileGovIssuedIdLicense"]');
-     if (element) {
-       cy.wrap(element).focus().attachFile('Doc.pdf', { subjectType: 'input' });
-      }
-    })
+  //  cy.document().then((doc) => {
+  //    const element = doc.querySelector('input[name="fileGovIssuedIdLicense"]');
+  //    if (element) {
+  //      cy.wrap(element).focus().attachFile('Doc.pdf', { subjectType: 'input' });
+  //     }
+  //   })
   }
 
-
-
-  UploadGovernmentIdIfVisibleCoApplicant(){
+  GovernmentIDUploadFor_PersonalCoApplicant(){
     // cy.xpath(CoApplicantDocumentUploadLocators.UploadGovernmentId).attachFile('image.jpeg')
 
    cy.document().then((doc) => {
@@ -95,30 +94,27 @@ export class DocumentUploadPage{
     });
   }
 
-
-
-  UploadW8Ben_ForForeignAccount(){
-    // cy.xpath(DocumentUploadLocators.UploadW8Ben).attachFile('Doc.pdf')
-    cy.document().then((doc) => {
-      const element = doc.querySelector('input[name="filePrimaryW8BENIndividuals"]');
-      if (element) {
-        cy.wrap(element).focus().attachFile('Doc.pdf', { subjectType: 'input' });
-      }   
-    });
+  UploadW8BenForForeign_Personal_TypeIndividual(){
+    cy.xpath(DocumentUploadLocators.UploadW8Ben).focus().attachFile('Doc.pdf')
+    // cy.document().then((doc) => {
+    //   const element = doc.querySelector('input[name="filePrimaryW8BENIndividuals"]');
+    //   if (element) {
+    //     cy.wrap(element).focus().attachFile('Doc.pdf', { subjectType: 'input' });
+    //   }   
+    // });
   }
 
 
 
-  UploadForeignQuestionFor_ForeignAccount(){
-    // cy.xpath(DocumentUploadLocators.UploadForeignQuestions).attachFile('Doc.pdf')
-    cy.document().then((doc) => {
-      const element = doc.querySelector('input[name="filePrimaryForeignQuestions"]');
-      if (element) {
-        cy.wrap(element).focus().attachFile('Doc.pdf', { subjectType: 'input' });
-      }   
-    });
+  UploadForeignQuestionnaireFor_Foreign_Personal_TypeIndividual(){
+    cy.xpath(DocumentUploadLocators.UploadForeignQuestions).attachFile('Doc.pdf')
+    // cy.document().then((doc) => {
+    //   const element = doc.querySelector('input[name="filePrimaryForeignQuestions"]');
+    //   if (element) {
+    //     cy.wrap(element).focus().attachFile('Doc.pdf', { subjectType: 'input' });
+    //   }   
+    // });
   }
-
   DocumentsShouldBeVisibleFor_ForeignAccount_Personal_TypeIndividual(){
     cy.xpath("//span[normalize-space()='Foreign Questionnaire']").should('be.visible')
     cy.xpath("//span[normalize-space()='W-8BEN (Individuals)']").should('be.visible')

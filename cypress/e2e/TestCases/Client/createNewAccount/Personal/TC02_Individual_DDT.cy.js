@@ -55,7 +55,7 @@ describe('DDT - Client - Individual - Data Driven Testing', () => {
           randomData.dobYYYYMMDD,
           randomData.idIssueDate,
           randomData.idExpirationDate);
-        TC_PersonalInformationPage.fillPersonalInformation_isUSCitizenYes(randomData.socialSecurityNo)
+        TC_PersonalInformationPage.FromPersonalInformationSelect_isUSCitizenYes(randomData.socialSecurityNo)
         TC_PersonalInformationPage.fillPhysicalAddress(
           randomData.address,
           randomData.city,
@@ -119,11 +119,11 @@ describe('DDT - Client - Individual - Data Driven Testing', () => {
 
               
         cy.url().should('include', '#/upload-documents')
-        TC_DocumentUploadPage.UploadGovernmentIdIfVisible()
+        TC_DocumentUploadPage.GovernmentIDUploadFor_Personal()
         TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
         TC_DocumentUploadPage.UploadUtilityBillIfVisible()
         TC_DocumentUploadPage.UploadDrivingLiscenceIfVisible()
-        TC_DocumentUploadPage.UploadPassportIfVisible()
+        TC_DocumentUploadPage.UploadPassportFor_Personal_TypeIndividual()
         TC_DocumentUploadPage.SaveAndContinue()
         CloseToasterIfAppearUtils();
         waitForLoaderToDisappearUtils()

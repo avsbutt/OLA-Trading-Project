@@ -22,30 +22,43 @@ export class PersonalInformationPage{
 
         // cy.xpath(PersonalInformationLocators.isUSCitizenYes).click() //#####
         // cy.xpath(PersonalInformationLocators.SocialSecurityNo).type(socialSecurityNo)  //#####
-        //cy.wait(1000)
+        // cy.wait(1000)
         // cy.xpath(PersonalInformationLocators.IdType).should('be.visible').select('4515')
     }
+    FromPersonalInformationSelect_IDType_GovtID(){
+        cy.xpath(PersonalInformationLocators.IdType).should('be.visible').select('Other Govt ID') 
+    }
 
-    fillPersonalInformation_isUSCitizenYes(socialSecurityNo){
+    FromPersonalInformationSelect_IDType_DriverLicense(){
+        cy.xpath(PersonalInformationLocators.IdType).focus().should('be.visible').select('Driver License', {force:true}) 
+        cy.xpath(PersonalInformationLocators.IdIssuanceState).select('Alaska')
+    }
+
+    FromPersonalInformationSelect_IDType_Passport(){
+        cy.xpath(PersonalInformationLocators.IdType).should('be.visible').select('Passport') 
+    }
+
+
+    FromPersonalInformationSelect_isUSCitizenYes(socialSecurityNo){
         cy.xpath(PersonalInformationLocators.isUSCitizenYes).click()
         cy.xpath(PersonalInformationLocators.SocialSecurityNo).type(socialSecurityNo)
-        cy.wait(1000)
-        cy.xpath(PersonalInformationLocators.IdType).should('be.visible').select('4515') 
+        // cy.wait(1000)
+        // cy.xpath(PersonalInformationLocators.IdType).should('be.visible').select('Other Govt ID') 
     }
-    fillPersonalInformation_isUScitizenNoAndUSpermanentYes(){
+    FromPersonalInformationSelect_isUScitizenNoAndUSpermanentYes(){
         cy.xpath(PersonalInformationLocators.isUsCitizenNO).click()
         cy.xpath(PersonalInformationLocators.isUsPermanentYes).click()
         cy.xpath(PersonalInformationLocators.CountryOfCitizenship).select('Afghanistan') 
         cy.wait(1000)
         cy.xpath(PersonalInformationLocators.IdType).should('be.visible').select('4515')
     }
-    fillPersonalInformation_isUScitizenNoAndisForeignYes(){
+    FromPersonalInformationSelect_isUScitizenNoAndisForeignYes(){
         cy.xpath(PersonalInformationLocators.isUsCitizenNO).click()
         cy.xpath(PersonalInformationLocators.isUsPermanentNo).click()
         cy.xpath(PersonalInformationLocators.isForeignAccountYes).click() 
         cy.xpath(PersonalInformationLocators.CountryOfCitizenship).select('Afghanistan') 
-        cy.wait(1000)
-        cy.xpath(PersonalInformationLocators.IdType).should('be.visible').select('4515')
+        // cy.wait(1000)
+        // cy.xpath(PersonalInformationLocators.IdType).should('be.visible').select('4515')
 
     }
 
