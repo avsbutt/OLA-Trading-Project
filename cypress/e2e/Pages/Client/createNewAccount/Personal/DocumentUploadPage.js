@@ -119,27 +119,49 @@ export class DocumentUploadPage{
     });
   }
 
-  DocumentsShouldBeVisibleFor_ForeignAccount(){
+  DocumentsShouldBeVisibleFor_ForeignAccount_Personal_TypeIndividual(){
     cy.xpath("//span[normalize-space()='Foreign Questionnaire']").should('be.visible')
     cy.xpath("//span[normalize-space()='W-8BEN (Individuals)']").should('be.visible')
 
   }
 
   //----####----FOR ENTITY APPLICATION ONLY----####----\\
-  DocumentsShouldBeVisibleFor_Entity_TypeCorporate(){
+  CorporateResolutionDocumentShouldBeVisibleFor_Entity_TypeCorporate(){
     cy.xpath("//span[normalize-space()='Corporate Resolution']").should('be.visible')
+  } 
+  W8BenDocumentShouldBeVisibleFor_Entity_TypeCorporate(){
+    cy.xpath("//span[normalize-space()='W-8BEN-E (Entities)']").should('be.visible')
   } 
 
   CorporateDocumentUploadFor_Entity_TypeCorporate(){
     cy.xpath("//input[@name='fileIncorporateArticles']").focus().attachFile('Doc.pdf')
   }
 
+  DriverLicenseUploadFor_Entity_TypeCorporate(){
+    cy.xpath("//input[@name='fileDrivingLicenseSigner1']").focus().attachFile('Doc.pdf')
+  }
+
   GovernmentIDUploadFor_Entity_TypeCorporate(){
     cy.xpath("//input[@name='fileGovtIssueIdSigner1']").focus().attachFile('Doc.pdf')
   }
   PassportIDUploadFor_Entity_TypeCorporate(){
+    cy.xpath("//input[@name='filePassportSigner1']").focus().attachFile('Doc.pdf')
+  }
+  PassportIDUploadForBeneficialOwners_Entity_TypeCorporate(){
     cy.xpath("//input[@name='fileGovtIssueIdMember1']").focus().attachFile('Doc.pdf')
   }
+
+  W8BenDocumentUploadFor_Foreign_Entity_TypeCorporate(){
+    cy.xpath("//input[@name='fileW8BENEntities']").focus().attachFile('Doc.pdf')
+  }
+
+  ForeignQuestionnaireUploadFor_Foreign_Entity_TypeCorporate(){
+    cy.xpath("//input[@name='fileForeignQuestions']").focus().attachFile('Doc.pdf')
+  }
+
+  
+
+
   Save(){
     cy.xpath(FormUsageButtons.Save).click()
   }

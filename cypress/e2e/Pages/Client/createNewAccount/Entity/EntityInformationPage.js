@@ -11,18 +11,18 @@ export class EntityInformationPage{
         cy.xpath(EntityInformationLocators.OriginCountry).select('United States')
         cy.xpath(EntityInformationLocators.OriginState).select('Alaska')
         cy.xpath(EntityInformationLocators.EntityResolutionDate).type(dobYYYYMMDD)
-        cy.xpath(EntityInformationLocators.BusinessAddress1).type(address)
-        cy.xpath(EntityInformationLocators.BusinessAddress2).type(address1)
+        cy.xpath(EntityInformationLocators.BusinessAddress1).type(address, { force: true })
+        cy.xpath(EntityInformationLocators.BusinessAddress2).type(address1, { force: true })
         cy.xpath(EntityInformationLocators.Country).select('United States')
         cy.xpath(EntityInformationLocators.State).select('Alaska')
-        cy.xpath(EntityInformationLocators.City).type(city)
+        cy.xpath(EntityInformationLocators.City).type(city, { force: true })
         cy.xpath(EntityInformationLocators.PostalCode).type(postalCode)
     }
 
 
     fillMailingPreference(address1, address2, city, postalCode, randomNumbers, randomNumbers2, dobYYYYMMDD){
-        cy.xpath(MailingPreferenceLocators.MailingAddress1).type(address1)
-        cy.xpath(MailingPreferenceLocators.MailingAddress2).type(address2)
+        cy.xpath(MailingPreferenceLocators.MailingAddress1).type(address1, { force: true })
+        cy.xpath(MailingPreferenceLocators.MailingAddress2).type(address2, { force: true })
         cy.xpath(MailingPreferenceLocators.Country).select('United States')
         cy.xpath(MailingPreferenceLocators.State).select('Alabama')
         cy.xpath(MailingPreferenceLocators.City).type(city)
@@ -34,25 +34,38 @@ export class EntityInformationPage{
 
 
     fillAuthorizedSigner(fName1, mName1, lName1, dobMMDDYYYY1, email1, randomNumbers3, randomNumbers4, idNumber, idIssueDate, IdExpirationDate){
-        cy.xpath(AuthorizedSignerLocators.Firstname).type(fName1)
-        cy.xpath(AuthorizedSignerLocators.MiddleName).type(mName1)
-        cy.xpath(AuthorizedSignerLocators.LastName).type(lName1)
+        cy.xpath(AuthorizedSignerLocators.Firstname).type(fName1, { force: true })
+        cy.xpath(AuthorizedSignerLocators.MiddleName).type(mName1, { force: true })
+        cy.xpath(AuthorizedSignerLocators.LastName).type(lName1, { force: true })
         cy.xpath(AuthorizedSignerLocators.DateOfBirth).type(dobMMDDYYYY1)
-        cy.xpath(AuthorizedSignerLocators.Email).type(email1)
+        cy.xpath(AuthorizedSignerLocators.Email).type(email1, { force: true })
         cy.xpath(AuthorizedSignerLocators.PhoneNumber).type(randomNumbers3, {force: true })
         cy.xpath(AuthorizedSignerLocators.ITINForeignTaxID).type(randomNumbers4, {force: true })   
-        cy.xpath(AuthorizedSignerLocators.IdType).select('Other Govt ID')
+       // cy.xpath(AuthorizedSignerLocators.IdType).select('Other Govt ID')
         cy.xpath(AuthorizedSignerLocators.IdNumber).type(idNumber, {force: true })
         cy.xpath(AuthorizedSignerLocators.IdIssueDate).type(idIssueDate)
         cy.xpath(AuthorizedSignerLocators.IdExpirationDate).type(IdExpirationDate)
     }
 
-    fillAuthorizedSigner_isUSCitizenYes(randomNumbers1){
+    FromAuthorizedSignerSelect_IDType_GovtID(){
+        cy.xpath(AuthorizedSignerLocators.IdType).select('Other Govt ID')
+    }
+
+    FromAuthorizedSignerSelect_IDType_Passport(){
+        cy.xpath(AuthorizedSignerLocators.IdType).select('Passport')
+    }
+
+    FromAuthorizedSignerSelect_IDType_DriverLicense(){
+        cy.xpath(AuthorizedSignerLocators.IdType).select('Driver License')
+        cy.xpath(AuthorizedSignerLocators.IdIssuanceState).select('Alaska')
+    }
+
+    FromAuthorizedSignerSelect_isUSCitizenYes(randomNumbers1){
         cy.xpath(AuthorizedSignerLocators.isUSCitizenYes).click()
         cy.xpath(AuthorizedSignerLocators.SocialSecurityNo).type(randomNumbers1, {force: true })
     }
 
-    fillAuthorizedSigner_isUScitizenNoAndisForeignYes(){
+    FromlAuthorizedSignerSelect_isUScitizenNoAndisForeignYes(){
         cy.xpath(AuthorizedSignerLocators.isUSCitizenNo).click()
         cy.xpath(AuthorizedSignerLocators.isUsPermanentNo).click()
         cy.xpath(AuthorizedSignerLocators.isForeignAccountYes).click()

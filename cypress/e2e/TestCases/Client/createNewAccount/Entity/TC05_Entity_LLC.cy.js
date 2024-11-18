@@ -52,7 +52,7 @@ describe ('Client Side - Entity - LLC', ()=>{
         TC_EntityInformationPage.fillEntityInformation(randomData.fName, randomData.socialSecurityNo, randomData.primaryTelephone, randomData.city, randomData.address, randomData.address1, randomData.dobYYYYMMDD, randomData.postalCode)
         TC_EntityInformationPage.fillMailingPreference(randomData.address1, randomData.address2, randomData.city, randomData.postalCode, randomData.randomNumbers, randomData.randomNumbers2, randomData.dobYYYYMMDD)
         TC_EntityInformationPage.fillAuthorizedSigner(randomData.fName1, randomData.mName1, randomData.lName1, randomData.dobMMDDYYYY1, randomData.email1, randomData.randomNumbers3, randomData.randomNumbers4, randomData.idNumber, randomData.idIssueDate, randomData.idExpirationDate)
-        TC_EntityInformationPage.fillAuthorizedSigner_isUSCitizenYes(randomData.randomNumbers1)
+        TC_EntityInformationPage.FromAuthorizedSignerSelect_isUSCitizenYes(randomData.randomNumbers1)
         TC_EntityInformationPage.fillIndustrialClassification()
         TC_EntityInformationPage.SaveAndContinue()
         waitForLoaderToDisappearUtils()
@@ -110,10 +110,10 @@ describe ('Client Side - Entity - LLC', ()=>{
 
 
         cy.url().should('include', '#/upload-entity-documents')
-        TC_DocumentUploadPage.DocumentsShouldBeVisibleFor_Entity_TypeCorporate()
+        TC_DocumentUploadPage.CorporateResolutionDocumentShouldBeVisibleFor_Entity_TypeCorporate()
         TC_DocumentUploadPage.CorporateDocumentUploadFor_Entity_TypeCorporate()
         TC_DocumentUploadPage.GovernmentIDUploadFor_Entity_TypeCorporate()
-        TC_DocumentUploadPage.PassportIDUploadFor_Entity_TypeCorporate()
+        TC_DocumentUploadPage.PassportIDUploadForBeneficialOwners_Entity_TypeCorporate()
         //TC_DocumentUploadPage.Save()
         TC_DocumentUploadPage.SaveAndContinue()
         CloseToasterIfAppearUtils();

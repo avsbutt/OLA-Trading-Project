@@ -38,7 +38,7 @@ describe('Client Side - Personal - Individual', () => {
   });
 
 
-  it('TC001_Verify that US citizen User can Create New Account', () => {
+  it('TC001_Verify that US citizen User can Create New Personal Account', () => {
 
     TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
     CloseToasterIfAppearUtils();
@@ -144,7 +144,7 @@ describe('Client Side - Personal - Individual', () => {
 
   })
 
-  it.skip('TC002_Verify that Foreign User can Create New Account' , ()=>{
+  it.skip('TC002_Verify that Foreign User can Create New Personal Account' , ()=>{
 
     TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
     CloseToasterIfAppearUtils();
@@ -222,7 +222,7 @@ describe('Client Side - Personal - Individual', () => {
 
 
     cy.url().should('include', '#/upload-documents')
-    TC_DocumentUploadPage.DocumentsShouldBeVisibleFor_ForeignAccount()
+    TC_DocumentUploadPage.DocumentsShouldBeVisibleFor_ForeignAccount_Personal_TypeIndividual()
     TC_DocumentUploadPage.UploadGovernmentIdIfVisible()
     TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
     TC_DocumentUploadPage.UploadUtilityBillIfVisible()
@@ -329,7 +329,7 @@ describe('Client Side - Personal - Individual', () => {
 
 
     cy.url().should('include', '#/upload-documents')
-    TC_DocumentUploadPage.DocumentsShouldBeVisibleFor_ForeignAccount()
+    TC_DocumentUploadPage.DocumentsShouldBeVisibleFor_ForeignAccount_Personal_TypeIndividual()
     TC_DocumentUploadPage.UploadGovernmentIdIfVisible()
     TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
     TC_DocumentUploadPage.UploadUtilityBillIfVisible()
@@ -441,7 +441,7 @@ describe('Client Side - Personal - Individual', () => {
 
 
     cy.url().should('include', '#/upload-documents')
-    TC_DocumentUploadPage.DocumentsShouldBeVisibleFor_ForeignAccount()
+    TC_DocumentUploadPage.DocumentsShouldBeVisibleFor_ForeignAccount_Personal_TypeIndividual()
     TC_DocumentUploadPage.UploadGovernmentIdIfVisible()
     TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
     TC_DocumentUploadPage.UploadUtilityBillIfVisible()

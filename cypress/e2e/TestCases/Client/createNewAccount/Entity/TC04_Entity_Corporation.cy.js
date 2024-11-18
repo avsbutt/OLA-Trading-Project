@@ -36,7 +36,7 @@ describe ('Client Side - Entity - Corporation', ()=>{
     CloseToasterIfAppearUtils() 
   });
 
-  it('Verify that US Citizen User can Create an Entity Account || Due Diligence Questionnaire Should be filled', ()=>{
+  it('Verify that US Citizen User can Create an Entity Account || Due Diligence Questionnaire Should be filled || ID Type #Govt ID', ()=>{
 
 
 
@@ -51,7 +51,8 @@ describe ('Client Side - Entity - Corporation', ()=>{
     TC_EntityInformationPage.fillEntityInformation(randomData.fName, randomData.socialSecurityNo, randomData.primaryTelephone, randomData.city, randomData.address, randomData.address1, randomData.dobYYYYMMDD, randomData.postalCode)
     TC_EntityInformationPage.fillMailingPreference(randomData.address1, randomData.address2, randomData.city, randomData.postalCode, randomData.randomNumbers, randomData.randomNumbers2, randomData.dobYYYYMMDD)
     TC_EntityInformationPage.fillAuthorizedSigner(randomData.fName1, randomData.mName1, randomData.lName1, randomData.dobMMDDYYYY1, randomData.email1, randomData.randomNumbers3, randomData.randomNumbers4, randomData.idNumber, randomData.idIssueDate, randomData.idExpirationDate)
-    TC_EntityInformationPage.fillAuthorizedSigner_isUSCitizenYes(randomData.randomNumbers1)
+    TC_EntityInformationPage.FromAuthorizedSignerSelect_isUSCitizenYes(randomData.randomNumbers1)
+    TC_EntityInformationPage.FromAuthorizedSignerSelect_IDType_GovtID()
     TC_EntityInformationPage.fillIndustrialClassification()
     TC_EntityInformationPage.SaveAndContinue()
     waitForLoaderToDisappearUtils()
@@ -109,10 +110,10 @@ describe ('Client Side - Entity - Corporation', ()=>{
 
 
     cy.url().should('include', '#/upload-entity-documents')
-    TC_DocumentUploadPage.DocumentsShouldBeVisibleFor_Entity_TypeCorporate()
+    TC_DocumentUploadPage.CorporateResolutionDocumentShouldBeVisibleFor_Entity_TypeCorporate()
     TC_DocumentUploadPage.CorporateDocumentUploadFor_Entity_TypeCorporate()
     TC_DocumentUploadPage.GovernmentIDUploadFor_Entity_TypeCorporate()
-    TC_DocumentUploadPage.PassportIDUploadFor_Entity_TypeCorporate()
+    TC_DocumentUploadPage.PassportIDUploadForBeneficialOwners_Entity_TypeCorporate()
      //TC_DocumentUploadPage.Save()
     TC_DocumentUploadPage.SaveAndContinue()
     CloseToasterIfAppearUtils();
@@ -137,10 +138,7 @@ describe ('Client Side - Entity - Corporation', ()=>{
     
   })
 
-
-
-
-  it('Verify that US Citizen User can Create an Entity Account || Due Diligence Questionnaire Should not be filled', ()=>{
+  it('Verify that US Citizen User can Create an Entity Account || Due Diligence Questionnaire Should not be filled || ID Type #Driver License', ()=>{
 
     // cy.wait(5000)
     //  cy.visit("#/upload-entity-documents")
@@ -153,7 +151,8 @@ describe ('Client Side - Entity - Corporation', ()=>{
     TC_EntityInformationPage.fillEntityInformation(randomData.fName, randomData.socialSecurityNo, randomData.primaryTelephone, randomData.city, randomData.address, randomData.address1, randomData.dobYYYYMMDD, randomData.postalCode)
     TC_EntityInformationPage.fillMailingPreference(randomData.address1, randomData.address2, randomData.city, randomData.postalCode, randomData.randomNumbers, randomData.randomNumbers2, randomData.dobYYYYMMDD)
     TC_EntityInformationPage.fillAuthorizedSigner(randomData.fName1, randomData.mName1, randomData.lName1, randomData.dobMMDDYYYY1, randomData.email1, randomData.randomNumbers3, randomData.randomNumbers4, randomData.idNumber, randomData.idIssueDate, randomData.idExpirationDate)
-    TC_EntityInformationPage.fillAuthorizedSigner_isUSCitizenYes(randomData.randomNumbers1)
+    TC_EntityInformationPage.FromAuthorizedSignerSelect_isUSCitizenYes(randomData.randomNumbers1)
+    TC_EntityInformationPage.FromAuthorizedSignerSelect_IDType_DriverLicense()
     TC_EntityInformationPage.fillIndustrialClassification()
     TC_EntityInformationPage.SaveAndContinue()
     waitForLoaderToDisappearUtils()
@@ -206,13 +205,112 @@ describe ('Client Side - Entity - Corporation', ()=>{
 
 
     cy.url().should('include', '#/upload-entity-documents')
-    TC_DocumentUploadPage.DocumentsShouldBeVisibleFor_Entity_TypeCorporate()
+    TC_DocumentUploadPage.CorporateResolutionDocumentShouldBeVisibleFor_Entity_TypeCorporate()
     TC_DocumentUploadPage.CorporateDocumentUploadFor_Entity_TypeCorporate()
-    TC_DocumentUploadPage.GovernmentIDUploadFor_Entity_TypeCorporate()
-    TC_DocumentUploadPage.PassportIDUploadFor_Entity_TypeCorporate()
-    //TC_DocumentUploadPage.Save()
+    TC_DocumentUploadPage.DriverLicenseUploadFor_Entity_TypeCorporate()    //For ID Type Driver License only
+    TC_DocumentUploadPage.PassportIDUploadForBeneficialOwners_Entity_TypeCorporate()
     TC_DocumentUploadPage.SaveAndContinue()
     CloseToasterIfAppearUtils();
+    waitForLoaderToDisappearUtils()
+
+
+    cy.url().should('include', '#/disclosures-signatures')
+    TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
+    cy.wait(1000)
+    TC_DisclosureSignaturesPage.AccountLoanAgreement()
+    cy.wait(1000)
+    TC_DisclosureSignaturesPage.AccountAgreement()
+    cy.wait(1000)
+    TC_DisclosureSignaturesPage.FillSignature()
+    TC_DisclosureSignaturesPage.ClickSaveAndReview()
+    CloseToasterIfAppearUtils();
+    // waitForLoaderToDisappearUtils()
+
+    cy.url().should('include', '#/review')
+    TC_ReviewInfomationPage.ClickOnSubmitBtn()
+    cy.url().should('include', '#/dashboard')
+
+  })
+
+  it('Verify that Foreign User can Create an Entity Account || ID Type #Passport', ()=>{
+
+    // cy.wait(5000)
+    //  cy.visit("#/upload-entity-documents")
+    
+      const randomData= dataGeneratorUtils();
+    TC_CreateNewAccountPage.CreateEntityAccount_TypeCorporation()
+    CloseToasterIfAppearUtils();
+
+
+    TC_EntityInformationPage.fillEntityInformation(randomData.fName, randomData.socialSecurityNo, randomData.primaryTelephone, randomData.city, randomData.address, randomData.address1, randomData.dobYYYYMMDD, randomData.postalCode)
+    TC_EntityInformationPage.fillMailingPreference(randomData.address1, randomData.address2, randomData.city, randomData.postalCode, randomData.randomNumbers, randomData.randomNumbers2, randomData.dobYYYYMMDD)
+    TC_EntityInformationPage.fillAuthorizedSigner(randomData.fName1, randomData.mName1, randomData.lName1, randomData.dobMMDDYYYY1, randomData.email1, randomData.randomNumbers3, randomData.randomNumbers4, randomData.idNumber, randomData.idIssueDate, randomData.idExpirationDate)
+    TC_EntityInformationPage.FromlAuthorizedSignerSelect_isUScitizenNoAndisForeignYes()
+    TC_EntityInformationPage.FromAuthorizedSignerSelect_IDType_Passport()
+    TC_EntityInformationPage.fillIndustrialClassification()
+    TC_EntityInformationPage.SaveAndContinue()
+    waitForLoaderToDisappearUtils()
+
+
+
+    cy.url().should('include', '#/investor-entity-profile')
+
+
+    TC_InvestmentProfilePage.fillInvestmentProfileInfo()
+    TC_InvestmentProfilePage.fillFinancialSuitability()
+    TC_InvestmentProfilePage.fillPriorInvestmentExperience()
+    TC_InvestmentProfilePage.SaveAndContinue()
+    waitForLoaderToDisappearUtils()
+
+
+    cy.url().should('include', '#/regulatory-entity-items')
+    cy.wait(1000)
+    TC_RegulatoryItemsPage.fillOption1()
+    cy.wait(1000)
+    TC_RegulatoryItemsPage.fillOption2_Entity()
+    TC_RegulatoryItemsPage.fillOption3_Entity(randomData.randomWords)
+    TC_RegulatoryItemsPage.fillOption4()
+    TC_RegulatoryItemsPage.fillOption5(randomData.randomWords)
+    TC_RegulatoryItemsPage.fillOption6()
+    TC_RegulatoryItemsPage.fillOption7(randomData.randomWords)
+    TC_RegulatoryItemsPage.fillOption8()
+    TC_RegulatoryItemsPage.fillOption9()
+    TC_RegulatoryItemsPage.fillOption10()
+    TC_RegulatoryItemsPage.fillOption11_Entity()
+    TC_RegulatoryItemsPage.fillOption12_Entity()
+    TC_RegulatoryItemsPage.fillDirectCommunication()
+    TC_RegulatoryItemsPage.fillW8Ben_ForForeignAccounts(randomData.randomWords, randomData.city)  //W8 Ben For Foreign Accounts Only 
+    TC_RegulatoryItemsPage.SaveAndContinue()
+    waitForLoaderToDisappearUtils()
+
+      
+    cy.url().should('include', '#/account-entity-features')
+    TC_AccountFeaturesPage.SaveAndContinue()
+    TC_AccountFeaturesPage.ForEntityAccount_isQuestionnaireYes()  //Fill Entity Account Questionarie and Due Diligence Page will not appear '
+    TC_AccountFeaturesPage.SaveAndContinue()
+    CloseToasterIfAppearUtils();
+    waitForLoaderToDisappearUtils()
+
+
+    cy.url().should('include', '#/owners-officials')
+    TC_OwnersAndOfficialsPage.AddEntityOfficers(randomData.fName, randomData.lName, randomData.dobYYYYMMDD, randomData.randomNumbers, randomData.address, randomData.city, randomData.randomNumbers1, randomData.randomNumbers2, randomData.randomWords)
+    TC_OwnersAndOfficialsPage.AddBeneficialOwners(randomData.fName1, randomData.lName1, randomData.dobYYYYMMDD1, randomData.randomNumbers3, randomData.address1, randomData.city1, randomData.randomNumbers4, randomData.randomNumbers5)
+    TC_OwnersAndOfficialsPage.SaveAndContinue()
+    waitForLoaderToDisappearUtils()
+
+
+    cy.url().should('include', '#/upload-entity-documents')
+    TC_DocumentUploadPage.CorporateResolutionDocumentShouldBeVisibleFor_Entity_TypeCorporate()
+    TC_DocumentUploadPage.W8BenDocumentShouldBeVisibleFor_Entity_TypeCorporate()
+    TC_DocumentUploadPage.CorporateDocumentUploadFor_Entity_TypeCorporate()
+    //TC_DocumentUploadPage.GovernmentIDUploadFor_Entity_TypeCorporate()
+    TC_DocumentUploadPage.PassportIDUploadFor_Entity_TypeCorporate()
+    TC_DocumentUploadPage.PassportIDUploadForBeneficialOwners_Entity_TypeCorporate()
+    TC_DocumentUploadPage.W8BenDocumentUploadFor_Foreign_Entity_TypeCorporate()
+    TC_DocumentUploadPage.ForeignQuestionnaireUploadFor_Foreign_Entity_TypeCorporate()
+    //TC_DocumentUploadPage.Save()
+    TC_DocumentUploadPage.SaveAndContinue()
+    CloseToasterIfAppearUtils()
     waitForLoaderToDisappearUtils()
 
 
