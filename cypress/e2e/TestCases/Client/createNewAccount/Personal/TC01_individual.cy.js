@@ -25,7 +25,7 @@ const TC_CreateNewAccountPage = new CreateNewAccountPage
 
 
 
-describe('Client Side - Personal - Individual', () => {
+describe('Client - Personal - Individual', () => {
 
 
   beforeEach(() => {
@@ -37,6 +37,11 @@ describe('Client Side - Personal - Individual', () => {
 
   });
 
+  afterEach(() => {
+    cy.clearCookies();
+    cy.clearLocalStorage();
+  });
+  
 
   it('Verify that US Citizen User can Create New Personal Account || ID Type #Driver License', () => {
 

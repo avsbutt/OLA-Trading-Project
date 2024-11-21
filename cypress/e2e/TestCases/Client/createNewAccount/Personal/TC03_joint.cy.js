@@ -27,7 +27,7 @@ const TC_ReviewInfomationPage = new ReviewInfomationPage
 
 
 
-describe('Client Side - Personal - Joint', () => {
+describe('Client - Personal - Joint', () => {
 
 
   beforeEach(() => {
@@ -38,7 +38,7 @@ describe('Client Side - Personal - Joint', () => {
     CloseToasterIfAppearUtils()
 
   });
-  
+
   afterEach(() => {
     cy.clearCookies();
     cy.clearLocalStorage();

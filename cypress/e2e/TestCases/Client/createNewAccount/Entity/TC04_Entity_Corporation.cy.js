@@ -26,7 +26,7 @@ const TC_DocumentUploadPage = new DocumentUploadPage
 const TC_DisclosureSignaturesPage = new DisclosureSignaturesPage
 const TC_ReviewInfomationPage = new ReviewInfomationPage
 
-describe ('Client Side - Entity - Corporation', ()=>{
+describe ('Client - Entity - Corporation', ()=>{
  
   beforeEach(() => {
 
@@ -35,6 +35,12 @@ describe ('Client Side - Entity - Corporation', ()=>{
     IfApplicationStatusNotCompletedThenCancelUtils()
     CloseToasterIfAppearUtils() 
   });
+
+  afterEach(() => {
+    cy.clearCookies();
+    cy.clearLocalStorage();
+  });
+  
 
   it('Verify that US Citizen User can Create an Entity Account || Due Diligence Questionnaire Should be filled || ID Type #Govt ID', ()=>{
 
@@ -112,8 +118,8 @@ describe ('Client Side - Entity - Corporation', ()=>{
     cy.url().should('include', '#/upload-entity-documents')
     TC_DocumentUploadPage.CorporateResolutionDocumentShouldBeVisibleFor_Entity_TypeCorporate()
     TC_DocumentUploadPage.CorporateDocumentUploadFor_Entity_TypeCorporate()
-    TC_DocumentUploadPage.GovernmentIDUploadFor_Entity_TypeCorporate()
-    TC_DocumentUploadPage.PassportIDUploadForBeneficialOwners_Entity_TypeCorporate()
+    TC_DocumentUploadPage.GovernmentIDUploadFor_Entity()
+    TC_DocumentUploadPage.PassportIDUploadForBeneficialOwners_Entity()
      //TC_DocumentUploadPage.Save()
     TC_DocumentUploadPage.SaveAndContinue()
     CloseToasterIfAppearUtils();
@@ -207,8 +213,8 @@ describe ('Client Side - Entity - Corporation', ()=>{
     cy.url().should('include', '#/upload-entity-documents')
     TC_DocumentUploadPage.CorporateResolutionDocumentShouldBeVisibleFor_Entity_TypeCorporate()
     TC_DocumentUploadPage.CorporateDocumentUploadFor_Entity_TypeCorporate()
-    TC_DocumentUploadPage.DriverLicenseUploadFor_Entity_TypeCorporate()    //For ID Type Driver License only
-    TC_DocumentUploadPage.PassportIDUploadForBeneficialOwners_Entity_TypeCorporate()
+    TC_DocumentUploadPage.DriverLicenseUploadFor_Entity()    //For ID Type Driver License only
+    TC_DocumentUploadPage.PassportIDUploadForBeneficialOwners_Entity()
     TC_DocumentUploadPage.SaveAndContinue()
     CloseToasterIfAppearUtils();
     waitForLoaderToDisappearUtils()
@@ -301,13 +307,13 @@ describe ('Client Side - Entity - Corporation', ()=>{
 
     cy.url().should('include', '#/upload-entity-documents')
     TC_DocumentUploadPage.CorporateResolutionDocumentShouldBeVisibleFor_Entity_TypeCorporate()
-    TC_DocumentUploadPage.W8BenDocumentShouldBeVisibleFor_Entity_TypeCorporate()
+    TC_DocumentUploadPage.W8BenDocumentShouldBeVisibleFor_Entity()
     TC_DocumentUploadPage.CorporateDocumentUploadFor_Entity_TypeCorporate()
-    //TC_DocumentUploadPage.GovernmentIDUploadFor_Entity_TypeCorporate()
-    TC_DocumentUploadPage.PassportIDUploadFor_Entity_TypeCorporate()
-    TC_DocumentUploadPage.PassportIDUploadForBeneficialOwners_Entity_TypeCorporate()
-    TC_DocumentUploadPage.W8BenDocumentUploadFor_Foreign_Entity_TypeCorporate()
-    TC_DocumentUploadPage.ForeignQuestionnaireUploadFor_Foreign_Entity_TypeCorporate()
+    //TC_DocumentUploadPage.GovernmentIDUploadFor_Entity()
+    TC_DocumentUploadPage.PassportIDUploadFor_Entity()
+    TC_DocumentUploadPage.PassportIDUploadForBeneficialOwners_Entity()
+    TC_DocumentUploadPage.W8BenDocumentUploadFor_Foreign_Entity()
+    TC_DocumentUploadPage.ForeignQuestionnaireUploadFor_Foreign_Entity()
     //TC_DocumentUploadPage.Save()
     TC_DocumentUploadPage.SaveAndContinue()
     CloseToasterIfAppearUtils()

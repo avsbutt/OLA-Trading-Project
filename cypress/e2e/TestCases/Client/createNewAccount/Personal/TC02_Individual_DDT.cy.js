@@ -33,6 +33,12 @@ beforeEach(() => {
 
 });
 
+afterEach(() => {
+  cy.clearCookies();
+  cy.clearLocalStorage();
+});
+
+
 
 describe('DDT - Client - Individual - Data Driven Testing', () => {
   it('Verify that User can Create Personal Account With SubType Individual', () => {
