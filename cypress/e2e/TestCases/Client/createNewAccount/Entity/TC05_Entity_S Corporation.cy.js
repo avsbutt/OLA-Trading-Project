@@ -26,7 +26,7 @@ const TC_DocumentUploadPage = new DocumentUploadPage
 const TC_DisclosureSignaturesPage = new DisclosureSignaturesPage
 const TC_ReviewInfomationPage = new ReviewInfomationPage
 
-describe ('Client - Entity - LLC', ()=>{
+describe ('Client - Entity - S Corporation', ()=>{
  
     beforeEach(() => {
 
@@ -43,7 +43,7 @@ describe ('Client - Entity - LLC', ()=>{
       
 
 
-    it.skip('Verify that US Citizen User can Create an Entity Account || Due Diligence Questionnaire Should be filled || ID Type #Govt ID', ()=>{
+    it('Verify that US Citizen User can Create an Entity Account || Due Diligence Questionnaire Should be filled || ID Type #Govt ID', ()=>{
   
         const randomData= dataGeneratorUtils();
         TC_CreateNewAccountPage.CreateEntityAccount_TypeLLC()
@@ -225,7 +225,7 @@ describe ('Client - Entity - LLC', ()=>{
     
     })
     
-    it('Verify that Foreign User can Create an Entity Account || ID Type #Passport', ()=>{
+    it.skip('Verify that Foreign User can Create an Entity Account || ID Type #Passport', ()=>{
    
           const randomData= dataGeneratorUtils();
         TC_CreateNewAccountPage.CreateEntityAccount_TypeLLC()
