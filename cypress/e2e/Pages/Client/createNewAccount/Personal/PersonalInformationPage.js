@@ -26,16 +26,17 @@ export class PersonalInformationPage{
         // cy.xpath(PersonalInformationLocators.IdType).should('be.visible').select('4515')
     }
     FromPersonalInformationSelect_IDType_GovtID(){
-        cy.xpath(PersonalInformationLocators.IdType).should('be.visible').select('Other Govt ID') 
+        cy.xpath(PersonalInformationLocators.IdType).should('be.visible').select('Other Govt ID' , {force:true}) 
     }
 
     FromPersonalInformationSelect_IDType_DriverLicense(){
-        cy.xpath(PersonalInformationLocators.IdType).focus().should('be.visible').select('Driver License', {force:true}) 
-        cy.xpath(PersonalInformationLocators.IdIssuanceState).select('Alaska')
+        cy.xpath(PersonalInformationLocators.IdType).focus().should('be.visible').select('Driver License', {force:true})
+        cy.xpath(PersonalInformationLocators.IdType).focus().should('contain.text', 'Driver License')    
+        cy.xpath(PersonalInformationLocators.IdIssuanceState).select('Arizona')
     }
 
     FromPersonalInformationSelect_IDType_Passport(){
-        cy.xpath(PersonalInformationLocators.IdType).should('be.visible').select('Passport') 
+        cy.xpath(PersonalInformationLocators.IdType).should('be.visible').select('Passport' , {force:true} ) 
     }
 
 
@@ -48,7 +49,7 @@ export class PersonalInformationPage{
     FromPersonalInformationSelect_isUScitizenNoAndUSpermanentYes(){
         cy.xpath(PersonalInformationLocators.isUsCitizenNO).click()
         cy.xpath(PersonalInformationLocators.isUsPermanentYes).click()
-        cy.xpath(PersonalInformationLocators.CountryOfCitizenship).select('Afghanistan') 
+        cy.xpath(PersonalInformationLocators.CountryOfCitizenship).select('Afghanistan' , {force:true}) 
         cy.wait(1000)
         cy.xpath(PersonalInformationLocators.IdType).should('be.visible').select('4515')
     }
@@ -56,7 +57,7 @@ export class PersonalInformationPage{
         cy.xpath(PersonalInformationLocators.isUsCitizenNO).click()
         cy.xpath(PersonalInformationLocators.isUsPermanentNo).click()
         cy.xpath(PersonalInformationLocators.isForeignAccountYes).click() 
-        cy.xpath(PersonalInformationLocators.CountryOfCitizenship).select('Afghanistan') 
+        cy.xpath(PersonalInformationLocators.CountryOfCitizenship).select('Afghanistan' , {force:true}) 
         // cy.wait(1000)
         // cy.xpath(PersonalInformationLocators.IdType).should('be.visible').select('4515')
 
@@ -65,6 +66,7 @@ export class PersonalInformationPage{
 
 
     fillCoApplicantPersonalInformation(fName, mName, lName, email, nOfDependents, primaryTelephone, idNumber, dobYYYYMMDD, idIssueDate, idExpirationDate, randomNumbers) {
+        cy.xpath(PersonalInformationLocators.IdType).focus().should('contain.text', 'Driver License')
         cy.xpath(CoApplicantPersonalInformationLocators.FirstName).clear().type(fName);
         cy.xpath(CoApplicantPersonalInformationLocators.LastName).clear().type(lName);
         cy.xpath(CoApplicantPersonalInformationLocators.MiddleName).clear().type(mName);
@@ -87,8 +89,8 @@ export class PersonalInformationPage{
         cy.xpath(PhysicalAddressLocators.Address1).clear().type(address)
         cy.xpath(PhysicalAddressLocators.City).clear().type(city)
         cy.xpath(PhysicalAddressLocators.PostalCode).clear().type(postalCode)
-        cy.xpath(PhysicalAddressLocators.Country).select('United States')
-        cy.xpath(PhysicalAddressLocators.State).select('Arizona')
+        cy.xpath(PhysicalAddressLocators.Country).select('United States' , {force:true})
+        cy.xpath(PhysicalAddressLocators.State).select('Arizona' , {force:true})
     }
 
 
@@ -96,8 +98,8 @@ export class PersonalInformationPage{
         cy.xpath(CoApplicantPhysicalAddressLocators.Address1).clear().type(address)
         cy.xpath(CoApplicantPhysicalAddressLocators.City).clear().type(city)
         cy.xpath(CoApplicantPhysicalAddressLocators.PostalCode).clear().type(postalCode)
-        cy.xpath(CoApplicantPhysicalAddressLocators.Country).select('United States')
-        cy.xpath(CoApplicantPhysicalAddressLocators.State).select('Arizona')
+        cy.xpath(CoApplicantPhysicalAddressLocators.Country).select('United States' , {force:true})
+        cy.xpath(CoApplicantPhysicalAddressLocators.State).select('Arizona' , {force:true})
     }
 
 
@@ -108,8 +110,8 @@ export class PersonalInformationPage{
         cy.xpath(TrustedContactLocators.TelephoneNumber).clear().type(trustedTelephone)
         cy.xpath(TrustedContactLocators.EmailAddress).clear().type(trustedEmail)
         cy.xpath(TrustedContactLocators.MailingAddress1).clear().type(trustedMailingAddress1)
-        cy.xpath(TrustedContactLocators.Country).select('United States')
-        cy.xpath(TrustedContactLocators.State).select('Arizona')
+        cy.xpath(TrustedContactLocators.Country).select('United States' , {force:true})
+        cy.xpath(TrustedContactLocators.State).select('Arizona' , {force:true})
         cy.xpath(TrustedContactLocators.City).clear().type(trustedCity)
         cy.xpath(TrustedContactLocators.PostalCode).clear().type(trustedPostalCode)
     }

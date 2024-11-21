@@ -35,7 +35,7 @@ beforeEach(() => {
 
 
 describe('DDT - Client - Individual - Data Driven Testing', () => {
-  it('TC002_Verify that User can Create Personal Account With SubType Individual', () => {
+  it('Verify that User can Create Personal Account With SubType Individual', () => {
     cy.fixture('CountryAndStates.json').then((countryStates) => {
       countryStates.forEach((location) => {
       
@@ -122,8 +122,8 @@ describe('DDT - Client - Individual - Data Driven Testing', () => {
         TC_DocumentUploadPage.GovernmentIDUploadFor_Personal()
         TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
         TC_DocumentUploadPage.UploadUtilityBillIfVisible()
-        TC_DocumentUploadPage.UploadDrivingLiscenceIfVisible()
-        TC_DocumentUploadPage.UploadPassportFor_Personal_TypeIndividual()
+        TC_DocumentUploadPage.UploadDrivingLiscenceFor_Personal()
+        TC_DocumentUploadPage.UploadPassportFor_Personal()
         TC_DocumentUploadPage.SaveAndContinue()
         CloseToasterIfAppearUtils();
         waitForLoaderToDisappearUtils()

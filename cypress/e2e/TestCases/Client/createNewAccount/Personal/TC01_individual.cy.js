@@ -38,7 +38,7 @@ describe('Client Side - Personal - Individual', () => {
   });
 
 
-  it('TC001_Verify that US Citizen User can Create New Personal Account || ID Type #Driver License', () => {
+  it('Verify that US Citizen User can Create New Personal Account || ID Type #Driver License', () => {
 
     TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
     CloseToasterIfAppearUtils();
@@ -119,8 +119,8 @@ describe('Client Side - Personal - Individual', () => {
     // TC_DocumentUploadPage.GovernmentIDUploadFor_Personal()
     // TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
     // TC_DocumentUploadPage.UploadUtilityBillIfVisible()
-    TC_DocumentUploadPage.UploadDrivingLiscenceIfVisible()
-    // TC_DocumentUploadPage.UploadPassportFor_Personal_TypeIndividual()
+    TC_DocumentUploadPage.UploadDrivingLiscenceFor_Personal()
+    // TC_DocumentUploadPage.UploadPassportFor_Personal()
     TC_DocumentUploadPage.SaveAndContinue()
     CloseToasterIfAppearUtils();
     waitForLoaderToDisappearUtils()
@@ -145,7 +145,7 @@ describe('Client Side - Personal - Individual', () => {
 
   })
 
-  it('TC001_Verify that US Citizen User can Create New Personal Account || ID Type #Passport', () => {
+  it('Verify that US Citizen User can Create New Personal Account || ID Type #Passport', () => {
 
     TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
     CloseToasterIfAppearUtils();
@@ -226,8 +226,8 @@ describe('Client Side - Personal - Individual', () => {
     // TC_DocumentUploadPage.GovernmentIDUploadFor_Personal()
     // TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
     // TC_DocumentUploadPage.UploadUtilityBillIfVisible()
-    // TC_DocumentUploadPage.UploadDrivingLiscenceIfVisible()
-    TC_DocumentUploadPage.UploadPassportFor_Personal_TypeIndividual()
+    // TC_DocumentUploadPage.UploadDrivingLiscenceFor_Personal()
+    TC_DocumentUploadPage.UploadPassportFor_Personal()
     TC_DocumentUploadPage.SaveAndContinue()
     CloseToasterIfAppearUtils();
     waitForLoaderToDisappearUtils()
@@ -252,7 +252,7 @@ describe('Client Side - Personal - Individual', () => {
 
   })
 
-  it('TC002_Verify that Foreign User can Create New Personal Account || ID Type #Govt ID' , ()=>{
+  it('Verify that Foreign User can Create New Personal Account || ID Type #Govt ID' , ()=>{
 
     TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
     CloseToasterIfAppearUtils();
@@ -331,14 +331,15 @@ describe('Client Side - Personal - Individual', () => {
 
 
     cy.url().should('include', '#/upload-documents')
-    TC_DocumentUploadPage.DocumentsShouldBeVisibleFor_ForeignAccount_Personal_TypeIndividual()
-     TC_DocumentUploadPage.GovernmentIDUploadFor_Personal()
+    TC_DocumentUploadPage.DocumentsShouldBeVisibleFor_ForeignAccount_Personal_TypeIndividual()    
     //  TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
     //  TC_DocumentUploadPage.UploadUtilityBillIfVisible()
-    //  TC_DocumentUploadPage.UploadPassportFor_Personal_TypeIndividual()
-    TC_DocumentUploadPage.UploadW8BenForForeign_Personal_TypeIndividual()
-    TC_DocumentUploadPage.UploadForeignQuestionnaireFor_Foreign_Personal_TypeIndividual()
-    TC_DocumentUploadPage.UploadDrivingLiscenceIfVisible()
+    //  TC_DocumentUploadPage.UploadPassportFor_Personal()
+    //  TC_DocumentUploadPage.UploadDrivingLiscenceFor_Personal()
+    TC_DocumentUploadPage.GovernmentIDUploadFor_Personal()
+    TC_DocumentUploadPage.UploadW8BenForForeign_Personal()
+    TC_DocumentUploadPage.UploadForeignQuestionnaireFor_Foreign_Personal()
+    
 
     TC_DocumentUploadPage.SaveAndContinue()
     CloseToasterIfAppearUtils();
@@ -364,11 +365,11 @@ describe('Client Side - Personal - Individual', () => {
 
   })
 
-  it.skip('TC003_Verify that ID Issuance Date is not visible For ID Type *Govt ID* and *Passport*' , ()=>{
+  it.skip('Verify that ID Issuance Date is not visible For ID Type *Govt ID* and *Passport*' , ()=>{
 
   })
 
-  it.skip('TC004_Verify that if in Investor Profile if Investment Experience is None(0) and Total Net Worth* is $0-24,999 then Securities Lending is Not Visible in Account Feature and Securities Loan Agreement* is Not Visible Disclosure & Signatures', ()=>{
+  it.skip('Verify that if in Investor Profile if Investment Experience is None(0) and Total Net Worth* is $0-24,999 then Securities Lending is Not Visible in Account Feature and Securities Loan Agreement* is Not Visible Disclosure & Signatures', ()=>{
 
   })
     

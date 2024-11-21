@@ -15,6 +15,7 @@ module.exports = defineConfig({
        // testomat.io reporter plugin:
       require('@testomatio/reporter/lib/adapter/cypress-plugin')(on, config);
     },
+    numTestsKeptInMemory:0,
     
     fixturesFolder: 'cypress/e2e/fixtures',
     tsc: 'cypress/support/commands.ts',

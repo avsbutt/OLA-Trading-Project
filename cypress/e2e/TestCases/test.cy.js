@@ -59,7 +59,7 @@ describe('Test File', () => {
         //  cy.visit("#/upload-documents")
         //    doc.UploadUtilityBillIfVisible()
         //    doc.UploadAuthorizationDocumentIfVisible()
-        //    doc.UploadDrivingLiscenceIfVisible()
+        //    doc.UploadDrivingLiscenceFor_Personal()
         //    doc.GovernmentIDUploadFor_Personal_TypeIndividual()
 
 
