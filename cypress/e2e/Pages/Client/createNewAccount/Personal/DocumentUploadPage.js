@@ -90,6 +90,13 @@ export class DocumentUploadPage{
     cy.xpath("//span[normalize-space()='W-8BEN-E (Entities)']").should('be.visible')
   } 
 
+  LPBrokerAgreementShouldBeVisibleFor_Entity_TypePartnership(){
+    cy.xpath("//span[normalize-space()='LP Broker Agreement']").should('be.visible')
+  }
+  LPBrokerAgreementUploadFor_Entity_TypePartnership(){
+    cy.xpath("//input[@name='filePartnershipAgreement']").focus().attachFile('Doc.pdf')
+  }
+
   CorporateDocumentUploadFor_Entity_TypeCorporate(){
     cy.xpath("//input[@name='fileIncorporateArticles']").focus().attachFile('Doc.pdf')
   }

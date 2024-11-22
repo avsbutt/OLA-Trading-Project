@@ -46,4 +46,24 @@ export class CreateNewAccountPage{
         cy.xpath(CreateEntityAccountLocators.EntityAccountType).select('LLC')
         cy.xpath(CreateEntityAccountLocators.NextBtn).click()
     }
+    CreateEntityAccount_TypeSCorporation(){
+        cy.xpath(CreateEntityAccountLocators.CreateNewAccount).click({force: true})
+        cy.xpath(CreateEntityAccountLocators.Entity).click()
+        cy.xpath(CreateEntityAccountLocators.EntityAccountType).select('S Corporation')
+        cy.xpath(CreateEntityAccountLocators.NextBtn).click()
+    }
+    CreateEntityAccount_TypePartnership(){
+        cy.xpath(CreateEntityAccountLocators.CreateNewAccount).click({force: true})
+        cy.xpath(CreateEntityAccountLocators.Entity).click()
+        cy.xpath(CreateEntityAccountLocators.EntityAccountType).select('Partnership')
+        cy.xpath(CreateEntityAccountLocators.NextBtn).click()
+    }
+    CreateEntityAccount_TypeTrust(){
+        cy.xpath(CreateEntityAccountLocators.CreateNewAccount).click({force: true})
+        cy.xpath(CreateEntityAccountLocators.Entity).click()
+        cy.xpath(CreateEntityAccountLocators.EntityAccountType).select('Trust')
+        cy.xpath(CreateEntityAccountLocators.NextBtn).click()
+    }
+
+
 }
