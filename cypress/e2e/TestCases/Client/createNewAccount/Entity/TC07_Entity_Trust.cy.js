@@ -1,4 +1,4 @@
-import { clientLoginUtils } from "../../../../utils/clientLoginUtils"
+import { clientLoginUtils } from "../../../../utils/LoginUtils"
 import { waitForLoaderToDisappearUtils } from "../../../../utils/waitForLoaderToDisappearUtils"
 import { IfApplicationStatusNotCompletedThenCancelUtils } from "../../../../utils/IfApplicationStatusNotCompletedThenCancelUtils"
 import { dataGeneratorUtils } from "../../../../utils/dataGeneratorUtils"

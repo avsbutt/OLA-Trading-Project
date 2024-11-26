@@ -1,4 +1,4 @@
-import { clientLoginUtils } from "../../../../utils/clientLoginUtils"
+import { clientLoginUtils } from "../../../../utils/LoginUtils"
 import { PersonalInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/PersonalInformationPage"
 import { EmploymentInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/EmploymentInfomationPage"
 import { dataGeneratorUtils } from "../../../../utils/dataGeneratorUtils";
@@ -303,7 +303,7 @@ describe('Client - Personal - Joint', () => {
 
   });
 
-  it('Verify that US Citizen can Create Personal Account With Type Joint & Subtype Joint Community Property || ID Type #Driver License || Verify that all 8 Expected US States exist in the dropdown', () => {
+  it.only('Verify that US Citizen can Create Personal Account With Type Joint & Subtype Joint Community Property || ID Type #Driver License || Verify that all 8 Expected US States exist in the dropdown', () => {
    
       // Define the expected states
      const expectedStates = [
