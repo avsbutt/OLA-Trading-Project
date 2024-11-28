@@ -132,7 +132,8 @@ describe ('Client - Entity - LLC', ()=>{
         //waitForLoaderToDisappearUtils()
     
         cy.url().should('include', '#/review')
-        TC_ReviewInfomationPage.ClickOnSubmitBtn()
+            TC_ReviewInfomationPage.SelectRegisteredRep()
+    TC_ReviewInfomationPage.ClickOnSubmitBtn()
         cy.url().should('include', '#/dashboard')
         
     })
@@ -220,7 +221,8 @@ describe ('Client - Entity - LLC', ()=>{
         // waitForLoaderToDisappearUtils()
     
         cy.url().should('include', '#/review')
-        TC_ReviewInfomationPage.ClickOnSubmitBtn()
+            TC_ReviewInfomationPage.SelectRegisteredRep()
+    TC_ReviewInfomationPage.ClickOnSubmitBtn()
         cy.url().should('include', '#/dashboard')
     
     })
@@ -314,7 +316,8 @@ describe ('Client - Entity - LLC', ()=>{
         // waitForLoaderToDisappearUtils()
     
         cy.url().should('include', '#/review')
-        TC_ReviewInfomationPage.ClickOnSubmitBtn()
+            TC_ReviewInfomationPage.SelectRegisteredRep()
+    TC_ReviewInfomationPage.ClickOnSubmitBtn()
         cy.url().should('include', '#/dashboard')
     
     })

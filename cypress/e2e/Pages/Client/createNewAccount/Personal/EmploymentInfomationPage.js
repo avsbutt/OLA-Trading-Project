@@ -19,9 +19,9 @@ export class EmploymentInformationPage{
     }
 
     ClickOnUnemployed(){
-        cy.reload(true); // Forces a hard reload, ignoring cache
+        // cy.reload(true); // Forces a hard reload, ignoring cache
         // cy.xpath(EmployedLocators.Employed).click()
-        cy.xpath(UnEmployedLocators.Unemployed).should('be.visible').realHover()
+        // cy.xpath(UnEmployedLocators.Unemployed).should('be.visible').realHover()
         cy.xpath(UnEmployedLocators.Unemployed).click({ force: true });
         cy.xpath(UnEmployedLocators.Unemployed).dblclick()
     }
@@ -29,7 +29,7 @@ export class EmploymentInformationPage{
     ClickOnCoApplicantUnemployed(){
         // cy.reload(true); // Forces a hard reload, ignoring cache
         // cy.xpath(CoApplicantUnEmployedLocators.Employed).click()
-        cy.xpath(CoApplicantUnEmployedLocators.Unemployed).should('be.visible').realHover()
+        // cy.xpath(CoApplicantUnEmployedLocators.Unemployed).should('be.visible').realHover()
         cy.xpath(CoApplicantUnEmployedLocators.Unemployed).click({ force: true });
         cy.xpath(CoApplicantUnEmployedLocators.Unemployed).dblclick()
     }

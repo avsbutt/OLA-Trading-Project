@@ -169,6 +169,7 @@ describe('Client - Personal - Joint', () => {
       
 
     cy.url().should('include', '#/review')
+        TC_ReviewInfomationPage.SelectRegisteredRep()
     TC_ReviewInfomationPage.ClickOnSubmitBtn()
     cy.url().should('include', '#/dashboard')
 
@@ -298,12 +299,13 @@ describe('Client - Personal - Joint', () => {
        
 
     cy.url().should('include', '#/review')
+        TC_ReviewInfomationPage.SelectRegisteredRep()
     TC_ReviewInfomationPage.ClickOnSubmitBtn()
     cy.url().should('include', '#/dashboard')
 
   });
 
-  it.only('Verify that US Citizen can Create Personal Account With Type Joint & Subtype Joint Community Property || ID Type #Driver License || Verify that all 8 Expected US States exist in the dropdown', () => {
+  it('Verify that US Citizen can Create Personal Account With Type Joint & Subtype Joint Community Property || ID Type #Driver License || Verify that all 8 Expected US States exist in the dropdown', () => {
    
       // Define the expected states
      const expectedStates = [
@@ -460,6 +462,7 @@ describe('Client - Personal - Joint', () => {
 
 
     cy.url().should('include', '#/review')
+        TC_ReviewInfomationPage.SelectRegisteredRep()
     TC_ReviewInfomationPage.ClickOnSubmitBtn()
     cy.url().should('include', '#/dashboard')
 
@@ -590,6 +593,7 @@ describe('Client - Personal - Joint', () => {
       
 
     cy.url().should('include', '#/review')
+        TC_ReviewInfomationPage.SelectRegisteredRep()
     TC_ReviewInfomationPage.ClickOnSubmitBtn()
     cy.url().should('include', '#/dashboard')
 
@@ -721,6 +725,7 @@ describe('Client - Personal - Joint', () => {
        
 
     cy.url().should('include', '#/review')
+        TC_ReviewInfomationPage.SelectRegisteredRep()
     TC_ReviewInfomationPage.ClickOnSubmitBtn()
     cy.url().should('include', '#/dashboard')
 
@@ -886,6 +891,7 @@ describe('Client - Personal - Joint', () => {
 
 
     cy.url().should('include', '#/review')
+        TC_ReviewInfomationPage.SelectRegisteredRep()
     TC_ReviewInfomationPage.ClickOnSubmitBtn()
     cy.url().should('include', '#/dashboard')
 

@@ -152,7 +152,8 @@ describe('DDT - Client - Individual - Data Driven Testing', () => {
         // cy.xpath("(//div[@class='col-lg-12'])[3]").contains('State').siblings('td').invoke('text').should('have.text', location.state);        //Verify the State from the (Loop) fixture file on Review Page
 
 
-        TC_ReviewInfomationPage.ClickOnSubmitBtn()
+            TC_ReviewInfomationPage.SelectRegisteredRep()
+    TC_ReviewInfomationPage.ClickOnSubmitBtn()
         cy.url().should('include', '#/dashboard')    
      
       })

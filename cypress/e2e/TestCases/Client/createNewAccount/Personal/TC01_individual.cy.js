@@ -37,10 +37,10 @@ describe('Client - Personal - Individual', () => {
 
   });
 
-  afterEach(() => {
-    cy.clearCookies();
-    cy.clearLocalStorage();
-  });
+  // afterEach(() => {
+  //   cy.clearCookies();
+  //   cy.clearLocalStorage();
+  // });
   
 
   it('Verify that US Citizen User can Create New Personal Account || ID Type #Driver License', () => {
@@ -145,6 +145,7 @@ describe('Client - Personal - Individual', () => {
 
 
     cy.url().should('include', '#/review')
+    TC_ReviewInfomationPage.SelectRegisteredRep()
     TC_ReviewInfomationPage.ClickOnSubmitBtn()
     cy.url().should('include', '#/dashboard')
 
@@ -252,6 +253,7 @@ describe('Client - Personal - Individual', () => {
 
 
     cy.url().should('include', '#/review')
+    TC_ReviewInfomationPage.SelectRegisteredRep()
     TC_ReviewInfomationPage.ClickOnSubmitBtn()
     cy.url().should('include', '#/dashboard')
 
@@ -365,6 +367,7 @@ describe('Client - Personal - Individual', () => {
 
 
     cy.url().should('include', '#/review')
+    TC_ReviewInfomationPage.SelectRegisteredRep()
     TC_ReviewInfomationPage.ClickOnSubmitBtn()
     cy.url().should('include', '#/dashboard')
 

@@ -32,7 +32,7 @@ export class PersonalInformationPage{
     FromPersonalInformationSelect_IDType_DriverLicense(){
         cy.xpath(PersonalInformationLocators.IdType).focus().should('be.visible').select('Driver License', {force:true})
         cy.xpath(PersonalInformationLocators.IdType).focus().should('contain.text', 'Driver License')    
-        cy.xpath(PersonalInformationLocators.IdIssuanceState).select('Arizona')
+        cy.xpath(PersonalInformationLocators.IdIssuanceState).select('Alabama')
     }
 
     FromPersonalInformationSelect_IDType_Passport(){
@@ -90,7 +90,7 @@ export class PersonalInformationPage{
         cy.xpath(PhysicalAddressLocators.City).clear().type(city)
         cy.xpath(PhysicalAddressLocators.PostalCode).clear().type(postalCode)
         cy.xpath(PhysicalAddressLocators.Country).select('United States' , {force:true})
-        cy.xpath(PhysicalAddressLocators.State).select('Arizona' , {force:true})
+        cy.xpath(PhysicalAddressLocators.State).select('Alabama' , {force:true})
     }
 
 
@@ -99,7 +99,7 @@ export class PersonalInformationPage{
         cy.xpath(CoApplicantPhysicalAddressLocators.City).clear().type(city)
         cy.xpath(CoApplicantPhysicalAddressLocators.PostalCode).clear().type(postalCode)
         cy.xpath(CoApplicantPhysicalAddressLocators.Country).select('United States' , {force:true})
-        cy.xpath(CoApplicantPhysicalAddressLocators.State).select('Arizona' , {force:true})
+        cy.xpath(CoApplicantPhysicalAddressLocators.State).select('Alabama' , {force:true})
     }
 
 
@@ -111,7 +111,7 @@ export class PersonalInformationPage{
         cy.xpath(TrustedContactLocators.EmailAddress).clear().type(trustedEmail)
         cy.xpath(TrustedContactLocators.MailingAddress1).clear().type(trustedMailingAddress1)
         cy.xpath(TrustedContactLocators.Country).select('United States' , {force:true})
-        cy.xpath(TrustedContactLocators.State).select('Arizona' , {force:true})
+        cy.xpath(TrustedContactLocators.State).select('Alabama' , {force:true})
         cy.xpath(TrustedContactLocators.City).clear().type(trustedCity)
         cy.xpath(TrustedContactLocators.PostalCode).clear().type(trustedPostalCode)
     }
