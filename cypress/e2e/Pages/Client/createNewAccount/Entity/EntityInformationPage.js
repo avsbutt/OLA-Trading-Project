@@ -9,7 +9,7 @@ export class EntityInformationPage{
        // cy.xpath(EntityInformationLocators.TypeOfEntity).select('Partnership')
         cy.xpath(EntityInformationLocators.BusinessPhone).type(primaryTelephone, {force: true })
         cy.xpath(EntityInformationLocators.OriginCountry).select('United States')
-        cy.xpath(EntityInformationLocators.OriginState).select('Alaska')
+        cy.xpath(EntityInformationLocators.OriginState).select('Alabama')
         cy.xpath(EntityInformationLocators.EntityResolutionDate).type(dobYYYYMMDD)
         cy.xpath(EntityInformationLocators.BusinessAddress1).type(address, { force: true })
         cy.xpath(EntityInformationLocators.BusinessAddress2).type(address1, { force: true })
