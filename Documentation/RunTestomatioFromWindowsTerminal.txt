@@ -8,5 +8,5 @@ Run this Command To check the API and Test>    set TESTOMATIO=tstmt_FXXYPXwKJrtk
 
 Use this command in Terminal to run the Test>    set TESTOMATIO=tstmt_FXXYPXwKJrtkNayoO_pHTnoUhQoPmYjo3g1730274277&& npx cypress run
 
-Run this Command In Herder Moder with the Chrome Browser>   set TESTOMATIO=tstmt_FXXYPXwKJrtkNayoO_pHTnoUhQoPmYjo3g1730274277 && npx cypress run --headed --browser chrome
+Run this Command In Headed Moder with the Chrome Browser>   set TESTOMATIO=tstmt_FXXYPXwKJrtkNayoO_pHTnoUhQoPmYjo3g1730274277 && npx cypress run --headed --browser chrome
 
