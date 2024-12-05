@@ -78,6 +78,9 @@ export class DocumentUploadPage{
   }
 
   //----####----FOR ENTITY APPLICATION ONLY----####----\\
+
+  //----DOCUMENT THAT SHOULD BE VISIBLE 
+
   CorporateResolutionDocumentShouldBeVisibleFor_Entity_TypeCorporate(){
     cy.xpath("//span[normalize-space()='Corporate Resolution']").should('be.visible')
   } 
@@ -93,22 +96,26 @@ export class DocumentUploadPage{
   LPBrokerAgreementShouldBeVisibleFor_Entity_TypePartnership(){
     cy.xpath("//span[normalize-space()='LP Broker Agreement']").should('be.visible')
   }
+
+
+
+  //----MANDATORY DOCUMENT THAT SHOULD BE UPLOADED 
+
   LPBrokerAgreementUploadFor_Entity_TypePartnership(){
     cy.xpath("//input[@name='filePartnershipAgreement']").focus().attachFile('Doc.pdf')
   }
-
   CorporateDocumentUploadFor_Entity_TypeCorporate(){
     cy.xpath("//input[@name='fileIncorporateArticles']").focus().attachFile('Doc.pdf')
   }
-
+  TrustCertificateUplaodFor_Entity_TypeTrust(){
+    cy.xpath("//input[@name='fileTrustCertificate']").focus().attachFile('Doc.pdf')
+  }
   DriverLicenseUploadFor_Entity(){
     cy.xpath("//input[@name='fileDrivingLicenseSigner1']").focus().attachFile('Doc.pdf')
   }
-
   GovernmentIDUploadFor_Entity(){
     cy.xpath("//input[@name='fileGovtIssueIdSigner1']").focus().attachFile('Doc.pdf')
   }
-
   LLCAuthorizationUploadFor_Entity_TypeLLC(){
     cy.xpath("//input[@name='fileLLCArticles']").focus().attachFile('Doc.pdf')
   }
@@ -118,16 +125,12 @@ export class DocumentUploadPage{
   PassportIDUploadForBeneficialOwners_Entity(){
     cy.xpath("//input[@name='fileGovtIssueIdMember1']").focus().attachFile('Doc.pdf')
   }
-
   W8BenDocumentUploadFor_Foreign_Entity(){
     cy.xpath("//input[@name='fileW8BENEntities']").focus().attachFile('Doc.pdf')
   }
-
   ForeignQuestionnaireUploadFor_Foreign_Entity(){
     cy.xpath("//input[@name='fileForeignQuestions']").focus().attachFile('Doc.pdf')
   }
-
-  
 
 
   Save(){

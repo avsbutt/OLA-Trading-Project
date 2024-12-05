@@ -37,10 +37,10 @@ describe('Client - Personal - Individual', () => {
 
   });
 
-  // afterEach(() => {
-  //   cy.clearCookies();
-  //   cy.clearLocalStorage();
-  // });
+  afterEach(() => {
+    cy.clearCookies();
+    cy.clearLocalStorage();
+  });
   
 
   it('Verify that US Citizen User can Create New Personal Account || ID Type #Driver License', () => {

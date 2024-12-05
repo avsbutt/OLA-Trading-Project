@@ -9,10 +9,10 @@ import { InvestmentProfilePage } from "../../../../Pages/Client/createNewAccount
 import { RegulatoryItemsPage } from "../../../../Pages/Client/createNewAccount/Personal/RegulatoryItemsPage"
 import { AccountFeaturesPage} from "../../../../Pages/Client/createNewAccount/Personal/AccountFeaturesPage"
 import { DueDiligenceFormPage } from "../../../../Pages/Client/createNewAccount/Entity/DueDiligenceFormPage"
-import{ OwnersAndOfficialsPage} from "../../../../Pages/Client/createNewAccount/Entity/OwnersAndOfficialsPage"
+import { OwnersAndOfficialsPage} from "../../../../Pages/Client/createNewAccount/Entity/OwnersAndOfficialsPage"
 import { DisclosureSignaturesPage } from "../../../../Pages/Client/createNewAccount/Personal/DisclosureSignaturesPage"
 import { DocumentUploadPage} from "../../../../Pages/Client/createNewAccount/Personal/DocumentUploadPage"
-import{ ReviewInfomationPage } from "../../../../Pages/Client/createNewAccount/Personal/ReviewInformationPage"
+import { ReviewInfomationPage } from "../../../../Pages/Client/createNewAccount/Personal/ReviewInformationPage"
 
 
 const TC_CreateNewAccountPage = new CreateNewAccountPage
@@ -26,7 +26,7 @@ const TC_DocumentUploadPage = new DocumentUploadPage
 const TC_DisclosureSignaturesPage = new DisclosureSignaturesPage
 const TC_ReviewInfomationPage = new ReviewInfomationPage
 
-describe ('Client - Entity - Partnership', ()=>{
+describe ('Client - Entity - Limited Partnership', ()=>{
  
     beforeEach(() => {
 
@@ -52,7 +52,7 @@ describe ('Client - Entity - Partnership', ()=>{
         //  cy.visit("#/upload-entity-documents")
            
         const randomData= dataGeneratorUtils();
-        TC_CreateNewAccountPage.CreateEntityAccount_TypePartnership()
+        TC_CreateNewAccountPage.CreateEntityAccount_TypeLimitedPartnership()
         CloseToasterIfAppearUtils();
      
         TC_EntityInformationPage.fillEntityInformation(randomData.fName, randomData.socialSecurityNo, randomData.primaryTelephone, randomData.city, randomData.address, randomData.address1, randomData.dobYYYYMMDD, randomData.postalCode)
@@ -152,7 +152,7 @@ describe ('Client - Entity - Partnership', ()=>{
         //  cy.visit("#/upload-entity-documents")
         
           const randomData= dataGeneratorUtils();
-        TC_CreateNewAccountPage.CreateEntityAccount_TypePartnership()
+        TC_CreateNewAccountPage.CreateEntityAccount_TypeLimitedPartnership()
         CloseToasterIfAppearUtils();
     
     
@@ -248,7 +248,7 @@ describe ('Client - Entity - Partnership', ()=>{
         //  cy.visit("#/upload-entity-documents")
         
           const randomData= dataGeneratorUtils();
-        TC_CreateNewAccountPage.CreateEntityAccount_TypePartnership()
+        TC_CreateNewAccountPage.CreateEntityAccount_TypeLimitedPartnership()
         CloseToasterIfAppearUtils();
     
     

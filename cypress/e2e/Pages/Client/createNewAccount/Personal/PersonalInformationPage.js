@@ -1,6 +1,6 @@
 
 import { CreatePersonalAccountLocators } from "../../../../Locators/createNewAccountLocators.json"
-import { PersonalInformationLocators, CoApplicantPersonalInformationLocators, PhysicalAddressLocators, CoApplicantPhysicalAddressLocators, TrustedContactLocators } from "../../../../Locators/Personal/PersonalInformationLocators.json";
+import { PersonalInformationLocators, CoApplicantPersonalInformationLocators, PhysicalAddressLocators, CoApplicantPhysicalAddressLocators, TrustedContactLocators, IRAAccountInformationLocators } from "../../../../Locators/Personal/PersonalInformationLocators.json";
 import { FormUsageButtons } from "../../../../Locators/FormUsageButtons.json";
 
 
@@ -114,6 +114,13 @@ export class PersonalInformationPage{
         cy.xpath(TrustedContactLocators.State).select('Alabama' , {force:true})
         cy.xpath(TrustedContactLocators.City).clear().type(trustedCity)
         cy.xpath(TrustedContactLocators.PostalCode).clear().type(trustedPostalCode)
+    }
+
+
+    // ######------IRA------######
+    fillIRAAccountInformation(){
+        cy.xpath(IRAAccountInformationLocators.IRAAccountInformationText).should('be.visible')
+        cy.xpath(IRAAccountInformationLocators.DepositorAuthorization).type('Yes i understand')
     }
 
     SaveAndContinue(){

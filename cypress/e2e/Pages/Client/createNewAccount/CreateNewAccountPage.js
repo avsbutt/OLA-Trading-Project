@@ -1,9 +1,8 @@
 import { CreatePersonalAccountLocators, CreateEntityAccountLocators, CreateRetirementAccountLocators} from "../../../Locators/createNewAccountLocators.json"
-import { PersonalInformationLocators, PhysicalAddressLocators, TrustedContactLocators } from "../../../Locators/Personal/PersonalInformationLocators.json";
-import { FormUsageButtons } from "../../../Locators/FormUsageButtons.json";
-
 
 export class CreateNewAccountPage{
+
+    //    ######-----PERSONAL ACCOUNT------######
 
     CreatePersonalAccount_TypeIndividual(){
         cy.xpath(CreatePersonalAccountLocators.CreateNewAccount).click({force: true})
@@ -32,6 +31,10 @@ export class CreateNewAccountPage{
         cy.xpath(CreatePersonalAccountLocators.NextBtn).click()
         cy.url().should('include','/personal-info')
     }
+
+
+    //    ######-----ENTITY ACCOUNT------######
+
     CreateEntityAccount_TypeCorporation(){
         cy.xpath(CreateEntityAccountLocators.CreateNewAccount).click({force: true})
         cy.wait(1000)
@@ -43,27 +46,100 @@ export class CreateNewAccountPage{
     CreateEntityAccount_TypeLLC(){
         cy.xpath(CreateEntityAccountLocators.CreateNewAccount).click({force: true})
         cy.xpath(CreateEntityAccountLocators.Entity).click()
+        cy.wait(500)
         cy.xpath(CreateEntityAccountLocators.EntityAccountType).select('LLC')
         cy.xpath(CreateEntityAccountLocators.NextBtn).click()
     }
     CreateEntityAccount_TypeSCorporation(){
         cy.xpath(CreateEntityAccountLocators.CreateNewAccount).click({force: true})
         cy.xpath(CreateEntityAccountLocators.Entity).click()
+        cy.wait(500)
         cy.xpath(CreateEntityAccountLocators.EntityAccountType).select('S Corporation')
         cy.xpath(CreateEntityAccountLocators.NextBtn).click()
     }
-    CreateEntityAccount_TypePartnership(){
+    CreateEntityAccount_TypeLimitedPartnership(){
         cy.xpath(CreateEntityAccountLocators.CreateNewAccount).click({force: true})
         cy.xpath(CreateEntityAccountLocators.Entity).click()
-        cy.xpath(CreateEntityAccountLocators.EntityAccountType).select('Partnership')
+        cy.wait(500)
+        cy.xpath(CreateEntityAccountLocators.EntityAccountType).select('Limited Partnership')
         cy.xpath(CreateEntityAccountLocators.NextBtn).click()
     }
     CreateEntityAccount_TypeTrust(){
         cy.xpath(CreateEntityAccountLocators.CreateNewAccount).click({force: true})
         cy.xpath(CreateEntityAccountLocators.Entity).click()
+        cy.wait(500)
         cy.xpath(CreateEntityAccountLocators.EntityAccountType).select('Trust')
         cy.xpath(CreateEntityAccountLocators.NextBtn).click()
     }
+    CreateEntityAccount_TypeNonProfit(){
+        cy.xpath(CreateEntityAccountLocators.CreateNewAccount).click({force: true})
+        cy.xpath(CreateEntityAccountLocators.Entity).click()
+        cy.wait(500)
+        cy.xpath(CreateEntityAccountLocators.EntityAccountType).select('Non-Profit')
+        cy.xpath(CreateEntityAccountLocators.NextBtn).click()
+    }
+
+
+    //    ######-----RETIREMENT ACCOUNT------######
+
+    CreateRetirementAccount_TypeTraditionalIRA(){
+        cy.xpath(CreateRetirementAccountLocators.CreateNewAccount).click({force: true})
+        cy.xpath(CreateRetirementAccountLocators.Retirement).click()
+        cy.wait(500)
+        cy.xpath(CreateRetirementAccountLocators.RetirementAccountType).select('Traditional IRA')
+        cy.xpath(CreateRetirementAccountLocators.NextBtn).click()
+    }
+
+    CreateRetirementAccount_TypeRothIRA(){
+        cy.xpath(CreateRetirementAccountLocators.CreateNewAccount).click({force: true})
+        cy.xpath(CreateRetirementAccountLocators.Retirement).click()
+        cy.wait(500)
+        cy.xpath(CreateRetirementAccountLocators.RetirementAccountType).select('Roth IRA')
+        cy.xpath(CreateRetirementAccountLocators.NextBtn).click()
+    }
+
+    CreateRetirementAccount_TypeSimpleIRAParticipant(){
+        cy.xpath(CreateRetirementAccountLocators.CreateNewAccount).click({force: true})
+        cy.xpath(CreateRetirementAccountLocators.Retirement).click()
+        cy.wait(500)
+        cy.xpath(CreateRetirementAccountLocators.RetirementAccountType).select('Simple IRA Participant')
+        cy.xpath(CreateRetirementAccountLocators.NextBtn).click()
+    }
+
+    CreateRetirementAccount_TypeBeneficiaryRothIRA(){
+        cy.xpath(CreateRetirementAccountLocators.CreateNewAccount).click({force: true})
+        cy.xpath(CreateRetirementAccountLocators.Retirement).click()
+        cy.wait(500)
+        cy.xpath(CreateRetirementAccountLocators.RetirementAccountType).select('Beneficiary Roth IRA')
+        cy.xpath(CreateRetirementAccountLocators.NextBtn).click()
+    }
+
+    CreateRetirementAccount_TypeBeneficiaryTraditionalIRA(){
+        cy.xpath(CreateRetirementAccountLocators.CreateNewAccount).click({force: true})
+        cy.xpath(CreateRetirementAccountLocators.Retirement).click()
+        cy.wait(500)
+        cy.xpath(CreateRetirementAccountLocators.RetirementAccountType).select('Beneficiary Traditional IRA')
+        cy.xpath(CreateRetirementAccountLocators.NextBtn).click()
+    }
+
+    CreateRetirementAccount_TypeRolloverIRA(){
+        cy.xpath(CreateRetirementAccountLocators.CreateNewAccount).click({force: true})
+        cy.xpath(CreateRetirementAccountLocators.Retirement).click()
+        cy.wait(500)
+        cy.xpath(CreateRetirementAccountLocators.RetirementAccountType).select('Rollover IRA')
+        cy.xpath(CreateRetirementAccountLocators.NextBtn).click()
+    }
+
+    CreateRetirementAccount_TypeSEPIRA(){
+        cy.xpath(CreateRetirementAccountLocators.CreateNewAccount).click({force: true})
+        cy.xpath(CreateRetirementAccountLocators.Retirement).click()
+        cy.wait(500)
+        cy.xpath(CreateRetirementAccountLocators.RetirementAccountType).select('SEP IRA')
+        cy.xpath(CreateRetirementAccountLocators.NextBtn).click()
+    }
+
+
+
 
 
 }

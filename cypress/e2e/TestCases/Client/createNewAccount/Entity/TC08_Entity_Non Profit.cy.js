@@ -26,7 +26,7 @@ const TC_DocumentUploadPage = new DocumentUploadPage
 const TC_DisclosureSignaturesPage = new DisclosureSignaturesPage
 const TC_ReviewInfomationPage = new ReviewInfomationPage
 
-describe ('Client - Entity - LLC', ()=>{
+describe ('Client - Entity - Non Profit', ()=>{
  
     beforeEach(() => {
 
@@ -42,11 +42,10 @@ describe ('Client - Entity - LLC', ()=>{
     });
       
 
-
     it('Verify that US Citizen User can Create an Entity Account || Due Diligence Questionnaire Should be filled || ID Type #Govt ID', ()=>{
   
         const randomData= dataGeneratorUtils();
-        TC_CreateNewAccountPage.CreateEntityAccount_TypeLLC()
+        TC_CreateNewAccountPage.CreateEntityAccount_TypeNonProfit()
         CloseToasterIfAppearUtils();
      
         TC_EntityInformationPage.fillEntityInformation(randomData.fName, randomData.socialSecurityNo, randomData.primaryTelephone, randomData.city, randomData.address, randomData.address1, randomData.dobYYYYMMDD, randomData.postalCode)
@@ -141,7 +140,7 @@ describe ('Client - Entity - LLC', ()=>{
     it('Verify that US Citizen User can Create an Entity Account || Due Diligence Questionnaire Should not be filled || ID Type #Driver License', ()=>{
   
           const randomData= dataGeneratorUtils();
-        TC_CreateNewAccountPage.CreateEntityAccount_TypeLLC()
+        TC_CreateNewAccountPage.CreateEntityAccount_TypeNonProfit()
         CloseToasterIfAppearUtils();
     
     
@@ -230,7 +229,7 @@ describe ('Client - Entity - LLC', ()=>{
     it('Verify that Foreign User can Create an Entity Account || ID Type #Passport', ()=>{
    
           const randomData= dataGeneratorUtils();
-        TC_CreateNewAccountPage.CreateEntityAccount_TypeLLC()
+        TC_CreateNewAccountPage.CreateEntityAccount_TypeNonProfit()
         CloseToasterIfAppearUtils();
     
     
@@ -316,8 +315,8 @@ describe ('Client - Entity - LLC', ()=>{
         // waitForLoaderToDisappearUtils()
     
         cy.url().should('include', '#/review')
-        TC_ReviewInfomationPage.SelectRegisteredRep()
-        TC_ReviewInfomationPage.ClickOnSubmitBtn()
+            TC_ReviewInfomationPage.SelectRegisteredRep()
+    TC_ReviewInfomationPage.ClickOnSubmitBtn()
         cy.url().should('include', '#/dashboard')
     
     })

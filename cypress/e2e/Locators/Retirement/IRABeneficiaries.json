@@ -1,0 +1,18 @@
+{
+    "IRABeneficiariesLocators":{
+        "AddBeneficiary":"//button[normalize-space()='Add Beneficiary']",
+        "FirstName":"(//input[@placeholder='Enter First Name'])[1]",
+        "LastName":"(//input[@placeholder='Enter Last Name'])[1]",
+        "DateofBirth":"(//input[@name='dateOfBirth'])[1]",
+        "SSN":"(//input[@name='socialSecurityNumber'])[1]",
+        "Address":"(//input[@name='physicalAddress'])[1]",
+        "State":"(//select[@name='state'])[1]",
+        "City":"(//input[@name='city'])[1]",
+        "PostalCode":"(//input[@name='postalCode'])[1]",
+        "Country":"(//select[@name='country'])[1]",
+        "Share":"(//input[@name='share'])[1]",
+        "Relationship":"(//input[@name='relationship'])[1]",
+        "BeneficiaryType":"(//select[@name='beneficiaryType'])[1]",
+        "DeleteBeneficiary":"(//button[@type='button'])[4]"
+    }
+}

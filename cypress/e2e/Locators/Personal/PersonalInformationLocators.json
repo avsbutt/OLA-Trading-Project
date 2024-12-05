@@ -84,5 +84,9 @@
         "State":"//select[@name='trustedState']",
         "City":"//input[@name='trustedCity']",
         "PostalCode":"//input[@name='trustedPostalCode']"
+    },
+    "IRAAccountInformationLocators":{
+        "IRAAccountInformationText":"//h2[normalize-space()='IRA Account Information']",
+        "DepositorAuthorization":"//input[@name='depositorAuthorization']"    
     }
 }

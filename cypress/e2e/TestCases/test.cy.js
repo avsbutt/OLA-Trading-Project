@@ -32,105 +32,69 @@ const countries = require("../fixtures/CountryAndStates.json")
 
 describe('Test File', () => {
    
-  
-    it('Test Cases ', () => {
-      clientLoginUtils()
-    });
+ it.skip('Test Cases 2 ', () => {
+    clientLoginUtils()
+    IfApplicationStatusNotCompletedThenCancelUtils()
 
-    it('Test Cases 2 ', () => {
-      clientLoginUtils()
-    });
-
-    it('Test Cases 3 ', () => {
-      clientLoginUtils()
-    });
-
-    it('Test Cases ', () => {
-      clientLoginUtils()
-    });
-     // IfApplicationStatusNotCompletedThenCancelUtils()
+    //    cy.visit("#/upload-documents")
+    //    doc.UploadUtilityBillIfVisible()
+    //    doc.UploadAuthorizationDocumentIfVisible()
+    //    doc.UploadDrivingLiscenceFor_Personal()
+    //    doc.GovernmentIDUploadFor_Personal_TypeIndividual()
 
 
-  
+    //     cy.visit("#/disclosures-signatures")
+    //     sig.FillSignature()
+    //     CloseToasterIfAppearUtils()
+    //     sig.AccountAgreement()
+    //     sig.AccountAgreementCashAndMargin()
+    //     sig.AccountLoanAgreement()
+    //     sig.ClickSaveAndReview()
+    //     CloseToasterIfAppearUtils()
+
+    //    cy.fixture('CountryAndStates.json').then((countryStates) => {
+    //    countryStates.forEach((location) => {
+
+    //     cy.xpath("//select[@name='countryId']") // Replace with the actual selector
+    //       .select(location.country);
 
 
+    //     cy.xpath("//select[@name='stateId']") // Replace with the actual selector
+    //       .select(location.state);
 
-
-        //  cy.visit("#/upload-documents")
-        //    doc.UploadUtilityBillIfVisible()
-        //    doc.UploadAuthorizationDocumentIfVisible()
-        //    doc.UploadDrivingLiscenceFor_Personal()
-        //    doc.GovernmentIDUploadFor_Personal_TypeIndividual()
-
-
-
-      // cy.visit("#/disclosures-signatures")
-      //     sig.FillSignature()
-      //     CloseToasterIfAppearUtils()
-      //     sig.AccountAgreement()
-      //     sig.AccountAgreementCashAndMargin()
-      //     sig.AccountLoanAgreement()
-      //     sig.ClickSaveAndReview()
-      //     CloseToasterIfAppearUtils()
-
-      
+    //     // Perform actions for the rest of your flow here
+    //     cy.reload()
         
+    //   });
+    // });
 
 
-      // cy.fixture('CountryAndStates.json').then((countryStates) => {
-      //   countryStates.forEach((location) => {
+    // data.foreach((userdata)={
+    //   cy.get('select[name="countryId"]').select(userdata.country)
 
-      //       cy.xpath("//select[@name='countryId']") // Replace with the actual selector
-      //       .select(location.country);
+    //select[@name='countryId']
+
+
+    // reg.fillOption1()
+    // reg.fillOption2()
+    // reg.fillOption3(randomData.randomWords)
+    // reg.fillOption4()
+    // reg.fillOption5(randomData.randomWords)
+    // reg.fillOption6()
+    // reg.fillOption7(randomData.randomWords)
+    // reg.fillOption8()
+    // reg.fillOption9()
+    // reg.fillOption10() 
+    // reg.fillDirectCommunication()
+    // reg.SaveAndContinue()
+    // cy.xpath(RegulatoryItemsLocator).click()
+
+    // testemploy.ClickOnUnemployed()
+
+    // testInvestor.fillInvestmentProfileInfo()
+    // testInvestor.fillFinancialSuitability()
+    // testInvestor.fillPriorInvestmentExperience()
+
+  })
   
-     
-      //     cy.xpath("//select[@name='stateId']") // Replace with the actual selector
-      //       .select(location.state);
-  
-      //     // Perform actions for the rest of your flow here
-      //     cy.reload()
-          
-      //   });
-      // });
-    
-  });
-  
-
-
-
-        // data.foreach((userdata)={
-        //   cy.get('select[name="countryId"]').select(userdata.country)
-
-
-
-     
- 
-
-
-
-       //select[@name='countryId']
-
-          
-
-       
-
-
-          // reg.fillOption1()
-          // reg.fillOption2()
-          // reg.fillOption3(randomData.randomWords)
-          // reg.fillOption4()
-          // reg.fillOption5(randomData.randomWords)
-          // reg.fillOption6()
-          // reg.fillOption7(randomData.randomWords)
-          // reg.fillOption8()
-          // reg.fillOption9()
-          // reg.fillOption10() 
-          // reg.fillDirectCommunication()
-          // reg.SaveAndContinue()
-          // cy.xpath(RegulatoryItemsLocator).click()
-
-          // testemploy.ClickOnUnemployed()
-
-          // testInvestor.fillInvestmentProfileInfo()
-          // testInvestor.fillFinancialSuitability()
-          // testInvestor.fillPriorInvestmentExperience()
+})
