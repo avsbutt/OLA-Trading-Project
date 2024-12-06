@@ -29,7 +29,7 @@ export class DisclosureSignaturesPage{
       } 
     });
 
-    this.stubWindowOpen();  // Call the helper function
+    this.stubWindowOpen();  // Call the helper function to open link in a another hidden tab
 
     cy.document().then((doc) => {
       const pdfLink = doc.querySelector('div:nth-child(5) a:nth-child(1)');
@@ -110,6 +110,18 @@ export class DisclosureSignaturesPage{
      
   }
 
+  //a[normalize-space()='Account Agreement Cash & Margin Domestic']
+
+  AccountAgreementCashAndMarginDomestic_ShouldNotBeVisibleOnlyForAllRetirementIRAApplications(){
+    cy.xpath("//a[normalize-space()='Account Agreement Cash & Margin Domestic']")
+    .should('not.exist') // Ensure the element not exists in the DOM
+    
+  }
+
+
+
+
+
 
   //----####----FOR FILL SIGNATURE----####----\\
 
@@ -124,8 +136,8 @@ export class DisclosureSignaturesPage{
   }
 
   ClickSaveAndReview(){
-    cy.xpath(FormUsageButtons.Save).click()
-    cy.xpath(FormUsageButtons.Review).click()
+    cy.xpath(FormUsageButtons.Save).focus().click()
+    cy.xpath(FormUsageButtons.Review).focus().click()
   }
 
 }
