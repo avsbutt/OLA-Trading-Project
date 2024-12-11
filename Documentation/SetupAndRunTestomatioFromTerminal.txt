@@ -1,4 +1,4 @@
-TSet the Environment Variable in VS Code Terminal Enviroment>   $env:TESTOMATIO="tstmt_FXXYPXwKJrtkNayoO_pHTnoUhQoPmYjo3g1730274277"
+Set the Environment Variable in VS Code Terminal Enviroment>   $env:TESTOMATIO="tstmt_FXXYPXwKJrtkNayoO_pHTnoUhQoPmYjo3g1730274277"
 After setting the TESTOMATIO variable, you can verify it
 In PowerShell >     echo $env:TESTOMATIOtstmt_FXXYPXwKJrtkNayoO_pHTnoUhQoPmYjo3g1730274277
 In CMD >    echo %TESTOMATIO%

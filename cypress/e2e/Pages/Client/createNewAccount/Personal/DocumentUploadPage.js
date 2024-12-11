@@ -132,6 +132,12 @@ export class DocumentUploadPage{
     cy.xpath("//input[@name='fileForeignQuestions']").focus().attachFile('Doc.pdf')
   }
 
+  //----####----FOR IRA APPLICATION ONLY----####----\\
+  
+  GovernmentIDUploadFor_IRA(){
+    cy.xpath("//input[@name='fileGovIssuedIdLicense']").focus().attachFile('Doc.pdf')
+  }
+
 
   Save(){
     cy.xpath(FormUsageButtons.Save).click()

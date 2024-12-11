@@ -7,7 +7,8 @@ import { RegulatoryItemsPage } from "../../../../Pages/Client/createNewAccount/P
 import { AccountFeaturesPage} from "../../../../Pages/Client/createNewAccount/Personal/AccountFeaturesPage"
 import { DocumentUploadPage } from "../../../../Pages/Client/createNewAccount/Personal/DocumentUploadPage"
 import { DisclosureSignaturesPage } from "../../../../Pages/Client/createNewAccount/Personal/DisclosureSignaturesPage"
-import{ ReviewInfomationPage } from "../../../../Pages/Client/createNewAccount/Personal/ReviewInformationPage"
+import { ReviewInfomationPage } from "../../../../Pages/Client/createNewAccount/Personal/ReviewInformationPage"
+import { IRABeneficiariesPage } from "../../../../Pages/Client/createNewAccount/Retirement/IRABeneficiaries"
 import { CloseToasterIfAppearUtils } from "../../../../utils/CloseToasterIfAppearUtils";
 import { IfApplicationStatusNotCompletedThenCancelUtils } from "../../../../utils/IfApplicationStatusNotCompletedThenCancelUtils";
 import { CreateNewAccountPage } from "../../../../Pages/Client/createNewAccount/CreateNewAccountPage"
@@ -15,6 +16,7 @@ import { waitForLoaderToDisappearUtils } from "../../../../utils/waitForLoaderTo
 
 const TC_PersonalInformationPage = new PersonalInformationPage
 const TC_EmploymentInformationPage = new EmploymentInformationPage
+const TC_IRABeneficiariesPage = new IRABeneficiariesPage
 const TC_InvestmentProfilePage = new InvestmentProfilePage
 const TC_RegulatoryItemsPage = new RegulatoryItemsPage
 const TC_AccountFeaturesPage = new AccountFeaturesPage
@@ -25,7 +27,7 @@ const TC_CreateNewAccountPage = new CreateNewAccountPage
 
 
 
-describe('Client - Personal - Individual', () => {
+describe('Client - Retirement - Tradational IRA', () => {
 
 
   beforeEach(() => {
@@ -34,7 +36,7 @@ describe('Client - Personal - Individual', () => {
     waitForLoaderToDisappearUtils()
     IfApplicationStatusNotCompletedThenCancelUtils()
     CloseToasterIfAppearUtils()
-
+   // Cypress.config('numTestsKeptInMemory', 0); // Disable keeping snapshots in memory
   });
 
   afterEach(() => {
@@ -43,9 +45,10 @@ describe('Client - Personal - Individual', () => {
   });
   
 
-  it('Verify that US Citizen User can Create New Personal Account || ID Type #Driver License', () => {
+  it('Verify that US Citizen User can Create Retirement Account || ID Type #Driver License', () => {
 
-    TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
+    
+    TC_CreateNewAccountPage.CreateRetirementAccount_TypeTraditionalIRA();
     CloseToasterIfAppearUtils();
 
     const randomData= dataGeneratorUtils();
@@ -75,16 +78,20 @@ describe('Client - Personal - Individual', () => {
       randomData.trustedMailingAddress1,
       randomData.trustedCity,
       randomData.trustedPostalCode);
+    TC_PersonalInformationPage.fillIRAAccountInformation()
     TC_PersonalInformationPage.SaveAndContinue()
     waitForLoaderToDisappearUtils()
-        
 
        
     cy.url().should('include', '/employment-info')
     //  TC_EmploymentInformationPage.fillEmployedInfo()
     TC_EmploymentInformationPage.ClickOnUnemployed()
     TC_EmploymentInformationPage.SaveAndContinue()
-   waitForLoaderToDisappearUtils()
+    waitForLoaderToDisappearUtils()
+
+   cy.url().should('include', '/ira-beneficiaries')
+   TC_IRABeneficiariesPage.AddIRABeneficiaries(randomData.fName, randomData.lName, randomData.dobYYYYMMDD, randomData.randomNumbers, randomData.address, randomData.city, randomData.postalCode, randomData.randomWords)
+   TC_IRABeneficiariesPage.SaveAndContinue()
  
 
     cy.url().should('include','/investor-profile')
@@ -132,6 +139,7 @@ describe('Client - Personal - Individual', () => {
 
 
     cy.url().should('include', '#/disclosures-signatures')
+    TC_DisclosureSignaturesPage.AccountAgreementCashAndMarginDomestic_ShouldNotBeVisibleOnlyForAllRetirementIRAApplications()
     TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountLoanAgreement()
@@ -151,9 +159,9 @@ describe('Client - Personal - Individual', () => {
 
   })
 
-  it('Verify that US Citizen User can Create New Personal Account || ID Type #Passport', () => {
+  it('Verify that US Citizen User can Create Retirement Account || ID Type #Passport', () => {
 
-    TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
+    TC_CreateNewAccountPage.CreateRetirementAccount_TypeTraditionalIRA();
     CloseToasterIfAppearUtils();
 
     const randomData= dataGeneratorUtils();
@@ -192,8 +200,13 @@ describe('Client - Personal - Individual', () => {
     //  TC_EmploymentInformationPage.fillEmployedInfo()
     TC_EmploymentInformationPage.ClickOnUnemployed()
     TC_EmploymentInformationPage.SaveAndContinue()
-   waitForLoaderToDisappearUtils()
- 
+    waitForLoaderToDisappearUtils()
+
+
+    cy.url().should('include', '/ira-beneficiaries')
+    TC_IRABeneficiariesPage.AddIRABeneficiaries(randomData.fName, randomData.lName, randomData.dobYYYYMMDD, randomData.randomNumbers, randomData.address, randomData.city, randomData.postalCode, randomData.randomWords)
+    TC_IRABeneficiariesPage.SaveAndContinue()
+
 
     cy.url().should('include','/investor-profile')
     TC_InvestmentProfilePage.fillInvestmentProfileInfo()
@@ -240,6 +253,7 @@ describe('Client - Personal - Individual', () => {
 
 
     cy.url().should('include', '#/disclosures-signatures')
+    TC_DisclosureSignaturesPage.AccountAgreementCashAndMarginDomestic_ShouldNotBeVisibleOnlyForAllRetirementIRAApplications()
     TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountLoanAgreement()
@@ -259,9 +273,9 @@ describe('Client - Personal - Individual', () => {
 
   })
 
-  it('Verify that Foreign User can Create New Personal Account || ID Type #Govt ID' , ()=>{
+  it('Verify that US Citizen User can Create Retirement Account || ID Type #Govt ID', () => {
 
-    TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
+    TC_CreateNewAccountPage.CreateRetirementAccount_TypeTraditionalIRA();
     CloseToasterIfAppearUtils();
 
     const randomData= dataGeneratorUtils();
@@ -276,9 +290,8 @@ describe('Client - Personal - Individual', () => {
       randomData.idNumber,
       randomData.dobYYYYMMDD,
       randomData.idIssueDate,
-      randomData.idExpirationDate,
-      randomData.socialSecurityNo);
-    TC_PersonalInformationPage.FromPersonalInformationSelect_isUScitizenNoAndisForeignYes()
+      randomData.idExpirationDate);
+    TC_PersonalInformationPage.FromPersonalInformationSelect_isUSCitizenYes(randomData.socialSecurityNo)
     TC_PersonalInformationPage.FromPersonalInformationSelect_IDType_GovtID()
     TC_PersonalInformationPage.fillPhysicalAddress(
       randomData.address,
@@ -302,7 +315,12 @@ describe('Client - Personal - Individual', () => {
     TC_EmploymentInformationPage.ClickOnUnemployed()
     TC_EmploymentInformationPage.SaveAndContinue()
     waitForLoaderToDisappearUtils()
- 
+
+
+    cy.url().should('include', '/ira-beneficiaries')
+    TC_IRABeneficiariesPage.AddIRABeneficiaries(randomData.fName, randomData.lName, randomData.dobYYYYMMDD, randomData.randomNumbers, randomData.address, randomData.city, randomData.postalCode, randomData.randomWords)
+    TC_IRABeneficiariesPage.SaveAndContinue()
+
 
     cy.url().should('include','/investor-profile')
     TC_InvestmentProfilePage.fillInvestmentProfileInfo()
@@ -326,7 +344,7 @@ describe('Client - Personal - Individual', () => {
     TC_RegulatoryItemsPage.fillOption9()
     TC_RegulatoryItemsPage.fillOption10()
     TC_RegulatoryItemsPage.fillDirectCommunication()
-    TC_RegulatoryItemsPage.fillW8Ben_ForForeignAccounts(randomData.randomWords, randomData.city)
+    // TC_RegulatoryItemsPage.fillW8Ben_ForForeignAccounts(randomData.randomWords, randomData.city)
     TC_RegulatoryItemsPage.SaveAndContinue()
     waitForLoaderToDisappearUtils()
 
@@ -338,22 +356,18 @@ describe('Client - Personal - Individual', () => {
 
 
     cy.url().should('include', '#/upload-documents')
-    TC_DocumentUploadPage.DocumentsShouldBeVisibleFor_ForeignAccount_Personal_TypeIndividual()    
-    //  TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
-    //  TC_DocumentUploadPage.UploadUtilityBillIfVisible()
-    //  TC_DocumentUploadPage.UploadPassportFor_Personal()
-    //  TC_DocumentUploadPage.UploadDrivingLiscenceFor_Personal()
-    TC_DocumentUploadPage.GovernmentIDUploadFor_Personal()
-    TC_DocumentUploadPage.UploadW8BenForForeign_Personal()
-    TC_DocumentUploadPage.UploadForeignQuestionnaireFor_Foreign_Personal()
-    
-
+    // TC_DocumentUploadPage.GovernmentIDUploadFor_Personal()
+    // TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
+    // TC_DocumentUploadPage.UploadUtilityBillIfVisible()
+    // TC_DocumentUploadPage.UploadDrivingLiscenceFor_Personal()
+    TC_DocumentUploadPage.GovernmentIDUploadFor_IRA()
     TC_DocumentUploadPage.SaveAndContinue()
     CloseToasterIfAppearUtils();
     waitForLoaderToDisappearUtils()
 
 
     cy.url().should('include', '#/disclosures-signatures')
+    TC_DisclosureSignaturesPage.AccountAgreementCashAndMarginDomestic_ShouldNotBeVisibleOnlyForAllRetirementIRAApplications()
     TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountLoanAgreement()
@@ -363,7 +377,7 @@ describe('Client - Personal - Individual', () => {
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
     CloseToasterIfAppearUtils();
-    //waitForLoaderToDisappearUtils()
+   // waitForLoaderToDisappearUtils()
 
 
     cy.url().should('include', '#/review')
@@ -373,12 +387,12 @@ describe('Client - Personal - Individual', () => {
 
   })
 
-  it.skip('Verify that ID Issuance Date is not visible For ID Type *Govt ID* and *Passport*' , ()=>{
+  it('Verify that Foreign User cannot Open IRA Account' , ()=>{
+
+    TC_CreateNewAccountPage.CreateRetirementAccount_TypeTraditionalIRA();
+    CloseToasterIfAppearUtils();
+    TC_PersonalInformationPage.VerifyForeignAccountCannotOpenIRAAccount()
 
   })
-
-  it.skip('Verify that if in Investor Profile if Investment Experience is None(0) and Total Net Worth* is $0-24,999 then Securities Lending is Not Visible in Account Feature and Securities Loan Agreement* is Not Visible Disclosure & Signatures', ()=>{
-  })
-    
 
 })
