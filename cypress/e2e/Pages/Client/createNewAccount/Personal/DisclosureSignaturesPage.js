@@ -7,7 +7,7 @@ export class DisclosureSignaturesPage{
   stubWindowOpen() {
     cy.window().then((win) => {
       if (!win.open.stubbed) {
-        cy.stub(win, 'open').as('windowOpen');
+        cy.stub(win, 'open').as('windowOpen')
         // cy.stub(win, 'location').as('windowLocation');
         win.open.stubbed = true; // Mark as stubbed to prevent re-stubbing
       }
@@ -17,34 +17,39 @@ export class DisclosureSignaturesPage{
 
 
   AccountAgreementCashAndMargin(){
-    // cy.xpath(DisclosureSignaturesLocators.AccountAgreementCashAndMarginYes).check()
+    // cy.xpath(DisclosureSignaturesLocators.AccountAgreementCashAndMarginYes).focus().check({ force: true })
     cy.document().then((doc) => {
       const element = doc.querySelector('input[value="true"][name="wdaccountAgreementCashMarginCheck"]');
       const element2 = doc.querySelector('input[value="false"][name="wdaccountAgreementCashMarginCheck"]');
     
       if (element) {
-        cy.wrap(element).check({ force: true });
-        cy.wrap(element2).check({ force: true });
-        cy.wrap(element).check({ force: true });     
+        cy.wrap(element).focus().check({ force: true })
+        cy.wrap(element2).focus().check({ force: true })
+        cy.wrap(element).focus().check({ force: true })    
       } 
-    });
+    })
 
     this.stubWindowOpen();  // Call the helper function to open link in a another hidden tab
 
-    cy.document().then((doc) => {
-      const pdfLink = doc.querySelector('div:nth-child(5) a:nth-child(1)');
+ 
+    cy.xpath(DisclosureSignaturesLocators.AccountAgreementCashAndMargin).should('be.visible').click({ force: true })     // PDF Link
+    cy.get('@windowOpen').should('have.been.called');   // Verify if window.open was called, confirming the link click would open a new tab
+    cy.log('PDF link click simulated and intercepted by stub');
+
+    // cy.document().then((doc) => {
+    //   const pdfLink = doc.querySelector('div:nth-child(5) a:nth-child(1)')
     
-      if (pdfLink) {
-       cy.wrap(Cypress.$(pdfLink)).should('be.visible').click({ force: true });
+    //   if (pdfLink) {
+    //    cy.wrap(Cypress.$(pdfLink)).should('be.visible').click({ force: true })
       
-       // Verify if `window.open` was called, confirming the link click would open a new tab
-       cy.get('@windowOpen').should('have.been.called');
-       cy.log('PDF link click simulated and intercepted by stub');
-      } 
-      else {
-       cy.log('PDF link not present in DOM');
-      }
-    });    
+    //    // Verify if `window.open` was called, confirming the link click would open a new tab
+    //    cy.get('@windowOpen').should('have.been.called')
+    //    cy.log('PDF link click simulated and intercepted by stub')
+    //   } 
+    //   else {
+    //    cy.log('PDF link not present in DOM')
+    //   }
+    // })
   }
 
 
@@ -56,24 +61,17 @@ export class DisclosureSignaturesPage{
       const element = doc.querySelector('input[value="true"][name="wdaccountAgreementCashCheck"]');
           
       if (element) {
-        cy.wrap(element).check({ force: true });
+        cy.wrap(element).focus().check({ force: true })
         cy.wait(2000)
         }
-    });
+    })
   
    this.stubWindowOpen();  // Call the helper function
   
-   cy.document().then((doc) => {
-     const pdfLink = doc.querySelector('div:nth-child(3) a:nth-child(1)');
-     if (pdfLink) {
-       cy.wrap(Cypress.$(pdfLink)).should('be.visible').click({ force: true });
-       cy.get('@windowOpen').should('have.been.called');
-       cy.log('PDF link click simulated and intercepted by stub');
-      } 
-      else {
-        cy.log('PDF link not present in DOM');
-      }
-    });
+  
+   cy.xpath(DisclosureSignaturesLocators.AccountAgreement).should('be.visible').click({ force: true })   // PDF Link
+   cy.get('@windowOpen').should('have.been.called')   // Verify if window.open was called, confirming the link click would open a new tab
+   cy.log('PDF link click simulated and intercepted by stub')
   }
 
 
@@ -82,11 +80,11 @@ export class DisclosureSignaturesPage{
 
 
 
-  AccountLoanAgreement() {
+  FullyPaidSecuritiesLoanAgreement() {
     cy.document().then((doc) => {
-      const element = doc.querySelector('input[value="true"][name="wdfullyPaidSecLoadAgreementCheck"]');
+      const element = doc.querySelector('input[value="true"][name="wdfullyPaidSecLoadAgreementCheck"]')
       if (element) {
-        cy.wrap(element).check({ force: true });
+        cy.wrap(element).focus().check({ force: true })
       } 
       // else {
       //   // Element is not present, log a message and continue
@@ -96,18 +94,10 @@ export class DisclosureSignaturesPage{
          
     this.stubWindowOpen();
 
-    cy.document().then((doc) => {
-      const pdfLink = doc.querySelector('div:nth-child(7) a:nth-child(1)');
-      if (pdfLink) {
-        cy.wrap(Cypress.$(pdfLink)).should('be.visible').click({ force: true });
-        cy.get('@windowOpen').should('have.been.called');
-        cy.log('PDF link click simulated and intercepted by stub');
-      } 
-      else {
-       cy.log('PDF link not present in DOM');
-      }
-    });
-     
+    //PDF LINK
+    cy.xpath(DisclosureSignaturesLocators.FullyPaidSecuritiesLoanAgreement).should('be.visible').click({ force: true });   
+    cy.get('@windowOpen').should('have.been.called');   // Verify if window.open was called, confirming the link click would open a new tab
+    cy.log('PDF link click simulated and intercepted by stub');
   }
 
   //a[normalize-space()='Account Agreement Cash & Margin Domestic']

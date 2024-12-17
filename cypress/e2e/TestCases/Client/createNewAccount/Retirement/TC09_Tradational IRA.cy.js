@@ -45,7 +45,7 @@ describe('Client - Retirement - Tradational IRA', () => {
   });
   
 
-  it('Verify that US Citizen User can Create Retirement Account || ID Type #Driver License', () => {
+  it('Verify that US Citizen User can Create Tradational IRA Account || ID Type #Driver License', () => {
 
     
     TC_CreateNewAccountPage.CreateRetirementAccount_TypeTraditionalIRA();
@@ -92,6 +92,7 @@ describe('Client - Retirement - Tradational IRA', () => {
    cy.url().should('include', '/ira-beneficiaries')
    TC_IRABeneficiariesPage.AddIRABeneficiaries(randomData.fName, randomData.lName, randomData.dobYYYYMMDD, randomData.randomNumbers, randomData.address, randomData.city, randomData.postalCode, randomData.randomWords)
    TC_IRABeneficiariesPage.SaveAndContinue()
+   waitForLoaderToDisappearUtils()
  
 
     cy.url().should('include','/investor-profile')
@@ -140,9 +141,9 @@ describe('Client - Retirement - Tradational IRA', () => {
 
     cy.url().should('include', '#/disclosures-signatures')
     TC_DisclosureSignaturesPage.AccountAgreementCashAndMarginDomestic_ShouldNotBeVisibleOnlyForAllRetirementIRAApplications()
-    TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
+ 
     cy.wait(1000)
-    TC_DisclosureSignaturesPage.AccountLoanAgreement()
+    TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
     cy.wait(1000)
@@ -159,7 +160,7 @@ describe('Client - Retirement - Tradational IRA', () => {
 
   })
 
-  it('Verify that US Citizen User can Create Retirement Account || ID Type #Passport', () => {
+  it('Verify that US Citizen User can Create Tradational IRA Account || ID Type #Passport', () => {
 
     TC_CreateNewAccountPage.CreateRetirementAccount_TypeTraditionalIRA();
     CloseToasterIfAppearUtils();
@@ -206,6 +207,7 @@ describe('Client - Retirement - Tradational IRA', () => {
     cy.url().should('include', '/ira-beneficiaries')
     TC_IRABeneficiariesPage.AddIRABeneficiaries(randomData.fName, randomData.lName, randomData.dobYYYYMMDD, randomData.randomNumbers, randomData.address, randomData.city, randomData.postalCode, randomData.randomWords)
     TC_IRABeneficiariesPage.SaveAndContinue()
+    waitForLoaderToDisappearUtils()
 
 
     cy.url().should('include','/investor-profile')
@@ -254,9 +256,9 @@ describe('Client - Retirement - Tradational IRA', () => {
 
     cy.url().should('include', '#/disclosures-signatures')
     TC_DisclosureSignaturesPage.AccountAgreementCashAndMarginDomestic_ShouldNotBeVisibleOnlyForAllRetirementIRAApplications()
-    TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
+
     cy.wait(1000)
-    TC_DisclosureSignaturesPage.AccountLoanAgreement()
+    TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
     cy.wait(1000)
@@ -273,7 +275,7 @@ describe('Client - Retirement - Tradational IRA', () => {
 
   })
 
-  it('Verify that US Citizen User can Create Retirement Account || ID Type #Govt ID', () => {
+  it('Verify that US Citizen User can Create Tradational IRA Account || ID Type #Govt ID', () => {
 
     TC_CreateNewAccountPage.CreateRetirementAccount_TypeTraditionalIRA();
     CloseToasterIfAppearUtils();
@@ -320,6 +322,7 @@ describe('Client - Retirement - Tradational IRA', () => {
     cy.url().should('include', '/ira-beneficiaries')
     TC_IRABeneficiariesPage.AddIRABeneficiaries(randomData.fName, randomData.lName, randomData.dobYYYYMMDD, randomData.randomNumbers, randomData.address, randomData.city, randomData.postalCode, randomData.randomWords)
     TC_IRABeneficiariesPage.SaveAndContinue()
+    waitForLoaderToDisappearUtils()
 
 
     cy.url().should('include','/investor-profile')
@@ -368,9 +371,9 @@ describe('Client - Retirement - Tradational IRA', () => {
 
     cy.url().should('include', '#/disclosures-signatures')
     TC_DisclosureSignaturesPage.AccountAgreementCashAndMarginDomestic_ShouldNotBeVisibleOnlyForAllRetirementIRAApplications()
-    TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
+
     cy.wait(1000)
-    TC_DisclosureSignaturesPage.AccountLoanAgreement()
+    TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
     cy.wait(1000)
@@ -387,7 +390,7 @@ describe('Client - Retirement - Tradational IRA', () => {
 
   })
 
-  it('Verify that Foreign User cannot Open IRA Account' , ()=>{
+  it('Verify that Foreign User cannot Open Tradational IRA Account' , ()=>{
 
     TC_CreateNewAccountPage.CreateRetirementAccount_TypeTraditionalIRA();
     CloseToasterIfAppearUtils();

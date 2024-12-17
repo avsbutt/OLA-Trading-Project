@@ -158,7 +158,7 @@ describe('Client - Personal - Joint', () => {
     cy.url().should('include', '#/disclosures-signatures')
     TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
     cy.wait(1000)
-    TC_DisclosureSignaturesPage.AccountLoanAgreement()
+    TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
     cy.wait(1000)
@@ -287,7 +287,7 @@ describe('Client - Personal - Joint', () => {
     cy.url().should('include', '#/disclosures-signatures')
     TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
     cy.wait(1000)
-    TC_DisclosureSignaturesPage.AccountLoanAgreement()
+    TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
     cy.wait(1000)
@@ -451,7 +451,7 @@ describe('Client - Personal - Joint', () => {
     cy.url().should('include', '#/disclosures-signatures')
     TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
     cy.wait(1000)
-    TC_DisclosureSignaturesPage.AccountLoanAgreement()
+    TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
     cy.wait(1000)
@@ -471,7 +471,7 @@ describe('Client - Personal - Joint', () => {
   //---------##########---------FOREIGN USER---------##########---------
 
 
-  it('Verify that Foreign User can Create Personal Account With Type Joint & Subtype Rights Of Survivorship || ID Type #Govt ID', () => {
+  it.only('Verify that Foreign User can Create Personal Account With Type Joint & Subtype Rights Of Survivorship || ID Type #Govt ID', () => {
 
 
     TC_CreateNewAccountPage.CreatePersonalAccount_TypeJointAndSubtype_RightsOfSurvivorship()
@@ -582,7 +582,7 @@ describe('Client - Personal - Joint', () => {
     cy.url().should('include', '#/disclosures-signatures')
     TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
     cy.wait(1000)
-    TC_DisclosureSignaturesPage.AccountLoanAgreement()
+    TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
     cy.wait(1000)
@@ -713,7 +713,7 @@ describe('Client - Personal - Joint', () => {
     cy.url().should('include', '#/disclosures-signatures')
     TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
     cy.wait(1000)
-    TC_DisclosureSignaturesPage.AccountLoanAgreement()
+    TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
     cy.wait(1000)
@@ -880,7 +880,7 @@ describe('Client - Personal - Joint', () => {
     cy.url().should('include', '#/disclosures-signatures')
     TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
     cy.wait(1000)
-    TC_DisclosureSignaturesPage.AccountLoanAgreement()
+    TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
     cy.wait(1000)

@@ -138,7 +138,7 @@ describe('DDT - Client - Individual - Data Driven Testing', () => {
         cy.url().should('include', '#/disclosures-signatures')
         TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
         cy.wait(1000)
-        TC_DisclosureSignaturesPage.AccountLoanAgreement()
+        TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
         cy.wait(1000)
         TC_DisclosureSignaturesPage.AccountAgreement()
         cy.wait(1000)

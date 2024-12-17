@@ -25,5 +25,6 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import 'cypress-real-events';
 import 'cypress-file-upload';
+import 'cypress-iframe';
 
 

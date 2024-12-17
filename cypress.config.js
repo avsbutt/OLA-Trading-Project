@@ -16,13 +16,14 @@ module.exports = defineConfig({
       require('@testomatio/reporter/lib/adapter/cypress-plugin')(on, config);
     },
     numTestsKeptInMemory: 1,
+    chromeWebSecurity: false,
     
     fixturesFolder: 'cypress/e2e/fixtures',
     tsc: 'cypress/support/commands.ts',
     defaultCommandTimeout: 10000,
     defaultTimeout: 10000,
 
-    video: true,
+    video: false,
     videosFolder: 'cypress/e2e/videos',
     screenshotsFolder: 'cypress/e2e/screenshots',
     pageLoadTimeout:60000 ,

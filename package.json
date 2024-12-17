@@ -10,11 +10,14 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@cypress/grep": "^4.1.0",
     "@faker-js/faker": "^9.0.3",
     "@testomatio/reporter": "^1.5.3",
     "allure-commandline": "^2.32.0",
-    "cypress": "^13.16.0",
+    "cypress": "^13.16.1",
     "cypress-file-upload": "^5.0.8",
+    "cypress-grep": "^3.0.4",
+    "cypress-iframe": "^1.0.1",
     "cypress-xpath": "^2.0.1",
     "mocha-allure-reporter": "^1.4.0"
   },

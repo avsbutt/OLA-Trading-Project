@@ -7,94 +7,111 @@ import { FormUsageButtons } from "../Locators/FormUsageButtons.json";
 import { DocumentUploadPage } from "../Pages/Client/createNewAccount/Personal/DocumentUploadPage"
 import { DisclosureSignaturesPage } from "../Pages/Client/createNewAccount/Personal/DisclosureSignaturesPage"
 import { PersonalInformationPage} from "../Pages/Client/createNewAccount/Personal/PersonalInformationPage"
-import { clientLoginUtils } from "../utils/clientLoginUtils"
 import { CloseToasterIfAppearUtils } from "../utils/CloseToasterIfAppearUtils";
 import { IfApplicationStatusNotCompletedThenCancelUtils } from "../utils/IfApplicationStatusNotCompletedThenCancelUtils";
 
-
-
-
-//   Cypress.on('uncaught:exception', (err) => {
-//     console.error('Uncaught exception:', err);
-//     return false;
-// });
-
+// Test setup
 const testInvestor = new InvestmentProfilePage
 const testemploy = new EmploymentInformationPage
 const reg = new RegulatoryItemsPage
 const doc = new DocumentUploadPage
 const sig = new DisclosureSignaturesPage
 const perspnal = new PersonalInformationPage
-const randomData= dataGeneratorUtils();
+const randomData = dataGeneratorUtils();
 const countries = require("../fixtures/CountryAndStates.json")
 
+import 'cypress-iframe';  // Importing iframe plugin
+// beforeEach(() => {
 
 
-describe('Test File', () => {
-   
- it.skip('Test Cases 2 ', () => {
-    clientLoginUtils()
-    IfApplicationStatusNotCompletedThenCancelUtils()
+  
+//   cy.intercept('POST', 'www.google.com/recaptcha/api2/reload?k=6LeVTZcqAAAAAGZlnkWxSND3sD1imTmfDktzj0DZ', (req) => {
+//     req.reply({ captchaPassed: true });
+//   });
 
-    //    cy.visit("#/upload-documents")
-    //    doc.UploadUtilityBillIfVisible()
-    //    doc.UploadAuthorizationDocumentIfVisible()
-    //    doc.UploadDrivingLiscenceFor_Personal()
-    //    doc.GovernmentIDUploadFor_Personal_TypeIndividual()
+// });
 
 
-    //     cy.visit("#/disclosures-signatures")
-    //     sig.FillSignature()
-    //     CloseToasterIfAppearUtils()
-    //     sig.AccountAgreement()
-    //     sig.AccountAgreementCashAndMargin()
-    //     sig.AccountLoanAgreement()
-    //     sig.ClickSaveAndReview()
-    //     CloseToasterIfAppearUtils()
+describe('Handle reCAPTCHA Mocking on Frontend', () => {
+  it('Mock reCAPTCHA and Log In Successfully', { tags: '@login' }, () => {
+    // Visit the page
+    cy.visit('', {
+      failOnStatusCode: false,
+      auth: {
+        username: 'ola-staging',
+        password: 'Atlasclear@123/'
+      }
+    })
 
-    //    cy.fixture('CountryAndStates.json').then((countryStates) => {
-    //    countryStates.forEach((location) => {
-
-    //     cy.xpath("//select[@name='countryId']") // Replace with the actual selector
-    //       .select(location.country);
-
-
-    //     cy.xpath("//select[@name='stateId']") // Replace with the actual selector
-    //       .select(location.state);
-
-    //     // Perform actions for the rest of your flow here
-    //     cy.reload()
-        
-    //   });
-    // });
+    cy.frameLoaded('iframe[src*="recaptcha/api2/anchor"]'); 
+    cy.iframe('iframe[src*="recaptcha/api2/anchor"]').find('.recaptcha-checkbox').click(); 
 
 
-    // data.foreach((userdata)={
-    //   cy.get('select[name="countryId"]').select(userdata.country)
 
-    //select[@name='countryId']
-
-
-    // reg.fillOption1()
-    // reg.fillOption2()
-    // reg.fillOption3(randomData.randomWords)
-    // reg.fillOption4()
-    // reg.fillOption5(randomData.randomWords)
-    // reg.fillOption6()
-    // reg.fillOption7(randomData.randomWords)
-    // reg.fillOption8()
-    // reg.fillOption9()
-    // reg.fillOption10() 
-    // reg.fillDirectCommunication()
-    // reg.SaveAndContinue()
-    // cy.xpath(RegulatoryItemsLocator).click()
-
-    // testemploy.ClickOnUnemployed()
-
-    // testInvestor.fillInvestmentProfileInfo()
-    // testInvestor.fillFinancialSuitability()
-    // testInvestor.fillPriorInvestmentExperience()
+    cy.xpath("//input[@id='username']").type('democlient');
+    cy.xpath("//input[@id='password']").type('Pac@123456');
+    cy.xpath('//button[normalize-space()="Login"]').click();
+    cy.wait(4000)
+    
+    cy.url().should('include', '/dashboard')
 
   })
+})
+
+//-----------------------------------------------------------------------------
+
+describe.skip('Handle reCAPTCHA Mocking on Frontend', () => {
+
+
+  it('Mock reCAPTCHA and Log In Successfully', () => {
+    // Visit the page
+    cy.visit('', {
+      failOnStatusCode: false,
+      auth: {
+        username: 'ola-staging',
+        password: 'Atlasclear@123/'
+      }
+    });
+
+
+    cy.window().then((win) => {
+      win.grecaptcha = {
+        execute: cy.stub().returns('mocked-token'),
+        getResponse: cy.stub().returns('mocked-token'),
+        render: cy.stub().returns(true),
+      };
+    })
+
+    cy.intercept('POST', 'https://www.google.com/recaptcha/api2/reload?k=6LeVTZcqAAAAAGZlnkWxSND3sD1imTmfDktzj0DZ', {
+      statusCode: 200,
+      body: {
+        success: true,
+        challenge_ts: new Date().toISOString(),
+        hostname: 'localhost', 
+      },
+    }).as('recaptchaReload');
+
+
+    cy.frameLoaded('iframe[src*="recaptcha/api2/anchor"]'); 
+    cy.iframe('iframe[src*="recaptcha/api2/anchor"]').find('.recaptcha-checkbox').click();  
+
   
+    cy.get('textarea[name="g-recaptcha-response"]')
+      .should('exist')  
+      .invoke('val', 'mocked-token')
+
+    
+      cy.iframe('iframe[src*="recaptcha/api2/anchor"]')
+      .should('exist')
+      .then(($checkbox) => {
+        $checkbox.addClass('recaptcha-checkbox-checked')
+        $checkbox.attr('aria-checked', 'true')
+      });
+
+    cy.xpath("//input[@id='username']").type('democlient');
+    cy.xpath("//input[@id='password']").type('Pac@123456');
+    cy.xpath('//button[normalize-space()="Login"]').click();
+    cy.wait('@recaptchaReload');
+
+  })
 })

@@ -1,8 +1,12 @@
-//THIS FUNCTION LOGIN THE APPLICATION AMD ALSO LOGIN THE AUTHENTICATION APPLIED IN OUR SITE
+//THIS FUNCTION LOGIN THE APPLICATION AND ALSO LOGIN THE AUTHENTICATION APPLIED IN OUR SITE
 import { loginLocators} from "../Locators/loginLocators.json";
 
 export function clientLoginUtils() {
-  cy.visit("", {failOnStatusCode: false,
+
+ // const captchaKey = Cypress.env('CAPTCHA_KEY');
+
+
+  cy.visit("", {failOnStatusCode: false, timeout: 20000,
    auth: {
      username: 'ola-staging',
      password: 'Atlasclear@123/'

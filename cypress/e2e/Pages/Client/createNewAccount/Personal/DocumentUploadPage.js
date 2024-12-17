@@ -70,7 +70,7 @@ export class DocumentUploadPage{
 
 
   UploadForeignQuestionnaireFor_Foreign_Personal(){
-    cy.xpath(DocumentUploadLocators.UploadForeignQuestions).attachFile('Doc.pdf')
+    cy.xpath(DocumentUploadLocators.UploadForeignQuestions).focus().attachFile('image.jpeg')
   }
   DocumentsShouldBeVisibleFor_ForeignAccount_Personal_TypeIndividual(){
     cy.xpath("//span[normalize-space()='Foreign Questionnaire']").should('be.visible')
