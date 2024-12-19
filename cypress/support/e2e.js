@@ -18,7 +18,12 @@ import './commands'
 require('cypress-xpath');
 import 'cypress-real-events';
 import '@cypress/grep';
-require('cypress-grep');
+require('@cypress/grep')();
+
+
+// const registerCypressGrep = require('@cypress/grep');
+// registerCypressGrep();
+
 
 
 // import 'cypress-slow-down/commands';

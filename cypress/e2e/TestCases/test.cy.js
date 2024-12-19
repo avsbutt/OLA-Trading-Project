@@ -33,7 +33,7 @@ import 'cypress-iframe';  // Importing iframe plugin
 
 
 describe('Handle reCAPTCHA Mocking on Frontend', () => {
-  it('Mock reCAPTCHA and Log In Successfully', { tags: '@login' }, () => {
+  it('Mock reCAPTCHA and Log In Successfully',  { tags: ['@smoke']}, () => {
     // Visit the page
     cy.visit('', {
       failOnStatusCode: false,

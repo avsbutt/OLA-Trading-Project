@@ -16,12 +16,12 @@
     "allure-commandline": "^2.32.0",
     "cypress": "^13.16.1",
     "cypress-file-upload": "^5.0.8",
-    "cypress-grep": "^3.0.4",
     "cypress-iframe": "^1.0.1",
     "cypress-xpath": "^2.0.1",
     "mocha-allure-reporter": "^1.4.0"
   },
   "dependencies": {
+    "@mmisty/cypress-grep": "^1.9.11",
     "cypress-real-events": "^1.13.0"
   }
 }

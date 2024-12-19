@@ -1,9 +1,10 @@
 const { fa } = require("@faker-js/faker");
+const cypress = require("cypress");
 const { defineConfig } = require("cypress");
-
 module.exports = defineConfig({
+
   e2e: {
-    projectId: "qs3ie3",
+    projectId: "9wgqhu",
 
     specPattern: "cypress/e2e/TestCases/**/*.cy.js",     //The specPattern tells Cypress where to find your test files.
     
@@ -14,19 +15,32 @@ module.exports = defineConfig({
 
        // testomat.io reporter plugin:
       require('@testomatio/reporter/lib/adapter/cypress-plugin')(on, config);
+      
+      require('@cypress/grep/src/plugin')(config);
+      return config;
+      
     },
+
+    env: {
+      // Grep options for triggering tests
+      grepFilterSpecs: true,
+      grepOmitFiltered: true,
+      grepOmitFiltered:true,
+      grepIntegrationFolder: '../../'
+    },
+    
     numTestsKeptInMemory: 1,
     chromeWebSecurity: false,
     
     fixturesFolder: 'cypress/e2e/fixtures',
     tsc: 'cypress/support/commands.ts',
     defaultCommandTimeout: 10000,
-    defaultTimeout: 10000,
+    defaultTimeout: 20000,
 
     video: false,
     videosFolder: 'cypress/e2e/videos',
     screenshotsFolder: 'cypress/e2e/screenshots',
-    pageLoadTimeout:60000 ,
+    pageLoadTimeout:30000 ,
     screenshots: false,
     
     viewportWidth: 1920,

@@ -471,7 +471,7 @@ describe('Client - Personal - Joint', () => {
   //---------##########---------FOREIGN USER---------##########---------
 
 
-  it.only('Verify that Foreign User can Create Personal Account With Type Joint & Subtype Rights Of Survivorship || ID Type #Govt ID', () => {
+  it('Verify that Foreign User can Create Personal Account With Type Joint & Subtype Rights Of Survivorship || ID Type #Govt ID', () => {
 
 
     TC_CreateNewAccountPage.CreatePersonalAccount_TypeJointAndSubtype_RightsOfSurvivorship()
@@ -569,11 +569,11 @@ describe('Client - Personal - Joint', () => {
     cy.wait(1000)
     TC_DocumentUploadPage.GovernmentIDUploadFor_Personal()
     TC_DocumentUploadPage.GovernmentIDUploadFor_PersonalCoApplicant()
-    
-    // TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
-    // TC_DocumentUploadPage.UploadUtilityBillIfVisible()
+    TC_DocumentUploadPage.UploadW8BenForForeign_Personal()
+    TC_DocumentUploadPage.UploadForeignQuestionnaireFor_Foreign_Personal()
     // TC_DocumentUploadPage.UploadDrivingLiscenceFor_Personal()
     // TC_DocumentUploadPage.UploadPassportFor_Personal()
+    cy.wait(2000)
     TC_DocumentUploadPage.SaveAndContinue()
     CloseToasterIfAppearUtils()
     waitForLoaderToDisappearUtils()
@@ -731,7 +731,7 @@ describe('Client - Personal - Joint', () => {
 
   });
 
-  it('Verify that Foreign User can Create Personal Account With Type Joint & Subtype Joint Community Property || ID Type #Passport || Verify that all 8 Expected US States exist in the dropdown', () => {
+  it.only('Verify that Foreign User can Create Personal Account With Type Joint & Subtype Joint Community Property || ID Type #Passport || Verify that all 8 Expected US States exist in the dropdown', () => {
    
       // Define the expected states
      const expectedStates = [

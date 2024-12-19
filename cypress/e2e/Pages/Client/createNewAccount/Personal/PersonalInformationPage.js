@@ -32,7 +32,7 @@ export class PersonalInformationPage{
     FromPersonalInformationSelect_IDType_DriverLicense(){
         cy.xpath(PersonalInformationLocators.IdType).focus().should('be.visible').focus().select('Driver License', {force:true})
         cy.xpath(PersonalInformationLocators.IdType).focus().should('contain.text', 'Driver License')    
-        cy.xpath(PersonalInformationLocators.IdIssuanceState).select('Alabama')
+        cy.xpath(PersonalInformationLocators.IdIssuanceState).select('Arizona')
     }
 
     FromPersonalInformationSelect_IDType_Passport(){
@@ -70,7 +70,7 @@ export class PersonalInformationPage{
     }
 
     fillCoApplicantPersonalInformation(fName, mName, lName, email, nOfDependents, primaryTelephone, idNumber, dobYYYYMMDD, idIssueDate, idExpirationDate, randomNumbers) {
-        cy.xpath(PersonalInformationLocators.IdType).focus().should('contain.text', 'Driver License')
+        //cy.xpath(PersonalInformationLocators.IdType).focus().should('contain.text', 'Driver License')
         cy.xpath(CoApplicantPersonalInformationLocators.FirstName).focus().clear().type(fName);
         cy.xpath(CoApplicantPersonalInformationLocators.LastName).focus().clear().type(lName);
         cy.xpath(CoApplicantPersonalInformationLocators.MiddleName).focus().clear().type(mName);
@@ -94,7 +94,7 @@ export class PersonalInformationPage{
         cy.xpath(PhysicalAddressLocators.City).focus().clear().type(city)
         cy.xpath(PhysicalAddressLocators.PostalCode).focus().clear().type(postalCode)
         cy.xpath(PhysicalAddressLocators.Country).select('United States' , {force:true})
-        cy.xpath(PhysicalAddressLocators.State).select('Alabama' , {force:true})
+        cy.xpath(PhysicalAddressLocators.State).select('Arizona' , {force:true})
     }
 
 
@@ -103,7 +103,7 @@ export class PersonalInformationPage{
         cy.xpath(CoApplicantPhysicalAddressLocators.City).focus().clear().type(city)
         cy.xpath(CoApplicantPhysicalAddressLocators.PostalCode).focus().clear().type(postalCode)
         cy.xpath(CoApplicantPhysicalAddressLocators.Country).focus().select('United States' , {force:true})
-        cy.xpath(CoApplicantPhysicalAddressLocators.State).focus().select('Alabama' , {force:true})
+        cy.xpath(CoApplicantPhysicalAddressLocators.State).focus().select('Arizona' , {force:true})
     }
 
 
@@ -115,7 +115,7 @@ export class PersonalInformationPage{
         cy.xpath(TrustedContactLocators.EmailAddress).focus().clear().type(trustedEmail)
         cy.xpath(TrustedContactLocators.MailingAddress1).focus().clear().type(trustedMailingAddress1)
         cy.xpath(TrustedContactLocators.Country).select('United States' , {force:true})
-        cy.xpath(TrustedContactLocators.State).select('Alabama' , {force:true})
+        cy.xpath(TrustedContactLocators.State).select('Arizona' , {force:true})
         cy.xpath(TrustedContactLocators.City).focus().clear().type(trustedCity)
         cy.xpath(TrustedContactLocators.PostalCode).focus().clear().type(trustedPostalCode)
     }

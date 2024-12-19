@@ -132,6 +132,14 @@ export class DocumentUploadPage{
     cy.xpath("//input[@name='fileForeignQuestions']").focus().attachFile('Doc.pdf')
   }
 
+  NonProfitEntityDocumentUpload(){
+    cy.xpath("//input[@name='fileAOI']").focus().attachFile('Doc.pdf')   //  Articles of Incorporation
+    cy.xpath("//input[@name='fileBylaws']").focus().attachFile('Doc.pdf')   //  Bylaws
+    cy.xpath("//input[@name='fileOrgMinutes']").focus().attachFile('Doc.pdf')  //  Organizational Minutes: 
+    cy.xpath("//input[@name='fileCOI']").focus().attachFile('Doc.pdf')  //  Conflict of Interest Policy:
+    cy.xpath("//input[@name='fileJobDesc']").focus().attachFile('Doc.pdf')  //  Job Descriptions
+  }
+
   //----####----FOR IRA APPLICATION ONLY----####----\\
   
   GovernmentIDUploadFor_IRA(){

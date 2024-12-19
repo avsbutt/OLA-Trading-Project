@@ -34,12 +34,12 @@ describe ('Client - Entity - Non Profit', ()=>{
         waitForLoaderToDisappearUtils()
         IfApplicationStatusNotCompletedThenCancelUtils()
         CloseToasterIfAppearUtils() 
-    });
+    })
 
     afterEach(() => {
         cy.clearCookies();
         cy.clearLocalStorage();
-    });
+    })
       
 
     it('Verify that US Citizen User can Create an Entity Account || Due Diligence Questionnaire Should be filled || ID Type #Govt ID', ()=>{
@@ -107,9 +107,7 @@ describe ('Client - Entity - Non Profit', ()=>{
     
     
         cy.url().should('include', '#/upload-entity-documents')
-        TC_DocumentUploadPage.LLCAuthorizationDocumentShouldBeVisibleFor_Entity_TypeLLC()
-
-        TC_DocumentUploadPage.LLCAuthorizationUploadFor_Entity_TypeLLC()
+        TC_DocumentUploadPage.NonProfitEntityDocumentUpload()
         TC_DocumentUploadPage.GovernmentIDUploadFor_Entity()
         TC_DocumentUploadPage.PassportIDUploadForBeneficialOwners_Entity()
          //TC_DocumentUploadPage.Save()
@@ -198,8 +196,7 @@ describe ('Client - Entity - Non Profit', ()=>{
     
     
         cy.url().should('include', '#/upload-entity-documents')
-        TC_DocumentUploadPage.LLCAuthorizationDocumentShouldBeVisibleFor_Entity_TypeLLC()
-        TC_DocumentUploadPage.LLCAuthorizationUploadFor_Entity_TypeLLC()
+        TC_DocumentUploadPage.NonProfitEntityDocumentUpload()
         TC_DocumentUploadPage.DriverLicenseUploadFor_Entity()    //For ID Type Driver License only
         TC_DocumentUploadPage.PassportIDUploadForBeneficialOwners_Entity()
         TC_DocumentUploadPage.SaveAndContinue()
@@ -288,10 +285,8 @@ describe ('Client - Entity - Non Profit', ()=>{
     
     
         cy.url().should('include', '#/upload-entity-documents')
-        TC_DocumentUploadPage.LLCAuthorizationDocumentShouldBeVisibleFor_Entity_TypeLLC()
+        TC_DocumentUploadPage.NonProfitEntityDocumentUpload()
         TC_DocumentUploadPage.W8BenDocumentShouldBeVisibleFor_Entity()
-        TC_DocumentUploadPage.LLCAuthorizationUploadFor_Entity_TypeLLC()
-        //TC_DocumentUploadPage.GovernmentIDUploadFor_Entity()
         TC_DocumentUploadPage.PassportIDUploadFor_Entity()
         TC_DocumentUploadPage.PassportIDUploadForBeneficialOwners_Entity()
         TC_DocumentUploadPage.W8BenDocumentUploadFor_Foreign_Entity()
