@@ -8,4 +8,5 @@ allure-results/
 #Personal Information that is Updated/Saved on Every Run
 cypress/e2e/fixtures/PersonInfoData.json
 
-
+#ignore node modules 
+node_modules/
