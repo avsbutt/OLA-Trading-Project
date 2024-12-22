@@ -1,17 +1,17 @@
-import { clientLoginUtils } from "../../../../utils/LoginUtils"
-import { PersonalInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/PersonalInformationPage"
-import { EmploymentInformationPage } from "../../../../Pages/Client/createNewAccount/Personal/EmploymentInfomationPage"
-import { dataGeneratorUtils } from "../../../../utils/dataGeneratorUtils";
-import { InvestmentProfilePage } from "../../../../Pages/Client/createNewAccount/Personal/InvestorProfilePage";
-import { RegulatoryItemsPage } from "../../../../Pages/Client/createNewAccount/Personal/RegulatoryItemsPage"
-import { AccountFeaturesPage} from "../../../../Pages/Client/createNewAccount/Personal/AccountFeaturesPage"
-import { DocumentUploadPage } from "../../../../Pages/Client/createNewAccount/Personal/DocumentUploadPage"
-import { DisclosureSignaturesPage } from "../../../../Pages/Client/createNewAccount/Personal/DisclosureSignaturesPage"
-import{ ReviewInfomationPage } from "../../../../Pages/Client/createNewAccount/Personal/ReviewInformationPage"
-import { CloseToasterIfAppearUtils } from "../../../../utils/CloseToasterIfAppearUtils";
-import { IfApplicationStatusNotCompletedThenCancelUtils } from "../../../../utils/IfApplicationStatusNotCompletedThenCancelUtils";
-import { CreateNewAccountPage } from "../../../../Pages/Client/createNewAccount/CreateNewAccountPage"
-import { waitForLoaderToDisappearUtils } from "../../../../utils/waitForLoaderToDisappearUtils";
+import { clientLoginUtils } from "@Utils/LoginUtils"
+import { PersonalInformationPage } from "@Pages/Client/createNewAccount/Personal/PersonalInformationPage"
+import { EmploymentInformationPage } from "@Pages/Client/createNewAccount/Personal/EmploymentInfomationPage"
+import { dataGeneratorUtils } from "@Utils/dataGeneratorUtils";
+import { InvestmentProfilePage } from "@Pages/Client/createNewAccount/Personal/InvestorProfilePage";
+import { RegulatoryItemsPage } from "@Pages/Client/createNewAccount/Personal/RegulatoryItemsPage"
+import { AccountFeaturesPage} from "@Pages/Client/createNewAccount/Personal/AccountFeaturesPage"
+import { DocumentUploadPage } from "@Pages/Client/createNewAccount/Personal/DocumentUploadPage"
+import { DisclosureSignaturesPage } from "@Pages/Client/createNewAccount/Personal/DisclosureSignaturesPage"
+import{ ReviewInfomationPage } from "@Pages/Client/createNewAccount/Personal/ReviewInformationPage"
+import { CloseToasterIfAppearUtils } from "@Utils/CloseToasterIfAppearUtils";
+import { IfApplicationStatusNotCompletedThenCancelUtils } from "@Utils/IfApplicationStatusNotCompletedThenCancelUtils";
+import { CreateNewAccountPage } from "@Pages/Client/createNewAccount/CreateNewAccountPage"
+import { waitForLoaderToDisappearUtils } from "@Utils/waitForLoaderToDisappearUtils";
 
 
 const TC_CreateNewAccountPage = new CreateNewAccountPage

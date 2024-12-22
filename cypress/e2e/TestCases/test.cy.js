@@ -1,17 +1,19 @@
-import { InvestmentProfilePage } from "../Pages/Client/createNewAccount/Personal/InvestorProfilePage";
-import { EmploymentInformationPage } from "../Pages/Client/createNewAccount/Personal/EmploymentInfomationPage"
-import { RegulatoryItemsLocators} from "../Locators/createNewAccountLocators.json"
-import { RegulatoryItemsPage } from "../Pages/Client/createNewAccount/Personal/RegulatoryItemsPage"
-import { dataGeneratorUtils } from "../utils/dataGeneratorUtils"
-import { FormUsageButtons } from "../Locators/FormUsageButtons.json";
-import { DocumentUploadPage } from "../Pages/Client/createNewAccount/Personal/DocumentUploadPage"
-import { DisclosureSignaturesPage } from "../Pages/Client/createNewAccount/Personal/DisclosureSignaturesPage"
-import { PersonalInformationPage} from "../Pages/Client/createNewAccount/Personal/PersonalInformationPage"
-import { CloseToasterIfAppearUtils } from "../utils/CloseToasterIfAppearUtils";
-import { IfApplicationStatusNotCompletedThenCancelUtils } from "../utils/IfApplicationStatusNotCompletedThenCancelUtils";
+
+import { EmploymentInformationPage } from "@Pages/Client/createNewAccount/Personal/EmploymentInfomationPage"
+import { RegulatoryItemsLocators} from "@Locators/createNewAccountLocators.json"
+import { RegulatoryItemsPage } from "@Pages/Client/createNewAccount/Personal/RegulatoryItemsPage"
+import { dataGeneratorUtils } from "@Utils/dataGeneratorUtils"
+import { FormUsageButtons } from "@Locators/FormUsageButtons.json";
+import { DocumentUploadPage } from "@Pages/Client/createNewAccount/Personal/DocumentUploadPage"
+import { DisclosureSignaturesPage } from "@Pages/Client/createNewAccount/Personal/DisclosureSignaturesPage"
+import { PersonalInformationPage} from "@Pages/Client/createNewAccount/Personal/PersonalInformationPage"
+import { CloseToasterIfAppearUtils } from "@Utils/CloseToasterIfAppearUtils";
+import { IfApplicationStatusNotCompletedThenCancelUtils } from "@Utils/IfApplicationStatusNotCompletedThenCancelUtils";
+
+
 
 // Test setup
-const testInvestor = new InvestmentProfilePage
+//const testInvestor = new InvestmentProfilePage
 const testemploy = new EmploymentInformationPage
 const reg = new RegulatoryItemsPage
 const doc = new DocumentUploadPage

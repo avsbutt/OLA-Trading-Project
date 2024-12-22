@@ -66,3 +66,64 @@ Then import Automated Test Testomat Generate API Link Paste this in Cypress and 
 )
 For Every Project Api will be different.
 After Running this command in terminal check Testomat Your test are imported in Testomat.
+
+-------------------
+cypress/webpack-preprocessor
+To optimize and shorten your imports, from ../../../../Utils to @Utils
+
+npm install --save-dev @cypress/webpack-preprocessor
+
+Create the webpack.config.js in root folder and set path 
+const path = require('path');
+
+module.exports = {
+  resolve: {
+    alias: {
+      '@Pages': path.resolve(__dirname, 'cypress/e2e/Pages'),
+      '@Locators': path.resolve(__dirname, 'cypress/e2e/Locators'),
+      '@Utils': path.resolve(__dirname, 'cypress/e2e/utils'),
+      '@Fixtures': path.resolve(__dirname, 'cypress/e2e/fixtures'),
+    },
+    extensions: ['.js', '.json'],
+  },
+};
+
+Update the cypress.config.js file as well
+
+const webpack = require('@cypress/webpack-preprocessor');
+const webpackOptions = require('./webpack.config.js');
+const options = {
+  webpackOptions,
+  watchOptions: {},
+};
+
+module.exports = defineConfig({
+  e2e: {
+    setupNodeEvents(on, config) {
+      on('file:preprocessor', webpack(options));   // Set Alias Import in webpack.config.js file
+      return config; 
+    },
+  }
+})
+
+-------------------
+Cypress Grep Tags
+Tag-Based Filtering: Allows tagging tests with meaningful labels like @smoke, @regression, or @critical.
+Site Link:  https://www.npmjs.com/package/@cypress/grep?activeTab=readme
+npm install @cypress/grep --save-dev
+
+
+Update the Cypress.config file 
+
+    setupNodeEvents(on, config) {
+      require('@cypress/grep/src/plugin')(config);   // Grep tags plugin
+      return config; 
+    },
+
+    env: {
+      // Grep options for triggering tests
+      grepFilterSpecs: true,
+      grepOmitFiltered: true,
+      grepOmitFiltered:true,
+      grepIntegrationFolder: '../../'
+    },
