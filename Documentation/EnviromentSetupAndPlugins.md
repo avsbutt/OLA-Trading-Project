@@ -112,6 +112,9 @@ Tag-Based Filtering: Allows tagging tests with meaningful labels like @smoke, @r
 Site Link:  https://www.npmjs.com/package/@cypress/grep?activeTab=readme
 npm install @cypress/grep --save-dev
 
+add this to e2e.js file 
+import '@cypress/grep';
+require('@cypress/grep')();
 
 Update the Cypress.config file 
 

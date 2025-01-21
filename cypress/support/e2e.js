@@ -35,8 +35,14 @@ require('@cypress/grep')();
 // require('./commands')
 
 Cypress.on('uncaught:exception', (err, runnable) => {
-    // returning false here prevents Cypress from
-    // failing the test
+    // returning false here prevents Cypress from failing the test
     return false
-  })
-  
+})
+
+//--------------
+
+Cypress.on('fail', (error, runnable) => {
+  // Capture full-page screenshot on test failure
+  cy.screenshot('failure-full-page', { capture: 'fullPage' });
+  throw error; // Rethrow the error to ensure the failure is logged properly
+})
