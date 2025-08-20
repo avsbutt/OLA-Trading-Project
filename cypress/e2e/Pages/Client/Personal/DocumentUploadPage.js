@@ -7,10 +7,9 @@ export class DocumentUploadPage{
 
 
   UploadDrivingLiscenceFor_Personal(){
-    cy.xpath(DocumentUploadLocators.UploadDrivingLicenses).focus().attachFile('Doc.pdf')
+    cy.xpath(DocumentUploadLocators.UploadDrivingLicensesFront).focus().attachFile('image.png')
+    cy.xpath(DocumentUploadLocators.UploadDrivingLicensesBack).focus().attachFile('image.png')
   }
-
-
 
   UploadPassportFor_Personal(){
      cy.xpath(DocumentUploadLocators.UploadPassport).focus().attachFile('Doc.pdf' , { subjectType: 'input' });

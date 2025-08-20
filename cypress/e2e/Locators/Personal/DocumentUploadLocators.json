@@ -1,6 +1,7 @@
 {
     "DocumentUploadLocators":{
-        "UploadDrivingLicenses":"//input[@name='filePrimaryDL']",
+        "UploadDrivingLicensesFront":"//input[@name='filePrimaryDLA']",
+        "UploadDrivingLicensesBack":"//input[@name='filePrimaryDLB']",
         "UploadPassport":"//input[@name='filePrimaryPassport']",
         "UploadGovernmentId":"//input[@name='fileGovIssuedIdLicense']",
         "UploadAuthorizationDocument":"//input[@name='fileDividentAuth']",

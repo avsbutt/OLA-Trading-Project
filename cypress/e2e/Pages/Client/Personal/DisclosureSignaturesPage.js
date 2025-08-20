@@ -78,7 +78,24 @@ export class DisclosureSignaturesPage{
 
   //---------------------------------------------------\\
 
+  FormCRSAgreement(){
+      cy.document().then((doc) => {
+        const element = doc.querySelector('input[value="true"][name="wdFormCRSAgreementCheck"]');
+            
+        if (element) {
+          cy.wrap(element).focus().check({ force: true })
+          cy.wait(2000)
+          }
+      })
+    
+    this.stubWindowOpen();
+    
+    cy.xpath(DisclosureSignaturesLocators.FormCRSAgreement).should('be.visible').click({ force: true })   // PDF Link
+    cy.get('@windowOpen').should('have.been.called')   // Verify if window.open was called, confirming the link click would open a new tab
+    cy.log('PDF link click simulated and intercepted by stub')
+  }
 
+  //---------------------------------------------------\\
 
   FullyPaidSecuritiesLoanAgreement() {
     cy.document().then((doc) => {

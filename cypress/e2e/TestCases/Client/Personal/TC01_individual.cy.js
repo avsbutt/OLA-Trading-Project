@@ -130,13 +130,14 @@ describe('Client - Personal - Individual', () => {
     CloseToasterIfAppearUtils();
     waitForLoaderToDisappearUtils()
 
-
     cy.url().should('include', '#/disclosures-signatures')
     TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
+    cy.wait(1000)
+    TC_DisclosureSignaturesPage.FormCRSAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()

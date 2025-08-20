@@ -1,6 +1,7 @@
 {
     "DisclosureSignaturesLocators":{
         "AccountAgreement":"//a[normalize-space()='Account Agreement']",
+        "FormCRSAgreement": "//a[normalize-space()='Form CRS Agreement']",
         "AccountAgreementYes":"(//input[@name='wdaccountAgreementCashCheck'])[2]",
         "AccountAgreementNo":"input[value='false'][name='wdaccountAgreementCashCheck']",
         "AccountAgreementCashAndMargin":"//a[normalize-space()='Account Agreement Cash & Margin Domestic']",

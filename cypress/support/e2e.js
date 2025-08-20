@@ -41,8 +41,8 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 
 //--------------
 
-Cypress.on('fail', (error, runnable) => {
-  // Capture full-page screenshot on test failure
-  cy.screenshot('failure-full-page', { capture: 'fullPage' });
-  throw error; // Rethrow the error to ensure the failure is logged properly
-})
+// Cypress.on('fail', (error, runnable) => {
+//   // Capture full-page screenshot on test failure
+//   cy.screenshot('failure-full-page', { capture: 'fullPage' });
+//   throw error; // Rethrow the error to ensure the failure is logged properly
+// })
