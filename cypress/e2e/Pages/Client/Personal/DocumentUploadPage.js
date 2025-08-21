@@ -12,7 +12,7 @@ export class DocumentUploadPage{
   }
 
   UploadPassportFor_Personal(){
-     cy.xpath(DocumentUploadLocators.UploadPassport).focus().attachFile('Doc.pdf' , { subjectType: 'input' });
+     cy.xpath(DocumentUploadLocators.UploadPassport).focus().attachFile('image.png' , { subjectType: 'input' });
   }
 
 
@@ -30,12 +30,13 @@ export class DocumentUploadPage{
 
   
   GovernmentIDUploadFor_Personal(){
-     cy.xpath(DocumentUploadLocators.UploadGovernmentId).focus().attachFile('Doc.pdf')
-
+     cy.xpath(DocumentUploadLocators.UploadGovernmentIdFront).focus().attachFile('image.png')
+     cy.xpath(DocumentUploadLocators.UploadGovernmentIdBack).focus().attachFile('image2.png')
   }
 
   GovernmentIDUploadFor_PersonalCoApplicant(){
-    cy.xpath(CoApplicantDocumentUploadLocators.UploadGovernmentId).focus().attachFile('Doc.pdf')
+    cy.xpath(CoApplicantDocumentUploadLocators.UploadGovernmentIdFront).focus().attachFile('image.png')
+    cy.xpath(CoApplicantDocumentUploadLocators.UploadGovernmentIdBack).focus().attachFile('image3.png')
   }
 
 
@@ -69,7 +70,7 @@ export class DocumentUploadPage{
 
 
   UploadForeignQuestionnaireFor_Foreign_Personal(){
-    cy.xpath(DocumentUploadLocators.UploadForeignQuestions).focus().attachFile('image.jpeg')
+    cy.xpath(DocumentUploadLocators.UploadForeignQuestions).focus().attachFile('Doc.pdf')
   }
   DocumentsShouldBeVisibleFor_ForeignAccount_Personal_TypeIndividual(){
     cy.xpath("//span[normalize-space()='Foreign Questionnaire']").should('be.visible')

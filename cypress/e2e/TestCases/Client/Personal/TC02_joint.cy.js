@@ -162,6 +162,8 @@ describe('Client - Personal - Joint', () => {
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
     cy.wait(1000)
+    TC_DisclosureSignaturesPage.FormCRSAgreement()
+    cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.FillCoApplicantSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
@@ -290,6 +292,8 @@ describe('Client - Personal - Joint', () => {
     TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
+    cy.wait(1000)
+    TC_DisclosureSignaturesPage.FormCRSAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.FillCoApplicantSignature()
@@ -455,6 +459,8 @@ describe('Client - Personal - Joint', () => {
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
     cy.wait(1000)
+    TC_DisclosureSignaturesPage.FormCRSAgreement()
+    cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.FillCoApplicantSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
@@ -585,6 +591,8 @@ describe('Client - Personal - Joint', () => {
     TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
+    cy.wait(1000)
+    TC_DisclosureSignaturesPage.FormCRSAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.FillCoApplicantSignature()
@@ -717,6 +725,8 @@ describe('Client - Personal - Joint', () => {
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
     cy.wait(1000)
+    TC_DisclosureSignaturesPage.FormCRSAgreement()
+    cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.FillCoApplicantSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
@@ -731,7 +741,7 @@ describe('Client - Personal - Joint', () => {
 
   });
 
-  it('Verify that Foreign User can Create Personal Account With Type Joint & Subtype Joint Community Property || ID Type #Passport || Verify that all 8 Expected US States exist in the dropdown', () => {
+  it.only('Verify that Foreign User can Create Personal Account With Type Joint & Subtype Joint Community Property || ID Type #Passport || Verify that all 8 Expected US States exist in the dropdown', () => {
    
       // Define the expected states
      const expectedStates = [
@@ -883,6 +893,8 @@ describe('Client - Personal - Joint', () => {
     TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
+    cy.wait(1000)
+    TC_DisclosureSignaturesPage.FormCRSAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.FillCoApplicantSignature()

@@ -79,14 +79,14 @@ export class DisclosureSignaturesPage{
   //---------------------------------------------------\\
 
   FormCRSAgreement(){
-      cy.document().then((doc) => {
-        const element = doc.querySelector('input[value="true"][name="wdFormCRSAgreementCheck"]');
-            
-        if (element) {
-          cy.wrap(element).focus().check({ force: true })
-          cy.wait(2000)
-          }
-      })
+    cy.document().then((doc) => {
+      const element = doc.querySelector('input[value="true"][name="wdFormCRSAgreementCheck"]');
+      const element2 = doc.querySelector('input[value="false"][name="wdFormCRSAgreementCheck"]');
+    
+      if (element) {
+        cy.wrap(element).focus().check({ force: true }) 
+      } 
+    })
     
     this.stubWindowOpen();
     

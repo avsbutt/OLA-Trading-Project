@@ -3,7 +3,8 @@
         "UploadDrivingLicensesFront":"//input[@name='filePrimaryDLA']",
         "UploadDrivingLicensesBack":"//input[@name='filePrimaryDLB']",
         "UploadPassport":"//input[@name='filePrimaryPassport']",
-        "UploadGovernmentId":"//input[@name='fileGovIssuedIdLicense']",
+        "UploadGovernmentIdFront":"//input[@name='fileGovIssuedIdLicenseA']",
+        "UploadGovernmentIdBack":"//input[@name='fileGovIssuedIdLicenseB']",
         "UploadAuthorizationDocument":"//input[@name='fileDividentAuth']",
         "UploadUtilityBill":"//input[@name='filePrimaryBankStatement']",
         "UploadW8Ben":"//input[@name='filePrimaryW8BENIndividuals']",
@@ -12,7 +13,8 @@
     },
 
     "CoApplicantDocumentUploadLocators":{
-        "UploadGovernmentId":"//input[@name='coAppfileGovIssuedIdLicense']",
+        "UploadGovernmentIdFront":"//input[@name='coAppfileGovIssuedIdLicenseFront']",
+        "UploadGovernmentIdBack":"//input[@name='coAppfileGovIssuedIdLicenseBack']",
         "UploadPassport":"",
         "UploadAuthorizationDocument":"",
         "UploadDrivingLicenses":"//input[@name='fileCoAppDL']",

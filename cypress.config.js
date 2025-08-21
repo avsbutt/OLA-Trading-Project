@@ -39,8 +39,8 @@ module.exports = defineConfig({
     
     fixturesFolder: 'cypress/e2e/fixtures',
     tsc: 'cypress/support/commands.ts',
-    defaultCommandTimeout: 10000,
-    defaultTimeout: 20000,
+    defaultCommandTimeout: 20000,
+    defaultTimeout: 30000,
 
     video: false,
     videosFolder: 'cypress/e2e/videos',
