@@ -28,7 +28,7 @@ export class EntityInformationPage{
         cy.xpath(MailingPreferenceLocators.City).focus().type(city)
         cy.xpath(MailingPreferenceLocators.PostalCode).type(postalCode)
         cy.xpath(MailingPreferenceLocators.LargeTraderID).focus().type(randomNumbers, {force: true })
-        cy.xpath(MailingPreferenceLocators.EffectiveDate).focus().type(dobYYYYMMDD)
+        // cy.xpath(MailingPreferenceLocators.EffectiveDate).focus().type(dobYYYYMMDD)
         cy.xpath(MailingPreferenceLocators.LEINumber).focus().type(randomNumbers2, {force: true })
     }
 

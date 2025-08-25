@@ -111,22 +111,26 @@ export class DocumentUploadPage{
     cy.xpath("//input[@name='fileTrustCertificate']").focus().attachFile('Doc.pdf')
   }
   DriverLicenseUploadFor_Entity(){
-    cy.xpath("//input[@name='fileDrivingLicenseSigner1']").focus().attachFile('Doc.pdf')
+    cy.xpath("//input[@name='fileDrivingLicenseSigner1Front']").focus().attachFile('image.png')
+    cy.xpath("//input[@name='fileDrivingLicenseSigner1Back']").focus().attachFile('image2.png')
+
   }
   GovernmentIDUploadFor_Entity(){
-    cy.xpath("//input[@name='fileGovtIssueIdSigner1']").focus().attachFile('Doc.pdf')
+    cy.xpath("//input[@name='fileGovtIssueIdSigner1Front']").focus().attachFile('image.png')
+    cy.xpath("//input[@name='fileGovtIssueIdSigner1Back']").focus().attachFile('image2.png')
+
   }
   LLCAuthorizationUploadFor_Entity_TypeLLC(){
     cy.xpath("//input[@name='fileLLCArticles']").focus().attachFile('Doc.pdf')
   }
   PassportIDUploadFor_Entity(){
-    cy.xpath("//input[@name='filePassportSigner1']").focus().attachFile('Doc.pdf')
+    cy.xpath("//input[@name='filePassportSigner1']").focus().attachFile('image2.png')
   }
   PassportIDUploadForBeneficialOwners_Entity(){
-    cy.xpath("//input[@name='fileGovtIssueIdMember1']").focus().attachFile('Doc.pdf')
+    cy.xpath("//input[@name='fileGovtIssueIdMember1']").focus().attachFile('image.png')
   }
   W8BenDocumentUploadFor_Foreign_Entity(){
-    cy.xpath("//input[@name='fileW8BENEntities']").focus().attachFile('Doc.pdf')
+    cy.xpath("//input[@name='fileW8BENEntities']").focus().attachFile('image.png')
   }
   ForeignQuestionnaireUploadFor_Foreign_Entity(){
     cy.xpath("//input[@name='fileForeignQuestions']").focus().attachFile('Doc.pdf')
