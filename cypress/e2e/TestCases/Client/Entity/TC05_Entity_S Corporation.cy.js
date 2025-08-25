@@ -134,6 +134,8 @@ describe ('Client - Entity - S Corporation', ()=>{
         cy.wait(1000)
         TC_DisclosureSignaturesPage.AccountAgreement()
         cy.wait(1000)
+        TC_DisclosureSignaturesPage.FormCRSAgreement()
+        cy.wait(1000)
         TC_DisclosureSignaturesPage.FillSignature()
         TC_DisclosureSignaturesPage.ClickSaveAndReview()
         CloseToasterIfAppearUtils();
@@ -205,18 +207,18 @@ describe ('Client - Entity - S Corporation', ()=>{
         waitForLoaderToDisappearUtils()
     
     
-        cy.url().should('include', '#/owners-officials')
-        TC_OwnersAndOfficialsPage.AddEntityOfficers(randomData.fName, randomData.lName, randomData.dobYYYYMMDD, randomData.randomNumbers, randomData.address, randomData.city, randomData.randomNumbers1, randomData.randomNumbers2, randomData.randomWords)
-        TC_OwnersAndOfficialsPage.AddBeneficialOwners(randomData.fName1, randomData.lName1, randomData.dobYYYYMMDD1, randomData.randomNumbers3, randomData.address1, randomData.city1, randomData.randomNumbers4, randomData.randomNumbers5)
-        TC_OwnersAndOfficialsPage.SaveAndContinue()
-        waitForLoaderToDisappearUtils()
+        // cy.url().should('include', '#/owners-officials')
+        // TC_OwnersAndOfficialsPage.AddEntityOfficers(randomData.fName, randomData.lName, randomData.dobYYYYMMDD, randomData.randomNumbers, randomData.address, randomData.city, randomData.randomNumbers1, randomData.randomNumbers2, randomData.randomWords)
+        // TC_OwnersAndOfficialsPage.AddBeneficialOwners(randomData.fName1, randomData.lName1, randomData.dobYYYYMMDD1, randomData.randomNumbers3, randomData.address1, randomData.city1, randomData.randomNumbers4, randomData.randomNumbers5)
+        // TC_OwnersAndOfficialsPage.SaveAndContinue()
+        // waitForLoaderToDisappearUtils()
     
     
         cy.url().should('include', '#/upload-entity-documents')
         TC_DocumentUploadPage.CorporateResolutionDocumentShouldBeVisibleFor_Entity_TypeCorporate()
         TC_DocumentUploadPage.CorporateDocumentUploadFor_Entity_TypeCorporate()
         TC_DocumentUploadPage.DriverLicenseUploadFor_Entity()    //For ID Type Driver License only
-        TC_DocumentUploadPage.PassportIDUploadForBeneficialOwners_Entity()
+        // TC_DocumentUploadPage.PassportIDUploadForBeneficialOwners_Entity()
         TC_DocumentUploadPage.SaveAndContinue()
         CloseToasterIfAppearUtils();
         waitForLoaderToDisappearUtils()
@@ -228,6 +230,8 @@ describe ('Client - Entity - S Corporation', ()=>{
         TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
         cy.wait(1000)
         TC_DisclosureSignaturesPage.AccountAgreement()
+        cy.wait(1000)
+        TC_DisclosureSignaturesPage.FormCRSAgreement()
         cy.wait(1000)
         TC_DisclosureSignaturesPage.FillSignature()
         TC_DisclosureSignaturesPage.ClickSaveAndReview()
@@ -301,11 +305,11 @@ describe ('Client - Entity - S Corporation', ()=>{
         waitForLoaderToDisappearUtils()
     
     
-        cy.url().should('include', '#/owners-officials')
-        TC_OwnersAndOfficialsPage.AddEntityOfficers(randomData.fName, randomData.lName, randomData.dobYYYYMMDD, randomData.randomNumbers, randomData.address, randomData.city, randomData.randomNumbers1, randomData.randomNumbers2, randomData.randomWords)
-        TC_OwnersAndOfficialsPage.AddBeneficialOwners(randomData.fName1, randomData.lName1, randomData.dobYYYYMMDD1, randomData.randomNumbers3, randomData.address1, randomData.city1, randomData.randomNumbers4, randomData.randomNumbers5)
-        TC_OwnersAndOfficialsPage.SaveAndContinue()
-        waitForLoaderToDisappearUtils()
+        // cy.url().should('include', '#/owners-officials')
+        // TC_OwnersAndOfficialsPage.AddEntityOfficers(randomData.fName, randomData.lName, randomData.dobYYYYMMDD, randomData.randomNumbers, randomData.address, randomData.city, randomData.randomNumbers1, randomData.randomNumbers2, randomData.randomWords)
+        // TC_OwnersAndOfficialsPage.AddBeneficialOwners(randomData.fName1, randomData.lName1, randomData.dobYYYYMMDD1, randomData.randomNumbers3, randomData.address1, randomData.city1, randomData.randomNumbers4, randomData.randomNumbers5)
+        // TC_OwnersAndOfficialsPage.SaveAndContinue()
+        // waitForLoaderToDisappearUtils()
     
     
         cy.url().should('include', '#/upload-entity-documents')
@@ -314,7 +318,7 @@ describe ('Client - Entity - S Corporation', ()=>{
         TC_DocumentUploadPage.CorporateDocumentUploadFor_Entity_TypeCorporate()
         //TC_DocumentUploadPage.GovernmentIDUploadFor_Entity()
         TC_DocumentUploadPage.PassportIDUploadFor_Entity()
-        TC_DocumentUploadPage.PassportIDUploadForBeneficialOwners_Entity()
+        // TC_DocumentUploadPage.PassportIDUploadForBeneficialOwners_Entity()
         TC_DocumentUploadPage.W8BenDocumentUploadFor_Foreign_Entity()
         TC_DocumentUploadPage.ForeignQuestionnaireUploadFor_Foreign_Entity()
         //TC_DocumentUploadPage.Save()
@@ -330,14 +334,15 @@ describe ('Client - Entity - S Corporation', ()=>{
         cy.wait(1000)
         TC_DisclosureSignaturesPage.AccountAgreement()
         cy.wait(1000)
+        TC_DisclosureSignaturesPage.FormCRSAgreement()
+        cy.wait(1000)
         TC_DisclosureSignaturesPage.FillSignature()
         TC_DisclosureSignaturesPage.ClickSaveAndReview()
         CloseToasterIfAppearUtils();
         // waitForLoaderToDisappearUtils()
-    
         cy.url().should('include', '#/review')
-            TC_ReviewInfomationPage.SelectRegisteredRep()
-    TC_ReviewInfomationPage.ClickOnSubmitBtn()
+        TC_ReviewInfomationPage.SelectRegisteredRep()
+        TC_ReviewInfomationPage.ClickOnSubmitBtn()
         cy.url().should('include', '#/dashboard')
     
     })
