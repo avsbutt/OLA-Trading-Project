@@ -102,7 +102,7 @@ export class DocumentUploadPage{
   //----MANDATORY DOCUMENT THAT SHOULD BE UPLOADED 
 
   LPBrokerAgreementUploadFor_Entity_TypePartnership(){
-    cy.xpath("//input[@name='filePartnershipAgreement']").focus().attachFile('Doc.pdf')
+    cy.xpath("//input[@name='filePartnershipAgreement']").focus().attachFile('image.png')
   }
   CorporateDocumentUploadFor_Entity_TypeCorporate(){
     cy.xpath("//input[@name='fileIncorporateArticles']").focus().attachFile('Doc.pdf')

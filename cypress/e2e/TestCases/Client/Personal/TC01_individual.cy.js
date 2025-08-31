@@ -378,12 +378,12 @@ describe('Client - Personal - Individual', () => {
 
   })
 
-  it.skip('Verify that ID Issuance Date is not visible For ID Type *Govt ID* and *Passport*' , ()=>{
+  // it.skip('Verify that ID Issuance Date is not visible For ID Type *Govt ID* and *Passport*' , ()=>{
 
-  })
+  // })
 
-  it.skip('Verify that if in Investor Profile if Investment Experience is None(0) and Total Net Worth* is $0-24,999 then Securities Lending is Not Visible in Account Feature and Securities Loan Agreement* is Not Visible Disclosure & Signatures', ()=>{
-  })
+  // it.skip('Verify that if in Investor Profile if Investment Experience is None(0) and Total Net Worth* is $0-24,999 then Securities Lending is Not Visible in Account Feature and Securities Loan Agreement* is Not Visible Disclosure & Signatures', ()=>{
+  // })
     
 
 })
