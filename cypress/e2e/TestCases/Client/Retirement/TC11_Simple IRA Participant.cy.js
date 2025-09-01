@@ -147,6 +147,8 @@ describe('Client - Retirement - Simple IRA Participant', () => {
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
     cy.wait(1000)
+    TC_DisclosureSignaturesPage.FormCRSAgreement()
+    cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
     CloseToasterIfAppearUtils();
@@ -262,6 +264,8 @@ describe('Client - Retirement - Simple IRA Participant', () => {
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
     cy.wait(1000)
+    TC_DisclosureSignaturesPage.FormCRSAgreement()
+    cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
     CloseToasterIfAppearUtils();
@@ -376,6 +380,8 @@ describe('Client - Retirement - Simple IRA Participant', () => {
     TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
+    cy.wait(1000)
+    TC_DisclosureSignaturesPage.FormCRSAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()

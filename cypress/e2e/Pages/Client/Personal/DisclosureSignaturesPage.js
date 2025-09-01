@@ -143,7 +143,9 @@ export class DisclosureSignaturesPage{
   }
 
   ClickSaveAndReview(){
+    cy.wait(1000)
     cy.xpath(FormUsageButtons.Save).focus().click()
+    cy.wait(1000)
     cy.xpath(FormUsageButtons.Review).focus().click()
   }
 

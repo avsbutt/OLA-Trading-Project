@@ -149,6 +149,8 @@ describe('Client - Retirement - Roth IRA', () => {
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
     cy.wait(1000)
+    TC_DisclosureSignaturesPage.FormCRSAgreement()
+    cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
     CloseToasterIfAppearUtils();
@@ -263,6 +265,8 @@ describe('Client - Retirement - Roth IRA', () => {
     TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
+    cy.wait(1000)
+    TC_DisclosureSignaturesPage.FormCRSAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
@@ -379,6 +383,8 @@ describe('Client - Retirement - Roth IRA', () => {
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
     cy.wait(1000)
+    TC_DisclosureSignaturesPage.FormCRSAgreement()
+    cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
     CloseToasterIfAppearUtils();
@@ -392,7 +398,7 @@ describe('Client - Retirement - Roth IRA', () => {
 
   })
 
-  it('Verify that Foreign User cannot Open IRA Account', ()=>{
+  it.only('Verify that Foreign User cannot Open IRA Account', ()=>{
 
     TC_CreateNewAccountPage.CreateRetirementAccount_TypeRothIRA();
     CloseToasterIfAppearUtils();

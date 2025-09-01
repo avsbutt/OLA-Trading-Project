@@ -26,6 +26,7 @@ export class InvestmentProfilePage{
     fillFinancialSuitability(){
         selectRandomValueFromDropdownUtils(FinancialSuitabilityLocators.AnnualIncome);
         selectRandomValueFromDropdownUtils(FinancialSuitabilityLocators.TotalNetWorth);
+        cy.xpath(FinancialSuitabilityLocators.TotalNetWorth).select('$25,000-50,000')
         selectRandomValueFromDropdownUtils(FinancialSuitabilityLocators.LiquidityNeeds);
         selectRandomValueFromDropdownUtils(FinancialSuitabilityLocators.LiquidNetWorth);
     }

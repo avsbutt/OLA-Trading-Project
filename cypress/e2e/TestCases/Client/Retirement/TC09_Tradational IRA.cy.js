@@ -147,6 +147,8 @@ describe('Client - Retirement - Tradational IRA', () => {
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
     cy.wait(1000)
+    TC_DisclosureSignaturesPage.FormCRSAgreement()
+    cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
     CloseToasterIfAppearUtils();
@@ -261,6 +263,8 @@ describe('Client - Retirement - Tradational IRA', () => {
     TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
+    cy.wait(1000)
+    TC_DisclosureSignaturesPage.FormCRSAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
@@ -378,6 +382,8 @@ describe('Client - Retirement - Tradational IRA', () => {
     TC_DisclosureSignaturesPage.AccountAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
+    TC_DisclosureSignaturesPage.FormCRSAgreement()
+    cy.wait(1000)
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
     CloseToasterIfAppearUtils();
    // waitForLoaderToDisappearUtils()

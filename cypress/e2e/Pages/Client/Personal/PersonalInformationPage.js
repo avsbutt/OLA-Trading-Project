@@ -115,6 +115,7 @@ export class PersonalInformationPage{
         cy.xpath(TrustedContactLocators.EmailAddress).focus().clear().type(trustedEmail)
         cy.xpath(TrustedContactLocators.MailingAddress1).focus().clear().type(trustedMailingAddress1)
         cy.xpath(TrustedContactLocators.Country).select('United States' , {force:true})
+        cy.wait(2000)
         cy.xpath(TrustedContactLocators.State).select('Arizona' , {force:true})
         cy.xpath(TrustedContactLocators.City).focus().clear().type(trustedCity)
         cy.xpath(TrustedContactLocators.PostalCode).focus().clear().type(trustedPostalCode)

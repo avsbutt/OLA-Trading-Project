@@ -148,6 +148,8 @@ describe('Client - Retirement - Beneficiary Traditional IRA', () => {
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
     cy.wait(1000)
+    TC_DisclosureSignaturesPage.FormCRSAgreement()
+    cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
     CloseToasterIfAppearUtils();
@@ -262,6 +264,8 @@ describe('Client - Retirement - Beneficiary Traditional IRA', () => {
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
     cy.wait(1000)
+    TC_DisclosureSignaturesPage.FormCRSAgreement()
+    cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
     CloseToasterIfAppearUtils();
@@ -375,6 +379,8 @@ describe('Client - Retirement - Beneficiary Traditional IRA', () => {
     TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.AccountAgreement()
+    cy.wait(1000)
+    TC_DisclosureSignaturesPage.FormCRSAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()

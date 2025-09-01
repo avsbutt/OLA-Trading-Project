@@ -8,7 +8,7 @@ export class DocumentUploadPage{
 
   UploadDrivingLiscenceFor_Personal(){
     cy.xpath(DocumentUploadLocators.UploadDrivingLicensesFront).focus().attachFile('image.png')
-    cy.xpath(DocumentUploadLocators.UploadDrivingLicensesBack).focus().attachFile('image.png')
+    cy.xpath(DocumentUploadLocators.UploadDrivingLicensesBack).focus().attachFile('image2.png')
   }
 
   UploadPassportFor_Personal(){
@@ -147,7 +147,9 @@ export class DocumentUploadPage{
   //----####----FOR IRA APPLICATION ONLY----####----\\
   
   GovernmentIDUploadFor_IRA(){
-    cy.xpath("//input[@name='fileGovIssuedIdLicense']").focus().attachFile('Doc.pdf')
+    cy.xpath("//input[@name='fileGovIssuedIdLicenseA']").focus().attachFile('image.png')
+    cy.xpath("//input[@name='fileGovIssuedIdLicenseB']").focus().attachFile('image2.png')
+
   }
 
 
