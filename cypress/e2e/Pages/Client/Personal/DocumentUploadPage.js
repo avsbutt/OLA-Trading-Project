@@ -7,12 +7,12 @@ export class DocumentUploadPage{
 
 
   UploadDrivingLiscenceFor_Personal(){
-    cy.xpath(DocumentUploadLocators.UploadDrivingLicensesFront).focus().attachFile('image.png')
-    cy.xpath(DocumentUploadLocators.UploadDrivingLicensesBack).focus().attachFile('image2.png')
+    cy.xpath(DocumentUploadLocators.UploadDrivingLicensesFront).focus().attachFile('PrimaryFront-DL.jpg')
+    cy.xpath(DocumentUploadLocators.UploadDrivingLicensesBack).focus().attachFile('Primaryback-DL.jpg')
   }
 
   UploadPassportFor_Personal(){
-     cy.xpath(DocumentUploadLocators.UploadPassport).focus().attachFile('image.png' , { subjectType: 'input' });
+     cy.xpath(DocumentUploadLocators.UploadPassport).focus().attachFile('PrimaryPassport.jpg' , { subjectType: 'input' });
   }
 
 
@@ -30,13 +30,13 @@ export class DocumentUploadPage{
 
   
   GovernmentIDUploadFor_Personal(){
-     cy.xpath(DocumentUploadLocators.UploadGovernmentIdFront).focus().attachFile('image.png')
-     cy.xpath(DocumentUploadLocators.UploadGovernmentIdBack).focus().attachFile('image2.png')
+     cy.xpath(DocumentUploadLocators.UploadGovernmentIdFront).focus().attachFile('PrimaryFront-GOV-ID.jpg')
+     cy.xpath(DocumentUploadLocators.UploadGovernmentIdBack).focus().attachFile('Primaryback-GOV-ID.jpg')
   }
 
   GovernmentIDUploadFor_PersonalCoApplicant(){
-    cy.xpath(CoApplicantDocumentUploadLocators.UploadGovernmentIdFront).focus().attachFile('image.png')
-    cy.xpath(CoApplicantDocumentUploadLocators.UploadGovernmentIdBack).focus().attachFile('image3.png')
+    cy.xpath(CoApplicantDocumentUploadLocators.UploadGovernmentIdFront).focus().attachFile('SecondaryFront-GOV-ID.jpg')
+    cy.xpath(CoApplicantDocumentUploadLocators.UploadGovernmentIdBack).focus().attachFile('SecondaryBack-GOV-ID.jpg')
   }
 
 
@@ -64,13 +64,13 @@ export class DocumentUploadPage{
   }
 
   UploadW8BenForForeign_Personal(){
-    cy.xpath(DocumentUploadLocators.UploadW8Ben).focus().attachFile('Doc.pdf')
+    cy.xpath(DocumentUploadLocators.UploadW8Ben).focus().attachFile('W-8_Individual.pdf')
   }
 
 
 
   UploadForeignQuestionnaireFor_Foreign_Personal(){
-    cy.xpath(DocumentUploadLocators.UploadForeignQuestions).focus().attachFile('Doc.pdf')
+    cy.xpath(DocumentUploadLocators.UploadForeignQuestions).focus().attachFile('Foreign_Questionnaire.pdf')
   }
   DocumentsShouldBeVisibleFor_ForeignAccount_Personal_TypeIndividual(){
     cy.xpath("//span[normalize-space()='Foreign Questionnaire']").should('be.visible')
@@ -102,38 +102,38 @@ export class DocumentUploadPage{
   //----MANDATORY DOCUMENT THAT SHOULD BE UPLOADED 
 
   LPBrokerAgreementUploadFor_Entity_TypePartnership(){
-    cy.xpath("//input[@name='filePartnershipAgreement']").focus().attachFile('image.png')
+    cy.xpath("//input[@name='filePartnershipAgreement']").focus().attachFile('LP_Broker_Agreement.pdf')
   }
   CorporateDocumentUploadFor_Entity_TypeCorporate(){
-    cy.xpath("//input[@name='fileIncorporateArticles']").focus().attachFile('Doc.pdf')
+    cy.xpath("//input[@name='fileIncorporateArticles']").focus().attachFile('Corporate_Resolution.pdf')
   }
   TrustCertificateUplaodFor_Entity_TypeTrust(){
-    cy.xpath("//input[@name='fileTrustCertificate']").focus().attachFile('Doc.pdf')
+    cy.xpath("//input[@name='fileTrustCertificate']").focus().attachFile('Trust_Cretificate.pdf')
   }
   DriverLicenseUploadFor_Entity(){
-    cy.xpath("//input[@name='fileDrivingLicenseSigner1Front']").focus().attachFile('image.png')
-    cy.xpath("//input[@name='fileDrivingLicenseSigner1Back']").focus().attachFile('image2.png')
+    cy.xpath("//input[@name='fileDrivingLicenseSigner1Front']").focus().attachFile('PrimaryFront-DL.jpg')
+    cy.xpath("//input[@name='fileDrivingLicenseSigner1Back']").focus().attachFile('Primaryback-DL.jpg')
 
   }
   GovernmentIDUploadFor_Entity(){
-    cy.xpath("//input[@name='fileGovtIssueIdSigner1Front']").focus().attachFile('image.png')
-    cy.xpath("//input[@name='fileGovtIssueIdSigner1Back']").focus().attachFile('image2.png')
+    cy.xpath("//input[@name='fileGovtIssueIdSigner1Front']").focus().attachFile('PrimaryFront-GOV-ID.jpg')
+    cy.xpath("//input[@name='fileGovtIssueIdSigner1Back']").focus().attachFile('Primaryback-GOV-ID.jpg')
 
   }
   LLCAuthorizationUploadFor_Entity_TypeLLC(){
-    cy.xpath("//input[@name='fileLLCArticles']").focus().attachFile('Doc.pdf')
+    cy.xpath("//input[@name='fileLLCArticles']").focus().attachFile('LLC_Authorization.pdf')
   }
   PassportIDUploadFor_Entity(){
-    cy.xpath("//input[@name='filePassportSigner1']").focus().attachFile('image2.png')
+    cy.xpath("//input[@name='filePassportSigner1']").focus().attachFile('PrimaryPassport.jpg')
   }
   PassportIDUploadForBeneficialOwners_Entity(){
-    cy.xpath("//input[@name='fileGovtIssueIdMember1']").focus().attachFile('image.png')
+    cy.xpath("//input[@name='fileGovtIssueIdMember1']").focus().attachFile('SecondaryPassport.jpg')
   }
   W8BenDocumentUploadFor_Foreign_Entity(){
-    cy.xpath("//input[@name='fileW8BENEntities']").focus().attachFile('image.png')
+    cy.xpath("//input[@name='fileW8BENEntities']").focus().attachFile('W-8_Individual.pdf')
   }
   ForeignQuestionnaireUploadFor_Foreign_Entity(){
-    cy.xpath("//input[@name='fileForeignQuestions']").focus().attachFile('Doc.pdf')
+    cy.xpath("//input[@name='fileForeignQuestions']").focus().attachFile('Foreign_Questionnaire.pdf')
   }
 
   NonProfitEntityDocumentUpload(){
@@ -147,8 +147,8 @@ export class DocumentUploadPage{
   //----####----FOR IRA APPLICATION ONLY----####----\\
   
   GovernmentIDUploadFor_IRA(){
-    cy.xpath("//input[@name='fileGovIssuedIdLicenseA']").focus().attachFile('image.png')
-    cy.xpath("//input[@name='fileGovIssuedIdLicenseB']").focus().attachFile('image2.png')
+    cy.xpath("//input[@name='fileGovIssuedIdLicenseA']").focus().attachFile('PrimaryFront-GOV-ID.jpg')
+    cy.xpath("//input[@name='fileGovIssuedIdLicenseB']").focus().attachFile('Primaryback-GOV-ID.jpg')
 
   }
 

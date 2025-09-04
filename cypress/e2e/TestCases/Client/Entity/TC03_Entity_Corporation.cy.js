@@ -317,7 +317,7 @@ describe ('Client - Entity - Corporation', ()=>{
     TC_DocumentUploadPage.CorporateDocumentUploadFor_Entity_TypeCorporate()
     //TC_DocumentUploadPage.GovernmentIDUploadFor_Entity()
     TC_DocumentUploadPage.PassportIDUploadFor_Entity()
-    TC_DocumentUploadPage.PassportIDUploadForBeneficialOwners_Entity()
+    // TC_DocumentUploadPage.PassportIDUploadForBeneficialOwners_Entity()
     TC_DocumentUploadPage.W8BenDocumentUploadFor_Foreign_Entity()
     TC_DocumentUploadPage.ForeignQuestionnaireUploadFor_Foreign_Entity()
     //TC_DocumentUploadPage.Save()

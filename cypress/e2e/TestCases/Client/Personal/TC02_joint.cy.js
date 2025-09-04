@@ -741,7 +741,7 @@ describe('Client - Personal - Joint', () => {
 
   });
 
-  it.only('Verify that Foreign User can Create Personal Account With Type Joint & Subtype Joint Community Property || ID Type #Passport || Verify that all 8 Expected US States exist in the dropdown', () => {
+  it('Verify that Foreign User can Create Personal Account With Type Joint & Subtype Joint Community Property || ID Type #Passport || Verify that all 8 Expected US States exist in the dropdown', () => {
    
       // Define the expected states
      const expectedStates = [

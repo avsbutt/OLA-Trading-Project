@@ -14,8 +14,8 @@ export class PersonalInformationPage{
         cy.xpath(PersonalInformationLocators.Email).focus().clear().type(email);
         cy.xpath(PersonalInformationLocators.NoOfDependents).focus().clear().type(nOfDependents); 
         cy.xpath(PersonalInformationLocators.MaterialStatus).focus().select('Single')
-        cy.xpath(PersonalInformationLocators.PrimaryTelephone).focus().clear().type(primaryTelephone); 
-        cy.xpath(PersonalInformationLocators.IdNumber).focus().clear().type(idNumber); 
+        cy.xpath(PersonalInformationLocators.PrimaryTelephone).focus().clear().type(primaryTelephone , {delay: 50}); 
+        cy.xpath(PersonalInformationLocators.IdNumber).focus().clear().type(idNumber , {delay: 50}); 
         cy.xpath(PersonalInformationLocators.DateofBirth).focus().clear().type(dobYYYYMMDD)
         cy.xpath(PersonalInformationLocators.IdIssueDate).focus().clear().type(idIssueDate); // Use the YYYY-MM-DD format for Issue Date
         cy.xpath(PersonalInformationLocators.IdExpirationDate).focus().clear().type(idExpirationDate); // Use the YYYY-MM-DD format for Expiration Date
@@ -42,7 +42,7 @@ export class PersonalInformationPage{
 
     FromPersonalInformationSelect_isUSCitizenYes(socialSecurityNo){
         cy.xpath(PersonalInformationLocators.isUSCitizenYes).focus().click()
-        cy.xpath(PersonalInformationLocators.SocialSecurityNo).focus().type(socialSecurityNo)
+        cy.xpath(PersonalInformationLocators.SocialSecurityNo).focus().type(socialSecurityNo , {delay: 50})
         // cy.wait(1000)
         // cy.xpath(PersonalInformationLocators.IdType).should('be.visible').select('Other Govt ID') 
     }
@@ -77,13 +77,13 @@ export class PersonalInformationPage{
         cy.xpath(CoApplicantPersonalInformationLocators.Email).focus().clear().type(email);
         cy.xpath(CoApplicantPersonalInformationLocators.NoOfDependents).focus().clear().type(nOfDependents); 
         cy.xpath(CoApplicantPersonalInformationLocators.MaterialStatus).select('Single')
-        cy.xpath(CoApplicantPersonalInformationLocators.PrimaryTelephone).focus().clear().type(primaryTelephone); 
-        cy.xpath(CoApplicantPersonalInformationLocators.IdNumber).focus().clear().type(idNumber); 
+        cy.xpath(CoApplicantPersonalInformationLocators.PrimaryTelephone).focus().clear().type(primaryTelephone , {delay: 50}); 
+        cy.xpath(CoApplicantPersonalInformationLocators.IdNumber).focus().clear().type(idNumber , {delay: 50}); 
         cy.xpath(CoApplicantPersonalInformationLocators.isUSCitizenYes).click()
         cy.xpath(CoApplicantPersonalInformationLocators.DateofBirth).clear().type(dobYYYYMMDD)
         cy.xpath(CoApplicantPersonalInformationLocators.IdIssueDate).focus().clear().type(idIssueDate); // Use the YYYY-MM-DD format for Issue Date
         cy.xpath(CoApplicantPersonalInformationLocators.IdExpirationDate).focus().clear().type(idExpirationDate); // Use the YYYY-MM-DD format for Expiration Date
-        cy.xpath(CoApplicantPersonalInformationLocators.SocialSecurityNo).focus().type(randomNumbers) 
+        cy.xpath(CoApplicantPersonalInformationLocators.SocialSecurityNo).focus().type(randomNumbers , {delay: 50}) 
         cy.wait(2000)
         cy.xpath(CoApplicantPersonalInformationLocators.IdType).should('be.visible').select('4515')
     }

@@ -398,7 +398,7 @@ describe('Client - Retirement - Roth IRA', () => {
 
   })
 
-  it.only('Verify that Foreign User cannot Open IRA Account', ()=>{
+  it('Verify that Foreign User cannot Open IRA Account', ()=>{
 
     TC_CreateNewAccountPage.CreateRetirementAccount_TypeRothIRA();
     CloseToasterIfAppearUtils();

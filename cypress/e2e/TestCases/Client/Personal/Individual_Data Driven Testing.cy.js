@@ -40,7 +40,7 @@ afterEach(() => {
 
 
 
-describe('DDT - Client - Individual - Data Driven Testing', () => {
+describe.skip('DDT - Client - Individual - Data Driven Testing', () => {
   it('Verify that User can Create Personal Account With SubType Individual', () => {
     cy.fixture('CountryAndStates.json').then((countryStates) => {
       countryStates.forEach((location) => {

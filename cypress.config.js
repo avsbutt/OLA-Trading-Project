@@ -42,11 +42,11 @@ module.exports = defineConfig({
     defaultCommandTimeout: 30000,
     defaultTimeout: 30000,
 
-    video: false,
+    video: true,
     videosFolder: 'cypress/e2e/videos',
     screenshotsFolder: 'cypress/e2e/screenshots',
     pageLoadTimeout:30000 ,
-    screenshots: false,
+    screenshots: true,
     
     viewportWidth: 1920,
     viewportHeight: 1080,
