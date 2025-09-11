@@ -9,8 +9,13 @@ export class AccountFeaturesPage{
     VerifyTheMoneyMarketTitle(){
         cy.xpath(AccountFeaturesLocators.MoneyMarketTitle)
     }
-    VerifyTheAddMarginToAccountTitle(){
-        cy.xpath(AccountFeaturesLocators.AddMarginToAccountTitle)
+    VerifyTheAddMargin_isNo(){
+        cy.get(AccountFeaturesLocators.AddMarginToAccountNo).should('be.visible').and('not.be.disabled')
+        cy.get(AccountFeaturesLocators.AddMarginToAccountNo).focus().click({force:true})
+    }
+    VerifyTheAddMargin_isYes(){
+        cy.get(AccountFeaturesLocators.AddMarginToAccountYes).should('be.visible').and('not.be.disabled')
+        cy.get(AccountFeaturesLocators.AddMarginToAccountYes).focus().click({force:true})
     }
     VerifyTheParticipateTitle(){
         cy.xpath(AccountFeaturesLocators.ParticipateTitle)
@@ -29,6 +34,8 @@ export class AccountFeaturesPage{
     ForEntityAccount_isQuestionnaireNo(){
         cy.xpath(Entity_QuestionnaireLocators.QuestionnaireNo).check()
     }
+
+
 
 
     SaveAndContinue(){

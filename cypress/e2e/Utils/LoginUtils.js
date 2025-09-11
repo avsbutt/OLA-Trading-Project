@@ -22,6 +22,27 @@ export function clientLoginUtils() {
   cy.url().should('include', '/dashboard')
 }
 
+export function glendaleClientLoginUtils() {
+
+ // const captchaKey = Cypress.env('CAPTCHA_KEY');
+
+
+  cy.visit("", {failOnStatusCode: false, timeout: 20000,
+   auth: {
+     username: 'ola-staging',
+     password: 'Atlasclear@123/'
+    }
+  })
+
+  cy.fixture('GlendaleCredentials.json').then((data) => {
+   cy.xpath(loginLocators.username).type(data.clientCrendetial.username)  
+   cy.xpath(loginLocators.password).type(data.clientCrendetial.password) 
+  })
+
+  cy.xpath(loginLocators.loginBtn).click()
+  cy.url().should('include', '/dashboard')
+}
+
 export function RegisterRepresentativeLoginUtils(){
   cy.visit("", {failOnStatusCode: false, timeout: 20000,
     auth: {

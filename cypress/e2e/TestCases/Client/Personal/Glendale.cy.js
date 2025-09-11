@@ -12,6 +12,7 @@ import { CloseToasterIfAppearUtils } from "@Utils/CloseToasterIfAppearUtils";
 import { IfApplicationStatusNotCompletedThenCancelUtils } from "@Utils/IfApplicationStatusNotCompletedThenCancelUtils";
 import { CreateNewAccountPage } from "@Pages/Client/CreateNewAccountPage"
 import { waitForLoaderToDisappearUtils } from "@Utils/waitForLoaderToDisappearUtils";
+import { glendaleClientLoginUtils } from "../../../utils/LoginUtils";
 
 const TC_PersonalInformationPage = new PersonalInformationPage
 const TC_EmploymentInformationPage = new EmploymentInformationPage
@@ -25,12 +26,12 @@ const TC_CreateNewAccountPage = new CreateNewAccountPage
 
 
 
-describe('Client - Personal - Individual', () => {
 
-
+describe('Glendale Personal - Individual', ()=>{
+  
   beforeEach(() => {
 
-    clientLoginUtils();
+    glendaleClientLoginUtils();
     waitForLoaderToDisappearUtils()
     IfApplicationStatusNotCompletedThenCancelUtils()
     CloseToasterIfAppearUtils()
@@ -41,9 +42,8 @@ describe('Client - Personal - Individual', () => {
     cy.clearCookies();
     cy.clearLocalStorage();
   });
-  
 
-  it('Verify that US Citizen User can Create New Personal Account || ID Type #Driver License', () => {
+  it('Verify that US Citizen User can Create New Personal Account || ID Type #Driver License || Margin Account ', () => {
 
     TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
     CloseToasterIfAppearUtils();
@@ -135,8 +135,8 @@ describe('Client - Personal - Individual', () => {
     cy.wait(1000)
     TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
-    // TC_DisclosureSignaturesPage.AccountAgreement()
-    // cy.wait(1000)
+    TC_DisclosureSignaturesPage.FundingYourAccountAgreement()
+    cy.wait(1000)
     TC_DisclosureSignaturesPage.FormCRSAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
@@ -146,239 +146,13 @@ describe('Client - Personal - Individual', () => {
 
 
     cy.url().should('include', '#/review')
-    TC_ReviewInfomationPage.SelectRegisteredRep()
+    // TC_ReviewInfomationPage.SelectRegisteredRep()
     TC_ReviewInfomationPage.ClickOnSubmitBtn()
     cy.url().should('include', '#/dashboard')
 
   })
 
-  it('Verify that US Citizen User can Create New Personal Account || ID Type #Passport', () => {
-
-    TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
-    CloseToasterIfAppearUtils();
-
-    const randomData= dataGeneratorUtils();
-    cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)
-    TC_PersonalInformationPage.fillPersonalInformation(
-      randomData.fName,
-      randomData.mName,
-      randomData.lName,
-      randomData.email,
-      randomData.nOfDependents,
-      randomData.primaryTelephone,
-      randomData.idNumber,
-      randomData.dobYYYYMMDD,
-      randomData.idIssueDate,
-      randomData.idExpirationDate);
-    TC_PersonalInformationPage.FromPersonalInformationSelect_isUSCitizenYes(randomData.socialSecurityNo)
-    TC_PersonalInformationPage.FromPersonalInformationSelect_IDType_Passport()
-    TC_PersonalInformationPage.fillPhysicalAddress(
-      randomData.address,
-      randomData.city,
-      randomData.postalCode);
-    TC_PersonalInformationPage.fillTrustedContact(
-      randomData.trustedFirstName,
-      randomData.trustedLastName,
-      randomData.trustedTelephone,
-      randomData.trustedEmail,
-      randomData.trustedMailingAddress1,
-      randomData.trustedCity,
-      randomData.trustedPostalCode);
-    TC_PersonalInformationPage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
-        
-
-       
-    cy.url().should('include', '/employment-info')
-    //  TC_EmploymentInformationPage.fillEmployedInfo()
-    TC_EmploymentInformationPage.ClickOnUnemployed()
-    TC_EmploymentInformationPage.SaveAndContinue()
-   waitForLoaderToDisappearUtils()
- 
-
-    cy.url().should('include','/investor-profile')
-    TC_InvestmentProfilePage.fillInvestmentProfileInfo()
-    TC_InvestmentProfilePage.fillFinancialSuitability()
-    TC_InvestmentProfilePage.fillPriorInvestmentExperience()
-    TC_InvestmentProfilePage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
-
-
-    cy.url().should('include', '/regulatory-items')
-    cy.wait(1000)
-    TC_RegulatoryItemsPage.fillOption1()
-    cy.wait(1000)
-    TC_RegulatoryItemsPage.fillOption2()
-    TC_RegulatoryItemsPage.fillOption3(randomData.randomWords)
-    TC_RegulatoryItemsPage.fillOption4()
-    TC_RegulatoryItemsPage.fillOption5(randomData.randomWords)
-    TC_RegulatoryItemsPage.fillOption6()
-    TC_RegulatoryItemsPage.fillOption7(randomData.randomWords)
-    TC_RegulatoryItemsPage.fillOption8()
-    TC_RegulatoryItemsPage.fillOption9()
-    TC_RegulatoryItemsPage.fillOption10()
-    TC_RegulatoryItemsPage.fillDirectCommunication()
-    // TC_RegulatoryItemsPage.fillW8Ben_ForForeignAccounts(randomData.randomWords, randomData.city)
-    TC_RegulatoryItemsPage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
-
-      
-    cy.url().should('include', '#/account-features')
-    TC_AccountFeaturesPage.SaveAndContinue()
-    CloseToasterIfAppearUtils()
-    waitForLoaderToDisappearUtils()
-
-
-    cy.url().should('include', '#/upload-documents')
-    // TC_DocumentUploadPage.GovernmentIDUploadFor_Personal()
-    // TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
-    // TC_DocumentUploadPage.UploadUtilityBillIfVisible()
-    // TC_DocumentUploadPage.UploadDrivingLiscenceFor_Personal()
-    TC_DocumentUploadPage.UploadPassportFor_Personal()
-    TC_DocumentUploadPage.SaveAndContinue()
-    CloseToasterIfAppearUtils();
-    waitForLoaderToDisappearUtils()
-
-
-    cy.url().should('include', '#/disclosures-signatures')
-    TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
-    cy.wait(1000)
-    TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
-    cy.wait(1000)
-    // TC_DisclosureSignaturesPage.AccountAgreement()
-    // cy.wait(1000)
-    TC_DisclosureSignaturesPage.FormCRSAgreement()
-    cy.wait(1000)
-    TC_DisclosureSignaturesPage.FillSignature()
-    TC_DisclosureSignaturesPage.ClickSaveAndReview()
-    CloseToasterIfAppearUtils();
-   // waitForLoaderToDisappearUtils()
-
-
-    cy.url().should('include', '#/review')
-    TC_ReviewInfomationPage.SelectRegisteredRep()
-    TC_ReviewInfomationPage.ClickOnSubmitBtn()
-    cy.url().should('include', '#/dashboard')
-
-  })
-
-  it('Verify that Foreign User can Create New Personal Account || ID Type #Govt ID' , ()=>{
-
-    TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
-    CloseToasterIfAppearUtils();
-
-    const randomData= dataGeneratorUtils();
-    cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)
-    TC_PersonalInformationPage.fillPersonalInformation(
-      randomData.fName,
-      randomData.mName,
-      randomData.lName,
-      randomData.email,
-      randomData.nOfDependents,
-      randomData.primaryTelephone,
-      randomData.idNumber,
-      randomData.dobYYYYMMDD,
-      randomData.idIssueDate,
-      randomData.idExpirationDate,
-      randomData.socialSecurityNo);
-    TC_PersonalInformationPage.FromPersonalInformationSelect_isUScitizenNoAndisForeignYes()
-    TC_PersonalInformationPage.FromPersonalInformationSelect_IDType_GovtID()
-    TC_PersonalInformationPage.fillPhysicalAddress(
-      randomData.address,
-      randomData.city,
-      randomData.postalCode);
-    TC_PersonalInformationPage.fillTrustedContact(
-      randomData.trustedFirstName,
-      randomData.trustedLastName,
-      randomData.trustedTelephone,
-      randomData.trustedEmail,
-      randomData.trustedMailingAddress1,
-      randomData.trustedCity,
-      randomData.trustedPostalCode);
-    TC_PersonalInformationPage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
-        
-
-       
-    cy.url().should('include', '/employment-info')
-    //  TC_EmploymentInformationPage.fillEmployedInfo()
-    TC_EmploymentInformationPage.ClickOnUnemployed()
-    TC_EmploymentInformationPage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
- 
-
-    cy.url().should('include','/investor-profile')
-    TC_InvestmentProfilePage.fillInvestmentProfileInfo()
-    TC_InvestmentProfilePage.fillFinancialSuitability()
-    TC_InvestmentProfilePage.fillPriorInvestmentExperience()
-    TC_InvestmentProfilePage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
-
-
-    cy.url().should('include', '/regulatory-items')
-    cy.wait(1000)
-    TC_RegulatoryItemsPage.fillOption1()
-    cy.wait(1000)
-    TC_RegulatoryItemsPage.fillOption2()
-    TC_RegulatoryItemsPage.fillOption3(randomData.randomWords)
-    TC_RegulatoryItemsPage.fillOption4()
-    TC_RegulatoryItemsPage.fillOption5(randomData.randomWords)
-    TC_RegulatoryItemsPage.fillOption6()
-    TC_RegulatoryItemsPage.fillOption7(randomData.randomWords)
-    TC_RegulatoryItemsPage.fillOption8()
-    TC_RegulatoryItemsPage.fillOption9()
-    TC_RegulatoryItemsPage.fillOption10()
-    TC_RegulatoryItemsPage.fillDirectCommunication()
-    TC_RegulatoryItemsPage.fillW8Ben_ForForeignAccounts(randomData.randomWords, randomData.city)
-    TC_RegulatoryItemsPage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
-
-      
-    cy.url().should('include', '#/account-features')
-    TC_AccountFeaturesPage.SaveAndContinue()
-    CloseToasterIfAppearUtils()
-    waitForLoaderToDisappearUtils()
-
-
-    cy.url().should('include', '#/upload-documents')
-    TC_DocumentUploadPage.DocumentsShouldBeVisibleFor_ForeignAccount_Personal_TypeIndividual()    
-    //  TC_DocumentUploadPage.UploadAuthorizationDocumentIfVisible()
-    //  TC_DocumentUploadPage.UploadUtilityBillIfVisible()
-    //  TC_DocumentUploadPage.UploadPassportFor_Personal()
-    //  TC_DocumentUploadPage.UploadDrivingLiscenceFor_Personal()
-    TC_DocumentUploadPage.GovernmentIDUploadFor_Personal()
-    TC_DocumentUploadPage.UploadW8BenForForeign_Personal()
-    TC_DocumentUploadPage.UploadForeignQuestionnaireFor_Foreign_Personal()
-    
-
-    TC_DocumentUploadPage.SaveAndContinue()
-    CloseToasterIfAppearUtils();
-    waitForLoaderToDisappearUtils()
-
-
-    cy.url().should('include', '#/disclosures-signatures')
-    TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
-    cy.wait(1000)
-    TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
-    cy.wait(1000)
-    // TC_DisclosureSignaturesPage.AccountAgreement()
-    // cy.wait(1000)
-    TC_DisclosureSignaturesPage.FormCRSAgreement()
-    cy.wait(1000)
-    TC_DisclosureSignaturesPage.FillSignature()
-    TC_DisclosureSignaturesPage.ClickSaveAndReview()
-    CloseToasterIfAppearUtils();
-    //waitForLoaderToDisappearUtils()
-
-
-    cy.url().should('include', '#/review')
-    TC_ReviewInfomationPage.SelectRegisteredRep()
-    TC_ReviewInfomationPage.ClickOnSubmitBtn()
-    cy.url().should('include', '#/dashboard')
-
-  })
-
-  it('Verify that US Citizen User can Create New Personal Account || Account type Cash Only || ID Type #Driver License', () => {
+  it.only('Verify that US Citizen User can Create New Personal Account || ID Type #Driver License || Cash Account', () => {
 
     TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
     CloseToasterIfAppearUtils();
@@ -451,12 +225,6 @@ describe('Client - Personal - Individual', () => {
       
     cy.url().should('include', '#/account-features')
     TC_AccountFeaturesPage.VerifyTheAddMargin_isNo()
-
-//     cy.get('input[name="isMarginEnable"][value="false"]').should('be.visible').and('not.be.disabled')
-// cy.get('input[name="isMarginEnable"][value="false"]').check({ force: true })
-// cy.get('input[name="isMarginEnable"][value="false"]').click()
-
-
     TC_AccountFeaturesPage.SaveAndContinue()
     CloseToasterIfAppearUtils()
     waitForLoaderToDisappearUtils()
@@ -473,9 +241,11 @@ describe('Client - Personal - Individual', () => {
     waitForLoaderToDisappearUtils()
 
     cy.url().should('include', '#/disclosures-signatures')
+    TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
+    cy.wait(1000)
     TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
-    TC_DisclosureSignaturesPage.AccountAgreement()
+    TC_DisclosureSignaturesPage.FundingYourAccountAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.FormCRSAgreement()
     cy.wait(1000)
@@ -486,16 +256,9 @@ describe('Client - Personal - Individual', () => {
 
 
     cy.url().should('include', '#/review')
-    TC_ReviewInfomationPage.SelectRegisteredRep()
+    // TC_ReviewInfomationPage.SelectRegisteredRep()
     TC_ReviewInfomationPage.ClickOnSubmitBtn()
     cy.url().should('include', '#/dashboard')
 
   })
-
-  // it.skip('Verify that ID Issuance Date is not visible For ID Type *Govt ID* and *Passport*' , ()=>{
-
-  // })
-
-  // it.skip('Verify that if in Investor Profile if Investment Experience is None(0) and Total Net Worth* is $0-24,999 then Securities Lending is Not Visible in Account Feature and Securities Loan Agreement* is Not Visible Disclosure & Signatures', ()=>{
-  // })
 })

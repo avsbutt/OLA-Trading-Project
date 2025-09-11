@@ -80,7 +80,8 @@ export class DisclosureSignaturesPage{
 
   FormCRSAgreement(){
     cy.document().then((doc) => {
-      const element = doc.querySelector('input[value="true"][name="wdFormCRSAgreementCheck"]');
+      const element = doc.querySelector('input:is([value="true"][name="glFormCRS"], [value="true"][name="wdFormCRSAgreementCheck"])');
+
       const element2 = doc.querySelector('input[value="false"][name="wdFormCRSAgreementCheck"]');
     
       if (element) {
@@ -99,7 +100,7 @@ export class DisclosureSignaturesPage{
 
   FullyPaidSecuritiesLoanAgreement() {
     cy.document().then((doc) => {
-      const element = doc.querySelector('input[value="true"][name="wdfullyPaidSecLoadAgreementCheck"]')
+      const element = doc.querySelector('input:is([value="true"][name="wdfullyPaidSecLoadAgreementCheck"], [value="true"][name="wdFullyPaidSecLoadAgreementCheck"])');
       if (element) {
         cy.wrap(element).focus().check({ force: true })
       } 
@@ -125,8 +126,25 @@ export class DisclosureSignaturesPage{
     
   }
 
+  
 
+  //---------------------------------------------------\\
 
+  FundingYourAccountAgreement(){
+    cy.document().then((doc) => {
+      const element = doc.querySelector('input[value="true"][name="glFundingYourAccount"]');
+      const element2 = doc.querySelector('input[value="false"][name="glFundingYourAccount"]');
+      if (element) {
+        cy.wrap(element).focus().check({ force: true }) 
+      } 
+    })
+    
+    this.stubWindowOpen();
+    
+    cy.xpath(DisclosureSignaturesLocators.FundingYourAccount).should('be.visible').click({ force: true })   // PDF Link
+    cy.get('@windowOpen').should('have.been.called')   // Verify if window.open was called, confirming the link click would open a new tab
+    cy.log('PDF link click simulated and intercepted by stub')
+  }
 
 
 

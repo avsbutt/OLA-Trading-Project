@@ -12,7 +12,8 @@
         "LoanAgreementNO":"input[value='false'][name='wdfullyPaidSecLoadAgreementCheck']",
         "DigitalSignature":"(//*[name()='rect'][@id='react-sketch-canvas__canvas-background'])[1]",
         "CaptureSignature":"(//button[@type='button'][normalize-space()='Capture Signature'])[1]",
-        "ClearSignature":"(//button[@name='signature'])[1]"
+        "ClearSignature":"(//button[@name='signature'])[1]",
+        "FundingYourAccount":"//a[normalize-space()='Funding your account Agreement']"
     },
 
     "DisclosureSignaturesCoApplicantLocators":{
