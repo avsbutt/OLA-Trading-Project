@@ -1,4 +1,4 @@
-import { clientLoginUtils } from "@Utils/LoginUtils"
+import { clientLoginUtils, glendaleClientLoginUtils } from "@Utils/LoginUtils"
 import { PersonalInformationPage } from "@Pages/Client/Personal/PersonalInformationPage"
 import { EmploymentInformationPage } from "@Pages/Client/Personal/EmploymentInfomationPage"
 import { dataGeneratorUtils } from "@Utils/dataGeneratorUtils";
@@ -12,7 +12,6 @@ import { CloseToasterIfAppearUtils } from "@Utils/CloseToasterIfAppearUtils";
 import { IfApplicationStatusNotCompletedThenCancelUtils } from "@Utils/IfApplicationStatusNotCompletedThenCancelUtils";
 import { CreateNewAccountPage } from "@Pages/Client/CreateNewAccountPage"
 import { waitForLoaderToDisappearUtils } from "@Utils/waitForLoaderToDisappearUtils";
-import { glendaleClientLoginUtils } from "../../../utils/LoginUtils";
 
 const TC_PersonalInformationPage = new PersonalInformationPage
 const TC_EmploymentInformationPage = new EmploymentInformationPage
@@ -43,7 +42,7 @@ describe('Glendale Personal - Individual', ()=>{
     cy.clearLocalStorage();
   });
 
-  it('Verify that US Citizen User can Create New Personal Account || ID Type #Driver License || Margin Account ', () => {
+  it('Verify that US Citizen User can Create New Personal Account || Margin Account  || ID Type #Driver License ', () => {
 
     TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
     CloseToasterIfAppearUtils();
@@ -152,7 +151,7 @@ describe('Glendale Personal - Individual', ()=>{
 
   })
 
-  it.only('Verify that US Citizen User can Create New Personal Account || ID Type #Driver License || Cash Account', () => {
+  it('Verify that US Citizen User can Create New Personal Account || Cash Account || ID Type #Driver License ', () => {
 
     TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
     CloseToasterIfAppearUtils();
@@ -241,8 +240,8 @@ describe('Glendale Personal - Individual', ()=>{
     waitForLoaderToDisappearUtils()
 
     cy.url().should('include', '#/disclosures-signatures')
-    TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
-    cy.wait(1000)
+    // TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
+    // cy.wait(1000)
     TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.FundingYourAccountAgreement()

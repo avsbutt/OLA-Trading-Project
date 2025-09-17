@@ -14,8 +14,8 @@ export function clientLoginUtils() {
   })
 
   cy.fixture('UsersCredential.json').then((data) => {
-   cy.xpath(loginLocators.username).type(data.clientCrendetial.username)  
-   cy.xpath(loginLocators.password).type(data.clientCrendetial.password) 
+   cy.xpath(loginLocators.username).type(data.wdCredentials.clientCrendetial.username)  
+   cy.xpath(loginLocators.password).type(data.wdCredentials.clientCrendetial.password) 
   })
 
   cy.xpath(loginLocators.loginBtn).click()
@@ -34,16 +34,16 @@ export function glendaleClientLoginUtils() {
     }
   })
 
-  cy.fixture('GlendaleCredentials.json').then((data) => {
-   cy.xpath(loginLocators.username).type(data.clientCrendetial.username)  
-   cy.xpath(loginLocators.password).type(data.clientCrendetial.password) 
+  cy.fixture('UsersCredential.json').then((data) => {
+   cy.xpath(loginLocators.username).type(data.glendaleCredentials.clientCrendetial.username)  
+   cy.xpath(loginLocators.password).type(data.glendaleCredentials.clientCrendetial.password) 
   })
 
   cy.xpath(loginLocators.loginBtn).click()
   cy.url().should('include', '/dashboard')
 }
 
-export function RegisterRepresentativeLoginUtils(){
+export function registerRepresentativeLoginUtils(){
   cy.visit("", {failOnStatusCode: false, timeout: 20000,
     auth: {
       username: 'ola-staging',
@@ -52,8 +52,29 @@ export function RegisterRepresentativeLoginUtils(){
   })
  
    cy.fixture('UsersCredential.json').then((data) => {
-      cy.xpath(loginLocators.username).type(data.rrCredential.username)  
-      cy.xpath(loginLocators.password).type(data.rrCredential.password)
+      cy.xpath(loginLocators.username).type(data.wdCredentials.rrCredential.username)  
+      cy.xpath(loginLocators.password).type(data.wdCredentials.rrCredential.password)
    })
+  cy.xpath(loginLocators.loginBtn).click()
+  cy.url().should('include', '/dashboard')
+
+  
+}
+
+export function supervsorLoginUtils(){
+  cy.visit("", {failOnStatusCode: false, timeout: 20000,
+    auth: {
+      username: 'ola-staging',
+      password: 'Atlasclear@123/'
+     }
+  })
+ 
+   cy.fixture('UsersCredential.json').then((data) => {
+      cy.xpath(loginLocators.username).type(data.wdCredentials.superisorCredential.username)  
+      cy.xpath(loginLocators.password).type(data.wdCredentials.superisorCredential.password)
+   })
+  cy.xpath(loginLocators.loginBtn).click()
+  cy.url().should('include', '/dashboard')
+
   
 }

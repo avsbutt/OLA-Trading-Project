@@ -10,3 +10,5 @@ cypress/e2e/fixtures/PersonInfoData.json
 
 #ignore node modules 
 node_modules/
+
+cypress/downloads/

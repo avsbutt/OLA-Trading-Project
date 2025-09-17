@@ -1,0 +1,17 @@
+{
+    "RegisterRepresentativeLocators":
+    {
+        "Dashboard":"//i[@class='icoMenu icon-application']",
+        "ApprovalQueue":"//i[@class='icoMenu admin-Approval']",
+        "loginBtn":"//button[normalize-space()='Login']",
+        "FirstRow":"",
+        "ReviewButtons":"//ul[contains(@class,'btnWrapper')]//button",
+        "settingIcon":".dropdown-toggle.btn.btn-blueColor",
+        "dropdownOptions": "//div[contains(@class,'dropdown-menu') and contains(@class,'show')]//a",
+        "popupButtons": "//button[contains(@class,'yes_noBtn')]",
+        "statusDropdownInput":"//div[@class='input_wrapper']",
+        "statusDropdown": "//select[@name='appStatus']",
+        "statusOption": "//select[@name='appStatus']/option[contains(text(),'{TEXT}')]"
+    
+    }
+}
