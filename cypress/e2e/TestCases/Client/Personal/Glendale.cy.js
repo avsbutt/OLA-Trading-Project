@@ -1,4 +1,4 @@
-import { clientLoginUtils, glendaleClientLoginUtils } from "@Utils/LoginUtils"
+import { glendaleClientLoginUtils, glendaleRegisterRepresentativeLoginUtils, glendaleSupervsorLoginUtils, glendaleBrokerLoginUtils } from "@Utils/LoginUtils"
 import { PersonalInformationPage } from "@Pages/Client/Personal/PersonalInformationPage"
 import { EmploymentInformationPage } from "@Pages/Client/Personal/EmploymentInfomationPage"
 import { dataGeneratorUtils } from "@Utils/dataGeneratorUtils";
@@ -12,6 +12,12 @@ import { CloseToasterIfAppearUtils } from "@Utils/CloseToasterIfAppearUtils";
 import { IfApplicationStatusNotCompletedThenCancelUtils } from "@Utils/IfApplicationStatusNotCompletedThenCancelUtils";
 import { CreateNewAccountPage } from "@Pages/Client/CreateNewAccountPage"
 import { waitForLoaderToDisappearUtils } from "@Utils/waitForLoaderToDisappearUtils";
+import { RegisterRepresentativePage } from "@Pages/Register_Representative/registerRepresentative";
+import { BrokerPage } from "@Pages/Broker/brokerPage"
+
+const TC_RegisterRepresentativePage = new RegisterRepresentativePage
+const TC_BrokerPage = new BrokerPage
+
 
 const TC_PersonalInformationPage = new PersonalInformationPage
 const TC_EmploymentInformationPage = new EmploymentInformationPage
@@ -26,24 +32,20 @@ const TC_CreateNewAccountPage = new CreateNewAccountPage
 
 
 
-describe('Glendale Personal - Individual', ()=>{
+describe('Glendale(Margin Account) - Broker - Representative - Supervisor', ()=>{
   
-  beforeEach(() => {
+  afterEach(() => {
+    cy.clearCookies();
+    cy.clearLocalStorage();
+  })
 
+  it('Verify that US Citizen User can Create New Personal Account || Margin Account  || ID Type #Driver License ', () => {
+
+    
     glendaleClientLoginUtils();
     waitForLoaderToDisappearUtils()
     IfApplicationStatusNotCompletedThenCancelUtils()
     CloseToasterIfAppearUtils()
-
-  });
-
-  afterEach(() => {
-    cy.clearCookies();
-    cy.clearLocalStorage();
-  });
-
-  it('Verify that US Citizen User can Create New Personal Account || Margin Account  || ID Type #Driver License ', () => {
-
     TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
     CloseToasterIfAppearUtils();
 
@@ -147,12 +149,106 @@ describe('Glendale Personal - Individual', ()=>{
     cy.url().should('include', '#/review')
     // TC_ReviewInfomationPage.SelectRegisteredRep()
     TC_ReviewInfomationPage.ClickOnSubmitBtn()
+    TC_ReviewInfomationPage.VerifyClientDashboardVisible()
     cy.url().should('include', '#/dashboard')
 
   })
 
+  it('Verify that Broker Can Download and Assign an Application to RR', () => {
+    glendaleBrokerLoginUtils();
+    CloseToasterIfAppearUtils()
+    waitForLoaderToDisappearUtils()
+    TC_BrokerPage.VerifyNoAssigneeFromQueue();
+    TC_RegisterRepresentativePage.ApprovedApplicationFromQueue();
+    TC_RegisterRepresentativePage.selectOption('View Application');
+    cy.url().should("include", "broker/review-application");
+    TC_RegisterRepresentativePage.verifyApplication();
+    TC_RegisterRepresentativePage.downloadPrintPdf();
+    TC_RegisterRepresentativePage.clickButtonOnReviewPage("OK");
+    TC_BrokerPage.VerifyNoAssigneeFromQueue()
+    TC_RegisterRepresentativePage.verifyApplicationStatus('Submitted Pending Approval')
+    TC_BrokerPage.ClickButton('Assign to')
+    TC_BrokerPage.SelectRegisterRep('Glendale RR')
+    TC_RegisterRepresentativePage.clickButtonFromPopup("Assign to RR");
+    waitForLoaderToDisappearUtils()
+    TC_BrokerPage.VerifyAssigneeFromQueue('Glendale RR')
+    TC_RegisterRepresentativePage.verifyApplicationStatus('Pending Review (Rr)')
+
+  })
+
+  it("Verify that Representative Can Download and Approved an Application", () => {
+    glendaleRegisterRepresentativeLoginUtils();
+    waitForLoaderToDisappearUtils();
+    IfApplicationStatusNotCompletedThenCancelUtils();
+    CloseToasterIfAppearUtils();
+    waitForLoaderToDisappearUtils();
+    TC_RegisterRepresentativePage.ApprovedApplicationFromQueue();
+
+    // TC_RegisterRepresentativePage.selectOption('View Application');
+
+    TC_RegisterRepresentativePage.selectOption("Start Review");
+    TC_RegisterRepresentativePage.clickButtonFromPopup("Yes");
+
+    cy.url().should("include", "registerrep/review-application");
+    TC_RegisterRepresentativePage.verifyApplication();
+    TC_RegisterRepresentativePage.downloadPrintPdf();
+    TC_RegisterRepresentativePage.clickButtonOnReviewPage("Action Required");
+    TC_RegisterRepresentativePage.ChangeApplicationStatus("Approved");
+
+    TC_RegisterRepresentativePage.clickButtonFromPopup("Change Status");
+
+    waitForLoaderToDisappearUtils();
+
+    cy.url().should("include", "registerrep/applications");
+    TC_RegisterRepresentativePage.verifyApplicationIsNotInQueue();
+    TC_RegisterRepresentativePage.clickOnDashboard()
+    TC_RegisterRepresentativePage.verifyApplicationStatus("Approved (Rr)");
+  })
+
+  it("Verify that Supervisor Can Download and Approved an Application", () => {
+    glendaleSupervsorLoginUtils();
+    waitForLoaderToDisappearUtils();
+    IfApplicationStatusNotCompletedThenCancelUtils();
+    CloseToasterIfAppearUtils();
+    waitForLoaderToDisappearUtils();
+    TC_RegisterRepresentativePage.ApprovedApplicationFromQueue();
+
+    // TC_RegisterRepresentativePage.selectOption('View Application');
+
+    TC_RegisterRepresentativePage.selectOption("Assign to me");  //only for glendale
+    TC_RegisterRepresentativePage.ApprovedApplicationFromQueue();
+    TC_RegisterRepresentativePage.selectOption("Start Review");
+    TC_RegisterRepresentativePage.clickButtonFromPopup("Yes");
+
+    cy.url().should("include", "supervisor/review-application");
+    TC_RegisterRepresentativePage.verifyApplication();
+    TC_RegisterRepresentativePage.downloadPrintPdf();
+    TC_RegisterRepresentativePage.clickButtonOnReviewPage("Action Required");
+    TC_RegisterRepresentativePage.ChangeApplicationStatus("Approved (Sup)");
+    TC_RegisterRepresentativePage.clickButtonFromPopup("Change Status");
+    waitForLoaderToDisappearUtils();
+
+    cy.url().should("include", "supervisor/applications");
+    TC_RegisterRepresentativePage.verifyApplicationIsNotInQueue();
+    TC_RegisterRepresentativePage.clickOnDashboard()
+    TC_RegisterRepresentativePage.verifyApplicationStatus("Approved");
+  })
+
+})
+
+describe('Glendale(Cash Account) - Broker - Representative - Supervisor', ()=>{
+  
+  afterEach(() => {
+    cy.clearCookies();
+    cy.clearLocalStorage();
+  });
+
   it('Verify that US Citizen User can Create New Personal Account || Cash Account || ID Type #Driver License ', () => {
 
+    glendaleClientLoginUtils();
+    waitForLoaderToDisappearUtils()
+    IfApplicationStatusNotCompletedThenCancelUtils()
+    CloseToasterIfAppearUtils()
     TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
     CloseToasterIfAppearUtils();
 
@@ -257,7 +353,88 @@ describe('Glendale Personal - Individual', ()=>{
     cy.url().should('include', '#/review')
     // TC_ReviewInfomationPage.SelectRegisteredRep()
     TC_ReviewInfomationPage.ClickOnSubmitBtn()
+    TC_ReviewInfomationPage.VerifyClientDashboardVisible()
     cy.url().should('include', '#/dashboard')
 
+  })
+
+  it('Verify that Broker Can Download and Assign an Application to RR', () => {
+    glendaleBrokerLoginUtils();
+    CloseToasterIfAppearUtils()
+    waitForLoaderToDisappearUtils()
+    TC_BrokerPage.VerifyNoAssigneeFromQueue();
+    TC_RegisterRepresentativePage.ApprovedApplicationFromQueue();
+    TC_RegisterRepresentativePage.selectOption('View Application');
+    cy.url().should("include", "broker/review-application");
+    TC_RegisterRepresentativePage.verifyApplication();
+    TC_RegisterRepresentativePage.downloadPrintPdf();
+    TC_RegisterRepresentativePage.clickButtonOnReviewPage("OK");
+    TC_BrokerPage.VerifyNoAssigneeFromQueue()
+    TC_RegisterRepresentativePage.verifyApplicationStatus('Submitted Pending Approval')
+    TC_BrokerPage.ClickButton('Assign to')
+    TC_BrokerPage.SelectRegisterRep('Glendale RR')
+    TC_RegisterRepresentativePage.clickButtonFromPopup("Assign to RR");
+    waitForLoaderToDisappearUtils()
+    TC_BrokerPage.VerifyAssigneeFromQueue('Glendale RR')
+    TC_RegisterRepresentativePage.verifyApplicationStatus('Pending Review (Rr)')
+
+  })
+
+  it("Verify that Representative Can Download and Approved an Application", () => {
+    glendaleRegisterRepresentativeLoginUtils();
+    waitForLoaderToDisappearUtils();
+    IfApplicationStatusNotCompletedThenCancelUtils();
+    CloseToasterIfAppearUtils();
+    waitForLoaderToDisappearUtils();
+    TC_RegisterRepresentativePage.ApprovedApplicationFromQueue();
+
+    // TC_RegisterRepresentativePage.selectOption('View Application');
+
+    TC_RegisterRepresentativePage.selectOption("Start Review");
+    TC_RegisterRepresentativePage.clickButtonFromPopup("Yes");
+
+    cy.url().should("include", "registerrep/review-application");
+    TC_RegisterRepresentativePage.verifyApplication();
+    TC_RegisterRepresentativePage.downloadPrintPdf();
+    TC_RegisterRepresentativePage.clickButtonOnReviewPage("Action Required");
+    TC_RegisterRepresentativePage.ChangeApplicationStatus("Approved");
+
+    TC_RegisterRepresentativePage.clickButtonFromPopup("Change Status");
+
+    waitForLoaderToDisappearUtils();
+
+    cy.url().should("include", "registerrep/applications");
+    TC_RegisterRepresentativePage.verifyApplicationIsNotInQueue();
+    TC_RegisterRepresentativePage.clickOnDashboard()
+    TC_RegisterRepresentativePage.verifyApplicationStatus("Approved (Rr)");
+  })
+
+  it("Verify that Supervisor Can Download and Approved an Application", () => {
+    glendaleSupervsorLoginUtils();
+    waitForLoaderToDisappearUtils();
+    IfApplicationStatusNotCompletedThenCancelUtils();
+    CloseToasterIfAppearUtils();
+    waitForLoaderToDisappearUtils();
+    TC_RegisterRepresentativePage.ApprovedApplicationFromQueue();
+
+    // TC_RegisterRepresentativePage.selectOption('View Application');
+
+    TC_RegisterRepresentativePage.selectOption("Assign to me");  //only for glendale
+    TC_RegisterRepresentativePage.ApprovedApplicationFromQueue();
+    TC_RegisterRepresentativePage.selectOption("Start Review");
+    TC_RegisterRepresentativePage.clickButtonFromPopup("Yes");
+
+    cy.url().should("include", "supervisor/review-application");
+    TC_RegisterRepresentativePage.verifyApplication();
+    TC_RegisterRepresentativePage.downloadPrintPdf();
+    TC_RegisterRepresentativePage.clickButtonOnReviewPage("Action Required");
+    TC_RegisterRepresentativePage.ChangeApplicationStatus("Approved (Sup)");
+    TC_RegisterRepresentativePage.clickButtonFromPopup("Change Status");
+    waitForLoaderToDisappearUtils();
+
+    cy.url().should("include", "supervisor/applications");
+    TC_RegisterRepresentativePage.verifyApplicationIsNotInQueue();
+    TC_RegisterRepresentativePage.clickOnDashboard()
+    TC_RegisterRepresentativePage.verifyApplicationStatus("Approved");
   })
 })

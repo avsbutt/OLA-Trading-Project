@@ -31,34 +31,31 @@ describe('Register Representative', () => {
 
   
 
-  it('Verify that RR Can Download Application and Approved an Application', () => {
-    waitForLoaderToDisappearUtils()
-    TC_RegisterRepresentativePage.ApprovedApplicationFromQueue()
-
-
+  it("Verify that Representative Can Download and Approved an Application", () => {
+    registerRepresentativeLoginUtils();
+    waitForLoaderToDisappearUtils();
+    CloseToasterIfAppearUtils();
+    TC_RegisterRepresentativePage.ApprovedApplicationFromQueue();
 
     // TC_RegisterRepresentativePage.selectOption('View Application');
 
-    TC_RegisterRepresentativePage.selectOption('Start Review');
-    TC_RegisterRepresentativePage.clickButtonFromPopup('Yes')
+    TC_RegisterRepresentativePage.selectOption("Start Review");
+    TC_RegisterRepresentativePage.clickButtonFromPopup("Yes");
 
-    cy.url().should('include', 'registerrep/review-application')
-    TC_RegisterRepresentativePage.verifyApplication()
-    TC_RegisterRepresentativePage.downloadPrintPdf()
-    TC_RegisterRepresentativePage.clickButtonOnReviewPage('Action Required')
-    TC_RegisterRepresentativePage.ChangeApplicationStatus('Approved')
+    cy.url().should("include", "registerrep/review-application");
+    TC_RegisterRepresentativePage.verifyApplication();
+    TC_RegisterRepresentativePage.downloadPrintPdf();
+    TC_RegisterRepresentativePage.clickButtonOnReviewPage("Action Required");
+    TC_RegisterRepresentativePage.ChangeApplicationStatus("Approved");
 
-    TC_RegisterRepresentativePage.clickButtonFromPopup('Change Status')
-    
-    waitForLoaderToDisappearUtils()
+    TC_RegisterRepresentativePage.clickButtonFromPopup("Change Status");
 
-    cy.url().should('include', 'registerrep/applications')
-    TC_RegisterRepresentativePage.verifyApplicationIsNotInQueue()
-    TC_RegisterRepresentativePage.verifyApplicationStatus('Pending Review (Sup)')
-    
+    waitForLoaderToDisappearUtils();
 
-
-
+    cy.url().should("include", "registerrep/applications");
+    TC_RegisterRepresentativePage.verifyApplicationIsNotInQueue();
+    TC_RegisterRepresentativePage.clickOnDashboard()
+    TC_RegisterRepresentativePage.verifyApplicationStatus("Pending Review (Sup)");
   })
 
 })

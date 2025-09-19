@@ -11,7 +11,8 @@
         "popupButtons": "//button[contains(@class,'yes_noBtn')]",
         "statusDropdownInput":"//div[@class='input_wrapper']",
         "statusDropdown": "//select[@name='appStatus']",
-        "statusOption": "//select[@name='appStatus']/option[contains(text(),'{TEXT}')]"
+        "statusOption": "//select[@name='appStatus']/option[contains(text(),'{TEXT}')]",
+        "selectRR":"//select[@name='regrep']"
     
     }
 }

@@ -78,3 +78,75 @@ export function supervsorLoginUtils(){
 
   
 }
+
+export function glendaleRegisterRepresentativeLoginUtils(){
+  cy.visit("", {failOnStatusCode: false, timeout: 20000,
+    auth: {
+      username: 'ola-staging',
+      password: 'Atlasclear@123/'
+     }
+  })
+ 
+   cy.fixture('UsersCredential.json').then((data) => {
+      cy.xpath(loginLocators.username).type(data.glendaleCredentials.rrCredential.username)  
+      cy.xpath(loginLocators.password).type(data.glendaleCredentials.rrCredential.password)
+   })
+  cy.xpath(loginLocators.loginBtn).click()
+  cy.url().should('include', '/dashboard')
+
+  
+}
+
+export function glendaleSupervsorLoginUtils(){
+  cy.visit("", {failOnStatusCode: false, timeout: 20000,
+    auth: {
+      username: 'ola-staging',
+      password: 'Atlasclear@123/'
+     }
+  })
+ 
+   cy.fixture('UsersCredential.json').then((data) => {
+      cy.xpath(loginLocators.username).type(data.glendaleCredentials.superisorCredential.username)  
+      cy.xpath(loginLocators.password).type(data.glendaleCredentials.superisorCredential.password)
+   })
+  cy.xpath(loginLocators.loginBtn).click()
+  cy.url().should('include', '/dashboard')
+
+  
+}
+
+export function glendaleBrokerLoginUtils(){
+  cy.visit("", {failOnStatusCode: false, timeout: 20000,
+    auth: {
+      username: 'ola-staging',
+      password: 'Atlasclear@123/'
+     }
+  })
+ 
+   cy.fixture('UsersCredential.json').then((data) => {
+      cy.xpath(loginLocators.username).type(data.glendaleCredentials.brokerCredential.username)  
+      cy.xpath(loginLocators.password).type(data.glendaleCredentials.brokerCredential.password)
+   })
+  cy.xpath(loginLocators.loginBtn).click()
+  cy.url().should('include', '/dashboard')
+
+  
+}
+
+export function wdBrokerLoginUtils(){
+  cy.visit("", {failOnStatusCode: false, timeout: 20000,
+    auth: {
+      username: 'ola-staging',
+      password: 'Atlasclear@123/'
+     }
+  })
+ 
+   cy.fixture('UsersCredential.json').then((data) => {
+      cy.xpath(loginLocators.username).type(data.wdCredentials.brokerCredential.username)  
+      cy.xpath(loginLocators.password).type(data.wdCredentials.brokerCredential.password)
+   })
+  cy.xpath(loginLocators.loginBtn).click()
+  cy.url().should('include', '/dashboard')
+
+  
+}

@@ -1,0 +1,8 @@
+{
+    "BrokerLocators":
+    {
+        "Dashboard":"//i[@class='icoMenu icon-application']",
+        "ApprovalQueue":"//i[@class='icoMenu admin-Approval']"
+    
+    }
+}

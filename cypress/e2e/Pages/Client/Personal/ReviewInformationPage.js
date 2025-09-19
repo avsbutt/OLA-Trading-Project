@@ -10,4 +10,9 @@ export class ReviewInfomationPage{
         cy.xpath(FormUsageButtons.Submit).click()
     }
 
+    VerifyClientDashboardVisible(){
+       cy.xpath('//h2[@class="heading" and text()="Client Applications"]')
+      .should('be.visible');
+    }
+
 }

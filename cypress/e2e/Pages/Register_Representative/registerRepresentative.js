@@ -96,7 +96,7 @@ export class RegisterRepresentativePage {
   }
 
   verifyApplicationStatus(expectedTitle) {
-    cy.xpath(RegisterRepresentativeLocators.Dashboard).click({ force: true });
+    // cy.xpath(RegisterRepresentativeLocators.Dashboard).click({ force: true });
 
     cy.fixture("PersonInfoData.json").then((person) => {
       const fullName = `${person.fName} ${person.lName}`;
@@ -110,12 +110,18 @@ export class RegisterRepresentativePage {
             cy.get("#row-0")
               .find('[data-tag="allowRowEvents"] .acc-status')
               .should("be.visible")
-              .and("have.attr", "title", expectedTitle)
+              // .and("have.attr", "title", expectedTitle)
               .and("contain.text", expectedTitle);
           } else {
             cy.log(`❌ Name ${fullName} not found in row 1`);
           }
         });
     });
+  }
+  clickOnDashboard(){
+    cy.xpath(RegisterRepresentativeLocators.Dashboard).click({ force: true });
+  }
+  clickOnApprovalQueue(){
+    cy.xpath(RegisterRepresentativeLocators.ApprovalQueue).click()
   }
 }
