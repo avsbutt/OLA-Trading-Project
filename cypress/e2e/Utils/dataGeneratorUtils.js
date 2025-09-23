@@ -65,20 +65,28 @@ const getRandomIssueAndExpirationDates = () => {
 export const dataGeneratorUtils = () => {
     const dob = getRandomDateOfBirth();
     const idDates = getRandomIssueAndExpirationDates();
-    let cityName = faker.location.city().replace(/[^a-zA-Z ]/g, '');  // ## Generate city name with only alphabets
+    let cityName = faker.location.city().replace(/[^a-zA-Z ]/g, '');  // city can still allow spaces
 
+    // Helper to sanitize names (only A–Z, no spaces/symbols)
+    const sanitizeName = (name) => name.replace(/[^a-zA-Z]/g, '');
+
+    // New: alpha-only + Capitalize first letter, rest lowercase
+    const capName = (name) => {
+        const clean = name.replace(/[^a-zA-Z]/g, '');
+        return clean ? clean[0].toUpperCase() + clean.slice(1).toLowerCase() : '';
+    };
     return {
 
         //########--------PERSONAL INFORMATION--------########\\
 
-        fName: faker.person.firstName(),
-        fName1: faker.person.firstName(),
+        fName:  capName(faker.person.firstName()),
+        fName1: capName(faker.person.firstName()),
 
-        mName: faker.person.middleName(),
-        mName1: faker.person.middleName(),
+        mName: capName(faker.person.middleName()),
+        mName1: capName(faker.person.middleName()),
 
-        lName: faker.person.lastName(),
-        lName1: faker.person.lastName(),
+        lName:  capName(faker.person.lastName()),
+        lName1: capName(faker.person.lastName()),
 
         email: faker.internet.email(),
         email1: faker.internet.email(),
@@ -88,7 +96,6 @@ export const dataGeneratorUtils = () => {
         randomWords2: faker.lorem.words(2),
         randomWords3: faker.lorem.words(3),
 
-
         randomNumbers: faker.string.numeric(13),
         randomNumbers1: faker.string.numeric(15),
         randomNumbers2: faker.string.numeric(14),
@@ -96,36 +103,31 @@ export const dataGeneratorUtils = () => {
         randomNumbers4: faker.string.numeric(15),
         randomNumbers5: faker.string.numeric(9),
 
-        
-
         nOfDependents: faker.number.int({ min: 0, max: 99 }),
         primaryTelephone: faker.string.numeric(14),
         idNumber: faker.string.numeric(15),
         socialSecurityNo: faker.string.numeric(13),
-        dobMMDDYYYY: dob.mmddyyyy,  // MMDDYYYY format for display
-        dobYYYYMMDD: dob.yyyymmdd,  // YYYY-MM-DD format for input field
-        dobMMDDYYYY1: dob.yyyymmdd,  // YYYY-MM-DD format for input field
+        dobMMDDYYYY: dob.mmddyyyy,
+        dobYYYYMMDD: dob.yyyymmdd,
+        dobMMDDYYYY1: dob.yyyymmdd,
         dobYYYYMMDD1: dob.yyyymmdd,
         idIssueDate: idDates.issueDate,
         idExpirationDate: idDates.idExpirationDate,
-        //idExpirationDate: faker.date.future,
-
 
         //########--------PHYSICAL ADDRESS--------########\\
 
-        city: cityName, // Generate random city name
+        city: cityName,
         city1: cityName,
-        postalCode: faker.string.numeric(5), // Generates a random 5-digit postal code
-        address:  faker.location.streetAddress(),
+        postalCode: faker.string.numeric(5),
+        address: faker.location.streetAddress(),
         address1: faker.location.streetAddress(),
         address2: faker.location.streetAddress(),
         address3: faker.location.streetAddress(),
 
-
         //########--------TRUSTED CONTACT--------########\\
 
-        trustedFirstName: faker.person.firstName(),
-        trustedLastName: faker.person.lastName(),
+        trustedFirstName: capName(faker.person.firstName()),
+        trustedLastName: capName(faker.person.lastName()),
         trustedTelephone: faker.string.numeric(16),
         trustedEmail: faker.internet.email(),
         trustedMailingAddress1: faker.location.streetAddress(),
@@ -134,3 +136,4 @@ export const dataGeneratorUtils = () => {
 
     };
 };
+
