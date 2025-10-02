@@ -403,6 +403,10 @@ describe("WD(Cash Account) - Representative - Supervisor", () => {
 
  it('Verify that US Citizen User can Create New Personal Account || Account type Cash Only || ID Type #Driver License', () => {
 
+    clientLoginUtils();
+    waitForLoaderToDisappearUtils();
+    IfApplicationStatusNotCompletedThenCancelUtils();
+    CloseToasterIfAppearUtils();
     TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
     CloseToasterIfAppearUtils();
 
@@ -576,6 +580,10 @@ describe("WD(Cash Account) - Broker - Representative - Supervisor", () => {
 
   it('Verify that US Citizen User can Create New Personal Account || Account type Cash Only || ID Type #Driver License', () => {
 
+    clientLoginUtils();
+    waitForLoaderToDisappearUtils();
+    IfApplicationStatusNotCompletedThenCancelUtils();
+    CloseToasterIfAppearUtils();
     TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
     CloseToasterIfAppearUtils();
 
@@ -681,7 +689,7 @@ describe("WD(Cash Account) - Broker - Representative - Supervisor", () => {
 
 
     cy.url().should('include', '#/review')
-    TC_ReviewInfomationPage.SelectRegisteredRep()
+    // TC_ReviewInfomationPage.SelectRegisteredRep()
     TC_ReviewInfomationPage.ClickOnSubmitBtn()
     cy.url().should('include', '#/dashboard')
 

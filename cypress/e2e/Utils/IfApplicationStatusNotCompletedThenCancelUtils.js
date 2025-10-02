@@ -19,9 +19,10 @@ export function IfApplicationStatusNotCompletedThenCancelUtils() {
                 cy.xpath(CancelApplicationLocators.Settings).click();
                 cy.xpath(CancelApplicationLocators.CancelApplication).click();
                 cy.xpath(CancelApplicationLocators.CancelApplicationYes).click();
-                cy.get("div[title='Not Completed']" , { timeout:5000 }).should('not.exist')
                 waitForLoaderToDisappearUtils()
-                cy.wait(500)
+                cy.wait(2000)
+                cy.get("div[title='Not Completed']" , { timeout:5000 }).should('not.exist')
+
             } else {
                 // If not present or not visible, print a message
                 cy.log("There is No Application with Not Completed status");

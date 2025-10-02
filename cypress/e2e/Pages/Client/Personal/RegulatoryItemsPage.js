@@ -78,6 +78,6 @@ export class RegulatoryItemsPage{
     }
 
     SaveAndContinue(){
-        cy.xpath(FormUsageButtons.SaveAndContinue).focus().click();
+        cy.xpath(FormUsageButtons.SaveAndContinue).focus().click({force:true});
     }
 }

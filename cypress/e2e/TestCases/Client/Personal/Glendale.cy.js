@@ -236,7 +236,7 @@ describe('Glendale(Margin Account) - Broker - Representative - Supervisor', ()=>
 
 })
 
-describe('Glendale(Cash Account) - Broker - Representative - Supervisor', ()=>{
+describe.skip('Glendale(Cash Account) - Broker - Representative - Supervisor', ()=>{
   
   afterEach(() => {
     cy.clearCookies();

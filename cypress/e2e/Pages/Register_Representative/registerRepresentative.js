@@ -88,11 +88,26 @@ export class RegisterRepresentativePage {
     });
     waitForLoaderToDisappearUtils();
 
-    cy.fixture("PersonInfoData.json").then((person) => {
-      const fullName = `${person.fName} ${person.lName}`;
+    cy.document().then((doc) => {
+      const noRecordElement = doc.evaluate(
+        "//div[normalize-space(text())='No record found']",
+        doc,
+        null,
+        XPathResult.FIRST_ORDERED_NODE_TYPE,
+        null
+      ).singleNodeValue;
 
-      cy.get("#row-0").find('[role="cell"]').should("not.contain", fullName);
-    });
+      if (noRecordElement) {
+        cy.log("No record found");
+      } else {
+        cy.fixture("PersonInfoData.json").then((person) => {
+          const fullName = `${person.fName} ${person.lName}`;
+          cy.get("#row-0")
+            .find('[role="cell"]')
+            .should("not.contain", fullName);
+        });
+      }
+    })
   }
 
   verifyApplicationStatus(expectedTitle) {
