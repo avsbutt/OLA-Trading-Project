@@ -19,8 +19,12 @@ export class DisclosureSignaturesPage{
   AccountAgreementCashAndMargin(){
     // cy.xpath(DisclosureSignaturesLocators.AccountAgreementCashAndMarginYes).focus().check({ force: true })
     cy.document().then((doc) => {
-      const element = doc.querySelector('input[value="true"][name="wdaccountAgreementCashMarginCheck"]');
-      const element2 = doc.querySelector('input[value="false"][name="wdaccountAgreementCashMarginCheck"]');
+      //const element = doc.querySelector('input[value="true"][name="wdaccountAgreementCashMarginCheck"]');
+      const element = doc.querySelector('input:is([value="true"][name="glCashandMargin"], [value="true"][name="wdaccountAgreementCashMarginCheck"])')
+      
+     // const element2 = doc.querySelector('input[value="false"][name="wdaccountAgreementCashMarginCheck"]');
+      const element2 = doc.querySelector('input:is([value="false"][name="glCashandMargin"], [value="false"][name="wdaccountAgreementCashMarginCheck"])')
+
     
       if (element) {
         cy.wrap(element).focus().check({ force: true })
