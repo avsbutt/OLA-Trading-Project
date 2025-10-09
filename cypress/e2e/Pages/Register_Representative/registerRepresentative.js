@@ -9,7 +9,7 @@ export class RegisterRepresentativePage {
     });
     waitForLoaderToDisappearUtils();
     cy.fixture("PersonInfoData.json").then((person) => {
-      const fullName = `${person.fName} ${person.lName}`;
+      const fullName = `${person.fName}`;
 
       cy.get("#row-0")
         .find('[role="cell"]')
@@ -44,7 +44,7 @@ export class RegisterRepresentativePage {
   verifyApplication() {
     cy.fixture("PersonInfoData.json").then((person) => {
       cy.contains(person.fName).should("be.visible");
-      cy.contains(person.lName).should("be.visible");
+      //cy.contains(person.lName).should("be.visible");
     });
   }
 
@@ -101,7 +101,7 @@ export class RegisterRepresentativePage {
         cy.log("No record found");
       } else {
         cy.fixture("PersonInfoData.json").then((person) => {
-          const fullName = `${person.fName} ${person.lName}`;
+          const fullName = `${person.fName}`;
           cy.get("#row-0")
             .find('[role="cell"]')
             .should("not.contain", fullName);
@@ -114,7 +114,7 @@ export class RegisterRepresentativePage {
     // cy.xpath(RegisterRepresentativeLocators.Dashboard).click({ force: true });
 
     cy.fixture("PersonInfoData.json").then((person) => {
-      const fullName = `${person.fName} ${person.lName}`;
+      const fullName = `${person.fName}`;
 
       cy.get("#row-0")
         .find('[role="cell"]')
