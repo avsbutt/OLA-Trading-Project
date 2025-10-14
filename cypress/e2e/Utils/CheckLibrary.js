@@ -1,13 +1,75 @@
-// cypress/support/checkLibrary.js
-// Usage: import { CheckLibrary } from '../support/checkLibrary';
-
 /// <reference types="cypress" />
-// If you're using the Allure plugin (@shelex/cypress-allure-plugin), the optional
-// attachments below will work. They’re wrapped in try/catch so they won’t break if absent.
+import 'cypress-xpath';
+import pdfParse from 'pdf-parse';
 
 export class CheckLibrary {
-  // ---------- Core validator (runs in Cypress test context) ----------
-  static _validateField(path, actual, expected, assertType) {
+
+  // ------------------ Utility Helpers ------------------
+
+  static _toStr(v) {
+    return v == null ? 'null' : String(v);
+  }
+
+  static _stripNbsp(s) {
+    return s.replace(/\u00A0/g, ' ');
+  }
+
+  static _normText(s) {
+    return this._stripNbsp(this._toStr(s)).trim();
+  }
+
+  static _toNumber(s) {
+    const t = this._normText(s)
+      .replace(/\s/g, '')
+      .replace(/[€$£%]/g, '')
+      .replace(/,/g, '');
+    const n = parseFloat(t);
+    return Number.isNaN(n) ? NaN : n;
+  }
+
+  static _parseDateLoose(s) {
+    const v = this._normText(s);
+    if (!v) return null;
+
+    const m = v.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/);
+    if (m) {
+      let a = parseInt(m[1], 10);
+      let b = parseInt(m[2], 10);
+      const y = parseInt(m[3], 10);
+      let mm, dd;
+      if (a > 12) { dd = a; mm = b; }
+      else if (b > 12) { mm = a; dd = b; }
+      else { mm = a; dd = b; }
+      const d = new Date(Date.UTC(y, mm - 1, dd, 0, 0, 0));
+      return Number.isNaN(d.getTime()) ? null : d;
+    }
+
+    const d = new Date(v);
+    return Number.isNaN(d.getTime()) ? null :
+      new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+  }
+
+  static _sameYMD(d1, d2) {
+    return (
+      d1 &&
+      d2 &&
+      d1.getUTCFullYear() === d2.getUTCFullYear() &&
+      d1.getUTCMonth() === d2.getUTCMonth() &&
+      d1.getUTCDate() === d2.getUTCDate()
+    );
+  }
+
+  // ✅ Unified element resolver (detects XPath vs CSS)
+  static resolveLocator(selector, options = {}) {
+    if (selector.startsWith('//') || selector.startsWith('(')) {
+      return cy.xpath(selector, options);
+    }
+    return cy.get(selector, options);
+  }
+
+  // ------------------ Assertions ------------------
+
+  static validateField(path, actual, expected, assertType) {
     const actualStr = this._toStr(actual);
     let result = false;
 
@@ -57,125 +119,70 @@ export class CheckLibrary {
     }
 
     const status = result ? '✅ PASS' : '❌ FAIL';
-    const message = `${status} [${path}] Expected ${assertType} => ${expected}, Actual => ${actualStr}`;
-
-    this._attach(`Validation [${path}] - Status`, status);
-    this._attach(`Validation [${path}] - Expected`, this._toStr(expected));
-    this._attach(`Validation [${path}] - Actual`, actualStr);
-    this._attach(`Validation [${path}] - AssertType`, this._toStr(assertType));
-    // also log to runner
-    // eslint-disable-next-line no-console
-    console.log(message);
-
-    if (!result) {
-      throw new Error(`Validation failed [${path}] → Expected ${assertType} "${expected}" but got "${actualStr}"`);
-    }
+    cy.log(`${status} [${path}] Expected ${assertType} => ${expected}, Actual => ${actualStr}`);
+    expect(result, `Validation for ${path}`).to.be.true;
   }
 
-  // ---------- Cypress helpers ----------
+  // ------------------ Element & URL Checks ------------------
+
   static checkUrlContains(partialUrl) {
-    cy.url().should('include', partialUrl).then((url) => {
-      this._attach('Current URL', url);
-      this._attach('Expected fragment', partialUrl);
-    });
+    cy.url().should('include', partialUrl);
   }
 
-  static checkElementVisible(selectorOrChainable, timeout = 5000) {
-    const el = typeof selectorOrChainable === 'string'
-      ? cy.get(selectorOrChainable, { timeout })
-      : selectorOrChainable;
-    el.should('be.visible');
+  static checkElementVisible(selector, timeout = 5000) {
+    this.resolveLocator(selector, { timeout }).should('be.visible');
   }
 
-  static checkElementNotVisible(selectorOrChainable, timeout = 5000) {
-    const el = typeof selectorOrChainable === 'string'
-      ? cy.get(selectorOrChainable, { timeout })
-      : selectorOrChainable;
-    el.should('not.be.visible');
+  static checkElementNotVisible(selector, timeout = 5000) {
+    this.resolveLocator(selector, { timeout }).should('not.be.visible');
   }
 
-  static checkTextEquals(selectorOrChainable, expected, path = 'Field') {
-    const el = typeof selectorOrChainable === 'string'
-      ? cy.get(selectorOrChainable)
-      : selectorOrChainable;
-
-    el.then(($el) => {
-      const aria = $el.attr('aria-label');
-      const text = $el.text();
-      const actual = aria ?? text ?? '';
-      this._validateField(path, actual, expected, 'equal');
-    });
+  static checkTextEquals(selector, expected, path = 'Field') {
+    this.resolveLocator(selector)
+      .should('be.visible')
+      .invoke('text')
+      .then((text) => {
+        this.validateField(path, text.trim(), expected, 'equal');
+      });
   }
 
-  static checkDate(selectorOrChainable, expectedDate, path = 'Date') {
-    const el = typeof selectorOrChainable === 'string'
-      ? cy.get(selectorOrChainable)
-      : selectorOrChainable;
-
-    el.then(($el) => {
-      const aria = $el.attr('aria-label');
-      const text = $el.text();
-      const actual = aria ?? text ?? '';
-      this._validateField(path, actual, expectedDate, 'date');
-    });
+  static checkDate(selector, expectedDate, path = 'Date') {
+    this.resolveLocator(selector)
+      .should('be.visible')
+      .invoke('text')
+      .then((text) => {
+        this.validateField(path, text.trim(), expectedDate, 'date');
+      });
   }
 
-  static checkAttributeContains(selectorOrChainable, attribute, expectedValue, timeout = 15000) {
-    const el = typeof selectorOrChainable === 'string'
-      ? cy.get(selectorOrChainable, { timeout })
-      : selectorOrChainable;
-
-    el.invoke('attr', attribute).then((val) => {
-      expect(val, `[attr ${attribute}] should match /${expectedValue}/`).to.match(new RegExp(expectedValue));
-      this._attach('Selector', typeof selectorOrChainable === 'string' ? selectorOrChainable : '<chainable>');
-      this._attach('Attribute', attribute);
-      this._attach('Expected Value (partial)', expectedValue);
-    });
+  static checkAttributeContains(selector, attribute, expectedValue, timeout = 15000) {
+    this.resolveLocator(selector, { timeout })
+      .should('have.attr', attribute)
+      .and(($attr) => {
+        expect($attr).to.match(new RegExp(expectedValue));
+      });
   }
 
   static checkTextPresent(text, timeout = 5000) {
-    // Broad search in the body for any element containing the text
-    cy.contains('body *', text, { timeout }).should('be.visible').then(() => {
-      // eslint-disable-next-line no-console
-      console.log(`✅ The text [${text}] exists`);
-    });
+    cy.xpath(`//body//*[contains(text(),'${text}')]`, { timeout })
+      .should('be.visible')
+      .then(() => cy.log(`✅ The text [${text}] exists`));
   }
 
-  /**
-   * Verify text inside a PDF by URL.
-   * @param {string} pdfUrl - Absolute URL to the PDF (e.g., from an href or response)
-   * @param {string} text - Text to check
-   * @param {boolean} isNegativeCheck - true => assert NOT contains; false => assert contains
-   * @param {object} pdfTextCacheObj - optional cache object { text: '...' }
-   */
-  static verifyPdfText(pdfUrl, text, isNegativeCheck = false, pdfTextCacheObj = {}) {
-    // We’ll fetch the PDF and parse it via a cy.task (Node side) using pdf-parse
-    if (pdfTextCacheObj.text) {
-      const content = pdfTextCacheObj.text;
-      if (isNegativeCheck) {
-        expect(content).not.to.include(text);
-      } else {
-        expect(content).to.include(text);
-      }
-      return;
-    }
+  // ------------------ PDF Content Check ------------------
 
-    // Fetch as binary then send Buffer to task
-    cy.request({
-      url: pdfUrl,
-      encoding: 'binary',
-      // If auth/cookies are needed, adapt as required:
-      // headers: { Cookie: '...' }
-    }).then((resp) => {
-      const buf = Buffer.from(resp.body, 'binary');
-      return cy.task('parsePdfBuffer', buf);
-    }).then((parsed) => {
-      // parsed = { text, info, metadata } from pdf-parse
-      pdfTextCacheObj.text = parsed.text || '';
+  /**
+   * Verifies PDF contains or does not contain text
+   * @param {string} pdfUrl - full PDF URL
+   * @param {string} text - text to verify
+   * @param {boolean} isNegativeCheck - true = assert NOT contains
+   */
+  static verifyPdfText(pdfUrl, text, isNegativeCheck = false) {
+    cy.task('fetchPdfText', pdfUrl).then((pdfText) => {
       if (isNegativeCheck) {
-        expect(pdfTextCacheObj.text).not.to.include(text);
+        expect(pdfText).not.to.contain(text);
       } else {
-        expect(pdfTextCacheObj.text).to.include(text);
+        expect(pdfText).to.contain(text);
       }
     });
   }

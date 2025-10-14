@@ -1,215 +1,126 @@
-// waitLibrary.js for Cypress
+/// <reference types="cypress" />
+import 'cypress-xpath';
 
-class WaitLibrary {
+export class WaitLibrary {
+  /**
+   * Detects whether a selector is XPath or CSS and returns the appropriate locator
+   * @param {string} selector
+   */
+  static resolveLocator(selector) {
+    if (selector.trim().startsWith('//') || selector.trim().startsWith('(')) {
+      return cy.xpath(selector);
+    }
+    return cy.get(selector);
+  }
+
   // Wait for a given number of seconds
-  static async waitSeconds(seconds) {
-    console.log(`[WaitLibrary] Waiting for ${seconds} seconds...`);
-    cy.wait(seconds * 1000); // Cypress waits in milliseconds
+  static waitSeconds(seconds) {
+    cy.log(`[WaitLibrary] Waiting for ${seconds} seconds...`);
+    cy.wait(seconds * 1000);
   }
 
   // Wait for an element to contain specific text
-  static waitForText(locator, text, timeout = 15000) {
-    console.log(`[WaitLibrary] Waiting for text: ${text}`);
-    cy.get(locator, { timeout }).should('include.text', text);
+  static waitForText(selector, text, timeout = 15000) {
+    cy.log(`[WaitLibrary] Waiting for text: ${text}`);
+    this.resolveLocator(selector, { timeout }).should('include.text', text);
   }
 
   // Wait until URL contains a specific fragment
   static waitUntilUrlContains(fragment, timeout = 15000) {
-    console.log(`[WaitLibrary] Waiting for URL to contain: ${fragment}`);
+    cy.log(`[WaitLibrary] Waiting for URL to contain: ${fragment}`);
     cy.url({ timeout }).should('include', fragment);
   }
 
   // Wait for an element to become visible
-  static waitForSelectorVisible(locator, timeout = 15000) {
-    console.log(`[WaitLibrary] Waiting for element to be visible.`);
-    cy.get(locator, { timeout }).should('be.visible');
+  static waitForSelectorVisible(selector, timeout = 15000) {
+    cy.log(`[WaitLibrary] Waiting for element to be visible: ${selector}`);
+    this.resolveLocator(selector, { timeout }).should('be.visible');
   }
 
-  // Wait for an element to become hidden
-  static waitForSelectorHidden(locator, timeout = 8000) {
-    console.log(`[WaitLibrary] Waiting for element to be hidden.`);
-    cy.get(locator, { timeout }).should('not.be.visible');
+  // Wait for an element to become hidden or not exist
+  static waitForSelectorHidden(selector, timeout = 8000) {
+    cy.log(`[WaitLibrary] Waiting for element to be hidden: ${selector}`);
+    this.resolveLocator(selector, { timeout }).should('not.exist');
   }
 
-  // Wait for page to load and be ready
+  // Wait for page to load completely
   static waitPageLoaded() {
-    console.log(`[WaitLibrary] Waiting for page to load`);
-    cy.document().should('exist'); // Ensure the page is loaded
-    cy.window().should('have.property', 'innerWidth'); // Ensure the window is ready
-    cy.get('body').should('be.visible'); // Ensure body is visible
+    cy.log(`[WaitLibrary] Waiting for page to load...`);
+    cy.document().should('exist');
+    cy.window().should('have.property', 'innerWidth');
+    cy.get('body').should('be.visible');
   }
 
-  // Wait for an element to become visible with retry logic
-  static async waitForLocatorVisible(locator, timeoutMs = 60000) {
-    const startTime = Date.now();
-    const pollingInterval = 500;
+  // Wait for an element to become visible (manual retry)
+  static waitForLocatorVisible(selector, timeoutMs = 60000, pollingInterval = 500) {
+    cy.log(`[WaitLibrary] Waiting for locator to be visible: ${selector}`);
+    const start = Date.now();
 
-    while (Date.now() - startTime < timeoutMs) {
-      try {
-        const isVisible = await cy.get(locator, { timeout: 1000 }).should('be.visible');
-
-        if (isVisible) {
-          console.log('[waitForLocatorVisible] Element is visible.');
-          return;
-        }
-      } catch (err) {
-        // silently ignore exceptions (locator may not be ready)
+    const checkVisibility = () => {
+      if (Date.now() - start > timeoutMs) {
+        throw new Error(`[waitForLocatorVisible] Timeout: Element not visible within ${timeoutMs / 1000}s`);
       }
 
-      // Wait and retry every polling interval
-      cy.wait(pollingInterval);
-    }
-
-    throw new Error('[waitForLocatorVisible] Timeout: Element did not become visible within 60 seconds.');
-  }
-
-  // ---------- Helper functions for checking visibility of loaders ----------
-  static async _anyVisible(locator) {
-    try {
-      const style = window.getComputedStyle(locator[0]);
-      const rect = locator[0].getBoundingClientRect();
-      return (
-        style.display !== 'none' &&
-        style.visibility !== 'hidden' &&
-        rect.width > 0 &&
-        rect.height > 0 &&
-        style.opacity !== '0'
-      );
-    } catch {
-      return false;
-    }
-  }
-
-  static async _allGoneOrHidden(locator) {
-    const count = await cy.get(locator).its('length').catch(() => 0);
-    if (count === 0) return true;
-    return !(await this._anyVisible(locator));
-  }
-
-  static async _waitForLoadersGeneric({
-    makeLocator,
-    tick,
-    scrollDown200,
-    scrollTop,
-    selectors,
-    maxTimeoutMs,
-    pollingInterval,
-  }) {
-    const startTime = Date.now();
-    const maxRetry = 15;
-    let didScroll = false;
-
-    for (const selector of selectors) {
-      try {
-        const locator = makeLocator(selector);
-
-        if (await this._allGoneOrHidden(locator)) {
-          continue;
-        }
-
-        let retry = 0;
-        while (retry < maxRetry) {
-          if (Date.now() - startTime > maxTimeoutMs) {
-            throw new Error(`[loader] Timeout: '${selector}' still visible after ${Math.floor(maxTimeoutMs / 1000)}s`);
+      this.resolveLocator(selector)
+        .then(($el) => {
+          if ($el.length > 0 && $el.is(':visible')) {
+            cy.log('[waitForLocatorVisible] ✅ Element is visible.');
+          } else {
+            cy.wait(pollingInterval);
+            checkVisibility();
           }
-
-          if (await this._allGoneOrHidden(locator)) {
-            break;
-          }
-
-          console.log(`[loader] Still visible: '${selector}' (retry ${retry + 1}/${maxRetry})`);
-
-          if (retry + 1 >= 3 && retry + 1 <= 30) {
-            try {
-              await scrollDown200();
-              didScroll = true;
-            } catch (e) {
-              console.warn('[loader] scrollDown failed:', e?.message || e);
-            }
-          }
-
-          // Wait for timeout or retry
+        })
+        .catch(() => {
           cy.wait(pollingInterval);
-          retry++;
-        }
+          checkVisibility();
+        });
+    };
 
-        if (retry >= maxRetry) {
-          console.warn(`[loader] Max retries reached for '${selector}', moving on.`);
-        }
-      } catch {
-        console.log(`[loader] Selector not found or already gone: '${selector}'`);
-      }
-    }
-
-    if (didScroll) {
-      try {
-        await scrollTop();
-      } catch (e) {
-        console.warn('[loader] scrollTop failed:', e?.message || e);
-      }
-    }
+    checkVisibility();
   }
 
-  // ---------- Wait for page loaders to disappear ----------
-  static async waitForLoader(page, maxTimeoutMs = 180000) {
-    console.log('[waitForLoader] Starting page readiness & loader wait…');
-    cy.get('body').should('exist'); // Ensure the page body is present
+  // ---------- Wait for custom loader ".loader_loaderContainer" ----------
+  /**
+   * Wait for ".loader_loaderContainer" to disappear
+   */
+  static waitForLoader(timeout = 60000) {
+    cy.log('[WaitLibrary] Waiting for .loader_loaderContainer to disappear...');
 
-    const selectors = [
-      '[data-testid*="loading"]',
-      '[data-testid*="loader"]',
-      '[data-testid*="skeleton-loader"]',
-      '//*[contains(@class,"loader-inner")]',
-      '//*[contains(@class,"skeleton-loader")]',
-      '//*[contains(@class,"inner-section-loading")]',
-      '//*[contains(@class,"loader")]',
-      '//*[contains(@class,"loading")]',
-      '//*[contains(@class,"fui-Spinner")]',
-      '//*[contains(@class,"spinnerTail")]',
-    ];
-
-    await this._waitForLoadersGeneric({
-      makeLocator: sel => cy.get(sel),
-      tick: () => cy.wait(1000),
-      scrollDown200: () => cy.scrollTo('bottom'),
-      scrollTop: () => cy.scrollTo('top'),
-      selectors,
-      maxTimeoutMs,
-      pollingInterval: 1000,
+    cy.get('body').then(($body) => {
+      if ($body.find('.loader_loaderContainer').length > 0) {
+        cy.get('.loader_loaderContainer', { timeout })
+          .should('not.exist')
+          .then(() => cy.log('[WaitLibrary] ✅ Loader disappeared successfully.'));
+      } else {
+        cy.log('[WaitLibrary] ⚡ No loader found, continuing.');
+      }
     });
-
-    console.log('[waitForLoader] ✅ All page loaders are gone/hidden.');
   }
 
-  // ---------- Wait for iframe loaders to disappear ----------
-  static async waitForLoaderIframe(frameLocator, maxTimeoutMs = 120000) {
-    console.log('[waitForLoaderIframe] Waiting for iframe loaders to disappear…');
+  // ---------- Wait for loaders inside iframe ----------
+  static waitForLoaderIframe(iframeSelector, timeout = 120000) {
+    cy.log('[WaitLibrary] Waiting for iframe loaders to disappear...');
+    const start = Date.now();
 
-    const selectors = [
-      '[data-testid*="loading"]',
-      '[data-testid*="loader"]',
-      '[data-testid*="skeleton-loader"]',
-      '//*[contains(@class,"loader-inner")]',
-      '//*[contains(@class,"skeleton-loader")]',
-      '//*[contains(@class,"inner-section-loading")]',
-      '//*[contains(@class,"loader")]',
-      '//*[contains(@class,"loading")]',
-      '//*[contains(@class,"fui-Spinner")]',
-      '//*[contains(@class,"spinnerTail")]',
-    ];
+    const checkIframeLoaders = (doc) => {
+      if (Date.now() - start > timeout) {
+        throw new Error('[WaitLibrary] Timeout: iframe loader still visible after 120s');
+      }
 
-    await this._waitForLoadersGeneric({
-      makeLocator: sel => frameLocator.find(sel),
-      tick: () => cy.wait(1000),
-      scrollDown200: () => frameLocator.scrollTo('bottom'),
-      scrollTop: () => frameLocator.scrollTo('top'),
-      selectors,
-      maxTimeoutMs,
-      pollingInterval: 1000,
-    });
+      const loaderVisible = doc.querySelectorAll('.loader_loaderContainer').length > 0;
+      if (loaderVisible) {
+        cy.wait(1000);
+        checkIframeLoaders(doc);
+      } else {
+        cy.log('[WaitLibrary] ✅ All iframe loaders are gone.');
+      }
+    };
 
-    console.log('[waitForLoaderIframe] ✅ All iframe loaders are gone/hidden.');
+    cy.get(iframeSelector)
+      .its('0.contentDocument')
+      .should('exist')
+      .then((doc) => {
+        checkIframeLoaders(doc);
+      });
   }
 }
-
-module.exports = { WaitLibrary };

@@ -1,11 +1,12 @@
 import { CreatePersonalAccountLocators, CreateEntityAccountLocators, CreateRetirementAccountLocators} from "@Locators/createNewAccountLocators.json"
-
+import { ClickLibrary } from '../../utils/ClickLibrary';
 export class CreateNewAccountPage{
 
     //    ######-----PERSONAL ACCOUNT------######
 
     CreatePersonalAccount_TypeIndividual(){
-        cy.xpath(CreatePersonalAccountLocators.CreateNewAccount).click({force: true})
+      //  cy.xpath(CreatePersonalAccountLocators.CreateNewAccount).click({force: true})
+        ClickLibrary.click(CreatePersonalAccountLocators.CreateNewAccount);
         cy.xpath(CreatePersonalAccountLocators.PersonalAccountType).focus().select('Individual');
         cy.xpath(CreatePersonalAccountLocators.NextBtn).click()
         cy.url().should('include','/personal-info')
