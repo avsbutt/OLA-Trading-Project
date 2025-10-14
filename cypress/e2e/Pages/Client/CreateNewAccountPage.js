@@ -138,7 +138,7 @@ export class CreateNewAccountPage{
         cy.xpath(CreateRetirementAccountLocators.CreateNewAccount).click({force: true})
         cy.xpath(CreateRetirementAccountLocators.Retirement).click()
         cy.wait(1000)
-        cy.xpath(CreateRetirementAccountLocators.RetirementAccountType).vfocus().select('SEP IRA').trigger('change'); 
+        cy.xpath(CreateRetirementAccountLocators.RetirementAccountType).focus().select('SEP IRA').trigger('change'); 
         cy.xpath(CreateRetirementAccountLocators.NextBtn).click()
     }
 

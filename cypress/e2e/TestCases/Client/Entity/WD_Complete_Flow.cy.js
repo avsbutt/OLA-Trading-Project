@@ -287,7 +287,9 @@ describe.only("ENTITY - WD(Margin Account) - Broker - Representative - Superviso
 
     cy.url().should('include', '#/upload-entity-documents')
     TC_DocumentUploadPage.CorporateResolutionDocumentShouldBeVisibleFor_Entity_TypeCorporate()
+    cy.wait(1000)
     TC_DocumentUploadPage.CorporateDocumentUploadFor_Entity_TypeCorporate()
+    cy.wait(1000)
     TC_DocumentUploadPage.DriverLicenseUploadFor_Entity()    //For ID Type Driver License only
     // TC_DocumentUploadPage.PassportIDUploadForBeneficialOwners_Entity()
     TC_DocumentUploadPage.SaveAndContinue()

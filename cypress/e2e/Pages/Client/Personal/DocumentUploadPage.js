@@ -105,7 +105,11 @@ export class DocumentUploadPage{
     cy.xpath("//input[@name='filePartnershipAgreement']").focus().attachFile('LP_Broker_Agreement.pdf')
   }
   CorporateDocumentUploadFor_Entity_TypeCorporate(){
-    cy.xpath("//input[@name='fileIncorporateArticles']").focus().attachFile('Corporate_Resolution.pdf')
+    cy.xpath("//input[@name='fileIncorporateArticles']").focus().attachFile({
+    filePath: 'Corporate_Resolution.pdf',
+    encoding: 'binary',      // 👈 important
+    mimeType: 'application/pdf'
+  });
   }
   TrustCertificateUplaodFor_Entity_TypeTrust(){
     cy.xpath("//input[@name='fileTrustCertificate']").focus().attachFile('Trust_Cretificate.pdf')
