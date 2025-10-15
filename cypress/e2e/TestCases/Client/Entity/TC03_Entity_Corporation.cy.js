@@ -13,7 +13,7 @@ import{ OwnersAndOfficialsPage} from "@Pages/Client/Entity/OwnersAndOfficialsPag
 import { DisclosureSignaturesPage } from "@Pages/Client/Personal/DisclosureSignaturesPage"
 import { DocumentUploadPage} from "@Pages/Client/Personal/DocumentUploadPage"
 import{ ReviewInfomationPage } from "@Pages/Client/Personal/ReviewInformationPage"
-
+import { WaitLibrary } from "@Utils/WaitLibrary"
 
 const TC_CreateNewAccountPage = new CreateNewAccountPage
 const TC_EntityInformationPage = new EntityInformationPage
@@ -33,6 +33,7 @@ describe ('Client - Entity - Corporation', ()=>{
     clientLoginUtils();
     waitForLoaderToDisappearUtils()
     IfApplicationStatusNotCompletedThenCancelUtils()
+    WaitLibrary.waitForLoader()
     CloseToasterIfAppearUtils() 
   });
 
@@ -61,7 +62,8 @@ describe ('Client - Entity - Corporation', ()=>{
     TC_EntityInformationPage.FromAuthorizedSignerSelect_IDType_GovtID()
     TC_EntityInformationPage.fillIndustrialClassification()
     TC_EntityInformationPage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
+
  
 
 
@@ -72,7 +74,8 @@ describe ('Client - Entity - Corporation', ()=>{
     TC_InvestmentProfilePage.fillFinancialSuitability()
     TC_InvestmentProfilePage.fillPriorInvestmentExperience()
     TC_InvestmentProfilePage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
+
 
 
     cy.url().should('include', '#/regulatory-entity-items')
@@ -92,7 +95,8 @@ describe ('Client - Entity - Corporation', ()=>{
     TC_RegulatoryItemsPage.fillOption12_Entity()
     TC_RegulatoryItemsPage.fillDirectCommunication()
     TC_RegulatoryItemsPage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
+
 
           
     cy.url().should('include', '#/account-entity-features')
@@ -100,19 +104,22 @@ describe ('Client - Entity - Corporation', ()=>{
     TC_AccountFeaturesPage.ForEntityAccount_isQuestionnaireNo()
     TC_AccountFeaturesPage.SaveAndContinue()
     CloseToasterIfAppearUtils();
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
+
 
     cy.url().should('include', '#/due-diligence-info')
     TC_DueDiligenceFormPage.fillEntityDueDiligenceForm(randomData.fName1, randomData.address2, randomData.randomNumbers5, randomData.randomWords1, randomData.randomWords2, randomData.randomWords3)
     TC_DueDiligenceFormPage.SaveAndContinue()
     CloseToasterIfAppearUtils();
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
+
 
     cy.url().should('include', '#/owners-officials')
     TC_OwnersAndOfficialsPage.AddEntityOfficers(randomData.fName, randomData.lName, randomData.dobYYYYMMDD, randomData.randomNumbers, randomData.address, randomData.city, randomData.randomNumbers1, randomData.randomNumbers2, randomData.randomWords)
     TC_OwnersAndOfficialsPage.AddBeneficialOwners(randomData.fName1, randomData.lName1, randomData.dobYYYYMMDD1, randomData.randomNumbers3, randomData.address1, randomData.city1, randomData.randomNumbers4, randomData.randomNumbers5)
     TC_OwnersAndOfficialsPage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
+
 
 
     cy.url().should('include', '#/upload-entity-documents')
@@ -123,7 +130,8 @@ describe ('Client - Entity - Corporation', ()=>{
      //TC_DocumentUploadPage.Save()
     TC_DocumentUploadPage.SaveAndContinue()
     CloseToasterIfAppearUtils();
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
+
 
 
     cy.url().should('include', '#/disclosures-signatures')
@@ -138,7 +146,8 @@ describe ('Client - Entity - Corporation', ()=>{
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
     CloseToasterIfAppearUtils();
-    //waitForLoaderToDisappearUtils()
+    //    WaitLibrary.waitForLoader()
+
 
     cy.url().should('include', '#/review')
         TC_ReviewInfomationPage.SelectRegisteredRep()
@@ -164,7 +173,8 @@ describe ('Client - Entity - Corporation', ()=>{
     TC_EntityInformationPage.FromAuthorizedSignerSelect_IDType_DriverLicense()
     TC_EntityInformationPage.fillIndustrialClassification()
     TC_EntityInformationPage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
+
 
 
 
@@ -175,7 +185,8 @@ describe ('Client - Entity - Corporation', ()=>{
     TC_InvestmentProfilePage.fillFinancialSuitability()
     TC_InvestmentProfilePage.fillPriorInvestmentExperience()
     TC_InvestmentProfilePage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
+
 
 
     cy.url().should('include', '#/regulatory-entity-items')
@@ -195,7 +206,8 @@ describe ('Client - Entity - Corporation', ()=>{
     TC_RegulatoryItemsPage.fillOption12_Entity()
     TC_RegulatoryItemsPage.fillDirectCommunication()
     TC_RegulatoryItemsPage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
+
 
       
     cy.url().should('include', '#/account-entity-features')
@@ -203,14 +215,16 @@ describe ('Client - Entity - Corporation', ()=>{
     TC_AccountFeaturesPage.ForEntityAccount_isQuestionnaireYes()  //Fill Entity Account Questionarie and Due Diligence Page will not appear '
     TC_AccountFeaturesPage.SaveAndContinue()
     CloseToasterIfAppearUtils();
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
+
 
 
     // cy.url().should('include', '#/owners-officials')
     // TC_OwnersAndOfficialsPage.AddEntityOfficers(randomData.fName, randomData.lName, randomData.dobYYYYMMDD, randomData.randomNumbers, randomData.address, randomData.city, randomData.randomNumbers1, randomData.randomNumbers2, randomData.randomWords)
     // TC_OwnersAndOfficialsPage.AddBeneficialOwners(randomData.fName1, randomData.lName1, randomData.dobYYYYMMDD1, randomData.randomNumbers3, randomData.address1, randomData.city1, randomData.randomNumbers4, randomData.randomNumbers5)
     // TC_OwnersAndOfficialsPage.SaveAndContinue()
-    // waitForLoaderToDisappearUtils()
+    //     WaitLibrary.waitForLoader()
+
 
 
     cy.url().should('include', '#/upload-entity-documents')
@@ -220,7 +234,8 @@ describe ('Client - Entity - Corporation', ()=>{
     // TC_DocumentUploadPage.PassportIDUploadForBeneficialOwners_Entity()
     TC_DocumentUploadPage.SaveAndContinue()
     CloseToasterIfAppearUtils();
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
+
 
 
     cy.url().should('include', '#/disclosures-signatures')
@@ -235,7 +250,8 @@ describe ('Client - Entity - Corporation', ()=>{
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
     CloseToasterIfAppearUtils();
-    // waitForLoaderToDisappearUtils()
+    //     WaitLibrary.waitForLoader()
+
 
     cy.url().should('include', '#/review')
         TC_ReviewInfomationPage.SelectRegisteredRep()
@@ -261,7 +277,8 @@ describe ('Client - Entity - Corporation', ()=>{
     TC_EntityInformationPage.FromAuthorizedSignerSelect_IDType_Passport()
     TC_EntityInformationPage.fillIndustrialClassification()
     TC_EntityInformationPage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
+
 
 
 
@@ -272,7 +289,8 @@ describe ('Client - Entity - Corporation', ()=>{
     TC_InvestmentProfilePage.fillFinancialSuitability()
     TC_InvestmentProfilePage.fillPriorInvestmentExperience()
     TC_InvestmentProfilePage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
+
 
 
     cy.url().should('include', '#/regulatory-entity-items')
@@ -293,7 +311,8 @@ describe ('Client - Entity - Corporation', ()=>{
     TC_RegulatoryItemsPage.fillDirectCommunication()
     TC_RegulatoryItemsPage.fillW8Ben_ForForeignAccounts(randomData.randomWords, randomData.city)  //W8 Ben For Foreign Accounts Only 
     TC_RegulatoryItemsPage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
+
 
       
     cy.url().should('include', '#/account-entity-features')
@@ -301,14 +320,16 @@ describe ('Client - Entity - Corporation', ()=>{
     TC_AccountFeaturesPage.ForEntityAccount_isQuestionnaireYes()  //Fill Entity Account Questionarie and Due Diligence Page will not appear '
     TC_AccountFeaturesPage.SaveAndContinue()
     CloseToasterIfAppearUtils();
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
+
 
 
     // cy.url().should('include', '#/owners-officials')
     // TC_OwnersAndOfficialsPage.AddEntityOfficers(randomData.fName, randomData.lName, randomData.dobYYYYMMDD, randomData.randomNumbers, randomData.address, randomData.city, randomData.randomNumbers1, randomData.randomNumbers2, randomData.randomWords)
     // TC_OwnersAndOfficialsPage.AddBeneficialOwners(randomData.fName1, randomData.lName1, randomData.dobYYYYMMDD1, randomData.randomNumbers3, randomData.address1, randomData.city1, randomData.randomNumbers4, randomData.randomNumbers5)
     // TC_OwnersAndOfficialsPage.SaveAndContinue()
-    // waitForLoaderToDisappearUtils()
+    //     WaitLibrary.waitForLoader()
+
 
 
     cy.url().should('include', '#/upload-entity-documents')
@@ -323,7 +344,8 @@ describe ('Client - Entity - Corporation', ()=>{
     //TC_DocumentUploadPage.Save()
     TC_DocumentUploadPage.SaveAndContinue()
     CloseToasterIfAppearUtils()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
+
 
 
     cy.url().should('include', '#/disclosures-signatures')
@@ -338,7 +360,8 @@ describe ('Client - Entity - Corporation', ()=>{
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
     CloseToasterIfAppearUtils();
-    // waitForLoaderToDisappearUtils()
+    //     WaitLibrary.waitForLoader()
+
 
     cy.url().should('include', '#/review')
         TC_ReviewInfomationPage.SelectRegisteredRep()

@@ -1,6 +1,5 @@
 /// <reference types="cypress" />
 
-import { randomUUID } from 'crypto';
 
 /**
  * ✅ Cypress-compatible version of DataLibrary

@@ -10,8 +10,8 @@ import { DisclosureSignaturesPage } from "@Pages/Client/Personal/DisclosureSigna
 import{ ReviewInfomationPage } from "@Pages/Client/Personal/ReviewInformationPage"
 import { CloseToasterIfAppearUtils } from "@Utils/CloseToasterIfAppearUtils";
 import { IfApplicationStatusNotCompletedThenCancelUtils } from "@Utils/IfApplicationStatusNotCompletedThenCancelUtils";
-import { CreateNewAccountPage } from "@Pages/Client/CreateNewAccountPage"
 import { waitForLoaderToDisappearUtils } from "@Utils/waitForLoaderToDisappearUtils";
+import { CreateNewAccount_type } from "../../../Pages/Client/CreateNewAccountPage"
 
 const TC_PersonalInformationPage = new PersonalInformationPage
 const TC_EmploymentInformationPage = new EmploymentInformationPage
@@ -21,7 +21,7 @@ const TC_AccountFeaturesPage = new AccountFeaturesPage
 const TC_DocumentUploadPage = new DocumentUploadPage
 const TC_DisclosureSignaturesPage = new DisclosureSignaturesPage
 const TC_ReviewInfomationPage = new ReviewInfomationPage
-const TC_CreateNewAccountPage = new CreateNewAccountPage
+const TC_CreateNewAccountPage = new CreateNewAccount_type
 
 
 
@@ -34,7 +34,8 @@ describe('Client - Personal - Individual', () => {
     waitForLoaderToDisappearUtils()
     IfApplicationStatusNotCompletedThenCancelUtils()
     CloseToasterIfAppearUtils()
-
+    TC_CreateNewAccountPage.createAccount('Personal', 'Individual');
+    CloseToasterIfAppearUtils()
   });
 
   afterEach(() => {
@@ -44,9 +45,6 @@ describe('Client - Personal - Individual', () => {
   
 
   it('Verify that US Citizen User can Create New Personal Account || ID Type #Driver License', () => {
-
-    TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
-    CloseToasterIfAppearUtils();
 
     const randomData= dataGeneratorUtils();
     cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)
@@ -154,9 +152,6 @@ describe('Client - Personal - Individual', () => {
 
   it('Verify that US Citizen User can Create New Personal Account || ID Type #Passport', () => {
 
-    TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
-    CloseToasterIfAppearUtils();
-
     const randomData= dataGeneratorUtils();
     cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)
     TC_PersonalInformationPage.fillPersonalInformation(
@@ -263,9 +258,6 @@ describe('Client - Personal - Individual', () => {
   })
 
   it('Verify that Foreign User can Create New Personal Account || ID Type #Govt ID' , ()=>{
-
-    TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
-    CloseToasterIfAppearUtils();
 
     const randomData= dataGeneratorUtils();
     cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)
@@ -380,9 +372,6 @@ describe('Client - Personal - Individual', () => {
 
   it('Verify that US Citizen User can Create New Personal Account || Account type Cash Only || ID Type #Driver License', () => {
 
-    TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
-    CloseToasterIfAppearUtils();
-
     const randomData= dataGeneratorUtils();
     cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)
     TC_PersonalInformationPage.fillPersonalInformation(
@@ -492,10 +481,10 @@ describe('Client - Personal - Individual', () => {
 
   })
 
-  // it.skip('Verify that ID Issuance Date is not visible For ID Type *Govt ID* and *Passport*' , ()=>{
+  it.skip('Verify that ID Issuance Date is not visible For ID Type *Govt ID* and *Passport*' , ()=>{
 
-  // })
+  })
 
-  // it.skip('Verify that if in Investor Profile if Investment Experience is None(0) and Total Net Worth* is $0-24,999 then Securities Lending is Not Visible in Account Feature and Securities Loan Agreement* is Not Visible Disclosure & Signatures', ()=>{
-  // })
+  it.skip('Verify that if in Investor Profile if Investment Experience is None(0) and Total Net Worth* is $0-24,999 then Securities Lending is Not Visible in Account Feature and Securities Loan Agreement* is Not Visible Disclosure & Signatures', ()=>{
+  })
 })

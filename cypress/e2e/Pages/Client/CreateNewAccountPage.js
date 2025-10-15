@@ -1,5 +1,8 @@
 import { CreatePersonalAccountLocators, CreateEntityAccountLocators, CreateRetirementAccountLocators} from "@Locators/createNewAccountLocators.json"
 import { ClickLibrary } from '../../utils/ClickLibrary';
+import { ActionLibrary } from "../../utils/ActionLibrary";
+import { CheckLibrary } from "../../utils/CheckLibrary";
+
 export class CreateNewAccountPage{
 
     //    ######-----PERSONAL ACCOUNT------######
@@ -7,9 +10,11 @@ export class CreateNewAccountPage{
     CreatePersonalAccount_TypeIndividual(){
       //  cy.xpath(CreatePersonalAccountLocators.CreateNewAccount).click({force: true})
         ClickLibrary.click(CreatePersonalAccountLocators.CreateNewAccount);
-        cy.xpath(CreatePersonalAccountLocators.PersonalAccountType).focus().select('Individual');
-        cy.xpath(CreatePersonalAccountLocators.NextBtn).click()
-        cy.url().should('include','/personal-info')
+        ActionLibrary.selectDropdown(CreatePersonalAccountLocators.PersonalAccountType, 'Individual')
+       // cy.xpath(CreatePersonalAccountLocators.PersonalAccountType).focus().select('Individual');
+         ClickLibrary.click(CreatePersonalAccountLocators.NextBtn)
+        // cy.url().should('include','/personal-info')
+        CheckLibrary.checkUrlContains('/personal-info')
     }
     CreatePersonalAccount_TypeJointAndSubtype_RightsOfSurvivorship(){
         cy.xpath(CreatePersonalAccountLocators.CreateNewAccount).click({force: true})
@@ -55,7 +60,8 @@ export class CreateNewAccountPage{
         cy.xpath(CreateEntityAccountLocators.CreateNewAccount).click({force: true})
         cy.xpath(CreateEntityAccountLocators.Entity).click()
         cy.wait(500)
-        cy.xpath(CreateEntityAccountLocators.EntityAccountType).focus().select('S Corporation').trigger('change'); 
+        ActionLibrary.selectDropdown(CreateEntityAccountLocators.EntityAccountType, 'S Corporation')
+        //cy.xpath(CreateEntityAccountLocators.EntityAccountType).focus().select('S Corporation').trigger('change'); 
         cy.xpath(CreateEntityAccountLocators.NextBtn).click()
     }
     CreateEntityAccount_TypeLimitedPartnership(){
@@ -148,3 +154,75 @@ export class CreateNewAccountPage{
 
 
 }
+
+
+export class CreateNewAccount_type {
+
+  /**
+   * Generic reusable function for creating any account type
+   * @param {'Personal' | 'Entity' | 'Retirement'} accountCategory - Account category
+   * @param {string} accountType - Main account type (e.g., Individual, Joint, Corporation, etc.)
+   * @param {string} [subType] - Optional subtype (for Joint or Retirement)
+   */
+   createAccount(accountCategory, accountType, subType = null) {
+    cy.log(`🚀 Creating ${accountCategory} account - Type: ${accountType}${subType ? ` (${subType})` : ''}`);
+
+    let locators = {};
+    let expectedUrl = '/personal-info';
+
+    // 🧭 Step 1: Choose locator set based on category
+    switch (accountCategory.toLowerCase()) {
+      case 'personal':
+        locators = CreatePersonalAccountLocators;
+        expectedUrl = '/personal-info';
+        break;
+
+      case 'entity':
+        locators = CreateEntityAccountLocators;
+        expectedUrl = '/-ientitynfo';
+        break;
+
+      case 'retirement':
+        locators = CreateRetirementAccountLocators;
+        expectedUrl = '/retirement-info';
+        break;
+
+      default:
+        throw new Error(`❌ Invalid account category: ${accountCategory}`);
+    }
+
+    // 🧩 Step 2: Click “Create New Account” button
+    ClickLibrary.click(locators.CreateNewAccount);
+
+    // 🕹️ Step 3: Category-specific navigation
+    if (accountCategory.toLowerCase() === 'entity') {
+      ClickLibrary.click(locators.Entity);
+    } else if (accountCategory.toLowerCase() === 'retirement') {
+      ClickLibrary.click(locators.Retirement);
+    }
+
+    // 🕓 Step 4: Wait for dropdown & select main type
+    cy.wait(1000);
+    ActionLibrary.selectDropdown(
+      locators[`${accountCategory}AccountType`] || locators.PersonalAccountType,
+      accountType
+    );
+
+    // 🧮 Step 5: Handle subtype if provided (like Joint, Rights of Survivorship, etc.)
+    if (subType) {
+      ActionLibrary.selectDropdown(
+        locators.JointAccountType || locators.RetirementAccountType,
+        subType
+      );
+    }
+
+    // 🧭 Step 6: Click Next
+    ClickLibrary.click(locators.NextBtn);
+
+    // 🧩 Step 7: Verify redirected page URL
+    CheckLibrary.checkUrlContains(expectedUrl);
+
+    cy.log(`✅ ${accountCategory} account created successfully: ${accountType}${subType ? ` - ${subType}` : ''}`);
+  }
+}
+

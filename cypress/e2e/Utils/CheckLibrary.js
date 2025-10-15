@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 import 'cypress-xpath';
-import pdfParse from 'pdf-parse';
+
 
 export class CheckLibrary {
 
