@@ -12,6 +12,7 @@ import { CloseToasterIfAppearUtils } from "@Utils/CloseToasterIfAppearUtils";
 import { IfApplicationStatusNotCompletedThenCancelUtils } from "@Utils/IfApplicationStatusNotCompletedThenCancelUtils";
 import { waitForLoaderToDisappearUtils } from "@Utils/waitForLoaderToDisappearUtils";
 import { CreateNewAccount_type } from "../../../Pages/Client/CreateNewAccountPage"
+import { WaitLibrary } from "@Utils/WaitLibrary"
 
 const TC_PersonalInformationPage = new PersonalInformationPage
 const TC_EmploymentInformationPage = new EmploymentInformationPage
@@ -31,7 +32,7 @@ describe('Client - Personal - Individual', () => {
   beforeEach(() => {
 
     clientLoginUtils();
-    waitForLoaderToDisappearUtils()
+    WaitLibrary.waitForLoader()
     IfApplicationStatusNotCompletedThenCancelUtils()
     CloseToasterIfAppearUtils()
     TC_CreateNewAccountPage.createAccount('Personal', 'Individual');
@@ -74,7 +75,7 @@ describe('Client - Personal - Individual', () => {
       randomData.trustedCity,
       randomData.trustedPostalCode);
     TC_PersonalInformationPage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
         
 
        
@@ -82,7 +83,7 @@ describe('Client - Personal - Individual', () => {
     //  TC_EmploymentInformationPage.fillEmployedInfo()
     TC_EmploymentInformationPage.ClickOnUnemployed()
     TC_EmploymentInformationPage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
  
 
     cy.url().should('include','/investor-profile')
@@ -90,7 +91,7 @@ describe('Client - Personal - Individual', () => {
     TC_InvestmentProfilePage.fillFinancialSuitability()
     TC_InvestmentProfilePage.fillPriorInvestmentExperience()
     TC_InvestmentProfilePage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
 
 
     cy.url().should('include', '/regulatory-items')
@@ -109,13 +110,13 @@ describe('Client - Personal - Individual', () => {
     TC_RegulatoryItemsPage.fillDirectCommunication()
     // TC_RegulatoryItemsPage.fillW8Ben_ForForeignAccounts(randomData.randomWords, randomData.city)
     TC_RegulatoryItemsPage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
 
       
     cy.url().should('include', '#/account-features')
     TC_AccountFeaturesPage.SaveAndContinue()
     CloseToasterIfAppearUtils()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
 
 
     cy.url().should('include', '#/upload-documents')
@@ -126,7 +127,7 @@ describe('Client - Personal - Individual', () => {
     // TC_DocumentUploadPage.UploadPassportFor_Personal()
     TC_DocumentUploadPage.SaveAndContinue()
     CloseToasterIfAppearUtils();
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
 
     cy.url().should('include', '#/disclosures-signatures')
     TC_DisclosureSignaturesPage.AccountAgreementCashAndMargin()
@@ -140,7 +141,7 @@ describe('Client - Personal - Individual', () => {
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
     CloseToasterIfAppearUtils();
-   // waitForLoaderToDisappearUtils()
+   //     WaitLibrary.waitForLoader()
 
 
     cy.url().should('include', '#/review')
@@ -180,7 +181,7 @@ describe('Client - Personal - Individual', () => {
       randomData.trustedCity,
       randomData.trustedPostalCode);
     TC_PersonalInformationPage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
         
 
        
@@ -188,7 +189,7 @@ describe('Client - Personal - Individual', () => {
     //  TC_EmploymentInformationPage.fillEmployedInfo()
     TC_EmploymentInformationPage.ClickOnUnemployed()
     TC_EmploymentInformationPage.SaveAndContinue()
-   waitForLoaderToDisappearUtils()
+       WaitLibrary.waitForLoader()
  
 
     cy.url().should('include','/investor-profile')
@@ -196,7 +197,7 @@ describe('Client - Personal - Individual', () => {
     TC_InvestmentProfilePage.fillFinancialSuitability()
     TC_InvestmentProfilePage.fillPriorInvestmentExperience()
     TC_InvestmentProfilePage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
 
 
     cy.url().should('include', '/regulatory-items')
@@ -215,13 +216,13 @@ describe('Client - Personal - Individual', () => {
     TC_RegulatoryItemsPage.fillDirectCommunication()
     // TC_RegulatoryItemsPage.fillW8Ben_ForForeignAccounts(randomData.randomWords, randomData.city)
     TC_RegulatoryItemsPage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
 
       
     cy.url().should('include', '#/account-features')
     TC_AccountFeaturesPage.SaveAndContinue()
     CloseToasterIfAppearUtils()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
 
 
     cy.url().should('include', '#/upload-documents')
@@ -232,7 +233,7 @@ describe('Client - Personal - Individual', () => {
     TC_DocumentUploadPage.UploadPassportFor_Personal()
     TC_DocumentUploadPage.SaveAndContinue()
     CloseToasterIfAppearUtils();
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
 
 
     cy.url().should('include', '#/disclosures-signatures')
@@ -247,7 +248,7 @@ describe('Client - Personal - Individual', () => {
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
     CloseToasterIfAppearUtils();
-   // waitForLoaderToDisappearUtils()
+   //     WaitLibrary.waitForLoader()
 
 
     cy.url().should('include', '#/review')
@@ -288,7 +289,7 @@ describe('Client - Personal - Individual', () => {
       randomData.trustedCity,
       randomData.trustedPostalCode);
     TC_PersonalInformationPage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
         
 
        
@@ -296,7 +297,7 @@ describe('Client - Personal - Individual', () => {
     //  TC_EmploymentInformationPage.fillEmployedInfo()
     TC_EmploymentInformationPage.ClickOnUnemployed()
     TC_EmploymentInformationPage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
  
 
     cy.url().should('include','/investor-profile')
@@ -304,7 +305,7 @@ describe('Client - Personal - Individual', () => {
     TC_InvestmentProfilePage.fillFinancialSuitability()
     TC_InvestmentProfilePage.fillPriorInvestmentExperience()
     TC_InvestmentProfilePage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
 
 
     cy.url().should('include', '/regulatory-items')
@@ -323,13 +324,13 @@ describe('Client - Personal - Individual', () => {
     TC_RegulatoryItemsPage.fillDirectCommunication()
     TC_RegulatoryItemsPage.fillW8Ben_ForForeignAccounts(randomData.randomWords, randomData.city)
     TC_RegulatoryItemsPage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
 
       
     cy.url().should('include', '#/account-features')
     TC_AccountFeaturesPage.SaveAndContinue()
     CloseToasterIfAppearUtils()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
 
 
     cy.url().should('include', '#/upload-documents')
@@ -345,7 +346,7 @@ describe('Client - Personal - Individual', () => {
 
     TC_DocumentUploadPage.SaveAndContinue()
     CloseToasterIfAppearUtils();
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
 
 
     cy.url().should('include', '#/disclosures-signatures')
@@ -360,7 +361,7 @@ describe('Client - Personal - Individual', () => {
     TC_DisclosureSignaturesPage.FillSignature()
     TC_DisclosureSignaturesPage.ClickSaveAndReview()
     CloseToasterIfAppearUtils();
-    //waitForLoaderToDisappearUtils()
+    //    WaitLibrary.waitForLoader()
 
 
     cy.url().should('include', '#/review')
@@ -400,7 +401,7 @@ describe('Client - Personal - Individual', () => {
       randomData.trustedCity,
       randomData.trustedPostalCode);
     TC_PersonalInformationPage.SaveAndContinue()
-    waitForLoaderToDisappearUtils()
+        WaitLibrary.waitForLoader()
         
 
        
