@@ -184,7 +184,7 @@ export class CreateNewAccount_type {
 
       case 'retirement':
         locators = CreateRetirementAccountLocators;
-        expectedUrl = '/retirement-info';
+        expectedUrl = '/personal-info';
         break;
 
       default:

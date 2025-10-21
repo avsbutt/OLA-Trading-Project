@@ -11,7 +11,7 @@ import { ReviewInfomationPage } from "@Pages/Client/Personal/ReviewInformationPa
 import { IRABeneficiariesPage } from "@Pages/Client/Retirement/IRABeneficiaries"
 import { CloseToasterIfAppearUtils } from "@Utils/CloseToasterIfAppearUtils";
 import { IfApplicationStatusNotCompletedThenCancelUtils } from "@Utils/IfApplicationStatusNotCompletedThenCancelUtils";
-import { CreateNewAccountPage } from "@Pages/Client/CreateNewAccountPage"
+import { CreateNewAccount_type } from "@Pages/Client/CreateNewAccountPage"
 import { waitForLoaderToDisappearUtils } from "@Utils/waitForLoaderToDisappearUtils";
 
 const TC_PersonalInformationPage = new PersonalInformationPage
@@ -23,7 +23,7 @@ const TC_AccountFeaturesPage = new AccountFeaturesPage
 const TC_DocumentUploadPage = new DocumentUploadPage
 const TC_DisclosureSignaturesPage = new DisclosureSignaturesPage
 const TC_ReviewInfomationPage = new ReviewInfomationPage
-const TC_CreateNewAccountPage = new CreateNewAccountPage
+const TC_CreateNewAccountPage = new CreateNewAccount_type
 
 
 
@@ -36,6 +36,8 @@ describe('Client - Retirement - Rollover IRA', () => {
     waitForLoaderToDisappearUtils()
     IfApplicationStatusNotCompletedThenCancelUtils()
     CloseToasterIfAppearUtils()
+    TC_CreateNewAccountPage.createAccount('Retirement', 'Rollover IRA');
+    CloseToasterIfAppearUtils();
    // Cypress.config('numTestsKeptInMemory', 0); // Disable keeping snapshots in memory
 
   });
@@ -47,10 +49,6 @@ describe('Client - Retirement - Rollover IRA', () => {
   
 
   it('Verify that US Citizen User can Create Rollover IRA Account || ID Type #Driver License', () => {
-
-    
-    TC_CreateNewAccountPage.CreateRetirementAccount_TypeRolloverIRA();
-    CloseToasterIfAppearUtils();
 
     const randomData= dataGeneratorUtils();
     cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)
@@ -165,9 +163,6 @@ describe('Client - Retirement - Rollover IRA', () => {
 
   it('Verify that US Citizen User can Create Rollover IRA Account || ID Type #Passport', () => {
 
-    TC_CreateNewAccountPage.CreateRetirementAccount_TypeRolloverIRA();
-    CloseToasterIfAppearUtils();
-
     const randomData= dataGeneratorUtils();
     cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)
     TC_PersonalInformationPage.fillPersonalInformation(
@@ -280,9 +275,6 @@ describe('Client - Retirement - Rollover IRA', () => {
   })
 
   it('Verify that US Citizen User can Create Rollover IRA Account || ID Type #Govt ID', () => {
-
-    TC_CreateNewAccountPage.CreateRetirementAccount_TypeRolloverIRA();
-    CloseToasterIfAppearUtils();
 
     const randomData= dataGeneratorUtils();
     cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)
@@ -397,8 +389,6 @@ describe('Client - Retirement - Rollover IRA', () => {
 
   it('Verify that Foreign User cannot Open Rollover IRA Account' , ()=>{
 
-    TC_CreateNewAccountPage.CreateRetirementAccount_TypeRolloverIRA();
-    CloseToasterIfAppearUtils();
     TC_PersonalInformationPage.VerifyForeignAccountCannotOpenIRAAccount()
 
   })

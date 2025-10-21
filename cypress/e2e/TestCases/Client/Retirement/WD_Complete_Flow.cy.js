@@ -15,7 +15,7 @@ import { ReviewInfomationPage } from "@Pages/Client/Personal/ReviewInformationPa
 import { IRABeneficiariesPage } from "@Pages/Client/Retirement/IRABeneficiaries"
 import { CloseToasterIfAppearUtils } from "@Utils/CloseToasterIfAppearUtils";
 import { IfApplicationStatusNotCompletedThenCancelUtils } from "@Utils/IfApplicationStatusNotCompletedThenCancelUtils";
-import { CreateNewAccountPage } from "@Pages/Client/CreateNewAccountPage"
+import { CreateNewAccount_type } from "@Pages/Client/CreateNewAccountPage"
 import { waitForLoaderToDisappearUtils } from "@Utils/waitForLoaderToDisappearUtils";
 import { RegisterRepresentativePage } from "@Pages/Register_Representative/registerRepresentative";
 import { BrokerPage } from "@Pages/Broker/brokerPage"
@@ -33,7 +33,7 @@ const TC_AccountFeaturesPage = new AccountFeaturesPage
 const TC_DocumentUploadPage = new DocumentUploadPage
 const TC_DisclosureSignaturesPage = new DisclosureSignaturesPage
 const TC_ReviewInfomationPage = new ReviewInfomationPage
-const TC_CreateNewAccountPage = new CreateNewAccountPage
+const TC_CreateNewAccountPage = new CreateNewAccount_type
 
 describe.only('RETIREMENT - WD(Margin Account) - Representative - Supervisor', ()=>{
  
@@ -50,7 +50,7 @@ describe.only('RETIREMENT - WD(Margin Account) - Representative - Supervisor', (
     IfApplicationStatusNotCompletedThenCancelUtils()
     CloseToasterIfAppearUtils()
     
-    TC_CreateNewAccountPage.CreateRetirementAccount_TypeTraditionalIRA();
+    TC_CreateNewAccountPage.createAccount('Retirement', 'Traditional IRA');
     CloseToasterIfAppearUtils();
 
     const randomData= dataGeneratorUtils();
@@ -227,8 +227,7 @@ describe("RETIREMENT - WD(Margin Account) - Broker - Representative - Supervisor
 
   it('Verify that US Citizen User can Create Tradational IRA Account || ID Type #Driver License', () => {
 
-    
-    TC_CreateNewAccountPage.CreateRetirementAccount_TypeTraditionalIRA();
+    TC_CreateNewAccountPage.createAccount('Retirement', 'Traditional IRA');
     CloseToasterIfAppearUtils();
 
     const randomData= dataGeneratorUtils();
@@ -427,8 +426,7 @@ describe("RETIREMENT - WD(Cash Account) - Representative - Supervisor", () => {
 
   it('Verify that US Citizen User can Create Tradational IRA Account || ID Type #Driver License', () => {
 
-    
-    TC_CreateNewAccountPage.CreateRetirementAccount_TypeTraditionalIRA();
+    TC_CreateNewAccountPage.createAccount('Retirement', 'Traditional IRA');
     CloseToasterIfAppearUtils();
 
     const randomData= dataGeneratorUtils();
@@ -604,8 +602,7 @@ describe("RETIREMENT - WD(Cash Account) - Broker - Representative - Supervisor",
 
   it('Verify that US Citizen User can Create Tradational IRA Account || ID Type #Driver License', () => {
 
-    
-    TC_CreateNewAccountPage.CreateRetirementAccount_TypeTraditionalIRA();
+    TC_CreateNewAccountPage.createAccount('Retirement', 'Traditional IRA');
     CloseToasterIfAppearUtils();
 
     const randomData= dataGeneratorUtils();

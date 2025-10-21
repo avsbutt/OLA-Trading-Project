@@ -4,7 +4,7 @@ import { waitForLoaderToDisappearUtils } from "@Utils/waitForLoaderToDisappearUt
 import { IfApplicationStatusNotCompletedThenCancelUtils } from "@Utils/IfApplicationStatusNotCompletedThenCancelUtils"
 import { dataGeneratorUtils } from "@Utils/dataGeneratorUtils"
 import { CloseToasterIfAppearUtils } from "@Utils/CloseToasterIfAppearUtils"
-import { CreateNewAccountPage } from "@Pages/Client/CreateNewAccountPage"
+import { CreateNewAccount_type } from "@Pages/Client/CreateNewAccountPage"
 import { EntityInformationPage } from "@Pages/Client/Entity/EntityInformationPage"
 import { InvestmentProfilePage } from "@Pages/Client/Personal/InvestorProfilePage"
 import { RegulatoryItemsPage } from "@Pages/Client/Personal/RegulatoryItemsPage"
@@ -18,7 +18,7 @@ import { RegisterRepresentativePage } from "@Pages/Register_Representative/regis
 import { BrokerPage } from "@Pages/Broker/brokerPage"
 const TC_RegisterRepresentativePage = new RegisterRepresentativePage();
 const TC_BrokerPage = new BrokerPage
-const TC_CreateNewAccountPage = new CreateNewAccountPage
+const TC_CreateNewAccountPage = new CreateNewAccount_type
 const TC_EntityInformationPage = new EntityInformationPage
 const TC_InvestmentProfilePage = new InvestmentProfilePage
 const TC_RegulatoryItemsPage = new RegulatoryItemsPage
@@ -50,7 +50,7 @@ describe ('ENTITY - WD(Margin Account) - Representative - Supervisor', ()=>{
        
     const randomData= dataGeneratorUtils();
     cy.writeFile("cypress/e2e/fixtures/PersonInfoData.json", randomData);
-    TC_CreateNewAccountPage.CreateEntityAccount_TypeCorporation()
+    TC_CreateNewAccountPage.createAccount('Entity', 'Corporation');
     CloseToasterIfAppearUtils();
  
     TC_EntityInformationPage.fillEntityInformation(randomData.fName, randomData.socialSecurityNo, randomData.primaryTelephone, randomData.city, randomData.address, randomData.address1, randomData.dobYYYYMMDD, randomData.postalCode)
@@ -201,7 +201,7 @@ describe ('ENTITY - WD(Margin Account) - Representative - Supervisor', ()=>{
 
 })
 
-describe.only("ENTITY - WD(Margin Account) - Broker - Representative - Supervisor", () => {
+describe("ENTITY - WD(Margin Account) - Broker - Representative - Supervisor", () => {
   afterEach(() => {
     cy.clearCookies();
     cy.clearLocalStorage();
@@ -219,7 +219,7 @@ describe.only("ENTITY - WD(Margin Account) - Broker - Representative - Superviso
     const randomData= dataGeneratorUtils();
     cy.writeFile("cypress/e2e/fixtures/PersonInfoData.json", randomData);
 
-    TC_CreateNewAccountPage.CreateEntityAccount_TypeCorporation()
+    TC_CreateNewAccountPage.createAccount('Entity', 'Corporation');
     CloseToasterIfAppearUtils();
 
 
@@ -408,7 +408,7 @@ describe("ENTITY - WD(Cash Account) - Representative - Supervisor", () => {
        
     const randomData= dataGeneratorUtils();
     cy.writeFile("cypress/e2e/fixtures/PersonInfoData.json", randomData);
-    TC_CreateNewAccountPage.CreateEntityAccount_TypeCorporation()
+    TC_CreateNewAccountPage.createAccount('Entity', 'Corporation');
     CloseToasterIfAppearUtils();
  
     TC_EntityInformationPage.fillEntityInformation(randomData.fName, randomData.socialSecurityNo, randomData.primaryTelephone, randomData.city, randomData.address, randomData.address1, randomData.dobYYYYMMDD, randomData.postalCode)
@@ -575,7 +575,7 @@ describe("ENTITY - WD(Cash Account) - Broker - Representative - Supervisor", () 
     
     const randomData= dataGeneratorUtils();
     cy.writeFile("cypress/e2e/fixtures/PersonInfoData.json", randomData);
-    TC_CreateNewAccountPage.CreateEntityAccount_TypeCorporation()
+    TC_CreateNewAccountPage.createAccount('Entity', 'Corporation');
     CloseToasterIfAppearUtils();
 
 
@@ -742,21 +742,3 @@ describe("ENTITY - WD(Cash Account) - Broker - Representative - Supervisor", () 
     TC_RegisterRepresentativePage.verifyApplicationStatus("Approved");
   })
 })
-
-it('Personal', function() {
-    cy.visit('ola-staging.wilsondavisclearing.com')
-    cy.get('[name="username"]').click();
-    cy.get('[name="username"]').type('democlient');
-    cy.get('[name="password"]').click();
-    cy.get('[name="password"]').type('Pac@123456');
-    cy.get('#root button.login_btn').click();
-    cy.get('#root button.create_Btn').click();
-    cy.get('#t61s76t svg[viewBox="0 0 14 16"]').click();
-    cy.get('#row-0 #dropdown-basic').click();
-    cy.get('#cell-6-undefined a:nth-child(2)').click();
-    cy.get('div:nth-child(1) > button.yes_noBtn').click();
-    cy.get('#wac9npn path[fill-rule="evenodd"]').click();
-    cy.get('#root button.create_Btn').click();
-    cy.get('button.next_btn_area').click();
-    
-});
