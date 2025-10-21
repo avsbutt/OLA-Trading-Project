@@ -10,7 +10,7 @@ import { DisclosureSignaturesPage } from "@Pages/Client/Personal/DisclosureSigna
 import{ ReviewInfomationPage } from "@Pages/Client/Personal/ReviewInformationPage"
 import { CloseToasterIfAppearUtils } from "@Utils/CloseToasterIfAppearUtils";
 import { IfApplicationStatusNotCompletedThenCancelUtils } from "@Utils/IfApplicationStatusNotCompletedThenCancelUtils";
-import { CreateNewAccountPage } from "@Pages/Client/CreateNewAccountPage"
+import { CreateNewAccount_type } from "@Pages/Client/CreateNewAccountPage"
 import { waitForLoaderToDisappearUtils } from "@Utils/waitForLoaderToDisappearUtils";
 import { RegisterRepresentativePage } from "@Pages/Register_Representative/registerRepresentative";
 import { BrokerPage } from "@Pages/Broker/brokerPage"
@@ -27,7 +27,7 @@ const TC_AccountFeaturesPage = new AccountFeaturesPage
 const TC_DocumentUploadPage = new DocumentUploadPage
 const TC_DisclosureSignaturesPage = new DisclosureSignaturesPage
 const TC_ReviewInfomationPage = new ReviewInfomationPage
-const TC_CreateNewAccountPage = new CreateNewAccountPage
+const TC_CreateNewAccountPage = new CreateNewAccount_type
 
 
 
@@ -46,7 +46,7 @@ describe('Glendale(Margin Account) - Broker - Representative - Supervisor', ()=>
     waitForLoaderToDisappearUtils()
     IfApplicationStatusNotCompletedThenCancelUtils()
     CloseToasterIfAppearUtils()
-    TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
+    TC_CreateNewAccountPage.createAccount('Personal', 'Individual');
     CloseToasterIfAppearUtils();
 
     const randomData= dataGeneratorUtils();
@@ -236,7 +236,7 @@ describe('Glendale(Margin Account) - Broker - Representative - Supervisor', ()=>
 
 })
 
-describe.skip('Glendale(Cash Account) - Broker - Representative - Supervisor', ()=>{
+describe('Glendale(Cash Account) - Broker - Representative - Supervisor', ()=>{
   
   afterEach(() => {
     cy.clearCookies();
@@ -249,7 +249,8 @@ describe.skip('Glendale(Cash Account) - Broker - Representative - Supervisor', (
     waitForLoaderToDisappearUtils()
     IfApplicationStatusNotCompletedThenCancelUtils()
     CloseToasterIfAppearUtils()
-    TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual();
+    TC_CreateNewAccountPage.createAccount('Personal', 'Individual');
+
     CloseToasterIfAppearUtils();
 
     const randomData= dataGeneratorUtils();

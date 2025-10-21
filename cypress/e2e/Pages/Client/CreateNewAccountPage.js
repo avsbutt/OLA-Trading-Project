@@ -179,7 +179,7 @@ export class CreateNewAccount_type {
 
       case 'entity':
         locators = CreateEntityAccountLocators;
-        expectedUrl = '/-ientitynfo';
+        expectedUrl = '/entity-info';
         break;
 
       case 'retirement':

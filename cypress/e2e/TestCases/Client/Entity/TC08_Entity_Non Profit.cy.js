@@ -3,7 +3,7 @@ import { waitForLoaderToDisappearUtils } from "@Utils/waitForLoaderToDisappearUt
 import { IfApplicationStatusNotCompletedThenCancelUtils } from "@Utils/IfApplicationStatusNotCompletedThenCancelUtils"
 import { dataGeneratorUtils } from "@Utils/dataGeneratorUtils"
 import { CloseToasterIfAppearUtils } from "@Utils/CloseToasterIfAppearUtils"
-import { CreateNewAccountPage } from "@Pages/Client/CreateNewAccountPage"
+import { CreateNewAccount_type } from "@Pages/Client/CreateNewAccountPage"
 import { EntityInformationPage } from "@Pages/Client/Entity/EntityInformationPage"
 import { InvestmentProfilePage } from "@Pages/Client/Personal/InvestorProfilePage"
 import { RegulatoryItemsPage } from "@Pages/Client/Personal/RegulatoryItemsPage"
@@ -15,7 +15,7 @@ import { DocumentUploadPage} from "@Pages/Client/Personal/DocumentUploadPage"
 import{ ReviewInfomationPage } from "@Pages/Client/Personal/ReviewInformationPage"
 
 
-const TC_CreateNewAccountPage = new CreateNewAccountPage
+const TC_CreateNewAccountPage = new CreateNewAccount_type
 const TC_EntityInformationPage = new EntityInformationPage
 const TC_InvestmentProfilePage = new InvestmentProfilePage
 const TC_RegulatoryItemsPage = new RegulatoryItemsPage
@@ -34,6 +34,8 @@ describe ('Client - Entity - Non Profit', ()=>{
         waitForLoaderToDisappearUtils()
         IfApplicationStatusNotCompletedThenCancelUtils()
         CloseToasterIfAppearUtils() 
+        TC_CreateNewAccountPage.createAccount('Entity', 'Non-Profit');
+        CloseToasterIfAppearUtils();
     })
 
     afterEach(() => {
@@ -45,8 +47,7 @@ describe ('Client - Entity - Non Profit', ()=>{
     it('Verify that US Citizen User can Create an Entity Account || Due Diligence Questionnaire Should be filled || ID Type #Govt ID', ()=>{
   
         const randomData= dataGeneratorUtils();
-        TC_CreateNewAccountPage.CreateEntityAccount_TypeNonProfit()
-        CloseToasterIfAppearUtils();
+
      
         TC_EntityInformationPage.fillEntityInformation(randomData.fName, randomData.socialSecurityNo, randomData.primaryTelephone, randomData.city, randomData.address, randomData.address1, randomData.dobYYYYMMDD, randomData.postalCode)
         TC_EntityInformationPage.fillMailingPreference(randomData.address1, randomData.address2, randomData.city, randomData.postalCode, randomData.randomNumbers, randomData.randomNumbers2, randomData.dobYYYYMMDD)
@@ -140,9 +141,6 @@ describe ('Client - Entity - Non Profit', ()=>{
     it('Verify that US Citizen User can Create an Entity Account || Due Diligence Questionnaire Should not be filled || ID Type #Driver License', ()=>{
   
           const randomData= dataGeneratorUtils();
-        TC_CreateNewAccountPage.CreateEntityAccount_TypeNonProfit()
-        CloseToasterIfAppearUtils();
-    
     
         TC_EntityInformationPage.fillEntityInformation(randomData.fName, randomData.socialSecurityNo, randomData.primaryTelephone, randomData.city, randomData.address, randomData.address1, randomData.dobYYYYMMDD, randomData.postalCode)
         TC_EntityInformationPage.fillMailingPreference(randomData.address1, randomData.address2, randomData.city, randomData.postalCode, randomData.randomNumbers, randomData.randomNumbers2, randomData.dobYYYYMMDD)
@@ -231,9 +229,6 @@ describe ('Client - Entity - Non Profit', ()=>{
     it('Verify that Foreign User can Create an Entity Account || ID Type #Passport', ()=>{
    
           const randomData= dataGeneratorUtils();
-        TC_CreateNewAccountPage.CreateEntityAccount_TypeNonProfit()
-        CloseToasterIfAppearUtils();
-    
     
         TC_EntityInformationPage.fillEntityInformation(randomData.fName, randomData.socialSecurityNo, randomData.primaryTelephone, randomData.city, randomData.address, randomData.address1, randomData.dobYYYYMMDD, randomData.postalCode)
         TC_EntityInformationPage.fillMailingPreference(randomData.address1, randomData.address2, randomData.city, randomData.postalCode, randomData.randomNumbers, randomData.randomNumbers2, randomData.dobYYYYMMDD)

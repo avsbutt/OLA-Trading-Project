@@ -10,11 +10,11 @@ import { DisclosureSignaturesPage } from "@Pages/Client/Personal/DisclosureSigna
 import{ ReviewInfomationPage } from "@Pages/Client/Personal/ReviewInformationPage"
 import { CloseToasterIfAppearUtils } from "@Utils/CloseToasterIfAppearUtils";
 import { IfApplicationStatusNotCompletedThenCancelUtils } from "@Utils/IfApplicationStatusNotCompletedThenCancelUtils";
-import { CreateNewAccountPage } from "@Pages/Client/CreateNewAccountPage"
+import { CreateNewAccount_type } from "@Pages/Client/CreateNewAccountPage"
 import { waitForLoaderToDisappearUtils } from "@Utils/waitForLoaderToDisappearUtils";
 
 
-const TC_CreateNewAccountPage = new CreateNewAccountPage
+const TC_CreateNewAccountPage = new CreateNewAccount_type
 const TC_PersonalInformationPage = new PersonalInformationPage
 const TC_EmploymentInformationPage = new EmploymentInformationPage
 const TC_InvestmentProfilePage = new InvestmentProfilePage
@@ -36,6 +36,8 @@ describe('Client - Personal - Joint', () => {
     waitForLoaderToDisappearUtils()
     IfApplicationStatusNotCompletedThenCancelUtils()
     CloseToasterIfAppearUtils()
+    TC_CreateNewAccountPage.createAccount('Personal', 'Joint', 'Rights of Survivorship');
+
 
   });
 
@@ -49,9 +51,6 @@ describe('Client - Personal - Joint', () => {
   //---------##########---------US CITIZEN USER---------##########---------
 
   it('Verify that US Citizen can Create Personal Account With Type Joint & Subtype Rights Of Survivorship || ID Type #Govt ID', () => {
-
-
-    TC_CreateNewAccountPage.CreatePersonalAccount_TypeJointAndSubtype_RightsOfSurvivorship()
 
     const randomData= dataGeneratorUtils(); 
     cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)

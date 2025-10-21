@@ -1,8 +1,5 @@
-import {
-  clientLoginUtils,
-  registerRepresentativeLoginUtils,
-  supervsorLoginUtils, wdBrokerLoginUtils
-} from "@Utils/LoginUtils";
+import { clientLoginUtils, registerRepresentativeLoginUtils, supervsorLoginUtils, wdBrokerLoginUtils } from "@Utils/LoginUtils";
+
 import { waitForLoaderToDisappearUtils } from "@Utils/waitForLoaderToDisappearUtils"
 import { IfApplicationStatusNotCompletedThenCancelUtils } from "@Utils/IfApplicationStatusNotCompletedThenCancelUtils"
 import { dataGeneratorUtils } from "@Utils/dataGeneratorUtils"
@@ -19,11 +16,8 @@ import { DocumentUploadPage} from "@Pages/Client/Personal/DocumentUploadPage"
 import{ ReviewInfomationPage } from "@Pages/Client/Personal/ReviewInformationPage"
 import { RegisterRepresentativePage } from "@Pages/Register_Representative/registerRepresentative";
 import { BrokerPage } from "@Pages/Broker/brokerPage"
-
-
 const TC_RegisterRepresentativePage = new RegisterRepresentativePage();
 const TC_BrokerPage = new BrokerPage
-
 const TC_CreateNewAccountPage = new CreateNewAccountPage
 const TC_EntityInformationPage = new EntityInformationPage
 const TC_InvestmentProfilePage = new InvestmentProfilePage
@@ -748,3 +742,21 @@ describe("ENTITY - WD(Cash Account) - Broker - Representative - Supervisor", () 
     TC_RegisterRepresentativePage.verifyApplicationStatus("Approved");
   })
 })
+
+it('Personal', function() {
+    cy.visit('ola-staging.wilsondavisclearing.com')
+    cy.get('[name="username"]').click();
+    cy.get('[name="username"]').type('democlient');
+    cy.get('[name="password"]').click();
+    cy.get('[name="password"]').type('Pac@123456');
+    cy.get('#root button.login_btn').click();
+    cy.get('#root button.create_Btn').click();
+    cy.get('#t61s76t svg[viewBox="0 0 14 16"]').click();
+    cy.get('#row-0 #dropdown-basic').click();
+    cy.get('#cell-6-undefined a:nth-child(2)').click();
+    cy.get('div:nth-child(1) > button.yes_noBtn').click();
+    cy.get('#wac9npn path[fill-rule="evenodd"]').click();
+    cy.get('#root button.create_Btn').click();
+    cy.get('button.next_btn_area').click();
+    
+});

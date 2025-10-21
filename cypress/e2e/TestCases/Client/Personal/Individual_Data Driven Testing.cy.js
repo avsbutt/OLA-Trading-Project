@@ -10,7 +10,7 @@ import { DisclosureSignaturesPage } from "@Pages/Client/Personal/DisclosureSigna
 import{ ReviewInfomationPage } from "@Pages/Client/Personal/ReviewInformationPage"
 import { CloseToasterIfAppearUtils } from "@Utils/CloseToasterIfAppearUtils";
 import { IfApplicationStatusNotCompletedThenCancelUtils } from "@Utils/IfApplicationStatusNotCompletedThenCancelUtils";
-import { CreateNewAccountPage } from "@Pages/Client/CreateNewAccountPage"
+import { CreateNewAccount_type } from "@Pages/Client/CreateNewAccountPage"
 import { waitForLoaderToDisappearUtils } from "@Utils/waitForLoaderToDisappearUtils";
 
 const TC_PersonalInformationPage = new PersonalInformationPage
@@ -21,7 +21,7 @@ const TC_AccountFeaturesPage = new AccountFeaturesPage
 const TC_DocumentUploadPage = new DocumentUploadPage
 const TC_DisclosureSignaturesPage = new DisclosureSignaturesPage
 const TC_ReviewInfomationPage = new ReviewInfomationPage
-const TC_CreateNewAccountPage = new CreateNewAccountPage
+const TC_CreateNewAccountPage = new CreateNewAccount_type
 
 
 beforeEach(() => {
@@ -46,7 +46,8 @@ describe.skip('DDT - Client - Individual - Data Driven Testing', () => {
       countryStates.forEach((location) => {
       
 
-        TC_CreateNewAccountPage.CreatePersonalAccount_TypeIndividual()
+        TC_CreateNewAccountPage.createAccount('Personal', 'Individual');
+
   
         const randomData= dataGeneratorUtils();
         cy.writeFile('cypress/e2e/fixtures/PersonInfoData.json', randomData)
