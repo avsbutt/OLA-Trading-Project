@@ -1,4 +1,4 @@
-import { clientLoginUtils } from "@Utils/LoginUtils"
+import { LoginUtils } from "@Utils/LoginUtils"
 import { waitForLoaderToDisappearUtils } from "@Utils/waitForLoaderToDisappearUtils"
 import { IfApplicationStatusNotCompletedThenCancelUtils } from "@Utils/IfApplicationStatusNotCompletedThenCancelUtils"
 import { dataGeneratorUtils } from "@Utils/dataGeneratorUtils"
@@ -30,7 +30,7 @@ describe ('Client - Entity - LLC', ()=>{
  
     beforeEach(() => {
 
-        clientLoginUtils();
+        LoginUtils('wd', 'client');
         waitForLoaderToDisappearUtils()
         IfApplicationStatusNotCompletedThenCancelUtils()
         CloseToasterIfAppearUtils() 

@@ -1,9 +1,4 @@
-import {
-  clientLoginUtils,
-  registerRepresentativeLoginUtils,
-  supervsorLoginUtils,
-  wdBrokerLoginUtils,
-} from "@Utils/LoginUtils";
+import { LoginUtils } from "@Utils/LoginUtils";
 import { PersonalInformationPage } from "@Pages/Client/Personal/PersonalInformationPage";
 import { EmploymentInformationPage } from "@Pages/Client/Personal/EmploymentInfomationPage";
 import { dataGeneratorUtils } from "@Utils/dataGeneratorUtils";
@@ -34,14 +29,14 @@ const TC_DisclosureSignaturesPage = new DisclosureSignaturesPage();
 const TC_ReviewInfomationPage = new ReviewInfomationPage();
 const TC_CreateNewAccountPage = new CreateNewAccount_type();
 
-describe.only("PERSONAL - WD(Margin Account) - Representative - Supervisor", () => {
+describe("PERSONAL - WD(Margin Account) - Representative - Supervisor", () => {
   afterEach(() => {
     cy.clearCookies();
     cy.clearLocalStorage();
   });
 
   it("Verify that US Citizen User can Create New Personal Account || ID Type #Driver License", () => {
-    clientLoginUtils();
+    LoginUtils('wd', 'client');
     WaitLibrary.waitForLoader();
 
     IfApplicationStatusNotCompletedThenCancelUtils();
@@ -152,7 +147,7 @@ describe.only("PERSONAL - WD(Margin Account) - Representative - Supervisor", () 
   });
 
   it("Verify that Representative Can Download and Approved an Application", () => {
-    registerRepresentativeLoginUtils();
+    LoginUtils('wd', 'rr');
     WaitLibrary.waitForLoader();
 
     CloseToasterIfAppearUtils();
@@ -182,9 +177,8 @@ describe.only("PERSONAL - WD(Margin Account) - Representative - Supervisor", () 
   });
 
   it("Verify that Supervisor Can Download and Approved an Application", () => {
-    supervsorLoginUtils();
+    LoginUtils('wd', 'supervisor');
     WaitLibrary.waitForLoader();
-
     CloseToasterIfAppearUtils();
 
     TC_RegisterRepresentativePage.ApprovedApplicationFromQueue();
@@ -216,7 +210,7 @@ describe("PERSONAL - WD(Margin Account) - Broker - Representative - Supervisor",
   });
 
   it("Verify that US Citizen User can Create New Personal Account || ID Type #Driver License", () => {
-    clientLoginUtils();
+    LoginUtils('wd', 'client');
     WaitLibrary.waitForLoader();
 
     IfApplicationStatusNotCompletedThenCancelUtils();
@@ -327,7 +321,7 @@ describe("PERSONAL - WD(Margin Account) - Broker - Representative - Supervisor",
   });
 
   it("Verify that Broker Can Download and Assign an Application to RR", () => {
-    wdBrokerLoginUtils();
+    LoginUtils('wd', 'broker');
     CloseToasterIfAppearUtils();
     waitForLoaderToDisappearUtils();
     // TC_BrokerPage.VerifyNoAssigneeFromQueue();
@@ -353,7 +347,7 @@ describe("PERSONAL - WD(Margin Account) - Broker - Representative - Supervisor",
   });
 
   it("Verify that Representative Can Download and Approved an Application", () => {
-    registerRepresentativeLoginUtils();
+    LoginUtils('wd', 'rr');
     WaitLibrary.waitForLoader();
 
     CloseToasterIfAppearUtils();
@@ -383,9 +377,8 @@ describe("PERSONAL - WD(Margin Account) - Broker - Representative - Supervisor",
   });
 
   it("Verify that Supervisor Can Download and Approved an Application", () => {
-    supervsorLoginUtils();
+    LoginUtils('wd', 'supervisor');
     WaitLibrary.waitForLoader();
-
     CloseToasterIfAppearUtils();
 
     TC_RegisterRepresentativePage.ApprovedApplicationFromQueue();
@@ -417,7 +410,7 @@ describe("PERSONAL - WD(Cash Account) - Representative - Supervisor", () => {
   });
 
   it("Verify that US Citizen User can Create New Personal Account || Account type Cash Only || ID Type #Driver License", () => {
-    clientLoginUtils();
+    LoginUtils('wd', 'client');
     WaitLibrary.waitForLoader();
 
     IfApplicationStatusNotCompletedThenCancelUtils();
@@ -531,9 +524,8 @@ describe("PERSONAL - WD(Cash Account) - Representative - Supervisor", () => {
   });
 
   it("Verify that Representative Can Download and Approved an Application", () => {
-    registerRepresentativeLoginUtils();
+    LoginUtils('wd', 'rr');
     WaitLibrary.waitForLoader();
-
     CloseToasterIfAppearUtils();
     TC_RegisterRepresentativePage.ApprovedApplicationFromQueue();
 
@@ -561,9 +553,8 @@ describe("PERSONAL - WD(Cash Account) - Representative - Supervisor", () => {
   });
 
   it("Verify that Supervisor Can Download and Approved an Application", () => {
-    supervsorLoginUtils();
+    LoginUtils('wd', 'supervisor');
     WaitLibrary.waitForLoader();
-
     CloseToasterIfAppearUtils();
 
     TC_RegisterRepresentativePage.ApprovedApplicationFromQueue();
@@ -595,7 +586,7 @@ describe("PERSONAL - WD(Cash Account) - Broker - Representative - Supervisor", (
   });
 
   it("Verify that US Citizen User can Create New Personal Account || Account type Cash Only || ID Type #Driver License", () => {
-    clientLoginUtils();
+    LoginUtils('wd', 'client');
     WaitLibrary.waitForLoader();
 
     IfApplicationStatusNotCompletedThenCancelUtils();
@@ -709,7 +700,7 @@ describe("PERSONAL - WD(Cash Account) - Broker - Representative - Supervisor", (
   });
 
   it("Verify that Broker Can Download and Assign an Application to RR", () => {
-    wdBrokerLoginUtils();
+    LoginUtils('wd', 'broker');
     CloseToasterIfAppearUtils();
     waitForLoaderToDisappearUtils();
     // TC_BrokerPage.VerifyNoAssigneeFromQueue();
@@ -735,7 +726,8 @@ describe("PERSONAL - WD(Cash Account) - Broker - Representative - Supervisor", (
   });
 
   it("Verify that Representative Can Download and Approved an Application", () => {
-    registerRepresentativeLoginUtils();
+    LoginUtils('wd', 'rr');
+
     WaitLibrary.waitForLoader();
 
     CloseToasterIfAppearUtils();
@@ -765,7 +757,7 @@ describe("PERSONAL - WD(Cash Account) - Broker - Representative - Supervisor", (
   });
 
   it("Verify that Supervisor Can Download and Approved an Application", () => {
-    supervsorLoginUtils();
+    LoginUtils('wd', 'supervisor');
     WaitLibrary.waitForLoader();
 
     CloseToasterIfAppearUtils();

@@ -1,8 +1,4 @@
-import {
-  clientLoginUtils,
-  registerRepresentativeLoginUtils,
-  supervsorLoginUtils, wdBrokerLoginUtils
-} from "@Utils/LoginUtils";
+import {LoginUtils} from "@Utils/LoginUtils";
 import { PersonalInformationPage } from "@Pages/Client/Personal/PersonalInformationPage"
 import { EmploymentInformationPage } from "@Pages/Client/Personal/EmploymentInfomationPage"
 import { dataGeneratorUtils } from "@Utils/dataGeneratorUtils";
@@ -45,7 +41,7 @@ describe.only('RETIREMENT - WD(Margin Account) - Representative - Supervisor', (
 
   it('Verify that US Citizen User can Create Tradational IRA Account || ID Type #Driver License', () => {
 
-    clientLoginUtils();
+    LoginUtils('wd', 'client');
     waitForLoaderToDisappearUtils()
     IfApplicationStatusNotCompletedThenCancelUtils()
     CloseToasterIfAppearUtils()
@@ -165,7 +161,7 @@ describe.only('RETIREMENT - WD(Margin Account) - Representative - Supervisor', (
   })
 
   it("Verify that Representative Can Download and Approved an Application", () => {
-    registerRepresentativeLoginUtils();
+    LoginUtils('wd', 'rr');
     waitForLoaderToDisappearUtils();
     CloseToasterIfAppearUtils();
     TC_RegisterRepresentativePage.ApprovedApplicationFromQueue();
@@ -192,7 +188,7 @@ describe.only('RETIREMENT - WD(Margin Account) - Representative - Supervisor', (
   })
 
   it("Verify that Supervisor Can Download and Approved an Application", () => {
-    supervsorLoginUtils();
+    LoginUtils('wd', 'superisor');
     waitForLoaderToDisappearUtils();
     CloseToasterIfAppearUtils();
 
@@ -226,7 +222,11 @@ describe("RETIREMENT - WD(Margin Account) - Broker - Representative - Supervisor
   })
 
   it('Verify that US Citizen User can Create Tradational IRA Account || ID Type #Driver License', () => {
-
+   
+    LoginUtils('wd', 'client');
+    waitForLoaderToDisappearUtils()
+    IfApplicationStatusNotCompletedThenCancelUtils()
+    CloseToasterIfAppearUtils()
     TC_CreateNewAccountPage.createAccount('Retirement', 'Traditional IRA');
     CloseToasterIfAppearUtils();
 
@@ -425,7 +425,11 @@ describe("RETIREMENT - WD(Cash Account) - Representative - Supervisor", () => {
   })
 
   it('Verify that US Citizen User can Create Tradational IRA Account || ID Type #Driver License', () => {
-
+    
+    LoginUtils('wd', 'client');
+    waitForLoaderToDisappearUtils()
+    IfApplicationStatusNotCompletedThenCancelUtils()
+    CloseToasterIfAppearUtils()
     TC_CreateNewAccountPage.createAccount('Retirement', 'Traditional IRA');
     CloseToasterIfAppearUtils();
 
@@ -602,6 +606,10 @@ describe("RETIREMENT - WD(Cash Account) - Broker - Representative - Supervisor",
 
   it('Verify that US Citizen User can Create Tradational IRA Account || ID Type #Driver License', () => {
 
+    LoginUtils('wd', 'client');
+    waitForLoaderToDisappearUtils()
+    IfApplicationStatusNotCompletedThenCancelUtils()
+    CloseToasterIfAppearUtils()
     TC_CreateNewAccountPage.createAccount('Retirement', 'Traditional IRA');
     CloseToasterIfAppearUtils();
 

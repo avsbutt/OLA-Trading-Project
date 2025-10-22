@@ -1,4 +1,4 @@
-import { clientLoginUtils } from "@Utils/LoginUtils";
+import { LoginUtils } from "@Utils/LoginUtils";
 import { PersonalInformationPage } from "@Pages/Client/Personal/PersonalInformationPage";
 import { EmploymentInformationPage } from "@Pages/Client/Personal/EmploymentInfomationPage";
 import { dataGeneratorUtils } from "@Utils/dataGeneratorUtils";
@@ -26,7 +26,7 @@ const TC_ReviewInfomationPage = new ReviewInfomationPage();
 
 describe("Client - Personal - Joint", () => {
   beforeEach(() => {
-    clientLoginUtils();
+    LoginUtils('wd', 'client');
     WaitLibrary.waitForLoader();
     IfApplicationStatusNotCompletedThenCancelUtils();
     CloseToasterIfAppearUtils();

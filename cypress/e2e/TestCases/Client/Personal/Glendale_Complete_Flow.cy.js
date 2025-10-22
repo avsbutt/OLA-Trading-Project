@@ -1,4 +1,4 @@
-import { glendaleClientLoginUtils, glendaleRegisterRepresentativeLoginUtils, glendaleSupervsorLoginUtils, glendaleBrokerLoginUtils } from "@Utils/LoginUtils"
+import { LoginUtils } from "@Utils/LoginUtils"
 import { PersonalInformationPage } from "@Pages/Client/Personal/PersonalInformationPage"
 import { EmploymentInformationPage } from "@Pages/Client/Personal/EmploymentInfomationPage"
 import { dataGeneratorUtils } from "@Utils/dataGeneratorUtils";
@@ -42,7 +42,7 @@ describe('Glendale(Margin Account) - Broker - Representative - Supervisor', ()=>
   it('Verify that US Citizen User can Create New Personal Account || Margin Account  || ID Type #Driver License ', () => {
 
     
-    glendaleClientLoginUtils();
+    LoginUtils('glendale', 'client');
     waitForLoaderToDisappearUtils()
     IfApplicationStatusNotCompletedThenCancelUtils()
     CloseToasterIfAppearUtils()
@@ -155,7 +155,7 @@ describe('Glendale(Margin Account) - Broker - Representative - Supervisor', ()=>
   })
 
   it('Verify that Broker Can Download and Assign an Application to RR', () => {
-    glendaleBrokerLoginUtils();
+    LoginUtils('glendale', 'broker');
     CloseToasterIfAppearUtils()
     waitForLoaderToDisappearUtils()
     TC_BrokerPage.VerifyNoAssigneeFromQueue();
@@ -177,7 +177,7 @@ describe('Glendale(Margin Account) - Broker - Representative - Supervisor', ()=>
   })
 
   it("Verify that Representative Can Download and Approved an Application", () => {
-    glendaleRegisterRepresentativeLoginUtils();
+    LoginUtils('glendale', 'rr');
     waitForLoaderToDisappearUtils();
     IfApplicationStatusNotCompletedThenCancelUtils();
     CloseToasterIfAppearUtils();
@@ -206,7 +206,7 @@ describe('Glendale(Margin Account) - Broker - Representative - Supervisor', ()=>
   })
 
   it("Verify that Supervisor Can Download and Approved an Application", () => {
-    glendaleSupervsorLoginUtils();
+    LoginUtils('glendale', 'superisor');
     waitForLoaderToDisappearUtils();
     IfApplicationStatusNotCompletedThenCancelUtils();
     CloseToasterIfAppearUtils();
@@ -245,7 +245,7 @@ describe('Glendale(Cash Account) - Broker - Representative - Supervisor', ()=>{
 
   it('Verify that US Citizen User can Create New Personal Account || Cash Account || ID Type #Driver License ', () => {
 
-    glendaleClientLoginUtils();
+    LoginUtils('glendale', 'client');
     waitForLoaderToDisappearUtils()
     IfApplicationStatusNotCompletedThenCancelUtils()
     CloseToasterIfAppearUtils()
@@ -360,7 +360,7 @@ describe('Glendale(Cash Account) - Broker - Representative - Supervisor', ()=>{
   })
 
   it('Verify that Broker Can Download and Assign an Application to RR', () => {
-    glendaleBrokerLoginUtils();
+    LoginUtils('glendale', 'broker');
     CloseToasterIfAppearUtils()
     waitForLoaderToDisappearUtils()
     TC_BrokerPage.VerifyNoAssigneeFromQueue();
@@ -382,7 +382,7 @@ describe('Glendale(Cash Account) - Broker - Representative - Supervisor', ()=>{
   })
 
   it("Verify that Representative Can Download and Approved an Application", () => {
-    glendaleRegisterRepresentativeLoginUtils();
+    LoginUtils('glendale', 'rr');
     waitForLoaderToDisappearUtils();
     IfApplicationStatusNotCompletedThenCancelUtils();
     CloseToasterIfAppearUtils();
@@ -411,7 +411,7 @@ describe('Glendale(Cash Account) - Broker - Representative - Supervisor', ()=>{
   })
 
   it("Verify that Supervisor Can Download and Approved an Application", () => {
-    glendaleSupervsorLoginUtils();
+    LoginUtils('glendale', 'superisor');
     waitForLoaderToDisappearUtils();
     IfApplicationStatusNotCompletedThenCancelUtils();
     CloseToasterIfAppearUtils();

@@ -1,4 +1,4 @@
-import { clientLoginUtils, registerRepresentativeLoginUtils, supervsorLoginUtils, wdBrokerLoginUtils } from "@Utils/LoginUtils";
+import { LoginUtils } from "@Utils/LoginUtils";
 
 import { waitForLoaderToDisappearUtils } from "@Utils/waitForLoaderToDisappearUtils"
 import { IfApplicationStatusNotCompletedThenCancelUtils } from "@Utils/IfApplicationStatusNotCompletedThenCancelUtils"
@@ -40,7 +40,7 @@ describe ('ENTITY - WD(Margin Account) - Representative - Supervisor', ()=>{
   it('Verify that US Citizen User can Create an Entity Account || Due Diligence Questionnaire Should be filled || ID Type #Govt ID', ()=>{
 
 
-    clientLoginUtils();
+    LoginUtils('wd', 'client');
     waitForLoaderToDisappearUtils();
     IfApplicationStatusNotCompletedThenCancelUtils();
     CloseToasterIfAppearUtils();
@@ -147,7 +147,7 @@ describe ('ENTITY - WD(Margin Account) - Representative - Supervisor', ()=>{
   })
 
   it("Verify that Representative Can Download and Approved an Application", () => {
-    registerRepresentativeLoginUtils();
+    LoginUtils('wd', 'rr');
     waitForLoaderToDisappearUtils();
     CloseToasterIfAppearUtils();
     TC_RegisterRepresentativePage.ApprovedApplicationFromQueue();
@@ -174,7 +174,7 @@ describe ('ENTITY - WD(Margin Account) - Representative - Supervisor', ()=>{
   })
 
   it("Verify that Supervisor Can Download and Approved an Application", () => {
-    supervsorLoginUtils();
+    LoginUtils('wd', 'superisor');
     waitForLoaderToDisappearUtils();
     CloseToasterIfAppearUtils();
 
@@ -209,7 +209,7 @@ describe("ENTITY - WD(Margin Account) - Broker - Representative - Supervisor", (
 
   it('Verify that US Citizen User can Create an Entity Account || Due Diligence Questionnaire Should not be filled || ID Type #Driver License', ()=>{
 
-    clientLoginUtils();
+    LoginUtils('wd', 'client');
     waitForLoaderToDisappearUtils();
     IfApplicationStatusNotCompletedThenCancelUtils();
     CloseToasterIfAppearUtils();
@@ -313,7 +313,7 @@ describe("ENTITY - WD(Margin Account) - Broker - Representative - Supervisor", (
   })
 
   it('Verify that Broker Can Download and Assign an Application to RR', () => {
-    wdBrokerLoginUtils();
+    LoginUtils('wd', 'broker');
     CloseToasterIfAppearUtils()
     waitForLoaderToDisappearUtils()
     // TC_BrokerPage.VerifyNoAssigneeFromQueue();
@@ -336,7 +336,7 @@ describe("ENTITY - WD(Margin Account) - Broker - Representative - Supervisor", (
   })
 
   it("Verify that Representative Can Download and Approved an Application", () => {
-    registerRepresentativeLoginUtils();
+    LoginUtils('wd', 'rr');
     waitForLoaderToDisappearUtils();
     CloseToasterIfAppearUtils();
     TC_RegisterRepresentativePage.ApprovedApplicationFromQueue();
@@ -363,7 +363,7 @@ describe("ENTITY - WD(Margin Account) - Broker - Representative - Supervisor", (
   })
 
   it("Verify that Supervisor Can Download and Approved an Application", () => {
-    supervsorLoginUtils();
+    LoginUtils('wd', 'superisor');
     waitForLoaderToDisappearUtils();
     CloseToasterIfAppearUtils();
 
@@ -396,9 +396,7 @@ describe("ENTITY - WD(Cash Account) - Representative - Supervisor", () => {
   })
 
   it('Verify that US Citizen User can Create an Entity Account || Due Diligence Questionnaire Should be filled || ID Type #Govt ID', ()=>{
-
-
-    clientLoginUtils();
+    LoginUtils('wd', 'client');
     waitForLoaderToDisappearUtils();
     IfApplicationStatusNotCompletedThenCancelUtils();
     CloseToasterIfAppearUtils();
@@ -505,7 +503,7 @@ describe("ENTITY - WD(Cash Account) - Representative - Supervisor", () => {
   })
 
   it("Verify that Representative Can Download and Approved an Application", () => {
-    registerRepresentativeLoginUtils();
+    LoginUtils('wd', 'rr');
     waitForLoaderToDisappearUtils();
     CloseToasterIfAppearUtils();
     TC_RegisterRepresentativePage.ApprovedApplicationFromQueue();
@@ -532,7 +530,8 @@ describe("ENTITY - WD(Cash Account) - Representative - Supervisor", () => {
   })
 
   it("Verify that Supervisor Can Download and Approved an Application", () => {
-    supervsorLoginUtils();
+    LoginUtils('wd', 'superisor');
+
     waitForLoaderToDisappearUtils();
     CloseToasterIfAppearUtils();
 
@@ -566,7 +565,7 @@ describe("ENTITY - WD(Cash Account) - Broker - Representative - Supervisor", () 
 
   it('Verify that US Citizen User can Create an Entity Account || Due Diligence Questionnaire Should not be filled || ID Type #Driver License', ()=>{
 
-    clientLoginUtils();
+    LoginUtils('wd', 'client');
     waitForLoaderToDisappearUtils();
     IfApplicationStatusNotCompletedThenCancelUtils();
     CloseToasterIfAppearUtils();
@@ -667,7 +666,7 @@ describe("ENTITY - WD(Cash Account) - Broker - Representative - Supervisor", () 
   })
 
   it('Verify that Broker Can Download and Assign an Application to RR', () => {
-    wdBrokerLoginUtils();
+    LoginUtils('wd', 'broker');
     CloseToasterIfAppearUtils()
     waitForLoaderToDisappearUtils()
     // TC_BrokerPage.VerifyNoAssigneeFromQueue();
@@ -690,7 +689,8 @@ describe("ENTITY - WD(Cash Account) - Broker - Representative - Supervisor", () 
   })
 
   it("Verify that Representative Can Download and Approved an Application", () => {
-    registerRepresentativeLoginUtils();
+   LoginUtils('wd', 'rr');
+  
     waitForLoaderToDisappearUtils();
     CloseToasterIfAppearUtils();
     TC_RegisterRepresentativePage.ApprovedApplicationFromQueue();
@@ -717,7 +717,7 @@ describe("ENTITY - WD(Cash Account) - Broker - Representative - Supervisor", () 
   })
 
   it("Verify that Supervisor Can Download and Approved an Application", () => {
-    supervsorLoginUtils();
+    LoginUtils('wd', 'supervisor');
     waitForLoaderToDisappearUtils();
     CloseToasterIfAppearUtils();
 

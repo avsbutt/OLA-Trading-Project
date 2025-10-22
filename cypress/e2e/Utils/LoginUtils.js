@@ -1,152 +1,40 @@
-//THIS FUNCTION LOGIN THE APPLICATION AND ALSO LOGIN THE AUTHENTICATION APPLIED IN OUR SITE
-import { loginLocators} from "../Locators/loginLocators.json";
+import { loginLocators } from "../Locators/loginLocators.json";
+import { TypeLibrary } from "../utils/TypeLibrary";
+import { ClickLibrary } from "../utils/ClickLibrary";
+import { WaitLibrary } from "../utils/WaitLibrary";
+import { CheckLibrary } from "../utils/CheckLibrary";
+/**
+ * Universal Login Utility
+ * @param {string} userType - 'wd' or 'glendale'
+ * @param {string} role - 'client', 'rr', 'superisor', 'broker', or 'operator'
+ */
+export function LoginUtils(userType = 'wd', role = 'client') {
+  // Visit with basic auth
+  cy.visit("", {
+    failOnStatusCode: false,
+    timeout: 20000,
+    auth: {
+      username: 'ola-staging',
+      password: 'Atlasclear@123/',
+    },
+  });
 
-export function clientLoginUtils() {
-
- // const captchaKey = Cypress.env('CAPTCHA_KEY');
-
-
-  cy.visit("", {failOnStatusCode: false, timeout: 20000,
-   auth: {
-     username: 'ola-staging',
-     password: 'Atlasclear@123/'
-    }
-  })
-
+  // Load user credentials
   cy.fixture('UsersCredential.json').then((data) => {
-   cy.xpath(loginLocators.username).type(data.wdCredentials.clientCrendetial.username)  
-   cy.xpath(loginLocators.password).type(data.wdCredentials.clientCrendetial.password) 
-  })
+    const userGroup = userType === 'glendale' ? data.glendaleCredentials : data.wdCredentials;
+    const roleKey = `${role}Crendetial`;
 
-  cy.xpath(loginLocators.loginBtn).click()
-  cy.url().should('include', '/dashboard')
-}
+    const creds = userGroup[roleKey];
 
-export function glendaleClientLoginUtils() {
-
- // const captchaKey = Cypress.env('CAPTCHA_KEY');
-
-
-  cy.visit("", {failOnStatusCode: false, timeout: 20000,
-   auth: {
-     username: 'ola-staging',
-     password: 'Atlasclear@123/'
+    if (!creds) {
+      throw new Error(`❌ Invalid userType/role: ${userType}, ${role}`);
     }
-  })
 
-  cy.fixture('UsersCredential.json').then((data) => {
-   cy.xpath(loginLocators.username).type(data.glendaleCredentials.clientCrendetial.username)  
-   cy.xpath(loginLocators.password).type(data.glendaleCredentials.clientCrendetial.password) 
-  })
+    TypeLibrary.type(loginLocators.username, creds.username);
+    TypeLibrary.type(loginLocators.password, creds.password);
+  });
 
-  cy.xpath(loginLocators.loginBtn).click()
-  cy.url().should('include', '/dashboard')
-}
-
-export function registerRepresentativeLoginUtils(){
-  cy.visit("", {failOnStatusCode: false, timeout: 20000,
-    auth: {
-      username: 'ola-staging',
-      password: 'Atlasclear@123/'
-     }
-  })
- 
-   cy.fixture('UsersCredential.json').then((data) => {
-      cy.xpath(loginLocators.username).type(data.wdCredentials.rrCredential.username)  
-      cy.xpath(loginLocators.password).type(data.wdCredentials.rrCredential.password)
-   })
-  cy.xpath(loginLocators.loginBtn).click()
-  cy.url().should('include', '/dashboard')
-
-  
-}
-
-export function supervsorLoginUtils(){
-  cy.visit("", {failOnStatusCode: false, timeout: 20000,
-    auth: {
-      username: 'ola-staging',
-      password: 'Atlasclear@123/'
-     }
-  })
- 
-   cy.fixture('UsersCredential.json').then((data) => {
-      cy.xpath(loginLocators.username).type(data.wdCredentials.superisorCredential.username)  
-      cy.xpath(loginLocators.password).type(data.wdCredentials.superisorCredential.password)
-   })
-  cy.xpath(loginLocators.loginBtn).click()
-  cy.url().should('include', '/dashboard')
-
-  
-}
-
-export function glendaleRegisterRepresentativeLoginUtils(){
-  cy.visit("", {failOnStatusCode: false, timeout: 20000,
-    auth: {
-      username: 'ola-staging',
-      password: 'Atlasclear@123/'
-     }
-  })
- 
-   cy.fixture('UsersCredential.json').then((data) => {
-      cy.xpath(loginLocators.username).type(data.glendaleCredentials.rrCredential.username)  
-      cy.xpath(loginLocators.password).type(data.glendaleCredentials.rrCredential.password)
-   })
-  cy.xpath(loginLocators.loginBtn).click()
-  cy.url().should('include', '/dashboard')
-
-  
-}
-
-export function glendaleSupervsorLoginUtils(){
-  cy.visit("", {failOnStatusCode: false, timeout: 20000,
-    auth: {
-      username: 'ola-staging',
-      password: 'Atlasclear@123/'
-     }
-  })
- 
-   cy.fixture('UsersCredential.json').then((data) => {
-      cy.xpath(loginLocators.username).type(data.glendaleCredentials.superisorCredential.username)  
-      cy.xpath(loginLocators.password).type(data.glendaleCredentials.superisorCredential.password)
-   })
-  cy.xpath(loginLocators.loginBtn).click()
-  cy.url().should('include', '/dashboard')
-
-  
-}
-
-export function glendaleBrokerLoginUtils(){
-  cy.visit("", {failOnStatusCode: false, timeout: 20000,
-    auth: {
-      username: 'ola-staging',
-      password: 'Atlasclear@123/'
-     }
-  })
- 
-   cy.fixture('UsersCredential.json').then((data) => {
-      cy.xpath(loginLocators.username).type(data.glendaleCredentials.brokerCredential.username)  
-      cy.xpath(loginLocators.password).type(data.glendaleCredentials.brokerCredential.password)
-   })
-  cy.xpath(loginLocators.loginBtn).click()
-  cy.url().should('include', '/dashboard')
-
-  
-}
-
-export function wdBrokerLoginUtils(){
-  cy.visit("", {failOnStatusCode: false, timeout: 20000,
-    auth: {
-      username: 'ola-staging',
-      password: 'Atlasclear@123/'
-     }
-  })
- 
-   cy.fixture('UsersCredential.json').then((data) => {
-      cy.xpath(loginLocators.username).type(data.wdCredentials.brokerCredential.username)  
-      cy.xpath(loginLocators.password).type(data.wdCredentials.brokerCredential.password)
-   })
-  cy.xpath(loginLocators.loginBtn).click()
-  cy.url().should('include', '/dashboard')
-
-  
+  ClickLibrary.click(loginLocators.loginBtn);
+  WaitLibrary.waitUntilUrlContains('/dashboard')
+  WaitLibrary.waitForLoader()
 }
