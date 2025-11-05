@@ -2,7 +2,9 @@
 import { CreatePersonalAccountLocators } from "@Locators/createNewAccountLocators.json"
 import { PersonalInformationLocators, CoApplicantPersonalInformationLocators, PhysicalAddressLocators, CoApplicantPhysicalAddressLocators, TrustedContactLocators, IRAAccountInformationLocators } from "@Locators/Personal/PersonalInformationLocators.json";
 import { FormUsageButtons } from "@Locators/FormUsageButtons.json";
-
+import { TypeLibrary } from "../../../utils/TypeLibrary";
+import { ActionLibrary } from "../../../utils/ActionLibrary";
+import { WaitLibrary } from "../../../utils/WaitLibrary";
 
 export class PersonalInformationPage{
 

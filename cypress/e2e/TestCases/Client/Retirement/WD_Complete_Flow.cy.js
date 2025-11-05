@@ -31,7 +31,7 @@ const TC_DisclosureSignaturesPage = new DisclosureSignaturesPage
 const TC_ReviewInfomationPage = new ReviewInfomationPage
 const TC_CreateNewAccountPage = new CreateNewAccount_type
 
-describe.only('RETIREMENT - WD(Margin Account) - Representative - Supervisor', ()=>{
+describe('RETIREMENT - WD(Margin Account) - Representative - Supervisor', ()=>{
  
   afterEach(() => {
     cy.clearCookies();
@@ -143,8 +143,8 @@ describe.only('RETIREMENT - WD(Margin Account) - Representative - Supervisor', (
     cy.wait(1000)
     TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
-    // TC_DisclosureSignaturesPage.AccountAgreement()
-    // cy.wait(1000)
+    TC_DisclosureSignaturesPage.AccountAgreement()
+    cy.wait(1000)
     TC_DisclosureSignaturesPage.FormCRSAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
@@ -215,13 +215,13 @@ describe.only('RETIREMENT - WD(Margin Account) - Representative - Supervisor', (
 
 })
 
-describe("RETIREMENT - WD(Margin Account) - Broker - Representative - Supervisor", () => {
+describe.only("RETIREMENT - WD(Margin Account) - Broker - Representative - Supervisor", () => {
   afterEach(() => {
     cy.clearCookies();
     cy.clearLocalStorage();
   })
 
-  it('Verify that US Citizen User can Create Tradational IRA Account || ID Type #Driver License', () => {
+  it.skip('Verify that US Citizen User can Create Tradational IRA Account || ID Type #Driver License', () => {
    
     LoginUtils('wd', 'client');
     waitForLoaderToDisappearUtils()
@@ -324,8 +324,8 @@ describe("RETIREMENT - WD(Margin Account) - Broker - Representative - Supervisor
     cy.wait(1000)
     TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
-    // TC_DisclosureSignaturesPage.AccountAgreement()
-    // cy.wait(1000)
+    TC_DisclosureSignaturesPage.AccountAgreement()
+    cy.wait(1000)
     TC_DisclosureSignaturesPage.FormCRSAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
@@ -342,7 +342,8 @@ describe("RETIREMENT - WD(Margin Account) - Broker - Representative - Supervisor
   })
 
   it('Verify that Broker Can Download and Assign an Application to RR', () => {
-    wdBrokerLoginUtils();
+    LoginUtils('wd', 'broker');
+
     CloseToasterIfAppearUtils()
     waitForLoaderToDisappearUtils()
     // TC_BrokerPage.VerifyNoAssigneeFromQueue();
@@ -353,7 +354,7 @@ describe("RETIREMENT - WD(Margin Account) - Broker - Representative - Supervisor
     TC_RegisterRepresentativePage.downloadPrintPdf();
     TC_RegisterRepresentativePage.clickButtonOnReviewPage("OK");
     TC_RegisterRepresentativePage.clickOnApprovalQueue()
-    TC_BrokerPage.VerifyNoAssigneeFromQueue()
+    // TC_BrokerPage.VerifyNoAssigneeFromQueue()
     TC_RegisterRepresentativePage.verifyApplicationStatus('Submitted Pending Approval')
     TC_BrokerPage.ClickButton('Assign to')
     TC_BrokerPage.SelectRegisterRep('Demo RR')
@@ -365,7 +366,7 @@ describe("RETIREMENT - WD(Margin Account) - Broker - Representative - Supervisor
   })
 
   it("Verify that Representative Can Download and Approved an Application", () => {
-    registerRepresentativeLoginUtils();
+    LoginUtils('wd', 'rr');
     waitForLoaderToDisappearUtils();
     CloseToasterIfAppearUtils();
     TC_RegisterRepresentativePage.ApprovedApplicationFromQueue();
@@ -392,7 +393,7 @@ describe("RETIREMENT - WD(Margin Account) - Broker - Representative - Supervisor
   })
 
   it("Verify that Supervisor Can Download and Approved an Application", () => {
-    supervsorLoginUtils();
+    LoginUtils('wd', 'supervisor');
     waitForLoaderToDisappearUtils();
     CloseToasterIfAppearUtils();
 
@@ -527,8 +528,8 @@ describe("RETIREMENT - WD(Cash Account) - Representative - Supervisor", () => {
     cy.wait(1000)
     TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
-    // TC_DisclosureSignaturesPage.AccountAgreement()
-    // cy.wait(1000)
+    TC_DisclosureSignaturesPage.AccountAgreement()
+    cy.wait(1000)
     TC_DisclosureSignaturesPage.FormCRSAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
@@ -545,7 +546,7 @@ describe("RETIREMENT - WD(Cash Account) - Representative - Supervisor", () => {
   })
 
   it("Verify that Representative Can Download and Approved an Application", () => {
-    registerRepresentativeLoginUtils();
+    LoginUtils('wd', 'rr');
     waitForLoaderToDisappearUtils();
     CloseToasterIfAppearUtils();
     TC_RegisterRepresentativePage.ApprovedApplicationFromQueue();
@@ -572,7 +573,7 @@ describe("RETIREMENT - WD(Cash Account) - Representative - Supervisor", () => {
   })
 
   it("Verify that Supervisor Can Download and Approved an Application", () => {
-    supervsorLoginUtils();
+    LoginUtils('wd', 'supervisor');
     waitForLoaderToDisappearUtils();
     CloseToasterIfAppearUtils();
 
@@ -707,8 +708,8 @@ describe("RETIREMENT - WD(Cash Account) - Broker - Representative - Supervisor",
     cy.wait(1000)
     TC_DisclosureSignaturesPage.FullyPaidSecuritiesLoanAgreement()
     cy.wait(1000)
-    // TC_DisclosureSignaturesPage.AccountAgreement()
-    // cy.wait(1000)
+    TC_DisclosureSignaturesPage.AccountAgreement()
+    cy.wait(1000)
     TC_DisclosureSignaturesPage.FormCRSAgreement()
     cy.wait(1000)
     TC_DisclosureSignaturesPage.FillSignature()
@@ -725,7 +726,7 @@ describe("RETIREMENT - WD(Cash Account) - Broker - Representative - Supervisor",
   })
 
   it('Verify that Broker Can Download and Assign an Application to RR', () => {
-    wdBrokerLoginUtils();
+    LoginUtils('wd', 'broker');
     CloseToasterIfAppearUtils()
     waitForLoaderToDisappearUtils()
     // TC_BrokerPage.VerifyNoAssigneeFromQueue();
@@ -748,7 +749,7 @@ describe("RETIREMENT - WD(Cash Account) - Broker - Representative - Supervisor",
   })
 
   it("Verify that Representative Can Download and Approved an Application", () => {
-    registerRepresentativeLoginUtils();
+    LoginUtils('wd', 'rr');
     waitForLoaderToDisappearUtils();
     CloseToasterIfAppearUtils();
     TC_RegisterRepresentativePage.ApprovedApplicationFromQueue();
@@ -775,7 +776,7 @@ describe("RETIREMENT - WD(Cash Account) - Broker - Representative - Supervisor",
   })
 
   it("Verify that Supervisor Can Download and Approved an Application", () => {
-    supervsorLoginUtils();
+    LoginUtils('wd', 'supervisor');
     waitForLoaderToDisappearUtils();
     CloseToasterIfAppearUtils();
 

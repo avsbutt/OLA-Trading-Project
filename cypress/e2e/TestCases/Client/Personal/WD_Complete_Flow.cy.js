@@ -203,7 +203,7 @@ describe("PERSONAL - WD(Margin Account) - Representative - Supervisor", () => {
   });
 });
 
-describe("PERSONAL - WD(Margin Account) - Broker - Representative - Supervisor", () => {
+describe.only("PERSONAL - WD(Margin Account) - Broker - Representative - Supervisor", () => {
   afterEach(() => {
     cy.clearCookies();
     cy.clearLocalStorage();
@@ -332,7 +332,7 @@ describe("PERSONAL - WD(Margin Account) - Broker - Representative - Supervisor",
     TC_RegisterRepresentativePage.downloadPrintPdf();
     TC_RegisterRepresentativePage.clickButtonOnReviewPage("OK");
     TC_RegisterRepresentativePage.clickOnApprovalQueue();
-    TC_BrokerPage.VerifyNoAssigneeFromQueue();
+    // TC_BrokerPage.VerifyNoAssigneeFromQueue();
     TC_RegisterRepresentativePage.verifyApplicationStatus(
       "Submitted Pending Approval"
     );

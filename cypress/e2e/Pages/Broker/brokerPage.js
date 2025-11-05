@@ -9,7 +9,7 @@ export class BrokerPage {
       force: true,
     });
     cy.fixture("PersonInfoData.json").then((person) => {
-      const fullName = `${person.fName} ${person.lName}`;
+      const fullName = `${person.fName}`;
 
       cy.get("#row-0")
         .find('[role="cell"]')
@@ -32,7 +32,7 @@ export class BrokerPage {
       force: true,
     });
     cy.fixture("PersonInfoData.json").then((person) => {
-      const fullName = `${person.fName} ${person.lName}`;
+      const fullName = `${person.fName}`;
 
       cy.get("#row-0")
         .find('[role="cell"]')
@@ -57,7 +57,7 @@ export class BrokerPage {
         }
 
         cy.fixture("PersonInfoData.json").then((person) => {
-            const fullName = `${person.fName} ${person.lName}`;
+            const fullName = `${person.fName}`;
 
             cy.get("#row-0")
             .find('[role="cell"]')

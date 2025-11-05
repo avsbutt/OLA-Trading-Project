@@ -396,3 +396,6 @@ describe('Client - Retirement - Tradational IRA', () => {
   })
 
 })
+
+//Margin account cannot be opened , Margin is not visible 
+//Custodial has no foreign account but have cash and margin.
