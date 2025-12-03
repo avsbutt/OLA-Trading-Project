@@ -87,7 +87,7 @@ export class DisclosureSignaturesPage{
     //     cy.wrap(element).focus().check({ force: true })
     //   } 
     // });
-     cy.get('input:is([value="true"][name="wdfullyPaidSecLoadAgreementCheck"])')
+     cy.get('input:is([value="true"][name="wdfullyPaidSecLoadAgreementCheck"], [value="true"][name="wdFullyPaidSecLoadAgreementCheck"])')
     .click({ force: true });
          
     this.stubWindowOpen();
@@ -124,6 +124,13 @@ export class DisclosureSignaturesPage{
     cy.xpath(DisclosureSignaturesLocators.FundingYourAccount).should('be.visible').click({ force: true })   // PDF Link
     cy.get('@windowOpen').should('have.been.called')   // Verify if window.open was called, confirming the link click would open a new tab
     cy.log('PDF link click simulated and intercepted by stub')
+  }
+  
+  
+  //---------------------------------------------------\\
+  
+  AcknowledgeCheckbox(){
+    cy.xpath("//input[@id='signatureCheck']").click()
   }
 
 

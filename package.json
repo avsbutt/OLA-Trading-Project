@@ -15,7 +15,7 @@
     "@faker-js/faker": "^9.0.3",
     "@testomatio/reporter": "^1.5.3",
     "allure-commandline": "^2.32.0",
-    "cypress": "^15.4.0",
+    "cypress": "^15.6.0",
     "cypress-file-upload": "^5.0.8",
     "cypress-iframe": "^1.0.1",
     "cypress-xpath": "^2.0.1",
