@@ -13,7 +13,7 @@ module.exports = defineConfig({
   e2e: {
     projectId: "9wgqhu",   // This ID is set from Cypress Dashboard
     specPattern: "cypress/e2e/TestCases/**/*.cy.js",     //The specPattern tells Cypress where to find your test files.
-    baseUrl: "https://ola-staging.wilsondavisclearing.com /",
+    baseUrl: "https://ola-staging.wilsondavisclearing.com/",
     // baseUrl: "https://glendalestg.wilsondavisclearing.com/",
 
 
