@@ -110,7 +110,7 @@ export class PersonalInformationPage{
 
 
     fillTrustedContact(trustedFirstName, trustedLastName, trustedTelephone, trustedEmail, trustedMailingAddress1, trustedCity, trustedPostalCode){
-        cy.xpath(TrustedContactLocators.TrustedContactCheckbox).check();
+        // cy.xpath(TrustedContactLocators.TrustedContactCheckbox).check();
         cy.xpath(TrustedContactLocators.FirstName).focus().clear().type(trustedFirstName)
         cy.xpath(TrustedContactLocators.LastName).focus().clear().type(trustedLastName)
         cy.xpath(TrustedContactLocators.TelephoneNumber).focus().clear().type(trustedTelephone)
